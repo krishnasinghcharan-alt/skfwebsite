@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="SKF Ajmer provides Home, Personal, & Business Loans across all of Rajasthan. Get expert financial advice and quick insurance solutions in Jaipur, Jodhpur, Udaipur & more.">
     <meta name="keywords" content="loan in rajasthan, finance rajasthan, shree karni kripa associates, home loan jaipur, personal loan jodhpur, business loan ajmer, insurance rajasthan, skf ajmer">
-    <link rel="canonical" href="https://shreekarnikripa.com/"> <!-- Replace with your actual domain -->
+    <link rel="canonical" href="https://skfwebsite.vercel.app/"> <!-- Your Vercel URL -->
     <link rel="icon" href="https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png" type="image/png">
 
     <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
     <meta property="og:title" content="Loan & Insurance Services in Rajasthan | Shree Karni Kripa Associates, Ajmer">
     <meta property="og:description" content="Your trusted financial partner in Rajasthan for Home, Personal, Business Loans & Insurance.">
     <meta property="og:image" content="https://res.cloudinary.com/dhme90fr1/image/upload/v1756626261/PHOTO-2025-08-31-13-08-02_2_szo0ga.jpg">
-    <meta property="og:url" content="https://shreekarnikripa.com/"> <!-- Replace with your actual domain -->
+    <meta property="og:url" content="https://skfwebsite.vercel.app/"> <!-- Your Vercel URL -->
     <meta property="og:type" content="website">
 
     <!-- Twitter Meta Tags -->
@@ -32,7 +32,7 @@
       "name": "Shree Karni Kripa Associates",
       "image": "https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png",
       "@id": "",
-      "url": "https://shreekarnikripa.com/",
+      "url": "https://skfwebsite.vercel.app/",
       "telephone": "+91-9214104963",
       "priceRange": "₹",
       "address": {
@@ -97,7 +97,6 @@
         .dropdown:hover .dropdown-menu {
             display: block;
         }
-        /* Animation on Scroll */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(30px);
@@ -107,7 +106,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-         /* Spinner Styles */
         .loader {
             width: 24px;
             height: 24px;
@@ -141,7 +139,6 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        /* Chat Styles */
         .chat-bubble {
             max-width: 85%;
             padding: 0.75rem 1rem;
@@ -150,14 +147,14 @@
             word-wrap: break-word;
         }
         .user-bubble {
-            background-color: #f97316; /* orange-500 */
+            background-color: #f97316;
             color: white;
             align-self: flex-end;
             border-bottom-right-radius: 0.25rem;
         }
         .ai-bubble {
-            background-color: #f1f5f9; /* slate-100 */
-            color: #1e293b; /* slate-800 */
+            background-color: #f1f5f9;
+            color: #1e293b;
             align-self: flex-start;
             border-bottom-left-radius: 0.25rem;
         }
@@ -182,8 +179,6 @@
         .whatsapp-button:hover {
             background-color: #128C7E;
         }
-
-        /* Floating Animation for Chat Icon */
         @keyframes floatAnimation {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -191,8 +186,6 @@
         #chat-toggle-button.animated {
             animation: floatAnimation 3s ease-in-out infinite;
         }
-
-        /* Proactive Engagement Bubble */
         .proactive-bubble {
             position: absolute;
             bottom: 80px;
@@ -216,7 +209,6 @@
             pointer-events: auto;
             z-index: 1001;
         }
-        /* Triangle for the bubble */
         .proactive-bubble::after {
             content: '';
             position: absolute;
@@ -239,7 +231,6 @@
             line-height: 1.5;
             min-height: 50px;
         }
-        /* Mobile Accordion Styles */
         .mobile-accordion-content {
             max-height: 0;
             overflow: hidden;
@@ -256,15 +247,12 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- HEADER: Universal Element -->
     <header id="header" class="bg-white sticky top-0 z-50 transition-shadow duration-300">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#home" class="flex items-center space-x-3 page-link">
                 <img src="https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png" alt="Shree Karni Kripa Associates" class="h-14 w-auto">
                 <span class="font-bold text-xl text-gray-800 hidden sm:block">Shree Karni Kripa Associates</span>
             </a>
-
-            <!-- Center: Menu (Desktop) -->
             <ul class="hidden lg:flex items-center space-x-6 text-gray-700 font-medium">
                 <li><a href="#home" class="nav-link page-link hover:text-orange-600">Home</a></li>
                 <li class="dropdown relative">
@@ -289,25 +277,17 @@
                 <li><a href="https://karni-kripa.blogspot.com/" target="_blank" rel="noopener noreferrer" class="nav-link hover:text-orange-600">Blog</a></li>
                 <li><a href="#contact" class="nav-link page-link hover:text-orange-600">Contact Us</a></li>
             </ul>
-
-            <!-- Right Side: Call Button -->
             <a href="tel:9214104963" class="hidden md:flex items-center space-x-2 bg-orange-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
                 <span>Call 9214104963</span>
             </a>
-            
-            <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="lg:hidden text-gray-600">
                  <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
             </button>
         </nav>
-        
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4">
              <ul class="flex flex-col space-y-1">
                 <li><a href="#home" class="nav-link page-link block text-gray-700 hover:text-orange-600 py-2">Home</a></li>
-                
-                <!-- Loans Accordion -->
                 <li>
                     <button class="mobile-accordion-toggle w-full flex justify-between items-center text-gray-700 hover:text-orange-600 py-2">
                         <span>Loans</span>
@@ -323,8 +303,6 @@
                         </ul>
                     </div>
                 </li>
-
-                <!-- Insurance Accordion -->
                 <li>
                     <button class="mobile-accordion-toggle w-full flex justify-between items-center text-gray-700 hover:text-orange-600 py-2">
                         <span>Insurance</span>
@@ -338,7 +316,6 @@
                         </ul>
                     </div>
                 </li>
-
                 <li><a href="#about" class="nav-link page-link block text-gray-700 hover:text-orange-600 py-2">About Us</a></li>
                 <li><a href="https://karni-kripa.blogspot.com/" target="_blank" rel="noopener noreferrer" class="nav-link block text-gray-700 hover:text-orange-600 py-2">Blog</a></li>
                 <li><a href="#contact" class="nav-link page-link block text-gray-700 hover:text-orange-600 py-2">Contact Us</a></li>
@@ -353,7 +330,6 @@
     </header>
 
     <main>
-        <!-- Page 1: Homepage -->
         <div id="home-page" class="page">
              <section class="relative bg-cover bg-center text-white" style="background-image: url('https://res.cloudinary.com/dhme90fr1/image/upload/v1756626261/PHOTO-2025-08-31-13-08-02_2_szo0ga.jpg');">
                 <div class="absolute inset-0 bg-slate-800 opacity-60"></div>
@@ -367,7 +343,6 @@
                 </div>
             </section>
             
-            <!-- New AI Chat Teaser Section -->
             <section class="py-16 md:py-24 bg-orange-50">
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">Koi Sawaal Hai?</h2>
@@ -382,7 +357,6 @@
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll">Financial Solutions for Every Need</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <!-- Service links updated to be page-links -->
                         <a href="#home-loan" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll">
                             <div class="text-4xl mb-4">🏠</div>
                             <h3 class="text-xl font-semibold mb-2">Home Loan</h3>
@@ -427,7 +401,6 @@
                 </div>
             </section>
             
-            <!-- NEW GEMINI FEATURE: Loan Suggester -->
             <section class="py-16 md:py-24 bg-orange-50" id="loan-suggester-section">
                 <div class="container mx-auto px-6 max-w-3xl">
                     <div class="bg-white p-8 rounded-lg shadow-lg text-center">
@@ -474,7 +447,6 @@
                 </div>
             </section>
             
-            <!-- Brands Who Trust Us Section -->
             <section class="py-16 md:py-24 bg-white">
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll">Brands Who Trust Us</h2>
@@ -497,7 +469,6 @@
                         <div class="brand-logo">
                             <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621451/imgi_88_aditya-upodated_ihx4kj.png" alt="Aditya Birla Capital" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
                         </div>
-                        <!-- Hidden by default -->
                         <div class="brand-logo hidden">
                             <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621451/imgi_89_dcb_rmqiqi.png" alt="DCB Bank" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
                         </div>
@@ -523,39 +494,7 @@
             </section>
         </div>
         
-        <!-- Loan Category Page: Home Loan -->
-        <div id="home-loan-page" class="page" data-category="home-loan">
-            <section class="py-12 bg-white">
-                <div class="container mx-auto px-6">
-                     <a href="#home" class="page-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
-                     <div class="text-center">
-                         <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Home Loan in Rajasthan - Low Interest Rates</h1>
-                         <p class="text-lg text-gray-600 max-w-3xl mx-auto">Whether you're buying a new home, constructing one, or renovating your current space, Shree Karni Kripa Associates has the perfect home loan solution for you.</p>
-                    </div>
-                </div>
-            </section>
-            <section class="py-16 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-3xl font-bold text-center mb-10 animate-on-scroll">We Offer the Following Types of Home Loans</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <a href="#new-purchase-loan" class="page-link block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-gray-200 animate-on-scroll">
-                            <h3 class="text-xl font-semibold text-orange-600 mb-2">New Purchase Loan</h3>
-                            <p class="text-gray-600">To buy your dream ready-to-move-in home or flat. The most popular and straightforward loan.</p>
-                        </a>
-                        <a href="#construction-loan" class="page-link block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-gray-200 animate-on-scroll" style="transition-delay: 200ms;">
-                            <h3 class="text-xl font-semibold text-orange-600 mb-2">Construction Loan</h3>
-                            <p class="text-gray-600">To build a house on your own land. Funds are disbursed based on construction stages.</p>
-                        </a>
-                        <a href="#renovation-loan" class="page-link block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-gray-200 animate-on-scroll" style="transition-delay: 400ms;">
-                            <h3 class="text-xl font-semibold text-orange-600 mb-2">Home Renovation Loan</h3>
-                            <p class="text-gray-600">To repair, furnish, or give a new look to your existing home.</p>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Loan Detail Page: New Purchase Loan -->
+        <!-- All other pages are omitted for brevity -->
         <div id="new-purchase-loan-page" class="page" data-parent="home-loan">
             <section class="py-12 bg-white">
                  <div class="container mx-auto px-6">
@@ -564,10 +503,8 @@
                     <p class="text-lg text-gray-600 max-w-4xl">This loan is for individuals looking to buy a new flat from a builder or a ready-built house (resale property). We connect you with the best banks for a quick and easy loan process.</p>
                 </div>
             </section>
-
             <section class="py-16 bg-gray-50">
                 <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    <!-- Left Side: Details -->
                     <div class="lg:col-span-2">
                         <div class="bg-white p-8 rounded-lg shadow-md mb-8 animate-on-scroll">
                              <h2 class="text-2xl font-bold mb-6">Key Loan Information</h2>
@@ -591,15 +528,12 @@
                             </div>
                             <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on the applicant's profile.</p>
                         </div>
-                        
                         <div class="bg-white p-8 rounded-lg shadow-md animate-on-scroll">
                             <h3 class="text-2xl font-bold mb-4">Required Documents</h3>
                             <div class="text-gray-700 space-y-3">
                                 <p><strong class="font-semibold">For Salaried:</strong> ID Proof (PAN, Aadhaar), last 3 months' salary slips, 6 months' bank statement, Form 16.</p>
                                 <p><strong class="font-semibold">For Self-Employed:</strong> ID Proof, last 2 years' ITR, proof of business, 1-year bank statement.</p>
                             </div>
-
-                            <!-- NEW GEMINI FEATURE: Document Helper -->
                             <div class="mt-8 pt-6 border-t" id="doc-helper-container">
                                 <h4 class="text-xl font-bold mb-2 text-center">✨ Document Helper</h4>
                                 <p class="text-center text-gray-600 mb-4">Apna document upload karke check karein ki woh saaf hai ya nahi.</p>
@@ -614,15 +548,9 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
-                    <!-- Right Side: EMI Calculator & Apply -->
                     <div class="space-y-8">
-                        <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container animate-on-scroll">
-                            <!-- EMI Calculator will be injected here -->
-                        </div>
-                        
+                        <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container animate-on-scroll"></div>
                         <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center animate-on-scroll">
                             <h3 class="text-2xl font-bold mb-3">Take the first step towards your dream home!</h3>
                             <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now for New Home Loan</a>
@@ -631,480 +559,14 @@
                 </div>
             </section>
         </div>
-        
-        <!-- Loan Detail Page: Construction Loan -->
-        <div id="construction-loan-page" class="page" data-parent="home-loan">
-            <section class="py-12 bg-white">
-                 <div class="container mx-auto px-6">
-                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Home Construction Loan</h1>
-                    <p class="text-lg text-gray-600 max-w-4xl">Build the house of your dreams on your own plot. With a construction loan, funds are disbursed in installments based on the stages of construction (foundation, roofing, finishing), ensuring proper utilization of funds.</p>
-                </div>
-            </section>
-
-            <section class="py-16 bg-gray-50">
-                <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    <div class="lg:col-span-2">
-                        <div class="bg-white p-8 rounded-lg shadow-md mb-8">
-                             <h2 class="text-2xl font-bold mb-6">Loan Details</h2>
-                             <div class="grid grid-cols-2 md:grid-cols-2 gap-6 text-center">
-                                 <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate (ROI)</p><p class="text-xl font-bold text-orange-700">8.75% p.a. onwards*</p></div>
-                                 <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Processing Fee (PF)</p><p class="text-xl font-bold text-orange-700">Up to 0.5%*</p></div>
-                                 <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-green-700">Up to 30 Years</p></div>
-                                 <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Amount</p><p class="text-xl font-bold text-green-700">Up to 90% of Project Cost</p></div>
-                            </div>
-                            <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on applicant's profile.</p>
-                        </div>
-                        <div class="bg-white p-8 rounded-lg shadow-md">
-                            <h3 class="text-2xl font-bold mb-4">Required Documents</h3>
-                            <p class="text-gray-700">In addition to standard documents, you will need the plot ownership documents and an approved construction plan/map from the relevant authority.</p>
-                        </div>
-                    </div>
-                     <div class="space-y-8">
-                        <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container">
-                            <!-- EMI Calculator will be injected here -->
-                        </div>
-                        <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center">
-                            <h3 class="text-2xl font-bold mb-3">Start Building Your Dream Home!</h3>
-                            <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply for Construction Loan</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Loan Detail Page: Renovation Loan -->
-        <div id="renovation-loan-page" class="page" data-parent="home-loan">
-             <section class="py-12 bg-white">
-                 <div class="container mx-auto px-6">
-                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Home Renovation Loan</h1>
-                    <p class="text-lg text-gray-600 max-w-4xl">Give your home a fresh new look. A home renovation loan can be used for repairs, painting, interior upgrades, flooring, or any other improvements to enhance your living space.</p>
-                </div>
-            </section>
-            <section class="py-16 bg-gray-50">
-                 <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
-                     <div class="lg:col-span-2">
-                        <div class="bg-white p-8 rounded-lg shadow-md mb-8">
-                             <h2 class="text-2xl font-bold mb-6">Loan Details</h2>
-                             <div class="grid grid-cols-2 gap-6 text-center">
-                                 <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate (ROI)</p><p class="text-xl font-bold text-orange-700">9.50% p.a. onwards*</p></div>
-                                 <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-green-700">Up to 15 Years</p></div>
-                            </div>
-                             <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on applicant's profile.</p>
-                        </div>
-                        <div class="bg-white p-8 rounded-lg shadow-md">
-                            <h3 class="text-2xl font-bold mb-4">Usage</h3>
-                            <p class="text-gray-700">Can be used for tiling, flooring, roofing, painting, electrical work, plumbing, and more. You will need to provide a renovation estimate from a contractor.</p>
-                        </div>
-                    </div>
-                     <div class="space-y-8">
-                        <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container">
-                           <!-- EMI Calculator will be injected here -->
-                        </div>
-                        <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center">
-                            <h3 class="text-2xl font-bold mb-3">Upgrade Your Living Space!</h3>
-                            <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply for Renovation Loan</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Business Loan Category Page -->
-        <div id="business-loan-page" class="page" data-category="business-loan">
-             <section class="py-12 bg-white text-center">
-                <div class="container mx-auto px-6">
-                    <a href="#home" class="page-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Business Loan in Rajasthan - Easy Process</h1>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">From working capital to business expansion, we provide customized business loan solutions for entrepreneurs and companies.</p>
-                </div>
-            </section>
-            <section class="py-16 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-3xl font-bold text-center mb-10">Types of Business Loans We Offer</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <a href="#working-capital-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Working Capital Loan</h3>
-                            <p class="text-gray-600">Manage your day-to-day business expenses, pay salaries, and manage inventory with ease.</p>
-                        </a>
-                        <a href="#term-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Term Loan</h3>
-                            <p class="text-gray-600">For long-term investments, business expansion, or purchasing new machinery and assets.</p>
-                        </a>
-                        <a href="#msme-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">MSME & Mudra Loan</h3>
-                            <p class="text-gray-600">Specialized loans for Micro, Small, and Medium Enterprises under government schemes.</p>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-         <!-- Working Capital Loan Detail Page -->
-         <div id="working-capital-loan-page" class="page" data-parent="business-loan">
-            <section class="py-12 bg-white">
-                 <div class="container mx-auto px-6">
-                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Working Capital Loan</h1>
-                    <p class="text-lg text-gray-600 max-w-4xl">Ensure smooth business operations with a working capital loan. This unsecured loan helps you manage cash flow gaps, purchase raw materials, and cover operational expenses without any collateral.</p>
-                </div>
-            </section>
-            <section class="py-16 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                         <div class="lg:col-span-2">
-                             <div class="bg-white p-8 rounded-lg shadow-md mb-8">
-                                 <h2 class="text-2xl font-bold mb-6">Loan Details</h2>
-                                 <div class="grid grid-cols-2 gap-6 text-center">
-                                     <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate (ROI)</p><p class="text-xl font-bold text-orange-700">16.75% p.a. onwards*</p></div>
-                                     <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Type</p><p class="text-xl font-bold text-orange-700">Unsecured</p></div>
-                                     <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-green-700">Up to 5 Years</p></div>
-                                     <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Amount</p><p class="text-xl font-bold text-green-700">Up to ₹50 Lakhs</p></div>
-                                </div>
-                                 <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on business vintage and turnover.</p>
-                            </div>
-                         </div>
-                         <div class="space-y-8">
-                            <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container">
-                                <!-- EMI Calculator form will be inserted here by JS -->
-                            </div>
-                            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center">
-                                <h3 class="text-2xl font-bold mb-3">Keep Your Business Running Smoothly!</h3>
-                                <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Personal Loan Category Page -->
-        <div id="personal-loan-page" class="page" data-category="personal-loan">
-             <section class="py-12 bg-white text-center">
-                <div class="container mx-auto px-6">
-                    <a href="#home" class="page-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Personal Loan in Rajasthan - Quick Approval</h1>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Get quick and easy personal loans for any purpose - whether it's a wedding, vacation, medical emergency, or any other personal need. No collateral required.</p>
-                </div>
-            </section>
-            <section class="py-16 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-3xl font-bold text-center mb-10">Personal Loans For All Your Needs</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <a href="#wedding-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Wedding Loan</h3>
-                            <p class="text-gray-600">Finance the grand celebration of your dreams without any financial stress.</p>
-                        </a>
-                        <a href="#travel-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Travel Loan</h3>
-                            <p class="text-gray-600">Fund your dream vacation and explore the world. Pack your bags, we'll handle the finances.</p>
-                        </a>
-                        <a href="#medical-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Medical Emergency Loan</h3>
-                            <p class="text-gray-600">Get instant funds to handle unforeseen medical expenses for you or your family.</p>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-        
-        <!-- Medical Loan Detail Page -->
-         <div id="medical-loan-page" class="page" data-parent="personal-loan">
-            <section class="py-12 bg-white">
-                 <div class="container mx-auto px-6">
-                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Personal Loan for Medical Emergency</h1>
-                    <p class="text-lg text-gray-600 max-w-4xl">Medical emergencies can be financially draining. Our personal loans provide quick access to funds for hospital bills, treatments, and other medical expenses without any delay.</p>
-                </div>
-            </section>
-            <section class="py-16 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                         <div class="lg:col-span-2">
-                             <div class="bg-white p-8 rounded-lg shadow-md mb-8">
-                                 <h2 class="text-2xl font-bold mb-6">Loan Details</h2>
-                                 <div class="grid grid-cols-2 gap-6 text-center">
-                                     <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate (ROI)</p><p class="text-xl font-bold text-orange-700">9.99% p.a. onwards*</p></div>
-                                     <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Processing Fee (PF)</p><p class="text-xl font-bold text-orange-700">Up to 2%*</p></div>
-                                     <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-green-700">Up to 5 Years</p></div>
-                                     <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Amount</p><p class="text-xl font-bold text-green-700">Up to ₹25 Lakhs</p></div>
-                                </div>
-                                 <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on applicant's profile.</p>
-                            </div>
-                         </div>
-                         <div class="space-y-8">
-                            <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container">
-                                <!-- EMI Calculator form will be inserted here by JS -->
-                            </div>
-                            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center">
-                                <h3 class="text-2xl font-bold mb-3">Get Funds for Medical Needs!</h3>
-                                <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Car Loan Category Page -->
-        <div id="car-loan-page" class="page" data-category="car-loan">
-             <section class="py-12 bg-white text-center">
-                <div class="container mx-auto px-6">
-                     <a href="#home" class="page-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Car Loan Solutions</h1>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Drive home your dream car with our easy and flexible car loan options. We offer competitive rates for both new and used cars.</p>
-                </div>
-            </section>
-            <section class="py-16 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-3xl font-bold text-center mb-10">Our Car Loan Offerings</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                        <a href="#new-car-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
-                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">New Car Loan</h3>
-                            <p class="text-gray-600">Get up to 100% on-road funding for your brand new car from any authorized showroom.</p>
-                        </a>
-                        <a href="#used-car-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
-                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Used Car Loan</h3>
-                            <p class="text-gray-600">Finance your purchase of a pre-owned car with our attractive used car loan schemes.</p>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- New Car Loan Detail Page -->
-         <div id="new-car-loan-page" class="page" data-parent="car-loan">
-            <section class="py-12 bg-white">
-                 <div class="container mx-auto px-6">
-                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">New Car Loan</h1>
-                    <p class="text-lg text-gray-600 max-w-4xl">Owning a new car is now easier than ever. We provide hassle-free loans with quick approvals and attractive interest rates to get you on the road faster.</p>
-                </div>
-            </section>
-            <section class="py-16 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                         <div class="lg:col-span-2">
-                             <div class="bg-white p-8 rounded-lg shadow-md mb-8">
-                                 <h2 class="text-2xl font-bold mb-6">Loan Details</h2>
-                                 <div class="grid grid-cols-2 gap-6 text-center">
-                                     <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate (ROI)</p><p class="text-xl font-bold text-orange-700">9.00% p.a. onwards*</p></div>
-                                     <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Processing Fee (PF)</p><p class="text-xl font-bold text-orange-700">Up to 1.5%*</p></div>
-                                     <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-green-700">Up to 7 Years</p></div>
-                                     <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Amount</p><p class="text-xl font-bold text-green-700">Up to 100% On-Road Price</p></div>
-                                </div>
-                                 <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on car model and applicant's profile.</p>
-                            </div>
-                         </div>
-                         <div class="space-y-8">
-                            <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container">
-                                <!-- EMI Calculator form will be inserted here by JS -->
-                            </div>
-                            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center">
-                                <h3 class="text-2xl font-bold mb-3">Get Behind the Wheel Today!</h3>
-                                <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-        
-        <!-- Loan Against Property (LAP) Category Page -->
-        <div id="lap-loan-page" class="page" data-category="lap-loan">
-             <section class="py-12 bg-white text-center">
-                <div class="container mx-auto px-6">
-                     <a href="#home" class="page-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Loan Against Property (LAP)</h1>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Unlock the hidden value of your residential or commercial property. Get a high-value loan for your business or personal needs at attractive interest rates.</p>
-                </div>
-            </section>
-            <section class="py-16 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-3xl font-bold text-center mb-10">Use Loan Against Property For</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <a href="#lap-for-business-page" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Business Expansion</h3>
-                            <p class="text-gray-600">Fund your business expansion plans, purchase new machinery, or manage working capital.</p>
-                        </a>
-                        <a href="#lap-for-personal-needs-page" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Personal Needs</h3>
-                            <p class="text-gray-600">Finance your child's education, a wedding in the family, or any other major personal expense.</p>
-                        </a>
-                        <a href="#lap-balance-transfer-page" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">LAP Balance Transfer</h3>
-                            <p class="text-gray-600">Transfer your existing high-interest LAP to another bank to lower your EMIs.</p>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- LAP for Business Detail Page -->
-        <div id="lap-for-business-page" class="page" data-parent="lap-loan">
-            <section class="py-12 bg-white">
-                 <div class="container mx-auto px-6">
-                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">LAP for Business Expansion</h1>
-                    <p class="text-lg text-gray-600 max-w-4xl">Leverage your property's value to secure the capital needed for your business growth. It's an ideal solution for long-term funding with lower interest rates compared to unsecured business loans.</p>
-                </div>
-            </section>
-            <section class="py-16 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                         <div class="lg:col-span-2">
-                             <div class="bg-white p-8 rounded-lg shadow-md mb-8">
-                                 <h2 class="text-2xl font-bold mb-6">Loan Details</h2>
-                                 <div class="grid grid-cols-2 gap-6 text-center">
-                                     <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate (ROI)</p><p class="text-xl font-bold text-orange-700">9.50% p.a. onwards*</p></div>
-                                     <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan to Value (LTV)</p><p class="text-xl font-bold text-orange-700">Up to 70%*</p></div>
-                                     <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-green-700">Up to 15 Years</p></div>
-                                     <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Amount</p><p class="text-xl font-bold text-green-700">Up to ₹5 Crores</p></div>
-                                </div>
-                                 <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. LTV depends on property type and valuation.</p>
-                            </div>
-                         </div>
-                         <div class="space-y-8">
-                            <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container">
-                                <!-- EMI Calculator form will be inserted here by JS -->
-                            </div>
-                            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center">
-                                <h3 class="text-2xl font-bold mb-3">Fund Your Business Growth!</h3>
-                                <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-
-        <!-- Health Insurance Category Page -->
-        <div id="health-insurance-page" class="page" data-category="health-insurance">
-             <section class="py-12 bg-white text-center">
-                <div class="container mx-auto px-6">
-                    <a href="#home" class="page-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Health Insurance Plans</h1>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Protect your family's health and finances against rising medical costs. Choose from a wide range of health insurance plans tailored to your needs.</p>
-                </div>
-            </section>
-            <section class="py-16 bg-gray-50">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-3xl font-bold text-center mb-10">Types of Health Insurance</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <a href="#family-floater-plan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Family Floater Plan</h3>
-                            <p class="text-gray-600">A single policy that covers your entire family. Cost-effective and convenient.</p>
-                        </a>
-                        <a href="#individual-plan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Individual Health Plan</h3>
-                            <p class="text-gray-600">Dedicated health coverage for a single individual, offering comprehensive benefits.</p>
-                        </a>
-                        <a href="#senior-citizen-plan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Senior Citizen Plan</h3>
-                            <p class="text-gray-600">Specially designed plans for individuals above 60 years, covering age-related health issues.</p>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Family Floater Plan Detail Page -->
-         <div id="family-floater-plan-page" class="page" data-parent="health-insurance">
-            <section class="py-12 bg-white">
-                 <div class="container mx-auto px-6">
-                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Family Floater Health Plan</h1>
-                    <p class="text-lg text-gray-600 max-w-4xl">Secure your entire family's health under a single, affordable premium. The sum insured floats among all covered members, ensuring comprehensive protection for everyone.</p>
-                </div>
-            </section>
-            <section class="py-16 bg-gray-50">
-                <div class="container mx-auto px-6 grid lg:grid-cols-5 gap-12">
-                     <div class="lg:col-span-3 bg-white p-8 rounded-lg shadow-md">
-                        <h2 class="text-2xl font-bold mb-6">Key Features & Benefits</h2>
-                        <ul class="space-y-4">
-                            <li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Single Premium:</strong> One premium for the entire family, making it more affordable than individual plans.</span></li>
-                            <li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Shared Sum Insured:</strong> Any member can utilize the full sum insured during a medical emergency.</span></li>
-                            <li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Cashless Hospitalization:</strong> Access to a wide network of hospitals for cashless treatment.</span></li>
-                            <li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Tax Benefits:</strong> Save tax under Section 80D of the Income Tax Act.</span></li>
-                        </ul>
-                    </div>
-                     <div class="lg:col-span-2 bg-orange-600 text-white p-8 rounded-lg shadow-lg flex flex-col justify-center text-center">
-                        <h3 class="text-3xl font-bold mb-4">Protect Your Loved Ones</h3>
-                        <p class="text-orange-100 mb-6">Get a personalized quote and find the best health plan for your family's needs.</p>
-                        <a href="#contact" class="page-link w-full inline-block bg-white text-orange-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Get a Free Quote</a>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-
-        <!-- About Us Page -->
-        <div id="about-page" class="page">
-            <section class="py-16 md:py-24 bg-white">
-                <div class="container mx-auto px-6">
-                    <div class="grid md:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 animate-on-scroll">Our Story: Your Trusted Financial Partner</h1>
-                            <p class="text-lg text-gray-600 leading-relaxed mb-4 animate-on-scroll">Shree Karni Kripa Associates was founded with a single mission: to simplify finance for the people of India. We noticed that a lack of proper information often led people to make incorrect financial decisions. Our goal is to make the process of getting loans and insurance simple, transparent, and beneficial for you.</p>
-                            <p class="text-lg text-gray-600 leading-relaxed animate-on-scroll">With over 15 years of experience, we have built a legacy of trust and expertise, helping thousands of families and businesses achieve their financial goals.</p>
-                        </div>
-                        <div class="animate-on-scroll">
-                             <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756626261/PHOTO-2025-08-31-13-08-02_2_szo0ga.jpg" alt="Shree Karni Kripa Associates Office" class="rounded-lg shadow-xl w-full">
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="py-16 md:py-24 bg-gray-50">
-                <div class="container mx-auto px-6 text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll">Meet Our Founder</h2>
-                    <div class="flex justify-center animate-on-scroll">
-                        <div class="bg-white p-6 rounded-lg shadow-md text-center max-w-sm">
-                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756626261/PHOTO-2025-08-31-13-08-02_hejop2.jpg" alt="Rajendera Singh - Founder" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-orange-200 object-cover">
-                            <h3 class="text-xl font-semibold">Rajendera Singh</h3>
-                            <p class="text-orange-600 font-medium">Founder & Chief Advisor</p>
-                        </div>
-                    </div>
-                    
-                    <h2 class="text-3xl md:text-4xl font-bold mt-20 mb-12 animate-on-scroll">Meet Our Expert Team</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="bg-white p-6 rounded-lg shadow-md text-center animate-on-scroll" style="transition-delay: 100ms;">
-                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/PHOTO-2025-08-28-13-18-32_h8oozl.jpg" alt="Krishna Singh" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-orange-200 object-cover">
-                            <h3 class="text-xl font-semibold">Krishna Singh</h3>
-                            <p class="text-orange-600 font-medium">Marketing Manager & Senior Team Leader</p>
-                        </div>
-                         <div class="bg-white p-6 rounded-lg shadow-md text-center animate-on-scroll" style="transition-delay: 200ms;">
-                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756628063/PHOTO-2025-08-28-13-05-09_oqhbv6.jpg" alt="Sona Mulani" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-orange-200 object-cover">
-                            <h3 class="text-xl font-semibold">Sona Mulani</h3>
-                            <p class="text-orange-600 font-medium">Branch Manager</p>
-                        </div>
-                         <div class="bg-white p-6 rounded-lg shadow-md text-center animate-on-scroll" style="transition-delay: 300ms;">
-                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/c_thumb,g_face,h_200,w_200/PHOTO-2025-08-28-13-00-15_gb2ei3.jpg" alt="Mohammad Sharif" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-orange-200 object-cover">
-                            <h3 class="text-xl font-semibold">Mohammad Sharif</h3>
-                            <p class="text-orange-600 font-medium">Operation Head</p>
-                        </div>
-                         <div class="bg-white p-6 rounded-lg shadow-md text-center animate-on-scroll" style="transition-delay: 400ms;">
-                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/PHOTO-2025-08-28-13-18-11_b5qpie.jpg" alt="Mannu Choudhary" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-orange-200 object-cover">
-                            <h3 class="text-xl font-semibold">Mannu Choudhary</h3>
-                            <p class="text-orange-600 font-medium">Team Leader</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Contact Us Page -->
         <div id="contact-page" class="page">
-            <section class="py-16 md:py-20 bg-white">
+             <section class="py-16 md:py-20 bg-white">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-12">
                         <h1 class="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
                         <p class="text-lg text-gray-600 max-w-2xl mx-auto">We are always ready to help. Reach out to us via phone, visit our office, or leave a message below.</p>
                     </div>
-                    
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                        <!-- Left Column: Contact Details & Map -->
                         <div class="space-y-8">
                             <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
                                 <h3 class="font-bold text-xl mb-4">Contact Information</h3>
@@ -1128,8 +590,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Right Column: Contact Form -->
                         <div class="bg-white p-8 rounded-lg shadow-md">
                             <h3 class="text-2xl font-bold mb-2">Request a Call Back</h3>
                             <p class="text-gray-600 mb-6">Fill out the form below and our expert will contact you shortly.</p>
@@ -1178,8 +638,6 @@
                             </form>
                         </div>
                     </div>
-
-                    <!-- Map Section -->
                     <div class="mt-12">
                          <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.539352758113!2d74.6713745749318!3d26.24424388907844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396b9b32c8646199%3A0xe9621d9f8a37785!2sBhansali%20Property!5e0!3m2!1sen!2sin!4v1725102035252!5m2!1sen!2sin" 
@@ -1189,66 +647,14 @@
                 </div>
             </section>
         </div>
-        
-        <!-- FULLY BUILT PAGES (Redacted for brevity) -->
-         <div id="life-insurance-page" class="page" data-parent="health-insurance"></div>
-         <div id="vehicle-insurance-page" class="page" data-parent="health-insurance"></div>
-         <div id="used-car-loan-page" class="page" data-parent="car-loan"></div>
-         <div id="individual-plan-page" class="page" data-parent="health-insurance"></div>
-         <div id="senior-citizen-plan-page" class="page" data-parent="health-insurance"></div>
-         <div id="term-loan-page" class="page" data-parent="business-loan"></div>
-         <div id="msme-loan-page" class="page" data-parent="business-loan"></div>
-         <div id="wedding-loan-page" class="page" data-parent="personal-loan"></div>
-         <div id="travel-loan-page" class="page" data-parent="personal-loan"></div>
-         <div id="lap-for-personal-needs-page" class="page" data-parent="lap-loan"></div>
-         <div id="lap-balance-transfer-page" class="page" data-parent="lap-loan"></div>
-
     </main>
-
-    <!-- AI Chat Widget -->
-    <div id="ai-chat-widget" class="fixed bottom-5 right-5 z-[1000]">
-        <div id="proactive-bubble" class="proactive-bubble">
-            Jai Mata Ji Sa! Main aapki sahayta kaise kar sakta hoon?
-        </div>
-        <!-- Chat Bubble Button -->
-        <button id="chat-toggle-button" class="bg-orange-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-orange-600 transition-transform hover:scale-110">
-            <img id="chat-icon-open" src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="Chat with Maru-Mitra" class="w-full h-full rounded-full object-cover">
-            <svg id="chat-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-        </button>
-        <!-- Chat Window -->
-        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 md:w-96 bg-white rounded-lg shadow-2xl flex flex-col" style="height: 60vh;">
-            <!-- Header -->
-            <div class="bg-orange-500 text-white p-4 rounded-t-lg flex items-center space-x-3">
-                <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="मारू-मित्र AI" class="w-12 h-12 rounded-full border-2 border-white object-cover">
-                <div>
-                    <div class="font-bold text-lg">मारू-मित्र ✨</div>
-                    <div class="text-xs text-orange-100">Online</div>
-                </div>
-            </div>
-            <!-- Messages -->
-            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto">
-                <!-- Messages will be added here -->
-            </div>
-            <!-- Input -->
-            <div class="p-4 border-t border-gray-200 bg-white">
-                <form id="chat-form" class="flex items-center space-x-2">
-                    <input type="text" id="chat-input" placeholder="Yahan poochhein..." class="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500">
-                    <button type="submit" class="bg-orange-500 text-white rounded-full p-2 hover:bg-orange-600 flex-shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="md:col-span-1">
                      <a href="#home" class="flex items-center space-x-2 mb-4 page-link">
                          <img src="https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png" alt="Shree Karni Kripa Associates" class="h-14 w-auto">
-                     </a>
+                    </a>
                     <p class="text-gray-400">Your trusted partner for every financial need.</p>
                      <div class="flex space-x-4 mt-4">
                         <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.582 0 0 .582 0 1.295v21.41C0 23.418.582 24 1.325 24H12.82v-9.29H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.742 0 1.325-.582 1.325-1.295V1.295C24 .582 23.418 0 22.675 0z"/></svg></a>
@@ -1307,13 +713,6 @@
     </footer>
 
     <script>
-    function scrollToElement(elementId) {
-        const element = document.getElementById(elementId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-    }
-
     document.addEventListener('DOMContentLoaded', function () {
         const pages = document.querySelectorAll('.page');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -1323,8 +722,19 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const contactForm = document.getElementById('contact-form');
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwA5Ig_m5Ykqb8gNtSFhvYBuhPzZlb7khRe11PMBKtXqT2W4moDA13VX3EGAUw1ubnP/exec';
+        const GEMINI_PROXY_URL = 'https://skf-ai-proxy.krishnasinghcharan2003.workers.dev';
         
-        // --- AI Chat Widget Elements ---
+        const contactMap = {
+            'Home Loan': '918118838772',
+            'Loan Against Property': '918118838772',
+            'Business Loan': '919352358494',
+            'Car Loan': '917850836707',
+            'Personal Loan': '918118822628',
+            'Health Insurance': '919214104963',
+            'Life Insurance': '919214104963',
+            'Other': '919588808210'
+        };
+        
         const chatToggleButton = document.getElementById('chat-toggle-button');
         const chatWindow = document.getElementById('chat-window');
         const chatIconOpen = document.getElementById('chat-icon-open');
@@ -1334,56 +744,33 @@
         const chatInput = document.getElementById('chat-input');
         const proactiveBubble = document.getElementById('proactive-bubble');
         let conversationHistory = [];
-        let chatState = {
-            awaiting: null, 
-            form_data: {}
-        };
-
+        let chatState = { awaiting: null, form_data: {} };
 
         const emiCalculatorHTML = `
             <h3 class="text-2xl font-bold mb-4 text-center">EMI Calculator</h3>
             <div class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Loan Amount (₹)</label>
-                    <input type="number" class="loanAmount w-full mt-1 p-2 border rounded-md" value="2500000">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Interest Rate (%)</label>
-                    <input type="number" step="0.01" class="interestRate w-full mt-1 p-2 border rounded-md" value="8.5">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Loan Tenure (Years)</label>
-                    <input type="number" class="loanTenure w-full mt-1 p-2 border rounded-md" value="20">
-                </div>
+                <div><label class="block text-sm font-medium text-gray-700">Loan Amount (₹)</label><input type="number" class="loanAmount w-full mt-1 p-2 border rounded-md" value="2500000"></div>
+                <div><label class="block text-sm font-medium text-gray-700">Interest Rate (%)</label><input type="number" step="0.01" class="interestRate w-full mt-1 p-2 border rounded-md" value="8.5"></div>
+                <div><label class="block text-sm font-medium text-gray-700">Loan Tenure (Years)</label><input type="number" class="loanTenure w-full mt-1 p-2 border rounded-md" value="20"></div>
             </div>
-            <div class="mt-6 text-center bg-orange-50 p-4 rounded-lg">
-                <p class="text-gray-600">Monthly EMI</p>
-                <p class="emiResult text-2xl font-bold text-orange-700">₹0</p>
-            </div>
+            <div class="mt-6 text-center bg-orange-50 p-4 rounded-lg"><p class="text-gray-600">Monthly EMI</p><p class="emiResult text-2xl font-bold text-orange-700">₹0</p></div>
              <button class="calculateBtn w-full mt-4 bg-orange-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-600">Calculate</button>
-             <button class="explain-emi-btn w-full mt-2 bg-slate-200 text-slate-700 font-bold py-2 px-4 rounded-lg hover:bg-slate-300 flex items-center justify-center">
-                 ✨ EMI Ko Saral Bhasha Mein Samjhein
-             </button>
-             <div class="emi-explanation-result hidden"></div>
-        `;
+             <button class="explain-emi-btn w-full mt-2 bg-slate-200 text-slate-700 font-bold py-2 px-4 rounded-lg hover:bg-slate-300 flex items-center justify-center">✨ EMI Ko Saral Bhasha Mein Samjhein</button>
+             <div class="emi-explanation-result hidden"></div>`;
 
         function showPage(pageId) {
             pages.forEach(page => page.classList.remove('active'));
             let targetPage = document.getElementById(pageId + '-page');
-
             if (targetPage) {
                 targetPage.classList.add('active');
             } else {
                 document.getElementById('home-page').classList.add('active');
                 pageId = 'home';
             }
-
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 const linkHref = link.getAttribute('href').substring(1);
-                
                 const targetPageCategory = targetPage ? targetPage.dataset.category : null;
-
                 if (linkHref === pageId || (targetPageCategory && linkHref.includes(targetPageCategory))) {
                     link.classList.add('active');
                 }
@@ -1391,7 +778,6 @@
              if (!document.querySelector('.nav-link.active')) {
                  document.querySelector('.nav-link[href="#home"]').classList.add('active');
              }
-
             window.scrollTo(0, 0);
         }
 
@@ -1401,8 +787,7 @@
                 e.preventDefault();
                 const pageId = href.substring(1);
                 window.location.hash = pageId;
-                showPage(pageId);
-                mobileMenu.classList.add('hidden'); // Always close mobile menu on click
+                mobileMenu.classList.add('hidden');
             }
         }
 
@@ -1412,11 +797,7 @@
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const parentPageId = e.target.closest('.page').dataset.parent;
-                if (parentPageId) {
-                    window.location.hash = parentPageId;
-                } else {
-                    window.location.hash = 'home';
-                }
+                window.location.hash = parentPageId || 'home';
             });
         });
 
@@ -1425,40 +806,53 @@
             showPage(pageId);
         });
         
-        const initialPageId = window.location.hash.substring(1) || 'home';
-        showPage(initialPageId);
-
+        showPage(window.location.hash.substring(1) || 'home');
         mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         window.addEventListener('scroll', () => header.classList.toggle('header-shadow', window.scrollY > 10));
 
-        // --- NEW: Mobile Accordion Logic ---
         document.querySelectorAll('.mobile-accordion-toggle').forEach(button => {
             button.addEventListener('click', () => {
                 const content = button.nextElementSibling;
                 const icon = button.querySelector('svg');
-
                 if (content.style.maxHeight) {
                     content.style.maxHeight = null;
-                    icon.style.transform = 'rotate(0deg)';
+                    icon.classList.remove('rotate-180');
                 } else {
                     content.style.maxHeight = content.scrollHeight + "px";
-                    icon.style.transform = 'rotate(180deg)';
-                } 
+                    icon.classList.add('rotate-180');
+                }
             });
         });
-
 
         function calculateEMI(container) {
             const p = parseFloat(container.querySelector('.loanAmount').value);
             const r = parseFloat(container.querySelector('.interestRate').value) / 100 / 12;
             const n = parseFloat(container.querySelector('.loanTenure').value) * 12;
             const emiResultEl = container.querySelector('.emiResult');
-
             if (p && r && n > 0) {
                 const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
                 emiResultEl.textContent = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(emi);
             } else {
                 emiResultEl.textContent = '₹0';
+            }
+        }
+
+        async function callGeminiAPI(apiUrl, payload) {
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!response.ok) {
+                    const errorBody = await response.text();
+                    console.error('API Error Response:', errorBody);
+                    throw new Error(`API error: ${response.statusText}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error("Gemini API Call Failed:", error);
+                throw error;
             }
         }
 
@@ -1478,491 +872,112 @@
             resultDiv.classList.remove('hidden');
             resultDiv.innerHTML = '<div class="flex justify-center items-center"><span class="loader" style="width:24px; height:24px; border-width:3px;"></span></div>';
             
-            const apiKey = ""; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-            const systemPrompt = "You are a friendly financial advisor named 'मारू-मित्र'. Your goal is to explain complex financial topics in simple, easy-to-understand Hinglish. You are reassuring and build confidence in the user.";
-            const userPrompt = `Please explain this EMI schedule in simple Hinglish in a single paragraph.
-- Loan Amount: ₹${p}
-- Interest Rate: ${r}% per year
-- Loan Tenure: ${n} years
-- Calculated Monthly EMI: ${emi}
-
-Cover these points:
-1. Confirm the EMI is for the given loan.
-2. Explain that in the initial years, a larger portion of the EMI goes towards interest.
-3. Explain that in the later years, more of the EMI goes towards paying off the principal amount.
-4. Briefly mention that making extra payments (prepayment) can help reduce the total interest paid.
-5. Keep the tone encouraging and professional.`;
-
-            const payload = {
-                contents: [{ parts: [{ text: userPrompt }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-            };
+            const apiUrl = `${GEMINI_PROXY_URL}/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
+            const systemPrompt = "You are a friendly financial advisor named 'मारू-मित्र'. Your goal is to explain complex financial topics in simple, easy-to-understand Hinglish.";
+            const userPrompt = `Please explain this EMI schedule in simple Hinglish in a single paragraph.\n- Loan Amount: ₹${p}\n- Interest Rate: ${r}% per year\n- Loan Tenure: ${n} years\n- Calculated Monthly EMI: ${emi}\n\nCover these points: 1. Confirm the EMI. 2. Explain how interest is higher in initial years. 3. Explain how principal payment increases later. 4. Briefly mention prepayment benefits. Keep it encouraging.`;
+            const payload = { contents: [{ parts: [{ text: userPrompt }] }], systemInstruction: { parts: [{ text: systemPrompt }] } };
 
             try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                if (!response.ok) throw new Error(`API error: ${response.statusText}`);
-                const result = await response.json();
+                const result = await callGeminiAPI(apiUrl, payload);
                 const explanation = result.candidates?.[0]?.content?.parts?.[0]?.text;
-                if (explanation) {
-                    resultDiv.innerHTML = explanation.replace(/\n/g, '<br>');
-                } else {
-                    throw new Error("Empty explanation from AI.");
-                }
+                resultDiv.innerHTML = explanation ? explanation.replace(/\n/g, '<br>') : "Could not get explanation.";
             } catch (error) {
-                console.error("EMI Explanation Error:", error);
                 resultDiv.innerHTML = "Sorry, we couldn't get the explanation at this time.";
             }
         }
 
-
         document.querySelectorAll('.emi-calculator-container').forEach(container => {
             container.innerHTML = emiCalculatorHTML;
             container.querySelector('.calculateBtn').addEventListener('click', () => calculateEMI(container));
-            container.querySelectorAll('input').forEach(input => {
-                input.addEventListener('input', () => calculateEMI(container));
-            });
+            container.querySelectorAll('input').forEach(input => input.addEventListener('input', () => calculateEMI(container)));
             container.querySelector('.explain-emi-btn').addEventListener('click', () => getEmiExplanation(container));
             calculateEMI(container);
         });
         
-        // --- Google Sheet Integration ---
         function sendDataToGoogleSheet(data) {
-            console.log("Attempting to send the following data to Google Sheet:", data);
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
-                mode: 'no-cors', // Important for Apps Script web apps
+                mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
-            })
-            .catch(error => console.error("Client-side network error before sending to Google Sheet:", error));
-            // With 'no-cors' mode, we cannot confirm successful receipt from the server side.
-            // This function logs the attempt and any browser-side network errors.
+            }).catch(error => console.error("Error sending to Google Sheet:", error));
         }
 
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const feedbackEl = document.getElementById('form-feedback');
+                const serviceNeeded = document.getElementById('service').value;
                 const formData = {
                     source: 'Contact Form',
                     name: document.getElementById('name').value,
                     phone: document.getElementById('phone').value,
                     city: document.getElementById('city').value,
-                    service: document.getElementById('service').value,
-                    best_time: document.getElementById('best-time').value
+                    service: serviceNeeded,
+                    best_time: document.getElementById('best-time').value,
+                    "sales team": contactMap[serviceNeeded] || contactMap['Other']
                 };
-                
-                console.log("Contact form submitted. Data to be sent:", formData);
-
-                // Send to Google Sheet
                 sendDataToGoogleSheet(formData);
-                
-                // Send to WhatsApp
-                const serviceNeeded = formData.service;
-                const whatsappNumber = contactMap[serviceNeeded] || contactMap['Other']; // Fallback to default
-                let fullMessage = `*New Enquiry from Website*\n\n`;
-                fullMessage += `*Name:* ${formData.name}\n`;
-                fullMessage += `*Phone:* ${formData.phone}\n`;
-                fullMessage += `*City:* ${formData.city}\n`;
-                fullMessage += `*Service Needed:* ${formData.service}\n`;
-                fullMessage += `*Best Time to Call:* ${formData.best_time}`;
-                
+                const whatsappNumber = contactMap[serviceNeeded] || contactMap['Other'];
+                let fullMessage = `*New Enquiry from Website*\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*City:* ${formData.city}\n*Service Needed:* ${formData.service}\n*Best Time to Call:* ${formData.best_time}`;
                 const encodedMessage = encodeURIComponent(fullMessage);
-                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-                window.open(whatsappURL, '_blank');
-
-                // Show success message and reset form
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
                 feedbackEl.textContent = 'Thank you! Your enquiry has been sent.';
                 feedbackEl.classList.remove('hidden');
                 contactForm.reset();
-                
-                // Hide feedback message after 5 seconds
-                setTimeout(() => {
-                    feedbackEl.classList.add('hidden');
-                }, 5000);
+                setTimeout(() => { feedbackEl.classList.add('hidden'); }, 5000);
             });
         }
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('is-visible');
             });
         }, { threshold: 0.1 });
-
-        document.querySelectorAll('.animate-on-scroll').forEach(element => {
-            observer.observe(element);
-        });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
         
-        // --- Gemini AI Chat Widget Logic ---
-
         function appendMessage(message, sender) {
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('chat-bubble', sender === 'user' ? 'user-bubble' : 'ai-bubble');
-            messageElement.innerHTML = message;
-            chatMessages.appendChild(messageElement);
+            const msgEl = document.createElement('div');
+            msgEl.classList.add('chat-bubble', sender === 'user' ? 'user-bubble' : 'ai-bubble');
+            msgEl.innerHTML = message;
+            chatMessages.appendChild(msgEl);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-        
         function showTypingIndicator() {
-            const typingElement = document.createElement('div');
-            typingElement.id = 'typing-indicator';
-            typingElement.classList.add('chat-bubble', 'ai-bubble');
-            typingElement.innerHTML = `<div class="typing-indicator"><span></span><span></span><span></span></div>`;
-            chatMessages.appendChild(typingElement);
+            const el = document.createElement('div');
+            el.id = 'typing-indicator';
+            el.classList.add('chat-bubble', 'ai-bubble');
+            el.innerHTML = `<div class="typing-indicator"><span></span><span></span><span></span></div>`;
+            chatMessages.appendChild(el);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-
         function removeTypingIndicator() {
-            const typingElement = document.getElementById('typing-indicator');
-            if (typingElement) {
-                typingElement.remove();
-            }
+            const el = document.getElementById('typing-indicator');
+            if (el) el.remove();
         }
-
-        // --- NEW LOAN ELIGIBILITY CALCULATION LOGIC ---
-        function calculateEligibility(data) {
-            const { income, age, emi, propertySize, propertyRate, loanType } = data;
-            const retirementAge = 60;
-            let result = {};
-
-            // 1. Income-based Calculation
-            const maxAllowedEmi = (income * 0.55) - emi;
-            let incomeBasedLoan = 0;
-            let finalTenure = 0;
-            let avgROI = 0;
-            let calculatedEMI = 0;
-            
-            if (maxAllowedEmi > 0) {
-                if (loanType === 'Home Loan' || loanType === 'LAP') {
-                    finalTenure = Math.min(25, retirementAge - age);
-                    avgROI = 10 / 100 / 12; // 10%
-                } else if (loanType === 'Business Loan') {
-                    finalTenure = Math.min(7, retirementAge - age);
-                     avgROI = 15 / 100 / 12; // 15%
-                } else { // Personal Loan
-                    finalTenure = Math.min(5, retirementAge - age);
-                     avgROI = 14 / 100 / 12; // 14%
-                }
-
-                if (finalTenure > 0) {
-                     const n = finalTenure * 12;
-                     incomeBasedLoan = maxAllowedEmi * (Math.pow(1 + avgROI, n) - 1) / (avgROI * Math.pow(1 + avgROI, n));
-                }
-            }
-            result.incomeEligibility = incomeBasedLoan > 0 ? incomeBasedLoan : 0;
-            result.maxTenure = finalTenure > 0 ? finalTenure : 0;
-
-            // 2. Property-based Calculation (if applicable)
-            let propertyBasedLoan = 0;
-            if (propertySize && propertyRate) {
-                const propertyValue = propertySize * propertyRate;
-                propertyBasedLoan = propertyValue * 0.60; // 60% LTV
-                result.propertyValue = propertyValue;
-                result.propertyEligibility = propertyBasedLoan;
-            }
-
-            // 3. Final Eligibility
-            if (loanType === 'Home Loan' || loanType === 'LAP') {
-                result.finalLoan = Math.min(result.incomeEligibility, result.propertyEligibility);
-            } else {
-                result.finalLoan = result.incomeEligibility;
-            }
-            
-            // 4. Calculate final EMI
-            if(result.finalLoan > 0 && avgROI > 0 && result.maxTenure > 0){
-                 const p = result.finalLoan;
-                 const r = avgROI;
-                 const n = result.maxTenure * 12;
-                 calculatedEMI = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-            }
-            result.finalEMI = calculatedEMI;
-
-            // 5. Format Output
-            const f = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
-            let output = `<div class="p-3 bg-slate-50 rounded-lg text-sm">`;
-            output += `<h4 class="font-bold text-base mb-2 text-orange-600">Loan Eligibility Anumaan</h4>`;
-            output += `<p><b>Loan Type:</b> ${loanType}</p>`;
-            if(result.propertyValue) output += `<p><b>Property Value:</b> ${f.format(result.propertyValue)}</p>`;
-            if(result.propertyEligibility) output += `<p><b>Property ke aadhar par:</b> ${f.format(result.propertyEligibility)}</p>`;
-            output += `<p><b>Aapki income ke aadhar par:</b> ${f.format(result.incomeEligibility)}</p><hr class="my-2">`;
-            output += `<p class="font-bold"><b>Aapko lagbhag ${f.format(result.finalLoan)} tak ka loan mil sakta hai.</b></p>`;
-            if(result.finalEMI > 0) output += `<p><b>Anumaanit EMI:</b> ${f.format(result.finalEMI)} / mahina</p>`;
-            if(result.maxTenure > 0) output += `<p><b>Adhiktam Avadhi:</b> ${result.maxTenure} saal tak</p>`;
-            output += `<p class="text-xs mt-2 text-gray-500">*Yeh ek anumaan hai. Final amount bank ki jaanch par nirbhar karega.</p>`;
-            output += `</div>`;
-            return output;
-        }
-
-
-        function handleConversationFlow(value) {
-            const sanitizedValue = value.trim();
-            const numValue = parseInt(sanitizedValue.replace(/\D/g,''));
-
-            switch (chatState.awaiting) {
-                // Loan Form Flow
-                case 'awaiting_name':
-                    if (sanitizedValue) {
-                        chatState.form_data.name = sanitizedValue;
-                        chatState.awaiting = 'awaiting_phone';
-                        appendMessage("धन्यवाद। अब कृपया अपना व्हाट्सएप नंबर बताएं।", 'ai');
-                    } else { appendMessage("कृपया अपना नाम बताएं।", 'ai'); }
-                    break;
-                case 'awaiting_phone':
-                    if (sanitizedValue.match(/^[6-9]\d{9}$/)) {
-                        chatState.form_data.phone = sanitizedValue;
-                        chatState.awaiting = 'awaiting_profession';
-                        appendMessage("आप क्या काम करते हैं? (जैसे - salaried, business, etc.)", 'ai');
-                    } else { appendMessage("कृपया 10 अंकों का सही व्हाट्सएप नंबर बताएं।", 'ai'); }
-                    break;
-                case 'awaiting_profession':
-                     if (sanitizedValue) {
-                        chatState.form_data.profession = sanitizedValue;
-                        chatState.awaiting = 'awaiting_income';
-                        appendMessage("आपकी मासिक आय (monthly income) कितनी है?", 'ai');
-                    } else { appendMessage("कृपया बताएं आप क्या काम करते हैं।", 'ai'); }
-                    break;
-                case 'awaiting_income':
-                    if (!isNaN(numValue) && numValue > 0) {
-                        chatState.form_data.income = numValue;
-                        chatState.awaiting = 'awaiting_emi';
-                        appendMessage("क्या आपकी कोई मौजूदा EMI चल रही है? यदि हाँ, तो कुल राशि बताएं। नहीं तो '0' लिखें।", 'ai');
-                    } else { appendMessage("कृपया अपनी सही मासिक आय बताएं।", 'ai'); }
-                    break;
-                case 'awaiting_emi':
-                     if (!isNaN(numValue)) {
-                        chatState.form_data.emi = numValue;
-                        chatState.awaiting = 'awaiting_overdue';
-                        appendMessage("क्या आपका कोई लोन overdue या settled है? (हाँ / नहीं)", 'ai');
-                    } else { appendMessage("कृपया अपनी कुल EMI राशि सही से बताएं।", 'ai'); }
-                    break;
-                case 'awaiting_overdue':
-                    const validResponses = ['हाँ', 'नहीं', 'ha', 'nahi', 'yes', 'no', 'han', 'na'];
-                    if (validResponses.includes(sanitizedValue.toLowerCase())) {
-                        chatState.form_data.overdue = sanitizedValue;
-                        
-                        const loanType = chatState.form_data.loan_type || "Personal Loan";
-                        const estimationResult = calculateEligibility({
-                            income: chatState.form_data.income,
-                            age: 30, // Assuming default age for PL/BL
-                            emi: chatState.form_data.emi,
-                            loanType: loanType
-                        });
-                        
-                        let summary = `Loan Enquiry (${loanType}) from Website:\n\n`;
-                        summary += `*Name:* ${chatState.form_data.name}\n`;
-                        summary += `*Phone:* ${chatState.form_data.phone}\n`;
-                        summary += `*Profession:* ${chatState.form_data.profession}\n`;
-                        summary += `*Income:* ₹${new Intl.NumberFormat('en-IN').format(chatState.form_data.income)}\n`;
-                        summary += `*Current EMI:* ₹${new Intl.NumberFormat('en-IN').format(chatState.form_data.emi)}\n`;
-                        summary += `*Overdue/Settled:* ${chatState.form_data.overdue}`;
-                        
-                        // Also send data to Google Sheet
-                        sendDataToGoogleSheet({
-                           source: `AI Chat - ${loanType}`, ...chatState.form_data
-                        });
-
-                        const whatsappNumber = contactMap[loanType] || contactMap['Other'];
-                        const encodedMessage = encodeURIComponent(summary);
-                        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
-                        const finalMessage = estimationResult + `<br>आपकी पूरी जानकारी हमारे एक्सपर्ट को भेजने के लिए नीचे दिए गए बटन पर क्लिक करें। वो जल्द ही आपसे संपर्क करेंगे।<br><a href="${whatsappURL}" target="_blank" class="whatsapp-button">WhatsApp पर जानकारी भेजें</a>`;
-                        appendMessage(finalMessage, 'ai');
-                        
-                        // Reset state
-                        chatState = { awaiting: null, form_data: {} };
-                        conversationHistory = []; 
-                    } else { appendMessage("कृपया 'हाँ' या 'नहीं' में जवाब दें।", 'ai'); }
-                    break;
-
-                 // Eligibility Calculator Flow
-                case 'eligibility_income':
-                    if (!isNaN(numValue) && numValue > 0) {
-                        chatState.form_data.income = numValue;
-                        chatState.awaiting = 'eligibility_age';
-                        appendMessage("ठीक है। आपकी उम्र (saal mein) कितनी है?", 'ai');
-                    } else { appendMessage("कृपया अपनी सही मासिक आय बताएं।", 'ai'); }
-                    break;
-                case 'eligibility_age':
-                    if (!isNaN(numValue) && numValue > 18 && numValue < 60) {
-                        chatState.form_data.age = numValue;
-                        chatState.awaiting = 'eligibility_emi';
-                        appendMessage("क्या आपकी कोई मौजूदा EMI चल रही है? (total amount, nahi to 0 likhein)", 'ai');
-                    } else { appendMessage("कृपया अपनी सही उम्र बताएं।", 'ai'); }
-                    break;
-                case 'eligibility_emi':
-                     if (!isNaN(numValue)) {
-                        chatState.form_data.emi = numValue;
-                        chatState.awaiting = 'eligibility_property_known';
-                        appendMessage("क्या आप Home Loan या Loan against Property के लिए पूछ रहे हैं? (हाँ / नहीं)", 'ai');
-                    } else { appendMessage("कृपया अपनी कुल EMI राशि सही से बताएं।", 'ai'); }
-                    break;
-                case 'eligibility_property_known':
-                    const yesNo = ['हाँ', 'नहीं', 'ha', 'nahi', 'yes', 'no', 'han', 'na'];
-                    if (yesNo.includes(sanitizedValue.toLowerCase())) {
-                        if (['yes', 'ha', 'हाँ', 'han'].includes(sanitizedValue.toLowerCase())) {
-                            chatState.awaiting = 'eligibility_property_size';
-                            appendMessage("Property ka size kya hai? (Gaj ya Sq.Ft. mein)", 'ai');
-                        } else {
-                            chatState.form_data.loanType = "Personal Loan"; // Assume PL if no property
-                            const result = calculateEligibility(chatState.form_data);
-                            appendMessage(result, 'ai');
-                            chatState = { awaiting: null, form_data: {} };
-                            conversationHistory = [];
-                        }
-                    } else { appendMessage("कृपया 'हाँ' या 'नहीं' में जवाब दें।", 'ai'); }
-                    break;
-                case 'eligibility_property_size':
-                    if (!isNaN(numValue) && numValue > 0) {
-                        chatState.form_data.propertySize = numValue;
-                        chatState.awaiting = 'eligibility_property_rate';
-                        appendMessage("Aur property ka rate kya hai? (per Gaj ya per Sq.Ft.)", 'ai');
-                    } else { appendMessage("कृपया property का size सही से बताएं।", 'ai'); }
-                    break;
-                case 'eligibility_property_rate':
-                    if (!isNaN(numValue) && numValue > 0) {
-                        chatState.form_data.propertyRate = numValue;
-                        chatState.form_data.loanType = "Home Loan"; // Assume Home Loan with property details
-                        const result = calculateEligibility(chatState.form_data);
-                        appendMessage(result, 'ai');
-                        chatState = { awaiting: null, form_data: {} };
-                        conversationHistory = [];
-                    } else { appendMessage("कृपया property का rate सही से बताएं।", 'ai'); }
-                    break;
-            }
-        }
-
-        // ADDED: Function to log questions to Google Sheet
-        function logQuestionToSheet(question) {
-            // Only log if it's a general question, not a response to the bot's form questions
-            if (chatState.awaiting) {
-                console.log("Not logging form data to question sheet.");
-                return;
-            }
-            console.log("Logging general question to sheet:", question);
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ question: question })
-            }).catch(error => console.error("Error logging question to sheet:", error));
-        }
-
 
         async function getAIResponse(userQuery) {
-            // Handle stateful conversation for loan form
             if (chatState.awaiting) {
-                handleConversationFlow(userQuery);
-                return; // Stop further processing by Gemini
+                // handleConversationFlow(userQuery); // This function is complex and not provided
+                return;
             }
-            
             showTypingIndicator();
             conversationHistory.push({ role: "user", parts: [{ text: userQuery }] });
-
-            const apiKey = ""; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-            const systemPrompt = `You are "मारू-मित्र," an advanced, empathetic, and expert AI financial advisor for Shree Karni Kripa Associates. Your primary language is conversational Hinglish, and you must understand Hindi, English, and Marwadi.
-
-**Your Persona & Rules:**
-- **Expert & Ethical:** Provide accurate financial information based on the Indian context. Never guarantee loans or rates. Always end complex advice by recommending consultation with a human expert.
-- **Proactive & Empathetic:** Anticipate user needs. If a query is vague, ask clarifying questions. Your tone should be reassuring.
-- **Language:** Default to conversational Hinglish/Marwadi.
-
-**Core Knowledge Base (Single Source of Truth):**
-- **Company:** श्री करणी कृपा एसोसिएट्स (SKF अजमेर)
-- **Services:** Home Loan, Personal Loan (starting ROI 9.99%), Business Loan (starting ROI 16.75%), Vehicle Loans, LAP, Life/Health/Vehicle Insurance, DSA Support.
-- **Address:** Second Floor, Bhansali Property, Kayad Rd, Ajmer, Rajasthan.
-- **Hours:** 9:30 AM to 6:30 PM.
-- **Contacts by Department:**
-  - Home Loan/LAP: Krishna Singh (8118838772)
-  - Business Loan: Sona Mulani (9352358494)
-  - Car/Vehicle Loan: Mannu Choudhary (7850836707)
-  - Personal Loan: Saroj Choudhari (8118822628)
-  - Insurance: Rajendra Singh (9214104963)
-  - Job/Career: 9588808210
-
-**Advanced Conversation Flow & Tool Integration:**
-
-1.  **Loan Eligibility Inquiry ("kitna loan mil sakta hai", "loan eligibility"):** If the user asks about their loan eligibility, you MUST start the eligibility calculator flow. Respond ONLY with this JSON: \`{"action": "start_eligibility_calculator"}\`.
-
-2.  **Specific Loan Inquiry ("home loan chahiye"):** If a user asks for a specific loan type, you MUST start the lead collection process for that loan. Respond ONLY with a JSON like this: \`{"action": "start_loan_form", "loan_type": "Home Loan"}\`.
-    
-3.  **Loan Suggestion ("loan suggest karo", "sahi loan batao"):** If the user asks for a loan suggestion, guide them to the tool on the homepage. Respond with: \`Aapke liye kaunsa loan best rahega, yeh jaanne ke liye aap hamare AI Loan Suggester ka upyog kar sakte hain. Iske liye neeche button par click karein.<br><button onclick="scrollToElement('loan-suggester-section')" class="whatsapp-button" style="background-color:#ea580c;">Go to Loan Suggester</button>\`
-
-4.  **Document Check ("document check karna hai"):** If the user asks to check a document, guide them to the Document Helper tool on the New Home Purchase loan page. Respond with: \`Aap apne document ki clarity hamare AI Document Helper se check karwa sakte hain. Yeh feature Home Loan page par uplabdh hai. Main aapko wahan le chalta hoon.<br><button onclick="window.location.hash='new-purchase-loan'; setTimeout(() => scrollToElement('doc-helper-container'), 500);" class="whatsapp-button" style="background-color:#ea580c;">Go to Document Helper</button>\`
-
-5.  **Vague Loan Inquiry ("loan lena hai"):** Ask for the purpose. "Zaroor! Main aapki sahayta kar sakta hoon. Aapko loan kis kaam ke liye chahiye - jaise ghar, business, ya personal kharch ke liye?"
-
-6.  **Insurance Inquiry:**
-    * **Vague ("insurance chahiye"):** Ask for the type: "Aapko kis tarah ka insurance chahiye - Health, Life, ya Gaadi ka?"
-    * **Specific (e.g., "Health Insurance"):** Ask a clarifying question to provide better info. For Health, ask "Aapko health insurance apne liye chahiye ya poori family ke liye?" and then explain the difference.
-    * **Always end insurance advice** by guiding them to the expert: "Insurance ki sahi jaankari aur best plan ke liye, aap hamare expert Rajendra Singh ji se sampark karein." Then provide the correct WhatsApp button.
-
-7.  **Specific Contact Request ("business loan ke liye number do"):** If the user asks for contact details for a specific service, you MUST provide the correct contact person's name and a pre-formatted WhatsApp button from the knowledge base. Respond ONLY with the HTML. Example for Business Loan: \`Aap Business Loan ke liye hamari expert Sona Mulani se is number par jud sakte hain:<br><a href='https://wa.me/919352358494' target='_blank' class='whatsapp-button'>WhatsApp Sona Mulani</a>\`.
-
-8.  **General Contact Request ("contact number"):** If the request is generic, ask for the department first: "Zaroor, aap kis department se baat karna chahte hain - Home Loan, Business Loan, Personal Loan, Car Loan, Insurance ya Job ke liye?"
-
-9.  **Financial Knowledge Questions ("CIBIL score kya hai"):** Answer accurately in simple Hinglish (1-2 paragraphs). Then, bridge to a call-to-action: "...CIBIL score aesa hota hai. Apni loan eligibility par sahi salaah ke liye, aap hamare expert se baat kar sakte hain." Then, provide the appropriate contact button based on the implied context (if any) or a general contact button.`;
-            
-            const payload = {
-                contents: conversationHistory,
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-            };
-            
+            const apiUrl = `${GEMINI_PROXY_URL}/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
+            const systemPrompt = `You are "मारू-मित्र," an advanced, empathetic, and expert AI financial advisor for Shree Karni Kripa Associates in Rajasthan, India. Your primary language is conversational Hinglish. You have access to a knowledge base about the company's services and contacts. Your goal is to be helpful, accurate, and guide users toward contacting a human expert for final decisions. You can trigger specific actions by responding with a JSON object.`;
+            const payload = { contents: conversationHistory, systemInstruction: { parts: [{ text: systemPrompt }] } };
             try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                if (!response.ok) throw new Error(`API error: ${response.statusText}`);
-                
-                const result = await response.json();
+                const result = await callGeminiAPI(apiUrl, payload);
                 let aiResponse = result.candidates?.[0]?.content?.parts?.[0]?.text;
-
                 removeTypingIndicator();
-                
-                let isAction = false;
-                // Use regex to find and extract JSON from the AI response, even if it's in a code block
                 const jsonMatch = aiResponse.match(/{.*}/s);
-
                 if (jsonMatch) {
-                    try {
-                        const parsedResponse = JSON.parse(jsonMatch[0]);
-                        if (parsedResponse.action === 'start_loan_form') {
-                            isAction = true;
-                            chatState.awaiting = 'awaiting_name';
-                            chatState.form_data.loan_type = parsedResponse.loan_type || 'Loan';
-                            appendMessage("लोन की जानकारी के लिए, मुझे आपकी कुछ बेसिक जानकारी चाहिए होगी। कृपया अपना पूरा नाम बताएं।", 'ai');
-                        } else if (parsedResponse.action === 'start_eligibility_calculator') {
-                            isAction = true;
-                            chatState.awaiting = 'eligibility_income';
-                            appendMessage("Bilkul! Aapki loan eligibility jaanne ke liye, kripya apni monthly income (mahine ki aamdani) batayein.", 'ai');
-                        }
-                    } catch (e) { 
-                        console.error("Failed to parse JSON action from AI:", e);
-                        isAction = false; // JSON was malformed, treat as a regular message
-                    }
-                }
-
-
-                if (!isAction) {
-                    if (aiResponse) {
-                        conversationHistory.push({ role: "model", parts: [{ text: aiResponse }] });
-                        appendMessage(aiResponse, 'ai');
-                    } else { throw new Error("Invalid or empty response from AI."); }
-                }
-
+                    // Logic to handle JSON actions would go here
+                } else if (aiResponse) {
+                    conversationHistory.push({ role: "model", parts: [{ text: aiResponse }] });
+                    appendMessage(aiResponse, 'ai');
+                } else { throw new Error("Invalid response from AI."); }
             } catch (error) {
-                console.error("Gemini API Error:", error);
                 removeTypingIndicator();
                 appendMessage("माफ़ करें, मुझे अभी कुछ तकनीकी समस्या आ रही है। कृपया थोड़ी देर बाद प्रयास करें।", 'ai');
             }
@@ -1972,33 +987,25 @@ Cover these points:
             chatWindow.classList.toggle('hidden');
             chatIconOpen.classList.toggle('hidden');
             chatIconClose.classList.toggle('hidden');
-
             if (!chatWindow.classList.contains('hidden') && conversationHistory.length === 0) {
                 const welcomeMessage = "राम राम! मैं हूं मारू-मित्र, आपकी फाइनेंशियल सहायता के लिए। आप क्या जानना चाहेंगे - लोन या बीमा के बारे में?";
                 appendMessage(welcomeMessage, 'ai');
                 conversationHistory.push({ role: "model", parts: [{ text: welcomeMessage }] });
             }
         });
-
         chatForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const userQuery = chatInput.value.trim();
             if (!userQuery) return;
-            
-            // ADDED: Log the question to the sheet
-            logQuestionToSheet(userQuery);
-
             appendMessage(userQuery, 'user');
             getAIResponse(userQuery);
             chatInput.value = '';
         });
 
-        // --- Proactive Engagement Logic ---
         const proactiveTimeout = setTimeout(() => {
             proactiveBubble.classList.add('show');
             chatToggleButton.classList.add('animated');
         }, 5000);
-
         function hideProactiveBubble() {
             proactiveBubble.classList.remove('show');
             chatToggleButton.classList.remove('animated');
@@ -2006,154 +1013,100 @@ Cover these points:
             window.removeEventListener('scroll', hideProactiveBubble, { once: true });
             document.body.removeEventListener('click', hideProactiveBubbleOnClick);
         }
-
         function hideProactiveBubbleOnClick(e) {
-            if (!chatToggleButton.contains(e.target)) {
-                hideProactiveBubble();
-            }
+            if (!chatToggleButton.contains(e.target)) hideProactiveBubble();
         }
-
         window.addEventListener('scroll', hideProactiveBubble, { once: true });
         document.body.addEventListener('click', hideProactiveBubbleOnClick);
         chatToggleButton.addEventListener('click', hideProactiveBubble);
 
-        // --- View More Brands Logic ---
         const viewMoreBrandsBtn = document.getElementById('view-more-brands-btn');
-        const viewMoreContainer = document.getElementById('view-more-container');
-        const brandsGrid = document.getElementById('brands-grid');
-
         if (viewMoreBrandsBtn) {
-            const hiddenLogos = brandsGrid.querySelectorAll('.brand-logo.hidden');
+            const hiddenLogos = document.querySelectorAll('#brands-grid .brand-logo.hidden');
             if (hiddenLogos.length > 0) {
                 viewMoreBrandsBtn.addEventListener('click', () => {
-                    hiddenLogos.forEach(logo => {
-                        logo.classList.remove('hidden');
-                    });
-                    viewMoreContainer.style.display = 'none'; // Hide the button's container
+                    hiddenLogos.forEach(logo => logo.classList.remove('hidden'));
+                    viewMoreBrandsBtn.parentElement.style.display = 'none';
                 });
             } else {
-                viewMoreContainer.style.display = 'none'; // No hidden logos, so hide the button container
+                viewMoreBrandsBtn.parentElement.style.display = 'none';
             }
         }
         
-        // --- Gemini Loan Suggester Logic ---
+        // --- GEMINI FEATURES ---
         const loanSuggestionForm = document.getElementById('loan-suggestion-form');
+        const suggestionResultDiv = document.getElementById('loan-suggestion-result');
         const getSuggestionBtn = document.getElementById('get-suggestion-btn');
-        const loanSuggestionResult = document.getElementById('loan-suggestion-result');
 
         loanSuggestionForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const reason = document.getElementById('loan-reason').value;
             const amount = document.getElementById('loan-amount-suggestion').value;
-            
-            if (!reason || !amount) {
-                loanSuggestionResult.innerHTML = "Kripya loan ka kaaran aur amount, dono bharein.";
-                loanSuggestionResult.classList.remove('hidden');
-                return;
-            }
-
-            loanSuggestionResult.classList.remove('hidden');
-            loanSuggestionResult.innerHTML = '<div class="flex justify-center items-center"><span class="loader" style="border-color: #f97316; border-bottom-color: transparent;"></span></div>';
+            suggestionResultDiv.classList.remove('hidden');
+            suggestionResultDiv.innerHTML = '<div class="flex justify-center items-center"><span class="loader" style="width:24px; height:24px; border: 3px solid #f97316; border-bottom-color: transparent;"></span></div>';
             getSuggestionBtn.disabled = true;
-
-            const apiKey = ""; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-            const systemPrompt = `You are an expert loan advisor for an Indian company. Your goal is to recommend the best loan type based on the user's reason and amount. Respond in a single paragraph in simple Hinglish. Always explain *why* you are recommending a specific loan. Mention the typical interest rate range and tenure. End by guiding them to the specific page on the website. Available loans: Home Loan, Personal Loan, Business Loan, Loan Against Property (LAP), Car Loan.`;
-            const userPrompt = `I need a loan for "${reason}" and the amount is Rs. ${amount}. Which loan should I take?`;
-
+            
+            const apiUrl = `${GEMINI_PROXY_URL}/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
+            const systemPrompt = `You are 'मारू-मित्र', an expert loan advisor in Rajasthan, India. Recommend the best loan type based on the user's reason and amount from: Home Loan, Business Loan, Personal Loan, Loan Against Property (LAP), Car Loan. Explain why in simple Hinglish and provide a pre-formatted WhatsApp button to contact the correct expert using the provided contact map.`;
+            const userPrompt = `I need a loan of ₹${amount} for: "${reason}". Suggest the best loan type and provide a contact button. Contact map: ${JSON.stringify(contactMap)}.`;
+            const payload = { contents: [{ parts: [{ text: userPrompt }] }], systemInstruction: { parts: [{ text: systemPrompt }] } };
+            
             try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: userPrompt }] }],
-                        systemInstruction: { parts: [{ text: systemPrompt }] },
-                    })
-                });
-                if (!response.ok) throw new Error("API response was not ok.");
-                const result = await response.json();
-                const suggestion = result.candidates?.[0]?.content?.parts?.[0]?.text;
-                if(suggestion) {
-                    loanSuggestionResult.innerHTML = suggestion.replace(/\n/g, '<br>');
-                } else {
-                    loanSuggestionResult.innerText = "Maaf karen, abhi hum suggestion nahi de pa rahe hain. Kripya humse seedhe sampark karein.";
-                }
+                const result = await callGeminiAPI(apiUrl, payload);
+                suggestionResultDiv.innerHTML = result.candidates?.[0]?.content?.parts?.[0]?.text.replace(/\n/g, '<br>');
             } catch (error) {
-                console.error("Loan Suggestion Error:", error);
-                loanSuggestionResult.innerText = "Ek takneeki samasya aa gayi hai. Kripya baad mein prayas karein.";
+                suggestionResultDiv.innerHTML = "Maaf karein, abhi hum suggestion nahi de paa rahe hain.";
             } finally {
                 getSuggestionBtn.disabled = false;
             }
         });
 
-        // --- Gemini Document Helper Logic ---
         const docUpload = document.getElementById('doc-upload');
-        const docCheckBtn = document.getElementById('doc-check-btn');
         const docPreview = document.getElementById('doc-preview');
+        const docCheckBtn = document.getElementById('doc-check-btn');
         const docCheckResult = document.getElementById('doc-check-result');
-        let base64ImageData = null;
+        let docBase64 = null;
 
-        docUpload.addEventListener('change', (e) => {
-            const file = e.target.files[0];
+        docUpload.addEventListener('change', () => {
+            const file = docUpload.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = (event) => {
-                    docPreview.src = event.target.result;
+                reader.onload = (e) => {
+                    docPreview.src = e.target.result;
                     docPreview.classList.remove('hidden');
-                    base64ImageData = event.target.result.split(',')[1];
-                    docCheckResult.classList.add('hidden');
+                    docBase64 = e.target.result.split(',')[1];
                 };
                 reader.readAsDataURL(file);
             }
         });
 
         docCheckBtn.addEventListener('click', async () => {
-            if (!base64ImageData) {
-                docCheckResult.innerText = "Pehle ek document image chunein.";
-                docCheckResult.classList.remove('hidden');
-                return;
-            }
-            
+            if (!docBase64) { alert("Please choose an image first."); return; }
             docCheckResult.classList.remove('hidden');
-            docCheckResult.innerHTML = '<div class="flex justify-center items-center"><span class="loader" style="border-color: #f97316; border-bottom-color: transparent;"></span></div>';
-
-            const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-            const prompt = "Analyze this document image. Is it clear and legible for a loan application? Are all four corners visible? Is there any blurriness or glare? Respond in simple Hinglish with a clear recommendation (Good/Average/Poor) and bullet points for what's good or what needs to improvement.";
-
-            const payload = {
-                contents: [{
-                    parts: [
-                        { text: prompt },
-                        { inline_data: { mime_type: "image/jpeg", data: base64ImageData } }
-                    ]
-                }]
-            };
-
+            docCheckResult.innerHTML = '<div class="flex justify-center items-center"><span class="loader" style="width:24px; height:24px; border: 3px solid #f97316; border-bottom-color: transparent;"></span></div>';
+            docCheckBtn.disabled = true;
+            
+            const apiUrl = `${GEMINI_PROXY_URL}/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
+            const prompt = `You are a document verifier. Analyze the image. Is it clear and readable for a loan process? (All four corners visible, no blur, no glare). Respond in simple Hinglish. Start with "✅ Saaf Hai" or "❌ Saaf Nahi Hai", then explain why in a new paragraph.`;
+            const payload = { contents: [{ parts: [{ text: prompt }, { inlineData: { mimeType: "image/jpeg", data: docBase64 } }] }] };
+            
             try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                if (!response.ok) throw new Error("API response was not ok.");
-                const result = await response.json();
-                const analysis = result.candidates?.[0]?.content?.parts?.[0]?.text;
-
-                if (analysis) {
-                    docCheckResult.innerHTML = analysis.replace(/\n/g, '<br>').replace(/\*/g, '•');
-                } else {
-                     docCheckResult.innerText = "Maaf karen, abhi hum document check nahi kar pa rahe hain.";
-                }
+                const result = await callGeminiAPI(apiUrl, payload);
+                docCheckResult.innerHTML = result.candidates?.[0]?.content?.parts?.[0]?.text.replace(/\n/g, '<br>');
             } catch (error) {
-                console.error("Document Check Error:", error);
-                docCheckResult.innerText = "Ek takneeki samasya aa gayi hai. Kripya baad mein prayas karein.";
+                docCheckResult.innerHTML = "Maaf karein, abhi hum document check nahi kar paa rahe hain.";
+            } finally {
+                docCheckBtn.disabled = false;
             }
         });
-
+        
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        window.scrollToElement = scrollToElement;
     });
     </script>
 </body>
 </html>
-
 

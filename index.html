@@ -648,6 +648,7 @@
             </section>
         </div>
     </main>
+
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -711,6 +712,42 @@
             </div>
         </div>
     </footer>
+    
+    <!-- AI Chat Widget -->
+    <div id="ai-chat-widget" class="fixed bottom-5 right-5 z-[1000]">
+        <div id="proactive-bubble" class="proactive-bubble">
+            Jai Mata Ji Sa! Main aapki sahayta kaise kar sakta hoon?
+        </div>
+        <!-- Chat Bubble Button -->
+        <button id="chat-toggle-button" class="bg-orange-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-orange-600 transition-transform hover:scale-110">
+            <img id="chat-icon-open" src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="Chat with Maru-Mitra" class="w-full h-full rounded-full object-cover">
+            <svg id="chat-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+        <!-- Chat Window -->
+        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 md:w-96 bg-white rounded-lg shadow-2xl flex flex-col" style="height: 60vh;">
+            <!-- Header -->
+            <div class="bg-orange-500 text-white p-4 rounded-t-lg flex items-center space-x-3">
+                <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="मारू-मित्र AI" class="w-12 h-12 rounded-full border-2 border-white object-cover">
+                <div>
+                    <div class="font-bold text-lg">मारू-मित्र ✨</div>
+                    <div class="text-xs text-orange-100">Online</div>
+                </div>
+            </div>
+            <!-- Messages -->
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto">
+                <!-- Messages will be added here -->
+            </div>
+            <!-- Input -->
+            <div class="p-4 border-t border-gray-200 bg-white">
+                <form id="chat-form" class="flex items-center space-x-2">
+                    <input type="text" id="chat-input" placeholder="Yahan poochhein..." class="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500">
+                    <button type="submit" class="bg-orange-500 text-white rounded-full p-2 hover:bg-orange-600 flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {

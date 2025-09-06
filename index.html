@@ -284,7 +284,7 @@
                     </ul>
                 </li>
                  <li class="dropdown relative">
-                    <a href="#health-insurance" class="nav-link page-link hover:text-orange-600 flex items-center">Insurance <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+                    <a href="#insurance" class="nav-link page-link hover:text-orange-600 flex items-center">Insurance <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
                     <ul class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 py-2 w-48">
                         <li><a href="#health-insurance" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 page-link">Health Insurance</a></li>
                         <li><a href="#life-insurance" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 page-link">Life Insurance</a></li>
@@ -348,6 +348,7 @@
     </header>
 
     <main>
+        <!-- Home Page -->
         <div id="home-page" class="page">
              <section class="relative bg-cover bg-center text-white" style="background-image: url('https://res.cloudinary.com/dhme90fr1/image/upload/v1756626261/PHOTO-2025-08-31-13-08-02_2_szo0ga.jpg');">
                 <div class="absolute inset-0 bg-slate-800 opacity-60"></div>
@@ -552,8 +553,373 @@
             </section>
         </div>
         
-        <!-- All other pages are defined below but omitted for brevity -->
+        <!-- Home Loan Hub Page -->
+        <div id="home-loan-page" class="page" data-parent="home">
+            <section class="py-16 bg-white text-center">
+                <div class="container mx-auto px-6">
+                    <a href="#home" class="page-link back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back to Home</a>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 animate-on-scroll">Apne Ghar Ka Sapna, Saakar Karein</h1>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto animate-on-scroll">Hum har zaroorat ke liye alag-alag home loan pradaan karte hain. Apni zaroorat ke anusaar sahi vikalp chunein.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <a href="#new-purchase-loan" class="page-link service-card bg-white p-8 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll">
+                        <div class="text-5xl mb-4">🏠</div>
+                        <h3 class="text-2xl font-semibold mb-2">New Purchase Loan</h3>
+                        <p class="text-gray-600">Naya ghar ya flat khareedne ke liye. Hum aapko sabse behtareen bank offers dilayenge.</p>
+                    </a>
+                    <a href="#construction-loan" class="page-link service-card bg-white p-8 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 100ms;">
+                        <div class="text-5xl mb-4">🏗️</div>
+                        <h3 class="text-2xl font-semibold mb-2">Construction Loan</h3>
+                        <p class="text-gray-600">Apni zameen par apne sapno ka ghar banane ke liye loan praapt karein.</p>
+                    </a>
+                    <a href="#plot-loan" class="page-link service-card bg-white p-8 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 200ms;">
+                        <div class="text-5xl mb-4">🌳</div>
+                        <h3 class="text-2xl font-semibold mb-2">Plot Loan</h3>
+                        <p class="text-gray-600">Ghar banane ke liye zameen (plot) khareedne ke liye aakarshak byaaj daron par loan.</p>
+                    </a>
+                    <a href="#renovation-loan" class="page-link service-card bg-white p-8 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 300ms;">
+                        <div class="text-5xl mb-4">🛠️</div>
+                        <h3 class="text-2xl font-semibold mb-2">Home Renovation Loan</h3>
+                        <p class="text-gray-600">Apne puraane ghar ko naya look dein. Repairing, painting ya naye floor ke liye.</p>
+                    </a>
+                    <a href="#balance-transfer-loan" class="page-link service-card bg-white p-8 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 400ms;">
+                        <div class="text-5xl mb-4">🔄</div>
+                        <h3 class="text-2xl font-semibold mb-2">Balance Transfer</h3>
+                        <p class="text-gray-600">Apne maujooda home loan ko kam byaaj dar par transfer karke paisa bachayein.</p>
+                    </a>
+                </div>
+            </section>
+        </div>
 
+        <!-- New Purchase Loan Page -->
+        <div id="new-purchase-loan-page" class="page" data-parent="home-loan">
+            <section class="py-12 bg-white">
+                 <div class="container mx-auto px-6">
+                    <a href="#home-loan" class="page-link back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back to Home Loan Options</a>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">New Home Purchase Loan</h1>
+                    <p class="text-lg text-gray-600 max-w-4xl">Yeh loan unke liye hai jo builder se naya flat ya bana-banaya (resale) ghar khareedna chahte hain. Hum aapko ek aasan aur tez loan prakriya ke liye behtareen bankon se jodte hain.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-2 space-y-8">
+                        <div class="bg-white p-8 rounded-lg shadow-md animate-on-scroll">
+                             <h2 class="text-2xl font-bold mb-6">Key Loan Information</h2>
+                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                                 <div class="bg-orange-50 p-4 rounded-lg">
+                                     <p class="text-sm text-gray-600">Interest Rate (ROI)</p>
+                                     <p class="text-xl font-bold text-orange-700">8.50% p.a. onwards*</p>
+                                 </div>
+                                 <div class="bg-orange-50 p-4 rounded-lg">
+                                     <p class="text-sm text-gray-600">Processing Fee (PF)</p>
+                                     <p class="text-xl font-bold text-orange-700">0.5% onwards*</p>
+                                 </div>
+                                 <div class="bg-green-50 p-4 rounded-lg">
+                                     <p class="text-sm text-gray-600">Loan Tenure</p>
+                                     <p class="text-xl font-bold text-green-700">Up to 30 Years</p>
+                                 </div>
+                                 <div class="bg-green-50 p-4 rounded-lg">
+                                     <p class="text-sm text-gray-600">Loan Amount</p>
+                                     <p class="text-xl font-bold text-green-700">Up to 90% of Property Value</p>
+                                 </div>
+                            </div>
+                            <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on the applicant's profile.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg shadow-md animate-on-scroll">
+                            <h3 class="text-2xl font-bold mb-4">Required Documents</h3>
+                            <div class="text-gray-700 space-y-3">
+                                <p><strong class="font-semibold">For Salaried:</strong> ID Proof (PAN, Aadhaar), last 3 months' salary slips, 6 months' bank statement, Form 16, Property papers.</p>
+                                <p><strong class="font-semibold">For Self-Employed:</strong> ID Proof, last 3 years' ITR, proof of business, 1-year bank statement, Property papers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container animate-on-scroll"></div>
+                        <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center animate-on-scroll">
+                            <h3 class="text-2xl font-bold mb-3">Take the first step towards your dream home!</h3>
+                            <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Other Home Loan Type Pages (Construction, Plot, etc.) would go here, following the same structure -->
+        
+        <!-- Business Loan Page -->
+        <div id="business-loan-page" class="page" data-parent="home">
+             <section class="py-12 bg-white">
+                 <div class="container mx-auto px-6">
+                    <a href="#home" class="page-link back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back to Home</a>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Business Loan</h1>
+                    <p class="text-lg text-gray-600 max-w-4xl">Apne business ko nayi unchaiyon tak le jayein. Chahe naya stock khareedna ho, nayi machine lagani ho, ya business badhana ho, hum aapki madad karenge.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-2 space-y-8">
+                        <div class="bg-white p-8 rounded-lg shadow-md animate-on-scroll">
+                             <h2 class="text-2xl font-bold mb-6">Key Loan Information</h2>
+                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                                 <div class="bg-orange-50 p-4 rounded-lg">
+                                     <p class="text-sm text-gray-600">Interest Rate (ROI)</p>
+                                     <p class="text-xl font-bold text-orange-700">11.90% p.a. onwards*</p>
+                                 </div>
+                                 <div class="bg-orange-50 p-4 rounded-lg">
+                                     <p class="text-sm text-gray-600">Processing Fee (PF)</p>
+                                     <p class="text-xl font-bold text-orange-700">Up to 2%*</p>
+                                 </div>
+                                 <div class="bg-green-50 p-4 rounded-lg">
+                                     <p class="text-sm text-gray-600">Loan Tenure</p>
+                                     <p class="text-xl font-bold text-green-700">Up to 5 Years</p>
+                                 </div>
+                                 <div class="bg-green-50 p-4 rounded-lg">
+                                     <p class="text-sm text-gray-600">Loan Amount</p>
+                                     <p class="text-xl font-bold text-green-700">Up to ₹50 Lakhs</p>
+                                 </div>
+                            </div>
+                            <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on the applicant's profile.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg shadow-md animate-on-scroll">
+                            <h3 class="text-2xl font-bold mb-4">Required Documents</h3>
+                            <div class="text-gray-700 space-y-3">
+                                <p><strong class="font-semibold">Documents:</strong> PAN Card, Aadhaar Card, Last 2 years' ITR, Business Registration Proof, 1-year bank statement.</p>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container animate-on-scroll"></div>
+                        <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center animate-on-scroll">
+                            <h3 class="text-2xl font-bold mb-3">Ready to grow your business?</h3>
+                            <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Personal Loan Page -->
+        <div id="personal-loan-page" class="page" data-parent="home">
+             <section class="py-12 bg-white">
+                 <div class="container mx-auto px-6">
+                    <a href="#home" class="page-link back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back to Home</a>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Personal Loan</h1>
+                    <p class="text-lg text-gray-600 max-w-4xl">Shaadi, padhai, medical emergency, ya kisi bhi anya zaroorat ke liye turant Personal Loan paayein. Minimum documentation aur quick approval.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-2 space-y-8">
+                        <div class="bg-white p-8 rounded-lg shadow-md animate-on-scroll">
+                             <h2 class="text-2xl font-bold mb-6">Key Loan Information</h2>
+                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                                 <div class="bg-orange-50 p-4 rounded-lg">
+                                     <p class="text-sm text-gray-600">Interest Rate (ROI)</p>
+                                     <p class="text-xl font-bold text-orange-700">10.50% p.a. onwards*</p>
+                                 </div>
+                                 <div class="bg-orange-50 p-4 rounded-lg">
+                                     <p class="text-sm text-gray-600">Processing Fee (PF)</p>
+                                     <p class="text-xl font-bold text-orange-700">Up to 2.5%*</p>
+                                 </div>
+                                 <div class="bg-green-50 p-4 rounded-lg">
+                                     <p class="text-sm text-gray-600">Loan Tenure</p>
+                                     <p class="text-xl font-bold text-green-700">Up to 7 Years</p>
+                                 </div>
+                                 <div class="bg-green-50 p-4 rounded-lg">
+                                     <p class="text-sm text-gray-600">Loan Amount</p>
+                                     <p class="text-xl font-bold text-green-700">Up to ₹40 Lakhs</p>
+                                 </div>
+                            </div>
+                            <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on the applicant's profile and CIBIL score.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg shadow-md animate-on-scroll">
+                            <h3 class="text-2xl font-bold mb-4">Required Documents</h3>
+                            <div class="text-gray-700 space-y-3">
+                                <p><strong class="font-semibold">For Salaried:</strong> ID Proof (PAN, Aadhaar), last 3 months' salary slips, 6 months' bank statement.</p>
+                                <p><strong class="font-semibold">For Self-Employed:</strong> ID Proof, last 2 years' ITR, 1-year bank statement.</p>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container animate-on-scroll"></div>
+                        <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center animate-on-scroll">
+                            <h3 class="text-2xl font-bold mb-3">Fulfill your personal needs today!</h3>
+                            <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Car Loan Page -->
+        <div id="car-loan-page" class="page" data-parent="home">
+            <section class="py-12 bg-white">
+                <div class="container mx-auto px-6">
+                    <a href="#home" class="page-link back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back to Home</a>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Car Loan</h1>
+                    <p class="text-lg text-gray-600 max-w-4xl">Apni pasand ki nayi ya purani car ghar laayein. Hum aapko 100% tak financing aur flexible EMI options ke saath best car loan offer dete hain.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-2 space-y-8">
+                        <div class="bg-white p-8 rounded-lg shadow-md animate-on-scroll">
+                            <h2 class="text-2xl font-bold mb-6">Key Loan Information</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                                <div class="bg-orange-50 p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600">Interest Rate (ROI)</p>
+                                    <p class="text-xl font-bold text-orange-700">8.75% p.a. onwards*</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600">Loan Amount</p>
+                                    <p class="text-xl font-bold text-green-700">Up to 100% of On-Road Price</p>
+                                </div>
+                            </div>
+                            <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg shadow-md animate-on-scroll">
+                            <h3 class="text-2xl font-bold mb-4">Required Documents</h3>
+                            <p class="text-gray-700">ID Proof (PAN, Aadhaar), Address Proof, 3 months' salary slips, 6 months' bank statement, Car Quotation.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container animate-on-scroll"></div>
+                        <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center animate-on-scroll">
+                            <h3 class="text-2xl font-bold mb-3">Drive your dream car home!</h3>
+                            <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- LAP Loan Page -->
+        <div id="lap-loan-page" class="page" data-parent="home">
+            <section class="py-12 bg-white">
+                <div class="container mx-auto px-6">
+                    <a href="#home" class="page-link back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back to Home</a>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Loan Against Property (LAP)</h1>
+                    <p class="text-lg text-gray-600 max-w-4xl">Apni residential ya commercial property ke badle loan praapt karein. Iska upyog business, shaadi, ya kisi bhi badi zaroorat ke liye kiya ja sakta hai.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-2 space-y-8">
+                        <div class="bg-white p-8 rounded-lg shadow-md animate-on-scroll">
+                            <h2 class="text-2xl font-bold mb-6">Key Loan Information</h2>
+                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                                 <div class="bg-orange-50 p-4 rounded-lg">
+                                     <p class="text-sm text-gray-600">Interest Rate (ROI)</p>
+                                     <p class="text-xl font-bold text-orange-700">9.50% p.a. onwards*</p>
+                                 </div>
+                                 <div class="bg-green-50 p-4 rounded-lg">
+                                     <p class="text-sm text-gray-600">Loan Amount</p>
+                                     <p class="text-xl font-bold text-green-700">Up to 70% of Property Value</p>
+                                 </div>
+                            </div>
+                            <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg shadow-md animate-on-scroll">
+                            <h3 class="text-2xl font-bold mb-4">Required Documents</h3>
+                            <p class="text-gray-700">ID Proof, Address Proof, Income Proof, Complete Property Documents.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container animate-on-scroll"></div>
+                        <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center animate-on-scroll">
+                            <h3 class="text-2xl font-bold mb-3">Unlock the value of your property!</h3>
+                            <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Health Insurance Page -->
+        <div id="health-insurance-page" class="page" data-parent="home">
+            <section class="py-16 bg-white">
+                <div class="container mx-auto px-6">
+                    <a href="#home" class="page-link back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back to Home</a>
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Health Insurance</h1>
+                        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Medical emergency ke samay apne parivaar aur apni savings ko surakshit rakhein. Best health insurance plans chunein.</p>
+                    </div>
+                    <div class="mt-12 grid md:grid-cols-3 gap-8 text-center">
+                        <div class="bg-gray-50 p-6 rounded-lg animate-on-scroll">
+                            <h3 class="text-xl font-semibold mb-2">Individual Plan</h3>
+                            <p>Ek vyakti ke liye comprehensive medical cover.</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg animate-on-scroll" style="transition-delay: 100ms;">
+                            <h3 class="text-xl font-semibold mb-2">Family Floater Plan</h3>
+                            <p>Ek hi policy mein poore parivaar ka swasthya beema.</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg animate-on-scroll" style="transition-delay: 200ms;">
+                            <h3 class="text-xl font-semibold mb-2">Senior Citizen Plan</h3>
+                            <p>Buzurgon ki zarooraton ke liye khaas taur par design ki gayi policy.</p>
+                        </div>
+                    </div>
+                     <div class="mt-16 text-center">
+                        <a href="#contact" class="page-link bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors">Get a Free Quote</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Life Insurance Page -->
+        <div id="life-insurance-page" class="page" data-parent="home">
+             <section class="py-16 bg-white">
+                <div class="container mx-auto px-6">
+                    <a href="#home" class="page-link back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back to Home</a>
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Life Insurance</h1>
+                        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Apne parivaar ka bhavishya surakshit karein. Aapke na hone par bhi, Life Insurance unhe financial support dega.</p>
+                    </div>
+                    <div class="mt-12 grid md:grid-cols-2 gap-8 text-center">
+                        <div class="bg-gray-50 p-6 rounded-lg animate-on-scroll">
+                            <h3 class="text-xl font-semibold mb-2">Term Insurance</h3>
+                            <p>Kam premium mein zyada cover. Aapke parivaar ke liye sabse zaroori suraksha kavach.</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg animate-on-scroll" style="transition-delay: 100ms;">
+                            <h3 class="text-xl font-semibold mb-2">Endowment & ULIP Plans</h3>
+                            <p>Insurance ke saath-saath investment aur savings ka bhi laabh uthayein.</p>
+                        </div>
+                    </div>
+                     <div class="mt-16 text-center">
+                        <a href="#contact" class="page-link bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors">Consult Our Expert</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Vehicle Insurance Page -->
+        <div id="vehicle-insurance-page" class="page" data-parent="home">
+            <section class="py-16 bg-white">
+                <div class="container mx-auto px-6">
+                     <a href="#home" class="page-link back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back to Home</a>
+                    <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Vehicle Insurance</h1>
+                        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Apni car ya bike ka beema karwayein aur accident, chori, ya anya nuksaan se bachein. Policy turant renew karein.</p>
+                    </div>
+                    <div class="mt-12 grid md:grid-cols-2 gap-8 text-center">
+                        <div class="bg-gray-50 p-6 rounded-lg animate-on-scroll">
+                            <h3 class="text-xl font-semibold mb-2">Comprehensive Cover</h3>
+                            <p>Aapki gaadi aur third-party, dono ke nuksaan ka poora cover.</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg animate-on-scroll" style="transition-delay: 100ms;">
+                            <h3 class="text-xl font-semibold mb-2">Third-Party Liability</h3>
+                            <p>Kanoon anusaar anivarya beema jo kisi doosre ke nuksaan ko cover karta hai.</p>
+                        </div>
+                    </div>
+                     <div class="mt-16 text-center">
+                        <a href="#contact" class="page-link bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors">Renew or Buy Policy</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
         <div id="about-page" class="page">
             <section class="py-16 md:py-24 bg-white">
                 <div class="container mx-auto px-6">
@@ -637,71 +1003,7 @@
             </section>
         </div>
         
-        <!-- All other pages are included below but omitted for brevity -->
-        <div id="new-purchase-loan-page" class="page" data-parent="home-loan">
-            <section class="py-12 bg-white">
-                 <div class="container mx-auto px-6">
-                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">New Home Purchase Loan</h1>
-                    <p class="text-lg text-gray-600 max-w-4xl">This loan is for individuals looking to buy a new flat from a builder or a ready-built house (resale property). We connect you with the best banks for a quick and easy loan process.</p>
-                </div>
-            </section>
-            <section class="py-16 bg-gray-50">
-                <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    <div class="lg:col-span-2">
-                        <div class="bg-white p-8 rounded-lg shadow-md mb-8 animate-on-scroll">
-                             <h2 class="text-2xl font-bold mb-6">Key Loan Information</h2>
-                             <div class="grid grid-cols-2 md:grid-cols-2 gap-6 text-center">
-                                 <div class="bg-orange-50 p-4 rounded-lg">
-                                     <p class="text-sm text-gray-600">Interest Rate (ROI)</p>
-                                     <p class="text-xl font-bold text-orange-700">8.50% p.a. onwards*</p>
-                                 </div>
-                                 <div class="bg-orange-50 p-4 rounded-lg">
-                                     <p class="text-sm text-gray-600">Processing Fee (PF)</p>
-                                     <p class="text-xl font-bold text-orange-700">0.5% onwards*</p>
-                                 </div>
-                                 <div class="bg-green-50 p-4 rounded-lg">
-                                     <p class="text-sm text-gray-600">Loan Tenure</p>
-                                     <p class="text-xl font-bold text-green-700">Up to 30 Years</p>
-                                 </div>
-                                 <div class="bg-green-50 p-4 rounded-lg">
-                                     <p class="text-sm text-gray-600">Loan Amount</p>
-                                     <p class="text-xl font-bold text-green-700">Up to 90% of Property Value</p>
-                                 </div>
-                            </div>
-                            <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on the applicant's profile.</p>
-                        </div>
-                        <div class="bg-white p-8 rounded-lg shadow-md animate-on-scroll">
-                            <h3 class="text-2xl font-bold mb-4">Required Documents</h3>
-                            <div class="text-gray-700 space-y-3">
-                                <p><strong class="font-semibold">For Salaried:</strong> ID Proof (PAN, Aadhaar), last 3 months' salary slips, 6 months' bank statement, Form 16.</p>
-                                <p><strong class="font-semibold">For Self-Employed:</strong> ID Proof, last 2 years' ITR, proof of business, 1-year bank statement.</p>
-                            </div>
-                            <div class="mt-8 pt-6 border-t" id="doc-helper-container">
-                                <h4 class="text-xl font-bold mb-2 text-center">✨ Document Helper</h4>
-                                <p class="text-center text-gray-600 mb-4">Apna document upload karke check karein ki woh saaf hai ya nahi.</p>
-                                <div class="text-center">
-                                    <input type="file" id="doc-upload" class="hidden" accept="image/*">
-                                    <label for="doc-upload" class="cursor-pointer bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold py-2 px-4 rounded-lg inline-block">
-                                        Choose Image
-                                    </label>
-                                    <button id="doc-check-btn" class="bg-orange-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-600">Check Document</button>
-                                    <img id="doc-preview" class="hidden" alt="Document Preview">
-                                    <div id="doc-check-result" class="hidden text-left"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-8">
-                        <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container animate-on-scroll"></div>
-                        <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center animate-on-scroll">
-                            <h3 class="text-2xl font-bold mb-3">Take the first step towards your dream home!</h3>
-                            <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now for New Home Loan</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+        <!-- Contact Page -->
         <div id="contact-page" class="page">
              <section class="py-16 md:py-20 bg-white">
                 <div class="container mx-auto px-6">
@@ -783,8 +1085,9 @@
                         </div>
                     </div>
                     <div class="mt-12">
-                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.539352758113!2d74.6713745749318!3d26.24424388907844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396b9b32c8646199%3A0xe9621d9f8a37785!2sBhansali%20Property!5e0!3m2!1sen!2sin!4v1725102035252!5m2!1sen!2sin" 
+                        <!-- CORRECTED GOOGLE MAPS IFRAME -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3575.456671049969!2d74.67498787508316!3d26.34360697700021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396beed015183479%3A0x6335933a2a4b4550!2sShree%20Karni%20Kripa%20Associates!5e0!3m2!1sen!2sin!4v1757137250269!5m2!1sen!2sin" 
                             width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-lg shadow-md">
                         </iframe>
                     </div>
@@ -926,6 +1229,7 @@
             collectedData: {}
         };
         
+        // --- UPDATED EMI CALCULATOR HTML WITH DOWNLOAD BUTTON ---
         const emiCalculatorHTML = `
             <h3 class="text-2xl font-bold mb-4 text-center">EMI Calculator</h3>
             <div class="space-y-4">
@@ -936,7 +1240,9 @@
             <div class="mt-6 text-center bg-orange-50 p-4 rounded-lg"><p class="text-gray-600">Monthly EMI</p><p class="emiResult text-2xl font-bold text-orange-700">₹0</p></div>
              <button class="calculateBtn w-full mt-4 bg-orange-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-600">Calculate</button>
              <button class="explain-emi-btn w-full mt-2 bg-slate-200 text-slate-700 font-bold py-2 px-4 rounded-lg hover:bg-slate-300 flex items-center justify-center">✨ EMI Ko Saral Bhasha Mein Samjhein</button>
-             <div class="emi-explanation-result hidden"></div>`;
+             <div class="emi-explanation-result hidden"></div>
+             <button class="downloadScheduleBtn w-full mt-2 bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700">Download EMI Schedule (PDF)</button>
+        `;
 
         function showPage(pageId) {
             pages.forEach(page => page.classList.remove('active'));
@@ -950,13 +1256,17 @@
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 const linkHref = link.getAttribute('href').substring(1);
-                const targetPageCategory = targetPage ? targetPage.dataset.category : null;
-                if (linkHref === pageId || (targetPageCategory && linkHref.includes(targetPageCategory))) {
+                
+                const parentPage = targetPage ? document.querySelector(`.page#${pageId}-page`) : null;
+                const parentId = parentPage ? parentPage.dataset.parent : null;
+
+                if (linkHref === pageId || linkHref === parentId) {
                     link.classList.add('active');
                 }
             });
              if (!document.querySelector('.nav-link.active')) {
-                 document.querySelector('.nav-link[href="#home"]').classList.add('active');
+                 const homeLink = document.querySelector('.nav-link[href="#home"]');
+                 if(homeLink) homeLink.classList.add('active');
              }
             window.scrollTo(0, 0);
         }
@@ -1017,6 +1327,82 @@
             }
         }
 
+        // --- NEW FUNCTION TO GENERATE PDF ---
+        function generatePDF(container) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const p = parseFloat(container.querySelector('.loanAmount').value);
+            const annualRate = parseFloat(container.querySelector('.interestRate').value);
+            const tenureYears = parseFloat(container.querySelector('.loanTenure').value);
+            
+            if (isNaN(p) || isNaN(annualRate) || isNaN(tenureYears) || p <= 0 || annualRate <= 0 || tenureYears <= 0) {
+                alert("Please enter valid loan details and calculate EMI first.");
+                return;
+            }
+            
+            const r = annualRate / 100 / 12;
+            const n = tenureYears * 12;
+            const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            const totalPayment = emi * n;
+            const totalInterest = totalPayment - p;
+
+            // Header
+            doc.setFontSize(18);
+            doc.setTextColor(234, 88, 12); // Orange
+            doc.text("Shree Karni Kripa Associates", 14, 22);
+            doc.setFontSize(11);
+            doc.setTextColor(100);
+            doc.text("Contact: +91-9214104963 | Website: skfwebsite.vercel.app", 14, 30);
+
+            // Summary
+            doc.setFontSize(14);
+            doc.setTextColor(0);
+            doc.text("Loan Repayment Schedule", 14, 45);
+            doc.setFontSize(10);
+            const summaryY = 55;
+            doc.text(`Loan Amount: ${p.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}`, 14, summaryY);
+            doc.text(`Interest Rate: ${annualRate.toFixed(2)}% p.a.`, 14, summaryY + 5);
+            doc.text(`Loan Tenure: ${tenureYears} Years (${n} months)`, 14, summaryY + 10);
+            
+            doc.text(`Monthly EMI: ${emi.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}`, 105, summaryY);
+            doc.text(`Total Interest: ${totalInterest.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}`, 105, summaryY + 5);
+            doc.text(`Total Payment: ${totalPayment.toLocaleString('en-IN', { style: 'currency', currency: 'INR' })}`, 105, summaryY + 10);
+
+            // Table Data
+            const head = [['#', 'Principal (₹)', 'Interest (₹)', 'Total EMI (₹)', 'Balance (₹)']];
+            const body = [];
+            let balance = p;
+            for (let i = 1; i <= n; i++) {
+                let interest = balance * r;
+                let principal = emi - interest;
+                balance = balance - principal;
+                body.push([
+                    i,
+                    principal.toLocaleString('en-IN', {maximumFractionDigits: 0}),
+                    interest.toLocaleString('en-IN', {maximumFractionDigits: 0}),
+                    emi.toLocaleString('en-IN', {maximumFractionDigits: 0}),
+                    balance.toLocaleString('en-IN', {maximumFractionDigits: 0})
+                ]);
+            }
+
+            doc.autoTable({
+                head: head,
+                body: body,
+                startY: summaryY + 20,
+                theme: 'grid',
+                headStyles: { fillColor: [234, 88, 12] }, // Orange header
+                didDrawPage: function (data) {
+                    // Footer
+                    doc.setFontSize(8);
+                    doc.setTextColor(150);
+                    doc.text('This is a computer-generated schedule from Shree Karni Kripa Associates.', data.settings.margin.left, doc.internal.pageSize.getHeight() - 10);
+                }
+            });
+
+            doc.save('EMI_Schedule_SKF_Associates.pdf');
+        }
+
         async function callGeminiAPI(apiUrl, payload) {
             try {
                 const response = await fetch(apiUrl, {
@@ -1071,6 +1457,8 @@
             container.querySelector('.calculateBtn').addEventListener('click', () => calculateEMI(container));
             container.querySelectorAll('input').forEach(input => input.addEventListener('input', () => calculateEMI(container)));
             container.querySelector('.explain-emi-btn').addEventListener('click', () => getEmiExplanation(container));
+            // Add event listener for the new download button
+            container.querySelector('.downloadScheduleBtn').addEventListener('click', () => generatePDF(container));
             calculateEMI(container);
         });
         
@@ -1139,7 +1527,6 @@
         async function getAIResponse(userQuery) {
             showTypingIndicator();
             
-            // Store the user's last message in the state for the AI to use
             chatState.collectedData.last_response = userQuery;
 
             const apiUrl = `${GEMINI_PROXY_URL}/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
@@ -1189,7 +1576,7 @@
   - **\`response_message\`:** "Aapko kis tarah ka loan chahiye?<br><button class='chat-option-button' onclick='handleChatOption("Home Loan")'>🏠 Home Loan</button><button class='chat-option-button' onclick='handleChatOption("Personal Loan")'>🙍‍♂️ Personal Loan</button><button class='chat-option-button' onclick='handleChatOption("Business Loan")'>💼 Business Loan</button><button class='chat-option-button' onclick='handleChatOption("Other")'>Any Other</button>"
 - **If user provides a loan type directly (e.g., "ghar ke liye loan"):**
   - Identify the loan type, set \`loanType\` in the state, and transition to \`step: 2\`.
-  - Ask the first question for that specific loan type.
+  - Ask for their name to start the process.
 
 **LOAN_FLOW Sub-steps (When \`mode\` is 'LOAN_FLOW'):**
 - **Step 1 (User chooses a loan type):** Set \`loanType\`, transition to \`step: 2\`, and ask for name.
@@ -1218,7 +1605,7 @@
                     
                     // Update State
                     chatState.mode = parsedJson.next_state.mode;
-                    chatState.loanType = parsedJson.next_state.loanType || chatState.loanType; // Persist loanType if not updated
+                    chatState.loanType = parsedJson.next_state.loanType || chatState.loanType;
                     chatState.step = parsedJson.next_state.step;
                     
                     // Collect data
@@ -1227,10 +1614,8 @@
                         chatState.collectedData[fieldMap[chatState.step - 2]] = userQuery;
                     }
 
-                    // Display Message
                     appendMessage(parsedJson.response_message, 'ai');
                     
-                    // If flow is reset, clear data
                     if (chatState.mode === 'GREETING') {
                         chatState.collectedData = {};
                     }

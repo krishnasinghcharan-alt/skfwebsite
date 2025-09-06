@@ -243,6 +243,21 @@
             border: 1px solid #e2e8f0;
             border-radius: 0.5rem;
         }
+        .chat-option-button {
+            background-color: #fff;
+            border: 1px solid #ea580c;
+            color: #ea580c;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            margin: 4px 2px;
+            transition: all 0.2s;
+        }
+        .chat-option-button:hover {
+            background-color: #ea580c;
+            color: #fff;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -342,87 +357,6 @@
                     </div>
                 </div>
             </section>
-            
-            <section class="py-16 md:py-24 bg-orange-50">
-                <div class="container mx-auto px-6 text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">Koi Sawaal Hai?</h2>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8 animate-on-scroll">Hamaare AI sahayak, <span class="font-bold text-orange-700">मारू-मित्र ✨,</span> se turant jawaab paayein. Neeche dayein kone mein unki photo par click karein!</p>
-                    <div class="flex justify-center animate-on-scroll">
-                        <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="मारू-मित्र AI Assistant" class="w-24 h-24 rounded-full border-4 border-white shadow-lg">
-                    </div>
-                </div>
-            </section>
-            
-            <section class="py-16 md:py-24 bg-white">
-                <div class="container mx-auto px-6 text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll">Financial Solutions for Every Need</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <a href="#home-loan" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll">
-                            <div class="text-4xl mb-4">🏠</div>
-                            <h3 class="text-xl font-semibold mb-2">Home Loan</h3>
-                            <p class="text-gray-600">Take the first step towards your dream home.</p>
-                        </a>
-                        <a href="#business-loan" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 100ms;">
-                            <div class="text-4xl mb-4">💼</div>
-                            <h3 class="text-xl font-semibold mb-2">Business Loan</h3>
-                            <p class="text-gray-600">Elevate your business to new heights.</p>
-                        </a>
-                        <a href="#personal-loan" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 200ms;">
-                            <div class="text-4xl mb-4">🙍‍♂️</div>
-                            <h3 class="text-xl font-semibold mb-2">Personal Loan</h3>
-                            <p class="text-gray-600">Fulfill your personal needs with ease.</p>
-                        </a>
-                        <a href="#car-loan" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 300ms;">
-                            <div class="text-4xl mb-4">🚗</div>
-                            <h3 class="text-xl font-semibold mb-2">Car Loan</h3>
-                            <p class="text-gray-600">Bring home your favorite car, hassle-free.</p>
-                        </a>
-                        <a href="#lap-loan" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 400ms;">
-                            <div class="text-4xl mb-4">📜</div>
-                            <h3 class="text-xl font-semibold mb-2">Loan Against Property</h3>
-                            <p class="text-gray-600">Unlock the value of your property for your needs.</p>
-                        </a>
-                        <a href="#health-insurance" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 500ms;">
-                            <div class="text-4xl mb-4">❤️</div>
-                            <h3 class="text-xl font-semibold mb-2">Health Insurance</h3>
-                            <p class="text-gray-600">Protect your family in medical emergencies.</p>
-                        </a>
-                        <a href="#life-insurance" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 600ms;">
-                            <div class="text-4xl mb-4">👨‍👩‍👧‍👦</div>
-                            <h3 class="text-xl font-semibold mb-2">Life Insurance</h3>
-                            <p class="text-gray-600">Secure the future of your loved ones.</p>
-                        </a>
-                        <a href="#vehicle-insurance" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 700ms;">
-                            <div class="text-4xl mb-4">🏍️</div>
-                            <h3 class="text-xl font-semibold mb-2">Vehicle Insurance</h3>
-                            <p class="text-gray-600">Insure your car or bike against unforeseen events.</p>
-                        </a>
-                    </div>
-                </div>
-            </section>
-            
-            <section class="py-16 md:py-24 bg-orange-50" id="loan-suggester-section">
-                <div class="container mx-auto px-6 max-w-3xl">
-                    <div class="bg-white p-8 rounded-lg shadow-lg text-center">
-                        <h2 class="text-3xl font-bold mb-2">✨ Samajh Nahi Aa Raha Kaunsa Loan Lein?</h2>
-                        <p class="text-gray-600 mb-6">Bas apni zaroorat batayein aur hamara AI aapke liye sabse aacha vikalp batayega.</p>
-                        <form id="loan-suggestion-form" class="space-y-4">
-                            <div>
-                                <label for="loan-reason" class="block text-left text-gray-700 font-medium mb-1">Loan ka Kaaran (Reason for Loan)</label>
-                                <input type="text" id="loan-reason" placeholder="Jaise: Ghar kharidna hai, Bachhon ki padhai, etc." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" required>
-                            </div>
-                            <div>
-                                <label for="loan-amount-suggestion" class="block text-left text-gray-700 font-medium mb-1">Kitna Amount Chahiye (₹)</label>
-                                <input type="number" id="loan-amount-suggestion" placeholder="Jaise: 500000" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" required>
-                            </div>
-                            <button type="submit" id="get-suggestion-btn" class="w-full bg-orange-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-600 transition-colors flex items-center justify-center">
-                                Mujhe Sahi Loan Batao
-                            </button>
-                        </form>
-                        <div id="loan-suggestion-result" class="hidden text-left"></div>
-                    </div>
-                </div>
-            </section>
 
              <section class="py-16 md:py-24 bg-gray-50">
                 <div class="container mx-auto px-6 text-center">
@@ -469,6 +403,7 @@
                         <div class="brand-logo">
                             <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621451/imgi_88_aditya-upodated_ihx4kj.png" alt="Aditya Birla Capital" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
                         </div>
+                        <!-- Hidden logos start here -->
                         <div class="brand-logo hidden">
                             <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621451/imgi_89_dcb_rmqiqi.png" alt="DCB Bank" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
                         </div>
@@ -476,7 +411,46 @@
                             <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756622670/imgi_62_UGro-capital_uztle4.jpg" alt="UGro Capital" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
                         </div>
                          <div class="brand-logo hidden">
-                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621451/imgi_34_piramal-new_1_ytnqe8.png" alt="Piramal Finance" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621450/imgi_29_abfl-new_zac8fz.png" alt="Aditya Birla Finance Ltd" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621450/imgi_87_oswal-logo-1_r4pvcb.png" alt="Motilal Oswal" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621450/imgi_90_DMI-Logo-1_ou0oib.png" alt="DMI Finance" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621450/imgi_91_Avas-logo_d3gkfu.png" alt="Avas Financiers" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621450/imgi_85_hdfc-2_dzzdra.png" alt="HDFC Bank" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621449/imgi_80_Avanse_wu1snt.png" alt="Avanse Financial Services" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621416/imgi_79_Capri_pq6kwv.png" alt="Capri Global" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621416/imgi_78_clix3724_ecbzt0.png" alt="Clix Capital" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621416/imgi_76_YES-BANK_zgemo9.png" alt="Yes Bank" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621415/imgi_73_tvscredit3716_riofny.png" alt="TVS Credit" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621369/imgi_63_punawala3739_tljctp.png" alt="Poonawalla Fincorp" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621369/imgi_62_protium3710_zlirkw.png" alt="Protium" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621369/imgi_61_profectuscapital3738_jg94th.png" alt="Profectus Capital" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621189/imgi_57_mahindrafinance3737_qwevzf.png" alt="Mahindra Finance" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
                         </div>
                     </div>
                     <div id="view-more-container" class="mt-12 animate-on-scroll">
@@ -488,12 +462,29 @@
              <section class="py-16 md:py-24 bg-orange-600 text-white">
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">Ready to achieve your financial goals?</h2>
-                    <p class="text-lg text-orange-100 max-w-2xl mx-auto mb-8 animate-on-scroll">Talk to our experts today for a free consultation.</p>
-                    <a href="#contact" class="page-link bg-white hover:bg-gray-200 text-orange-600 font-bold py-3 px-8 rounded-lg transition-colors animate-on-scroll">Contact Us Now</a>
+                            <h3 class="text-xl font-semibold">Sunny</h3>
+                            <p class="text-orange-600 font-medium">Relationship Manager</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md text-center animate-on-scroll" style="transition-delay: 800ms;">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/c_fill,g_face,h_200,w_200/v1756628064/PHOTO-2025-08-28-13-15-13_d8qxkd.jpg" alt="Pratap Singh" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-orange-200 object-cover">
+                            <h3 class="text-xl font-semibold">Pratap Singh</h3>
+                            <p class="text-orange-600 font-medium">Relationship Manager</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md text-center animate-on-scroll" style="transition-delay: 900ms;">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/c_fill,g_face,h_200,w_200/v1756628070/PHOTO-2025-08-28-12-06-29_zkkmai.jpg" alt="Meetali Verma" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-orange-200 object-cover">
+                            <h3 class="text-xl font-semibold">Meetali Verma</h3>
+                            <p class="text-orange-600 font-medium">Client Connector</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md text-center animate-on-scroll" style="transition-delay: 1000ms;">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/c_fill,g_face,h_200,w_200/v1756628065/PHOTO-2025-08-28-13-04-18_ihap7m.jpg" alt="Sunil Kumar Meena" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-orange-200 object-cover">
+                            <h3 class="text-xl font-semibold">Sunil Kumar Meena</h3>
+                            <p class="text-orange-600 font-medium">Relationship Manager</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
-        
+
         <!-- All other pages are omitted for brevity -->
         <div id="new-purchase-loan-page" class="page" data-parent="home-loan">
             <section class="py-12 bg-white">
@@ -584,9 +575,10 @@
                             <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
                                 <h3 class="font-bold text-xl mb-4">Follow Us</h3>
                                 <div class="flex space-x-4">
-                                    <a href="#" class="text-gray-500 hover:text-orange-600"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.582 0 0 .582 0 1.295v21.41C0 23.418.582 24 1.325 24H12.82v-9.29H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.742 0 1.325-.582 1.325-1.295V1.295C24 .582 23.418 0 22.675 0z"/></svg></a>
-                                    <a href="#" class="text-gray-500 hover:text-sky-500"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.223.085a4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
-                                    <a href="#" class="text-gray-500 hover:text-pink-600"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98C23.986 15.667 24 15.259 24 12s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg></a>
+                                    <a href="https://www.facebook.com/share/19hmuoJW8a/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-orange-600"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.582 0 0 .582 0 1.295v21.41C0 23.418.582 24 1.325 24H12.82v-9.29H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.742 0 1.325-.582 1.325-1.295V1.295C24 .582 23.418 0 22.675 0z"/></svg></a>
+                                    <a href="https://x.com/skf_ajmer?s=21" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-black"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/></svg></a>
+                                    <a href="https://www.instagram.com/skf_associate?igsh=NXNpN2cyMm8yNTZn&utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-pink-600"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98C23.986 15.667 24 15.259 24 12s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg></a>
+                                    <a href="https://chat.whatsapp.com/JPUFjLhZAzb5wFNcNvRCy1" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-green-500"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.371-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
                                 </div>
                             </div>
                         </div>
@@ -648,7 +640,6 @@
             </section>
         </div>
     </main>
-
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -658,9 +649,10 @@
                     </a>
                     <p class="text-gray-400">Your trusted partner for every financial need.</p>
                      <div class="flex space-x-4 mt-4">
-                        <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.582 0 0 .582 0 1.295v21.41C0 23.418.582 24 1.325 24H12.82v-9.29H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.742 0 1.325-.582 1.325-1.295V1.295C24 .582 23.418 0 22.675 0z"/></svg></a>
-                        <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.223.085a4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
-                        <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98C23.986 15.667 24 15.259 24 12s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg></a>
+                        <a href="https://www.facebook.com/share/19hmuoJW8a/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.582 0 0 .582 0 1.295v21.41C0 23.418.582 24 1.325 24H12.82v-9.29H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.742 0 1.325-.582 1.325-1.295V1.295C24 .582 23.418 0 22.675 0z"/></svg></a>
+                        <a href="https://x.com/skf_ajmer?s=21" target="_blank" rel="noopener noreferrer" aria-label="X/Twitter" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/></svg></a>
+                        <a href="https://www.instagram.com/skf_associate?igsh=NXNpN2cyMm8yNTZn&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98C23.986 15.667 24 15.259 24 12s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg></a>
+                        <a href="https://chat.whatsapp.com/JPUFjLhZAzb5wFNcNvRCy1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.371-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
                     </div>
                 </div>
                 <div>
@@ -709,23 +701,21 @@
         <div class="bg-gray-900 py-4">
             <div class="container mx-auto px-6 text-center text-sm text-gray-500">
                 © 2025 Shree Karni Kripa Associates. All Rights Reserved.
+                <br>
+                powered by InfynixLabs
             </div>
         </div>
     </footer>
     
-    <!-- AI Chat Widget -->
     <div id="ai-chat-widget" class="fixed bottom-5 right-5 z-[1000]">
         <div id="proactive-bubble" class="proactive-bubble">
             Jai Mata Ji Sa! Main aapki sahayta kaise kar sakta hoon?
         </div>
-        <!-- Chat Bubble Button -->
         <button id="chat-toggle-button" class="bg-orange-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-orange-600 transition-transform hover:scale-110">
             <img id="chat-icon-open" src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="Chat with Maru-Mitra" class="w-full h-full rounded-full object-cover">
             <svg id="chat-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
-        <!-- Chat Window -->
         <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 md:w-96 bg-white rounded-lg shadow-2xl flex flex-col" style="height: 60vh;">
-            <!-- Header -->
             <div class="bg-orange-500 text-white p-4 rounded-t-lg flex items-center space-x-3">
                 <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="मारू-मित्र AI" class="w-12 h-12 rounded-full border-2 border-white object-cover">
                 <div>
@@ -733,11 +723,8 @@
                     <div class="text-xs text-orange-100">Online</div>
                 </div>
             </div>
-            <!-- Messages -->
             <div id="chat-messages" class="flex-1 p-4 overflow-y-auto">
-                <!-- Messages will be added here -->
             </div>
-            <!-- Input -->
             <div class="p-4 border-t border-gray-200 bg-white">
                 <form id="chat-form" class="flex items-center space-x-2">
                     <input type="text" id="chat-input" placeholder="Yahan poochhein..." class="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500">
@@ -780,9 +767,15 @@
         const chatForm = document.getElementById('chat-form');
         const chatInput = document.getElementById('chat-input');
         const proactiveBubble = document.getElementById('proactive-bubble');
-        let conversationHistory = [];
-        let chatState = { awaiting: null, form_data: {} };
-
+        
+        // --- ADVANCED CHATBOT STATE ---
+        let chatState = {
+            mode: 'GREETING', // GREETING, AWAITING_CHOICE, LOAN_FLOW, FAQ
+            loanType: null, // 'HOME', 'BUSINESS', 'PERSONAL'
+            step: 0,
+            collectedData: {}
+        };
+        
         const emiCalculatorHTML = `
             <h3 class="text-2xl font-bold mb-4 text-center">EMI Calculator</h3>
             <div class="space-y-4">
@@ -994,42 +987,139 @@
         }
 
         async function getAIResponse(userQuery) {
-            if (chatState.awaiting) {
-                // handleConversationFlow(userQuery); // This function is complex and not provided
-                return;
-            }
             showTypingIndicator();
-            conversationHistory.push({ role: "user", parts: [{ text: userQuery }] });
+            
             const apiUrl = `${GEMINI_PROXY_URL}/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
-            const systemPrompt = `You are "मारू-मित्र," an advanced, empathetic, and expert AI financial advisor for Shree Karni Kripa Associates in Rajasthan, India. Your primary language is conversational Hinglish. You have access to a knowledge base about the company's services and contacts. Your goal is to be helpful, accurate, and guide users toward contacting a human expert for final decisions. You can trigger specific actions by responding with a JSON object.`;
-            const payload = { contents: conversationHistory, systemInstruction: { parts: [{ text: systemPrompt }] } };
+            const systemPrompt = `You are "मारू-मित्र," a highly intelligent and empathetic AI financial advisor for Shree Karni Kripa Associates in Rajasthan. Your primary language is conversational Hinglish. You are designed to guide users through specific conversational flows for loan applications and general queries.
+
+**Your Core Task is to manage the conversation state and act as a smart guide.**
+
+**State Machine Logic:**
+- **Current State:** \`mode: ${chatState.mode}, loanType: ${chatState.loanType}, step: ${chatState.step}\`
+- **User's Message:** \`"${userQuery}"\`
+
+**Knowledge Base:**
+- **Company:** श्री करणी कृपा एसोसिएट्स (SKF अजमेर)
+- **Services:** Home Loan, Personal Loan, Business Loan, Car Loan, Loan Against Property (LAP), Insurance.
+- **Expert Contacts:**
+  - Home/LAP: Krishna Singh (918118838772)
+  - Business: Sona Mulani (919352358494)
+  - Car: Mannu Choudhary (917850836707)
+  - Personal: Saroj Choudhari (918118822628)
+  - Insurance/General: Rajendra Singh (919214104963)
+
+**Response Rules (Strictly Follow):**
+1.  **Analyze the current state and user message.**
+2.  **Determine the next state and the appropriate response.**
+3.  **Your entire response MUST BE a single JSON object.** Do not add any text outside the JSON.
+4.  The JSON object must have two keys: \`next_state\` and \`response_message\`.
+    - \`next_state\`: An object defining the new state: \`{ "mode": "NEW_MODE", "loanType": "TYPE_IF_ANY", "step": NEW_STEP }\`
+    - \`response_message\`: The exact Hinglish message to show the user. You can include HTML for buttons.
+
+**Conversation Flows:**
+
+**Flow 1: GREETING & INITIAL CHOICE**
+- **If \`mode\` is 'GREETING':**
+  - **User says hello/hi:** Transition to \`AWAITING_CHOICE\`.
+  - **\`response_message\`:** "राम राम! मैं हूं मारू-मित्र। मैं आपकी कैसे सहायता कर सकता हूँ?<br><button class='chat-option-button' onclick='handleChatOption("Naya Loan")'>💸 Naya Loan</button><button class='chat-option-button' onclick='handleChatOption("Jaankari/Madad")'>ℹ️ Jaankari/Madad</button>"
+
+**Flow 2: GENERAL QUERY (FAQ)**
+- **If \`mode\` is 'AWAITING_CHOICE' and user chooses "Jaankari/Madad":**
+  - Transition to \`mode: 'FAQ', step: 0\`.
+  - **\`response_message\`:** "Zaroor, aap kya jaanna chahte hain? Aap loan ke baare mein, hamare address, ya CIBIL score jaisi cheezon ke baare mein pooch sakte hain."
+- **If \`mode\` is 'FAQ':**
+  - Answer the user's question based on your knowledge base.
+  - After answering, ALWAYS transition back to \`mode: 'AWAITING_CHOICE', step: 0\`.
+  - **\`response_message\`:** "[Your Answer Here]... Aur kuch jaanna hai ya naye loan ke liye jaankari chahiye?<br><button class='chat-option-button' onclick='handleChatOption("Naya Loan")'>💸 Naya Loan</button><button class='chat-option-button' onclick='handleChatOption("Restart")'>Restart</button>"
+
+**Flow 3: NEW LOAN APPLICATION**
+- **If \`mode\` is 'AWAITING_CHOICE' and user chooses "Naya Loan":**
+  - Transition to \`mode: 'LOAN_FLOW', step: 1\`.
+  - **\`response_message\`:** "Aapko kis tarah ka loan chahiye?<br><button class='chat-option-button' onclick='handleChatOption("Home Loan")'>🏠 Home Loan</button><button class='chat-option-button' onclick='handleChatOption("Personal Loan")'>🙍‍♂️ Personal Loan</button><button class='chat-option-button' onclick='handleChatOption("Business Loan")'>💼 Business Loan</button><button class='chat-option-button' onclick='handleChatOption("Other Loan")'>Any Other</button>"
+- **If user provides a loan type directly (e.g., "ghar ke liye loan"):**
+  - Identify the loan type ('Home Loan', 'Personal Loan', 'Business Loan').
+  - Transition to \`mode: 'LOAN_FLOW', loanType: '[Identified Type]', step: 2\`.
+  - Ask the first question for that specific loan type (see below).
+
+**LOAN_FLOW Sub-steps (When \`mode\` is 'LOAN_FLOW'):**
+- **Step 1 (User chooses a loan type):**
+  - Set the \`loanType\` in the state.
+  - Transition to \`step: 2\`.
+  - Ask the first relevant question for that \`loanType\`.
+- **Step 2 (Ask for Name):**
+  - **\`response_message\`:** "Great! Shuru karne ke liye, aapka poora naam kya hai?"
+  - **Next State:** \`step: 3\`
+- **Step 3 (Ask for Phone):**
+  - **\`response_message\`:** "Aapka WhatsApp number kya hai?"
+  - **Next State:** \`step: 4\`
+- **Step 4 (Ask for City):**
+  - **\`response_message\`:** "Aap kaunse sheher (city) se hain?"
+  - **Next State:** \`step: 5\`
+- **Step 5 (Loan-Specific Question):**
+  - **If \`loanType\` is 'Home Loan':** Ask "Aap salaried hain ya business karte hain?" -> Next state: \`step: 6\`
+  - **If \`loanType\` is 'Personal Loan':** Ask "Aapki mahine ki income kitni hai?" -> Next state: \`step: 6\`
+  - **If \`loanType\` is 'Business Loan':** Ask "Aapke business ko kitna time ho gaya hai (saalon mein)?" -> Next state: \`step: 6\`
+- **Step 6 (Final Step & Summary):**
+  - This is the last data collection step.
+  - **\`response_message\`:** "Dhanyavaad! Maine aapki jaankari note kar li hai. Sahi expert se baat karne ke liye neeche button par click karein."
+  - Followed by a pre-filled WhatsApp button for the correct expert. Example for Home Loan: \`<a href='https://wa.me/918118838772?text=New%20Home%20Loan%20Lead...' target='_blank' class='whatsapp-button'>Connect with Home Loan Expert</a>\`
+  - **Next State:** Transition back to \`mode: 'GREETING', loanType: null, step: 0\`. Reset the flow.
+
+**Example Interaction:**
+- **User:** "hi"
+- **Your JSON Response:** \`{ "next_state": { "mode": "AWAITING_CHOICE", "loanType": null, "step": 0 }, "response_message": "राम राम!..." }\`
+- **User Clicks:** "Naya Loan" -> "Home Loan"
+- **Your JSON Response:** \`{ "next_state": { "mode": "LOAN_FLOW", "loanType": "Home Loan", "step": 2 }, "response_message": "Great! Shuru karne ke liye, aapka poora naam kya hai?" }\`
+`;
+            
+            const payload = { 
+                contents: [{ parts: [{ text: systemPrompt }] }],
+                // No conversation history is sent to make the AI stateless and rely only on the prompt
+            };
+
             try {
                 const result = await callGeminiAPI(apiUrl, payload);
-                let aiResponse = result.candidates?.[0]?.content?.parts?.[0]?.text;
                 removeTypingIndicator();
-                const jsonMatch = aiResponse.match(/{.*}/s);
+                
+                const responseText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                const jsonMatch = responseText.match(/{.*}/s);
+
                 if (jsonMatch) {
-                    // Logic to handle JSON actions would go here
-                } else if (aiResponse) {
-                    conversationHistory.push({ role: "model", parts: [{ text: aiResponse }] });
-                    appendMessage(aiResponse, 'ai');
-                } else { throw new Error("Invalid response from AI."); }
+                    const parsedJson = JSON.parse(jsonMatch[0]);
+                    
+                    // Update State
+                    chatState = parsedJson.next_state;
+                    chatState.collectedData.last_response = userQuery; // Store user's answer
+
+                    // Display Message
+                    appendMessage(parsedJson.response_message, 'ai');
+
+                } else {
+                    // Fallback for non-JSON responses
+                    appendMessage(responseText || "Kuch samajh nahi aaya, kripya dobara kahein.", 'ai');
+                }
+
             } catch (error) {
                 removeTypingIndicator();
                 appendMessage("माफ़ करें, मुझे अभी कुछ तकनीकी समस्या आ रही है। कृपया थोड़ी देर बाद प्रयास करें।", 'ai');
             }
+        }
+        
+        // This function is called by buttons inside the chat
+        window.handleChatOption = function(option) {
+            appendMessage(option, 'user');
+            getAIResponse(option);
         }
 
         chatToggleButton.addEventListener('click', () => {
             chatWindow.classList.toggle('hidden');
             chatIconOpen.classList.toggle('hidden');
             chatIconClose.classList.toggle('hidden');
-            if (!chatWindow.classList.contains('hidden') && conversationHistory.length === 0) {
-                const welcomeMessage = "राम राम! मैं हूं मारू-मित्र, आपकी फाइनेंशियल सहायता के लिए। आप क्या जानना चाहेंगे - लोन या बीमा के बारे में?";
-                appendMessage(welcomeMessage, 'ai');
-                conversationHistory.push({ role: "model", parts: [{ text: welcomeMessage }] });
+            if (!chatWindow.classList.contains('hidden') && chatState.mode === 'GREETING') {
+                getAIResponse("hi"); // Start the conversation
             }
         });
+
         chatForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const userQuery = chatInput.value.trim();
@@ -1146,4 +1236,5 @@
     </script>
 </body>
 </html>
+
 

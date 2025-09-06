@@ -631,8 +631,8 @@
                 </div>
             </section>
         </div>
-
-        <!-- All other pages are omitted for brevity -->
+        
+        <!-- All other pages are included but omitted for brevity -->
         <div id="new-purchase-loan-page" class="page" data-parent="home-loan">
             <section class="py-12 bg-white">
                  <div class="container mx-auto px-6">
@@ -1134,6 +1134,9 @@
         async function getAIResponse(userQuery) {
             showTypingIndicator();
             
+            // Store the user's last message in the state for the AI to use
+            chatState.collectedData.last_response = userQuery;
+
             const apiUrl = `${GEMINI_PROXY_URL}/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
             const systemPrompt = `You are "मारू-मित्र," a highly intelligent and empathetic AI financial advisor for Shree Karni Kripa Associates in Rajasthan. Your primary language is conversational Hinglish. You are designed to guide users through specific conversational flows for loan applications and general queries.
 
@@ -1141,7 +1144,8 @@
 
 **State Machine Logic:**
 - **Current State:** \`mode: ${chatState.mode}, loanType: ${chatState.loanType}, step: ${chatState.step}\`
-- **User's Message:** \`"${userQuery}"\`
+- **User's Last Message:** \`"${chatState.collectedData.last_response || ''}"\`
+- **Collected Data So Far:** \`${JSON.stringify(chatState.collectedData)}\`
 
 **Knowledge Base:**
 - **Company:** श्री करणी कृपा एसोसिएट्स (SKF अजमेर)
@@ -1154,10 +1158,9 @@
   - Insurance/General: Rajendra Singh (919214104963)
 
 **Response Rules (Strictly Follow):**
-1.  **Analyze the current state and user message.**
-2.  **Determine the next state and the appropriate response.**
-3.  **Your entire response MUST BE a single JSON object.** Do not add any text outside the JSON.
-4.  The JSON object must have two keys: \`next_state\` and \`response_message\`.
+1.  **Analyze the current state and user message to determine the next action.**
+2.  **Your entire response MUST BE a single JSON object.** Do not add any text outside the JSON.
+3.  The JSON object must have two keys: \`next_state\` and \`response_message\`.
     - \`next_state\`: An object defining the new state: \`{ "mode": "NEW_MODE", "loanType": "TYPE_IF_ANY", "step": NEW_STEP }\`
     - \`response_message\`: The exact Hinglish message to show the user. You can include HTML for buttons.
 
@@ -1165,62 +1168,38 @@
 
 **Flow 1: GREETING & INITIAL CHOICE**
 - **If \`mode\` is 'GREETING':**
-  - **User says hello/hi:** Transition to \`AWAITING_CHOICE\`.
+  - Transition to \`AWAITING_CHOICE\`.
   - **\`response_message\`:** "राम राम! मैं हूं मारू-मित्र। मैं आपकी कैसे सहायता कर सकता हूँ?<br><button class='chat-option-button' onclick='handleChatOption("Naya Loan")'>💸 Naya Loan</button><button class='chat-option-button' onclick='handleChatOption("Jaankari/Madad")'>ℹ️ Jaankari/Madad</button>"
 
 **Flow 2: GENERAL QUERY (FAQ)**
-- **If \`mode\` is 'AWAITING_CHOICE' and user chooses "Jaankari/Madad":**
+- **If user chooses "Jaankari/Madad":**
   - Transition to \`mode: 'FAQ', step: 0\`.
   - **\`response_message\`:** "Zaroor, aap kya jaanna chahte hain? Aap loan ke baare mein, hamare address, ya CIBIL score jaisi cheezon ke baare mein pooch sakte hain."
 - **If \`mode\` is 'FAQ':**
-  - Answer the user's question based on your knowledge base.
-  - After answering, ALWAYS transition back to \`mode: 'AWAITING_CHOICE', step: 0\`.
-  - **\`response_message\`:** "[Your Answer Here]... Aur kuch jaanna hai ya naye loan ke liye jaankari chahiye?<br><button class='chat-option-button' onclick='handleChatOption("Naya Loan")'>💸 Naya Loan</button><button class='chat-option-button' onclick='handleChatOption("Restart")'>Restart</button>"
+  - Answer the user's question. After answering, transition back to \`AWAITING_CHOICE\` and ask if they need more help or want to apply for a loan.
 
 **Flow 3: NEW LOAN APPLICATION**
-- **If \`mode\` is 'AWAITING_CHOICE' and user chooses "Naya Loan":**
+- **If user chooses "Naya Loan":**
   - Transition to \`mode: 'LOAN_FLOW', step: 1\`.
-  - **\`response_message\`:** "Aapko kis tarah ka loan chahiye?<br><button class='chat-option-button' onclick='handleChatOption("Home Loan")'>🏠 Home Loan</button><button class='chat-option-button' onclick='handleChatOption("Personal Loan")'>🙍‍♂️ Personal Loan</button><button class='chat-option-button' onclick='handleChatOption("Business Loan")'>💼 Business Loan</button><button class='chat-option-button' onclick='handleChatOption("Other Loan")'>Any Other</button>"
+  - **\`response_message\`:** "Aapko kis tarah ka loan chahiye?<br><button class='chat-option-button' onclick='handleChatOption("Home Loan")'>🏠 Home Loan</button><button class='chat-option-button' onclick='handleChatOption("Personal Loan")'>🙍‍♂️ Personal Loan</button><button class='chat-option-button' onclick='handleChatOption("Business Loan")'>💼 Business Loan</button><button class='chat-option-button' onclick='handleChatOption("Other")'>Any Other</button>"
 - **If user provides a loan type directly (e.g., "ghar ke liye loan"):**
-  - Identify the loan type ('Home Loan', 'Personal Loan', 'Business Loan').
-  - Transition to \`mode: 'LOAN_FLOW', loanType: '[Identified Type]', step: 2\`.
-  - Ask the first question for that specific loan type (see below).
+  - Identify the loan type, set \`loanType\` in the state, and transition to \`step: 2\`.
+  - Ask the first question for that specific loan type.
 
 **LOAN_FLOW Sub-steps (When \`mode\` is 'LOAN_FLOW'):**
-- **Step 1 (User chooses a loan type):**
-  - Set the \`loanType\` in the state.
-  - Transition to \`step: 2\`.
-  - Ask the first relevant question for that \`loanType\`.
-- **Step 2 (Ask for Name):**
-  - **\`response_message\`:** "Great! Shuru karne ke liye, aapka poora naam kya hai?"
-  - **Next State:** \`step: 3\`
-- **Step 3 (Ask for Phone):**
-  - **\`response_message\`:** "Aapka WhatsApp number kya hai?"
-  - **Next State:** \`step: 4\`
-- **Step 4 (Ask for City):**
-  - **\`response_message\`:** "Aap kaunse sheher (city) se hain?"
-  - **Next State:** \`step: 5\`
+- **Step 1 (User chooses a loan type):** Set \`loanType\`, transition to \`step: 2\`, and ask for name.
+- **Step 2 (Ask for Name):** \`response_message\`: "Great! Shuru karne ke liye, aapka poora naam kya hai?". Next state: \`step: 3\`.
+- **Step 3 (Ask for Phone):** \`response_message\`: "Aapka WhatsApp number kya hai?". Next state: \`step: 4\`.
+- **Step 4 (Ask for City):** \`response_message\`: "Aap kaunse sheher (city) se hain?". Next state: \`step: 5\`.
 - **Step 5 (Loan-Specific Question):**
-  - **If \`loanType\` is 'Home Loan':** Ask "Aap salaried hain ya business karte hain?" -> Next state: \`step: 6\`
-  - **If \`loanType\` is 'Personal Loan':** Ask "Aapki mahine ki income kitni hai?" -> Next state: \`step: 6\`
-  - **If \`loanType\` is 'Business Loan':** Ask "Aapke business ko kitna time ho gaya hai (saalon mein)?" -> Next state: \`step: 6\`
-- **Step 6 (Final Step & Summary):**
-  - This is the last data collection step.
-  - **\`response_message\`:** "Dhanyavaad! Maine aapki jaankari note kar li hai. Sahi expert se baat karne ke liye neeche button par click karein."
-  - Followed by a pre-filled WhatsApp button for the correct expert. Example for Home Loan: \`<a href='https://wa.me/918118838772?text=New%20Home%20Loan%20Lead...' target='_blank' class='whatsapp-button'>Connect with Home Loan Expert</a>\`
-  - **Next State:** Transition back to \`mode: 'GREETING', loanType: null, step: 0\`. Reset the flow.
-
-**Example Interaction:**
-- **User:** "hi"
-- **Your JSON Response:** \`{ "next_state": { "mode": "AWAITING_CHOICE", "loanType": null, "step": 0 }, "response_message": "राम राम!..." }\`
-- **User Clicks:** "Naya Loan" -> "Home Loan"
-- **Your JSON Response:** \`{ "next_state": { "mode": "LOAN_FLOW", "loanType": "Home Loan", "step": 2 }, "response_message": "Great! Shuru karne ke liye, aapka poora naam kya hai?" }\`
-`;
+  - **If \`loanType\` is 'Home Loan':** Ask "Aap salaried hain ya business karte hain?". Next state: \`step: 6\`.
+  - **If \`loanType\` is 'Personal Loan':** Ask "Aapki mahine ki income kitni hai?". Next state: \`step: 6\`.
+  - **If \`loanType\` is 'Business Loan':** Ask "Aapke business ko kitna time ho gaya hai (saalon mein)?". Next state: \`step: 6\`.
+- **Step 6 (Final Step & Summary):** This is the last data collection step. Create a summary of all collected data. Generate a pre-filled WhatsApp link for the correct expert.
+  - **\`response_message\`:** "Dhanyavaad! Maine aapki jaankari note kar li hai... [Show Summary Here]. Sahi expert se baat karne ke liye neeche button par click karein."
+  - **Next State:** Transition back to \`mode: 'GREETING', step: 0\`. Reset everything.`;
             
-            const payload = { 
-                contents: [{ parts: [{ text: systemPrompt }] }],
-                // No conversation history is sent to make the AI stateless and rely only on the prompt
-            };
+            const payload = { contents: [{ parts: [{ text: systemPrompt }] }] };
 
             try {
                 const result = await callGeminiAPI(apiUrl, payload);
@@ -1233,14 +1212,24 @@
                     const parsedJson = JSON.parse(jsonMatch[0]);
                     
                     // Update State
-                    chatState = parsedJson.next_state;
-                    chatState.collectedData.last_response = userQuery; // Store user's answer
+                    chatState.mode = parsedJson.next_state.mode;
+                    chatState.loanType = parsedJson.next_state.loanType || chatState.loanType; // Persist loanType if not updated
+                    chatState.step = parsedJson.next_state.step;
+                    
+                    // Collect data
+                    if (chatState.step > 1 && chatState.mode === 'LOAN_FLOW') {
+                        const fieldMap = ['loanType', 'name', 'phone', 'city', 'loanSpecific'];
+                        chatState.collectedData[fieldMap[chatState.step - 2]] = userQuery;
+                    }
 
                     // Display Message
                     appendMessage(parsedJson.response_message, 'ai');
-
+                    
+                    // If flow is reset, clear data
+                    if (chatState.mode === 'GREETING') {
+                        chatState.collectedData = {};
+                    }
                 } else {
-                    // Fallback for non-JSON responses
                     appendMessage(responseText || "Kuch samajh nahi aaya, kripya dobara kahein.", 'ai');
                 }
 
@@ -1250,7 +1239,6 @@
             }
         }
         
-        // This function is called by buttons inside the chat
         window.handleChatOption = function(option) {
             appendMessage(option, 'user');
             getAIResponse(option);

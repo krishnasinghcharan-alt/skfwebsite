@@ -344,10 +344,6 @@
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const contactForm = document.getElementById('contact-form');
-        const chatToggleButton = document.getElementById('chat-toggle-button');
-        const chatWindow = document.getElementById('chat-window');
-        const chatMessages = document.getElementById('chat-messages');
-        const chatForm = document.getElementById('chat-form');
         
         // Modal elements
         const applyModal = document.getElementById('apply-modal');
@@ -357,8 +353,7 @@
         // --- GLOBAL STATE & CONSTANTS ---
         const WHATSAPP_CONTACT_NUMBER = '918118838772';
         const LOGO_URL = 'https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png';
-        let conversationHistory = [];
-
+        
         // --- PAGE ROUTING & DISPLAY LOGIC ---
         function showPage(pageId) {
             pages.forEach(p => p.classList.remove('active'));
@@ -507,10 +502,172 @@
             };
             img.onerror = function() {
                 alert("Could not load company logo for PDF. Proceeding without it.");
-                // Add code here to generate PDF without the logo if it fails to load
             };
         }
+
+        // --- AI CHAT WIDGET LOGIC (NEW) ---
+        const chatToggleButton = document.getElementById('chat-toggle-button');
+        const chatWindow = document.getElementById('chat-window');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const proactiveBubble = document.getElementById('proactive-bubble');
+
+        const specialistContacts = {
+            'home loan': { name: 'कृष्णा सिंह', phone: '918118838772' },
+            'personal loan': { name: 'सरोज चौधरी', phone: '918118822628' },
+            'business loan': { name: 'सोना मुलानी', phone: '919352358494' },
+            'car loan': { name: 'मनु मैम', phone: '919358973156' },
+            'insurance': { name: 'राजेन्द्र सिंह', phone: '919214104963' },
+            'general': { name: 'राजेन्द्र सिंह', phone: '919214104963' }
+        };
+
+        let chatState = 'AWAITING_NEED';
+        let userData = {
+            need: null, name: null, phone: null, location: null, amount: 'Not specified'
+        };
+        let isChatOpen = false;
+
+        function addUserMessage(message) {
+            const messageEl = document.createElement('div');
+            messageEl.className = 'chat-bubble user-bubble';
+            messageEl.textContent = message;
+            chatMessages.appendChild(messageEl);
+            scrollToBottom();
+        }
+
+        function addBotMessage(message, isTyping = false) {
+            if (isTyping) {
+                const typingEl = document.createElement('div');
+                typingEl.className = 'chat-bubble ai-bubble typing-indicator';
+                typingEl.innerHTML = `<span></span><span></span><span></span>`;
+                typingEl.id = 'typing-indicator';
+                chatMessages.appendChild(typingEl);
+            } else {
+                const messageEl = document.createElement('div');
+                messageEl.className = 'chat-bubble ai-bubble';
+                messageEl.textContent = message;
+                chatMessages.appendChild(messageEl);
+            }
+            scrollToBottom();
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
+        }
+
+        function scrollToBottom() {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function detectNeed(message) {
+            const lowerCaseMessage = message.toLowerCase();
+            if (lowerCaseMessage.includes('home') || lowerCaseMessage.includes('ghar')) return 'home loan';
+            if (lowerCaseMessage.includes('personal') || lowerCaseMessage.includes('vyaktigat')) return 'personal loan';
+            if (lowerCaseMessage.includes('business') || lowerCaseMessage.includes('vyapar')) return 'business loan';
+            if (lowerCaseMessage.includes('car') || lowerCaseMessage.includes('gadi')) return 'car loan';
+            if (lowerCaseMessage.includes('insurance') || lowerCaseMessage.includes('bima')) return 'insurance';
+            return null;
+        }
+
+        function processAndForwardRequest() {
+            const specialistKey = userData.need;
+            const specialist = specialistContacts[specialistKey] || specialistContacts['general'];
+            const message = `*AI Assistant Lead from Website*\n\n*Customer Need:* ${userData.need.charAt(0).toUpperCase() + userData.need.slice(1)}\n*Name:* ${userData.name}\n*Phone:* ${userData.phone}\n*Location:* ${userData.location}\n*Loan Amount:* ${userData.amount}`;
+            const whatsappURL = `https://wa.me/${specialist.phone}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+            addBotMessage(`धन्यवाद! आपकी ${userData.need} की रिक्वेस्ट हमारे स्पेशलिस्ट ${specialist.name} जी को भेज दी गई है। वह जल्द ही आपसे संपर्क करेंगे।`);
+            setTimeout(() => {
+                addBotMessage("यदि आपकी कोई और पूछताछ है, तो कृपया बताएं।");
+                resetChat();
+            }, 2000);
+        }
+
+        function resetChat() {
+            chatState = 'AWAITING_NEED';
+            userData = { need: null, name: null, phone: null, location: null, amount: 'Not specified' };
+        }
+
+        function handleConversation(userMessage) {
+            addUserMessage(userMessage);
+            chatInput.value = '';
+            chatInput.disabled = true;
+            addBotMessage('', true);
+
+            setTimeout(() => {
+                removeTypingIndicator();
+                chatInput.disabled = false;
+                chatInput.focus();
+
+                switch (chatState) {
+                    case 'AWAITING_NEED':
+                        const detectedNeed = detectNeed(userMessage);
+                        userData.need = detectedNeed || 'general';
+                        chatState = 'AWAITING_NAME';
+                        addBotMessage(detectedNeed ? "बहुत बढ़िया! क्या मैं आपका पूरा नाम जान सकता हूँ?" : "ठीक है। क्या मैं आपका पूरा नाम जान सकता हूँ?");
+                        break;
+                    case 'AWAITING_NAME':
+                        userData.name = userMessage;
+                        chatState = 'AWAITING_PHONE';
+                        addBotMessage(`धन्यवाद, ${userData.name}! कृपया अपना व्हाट्सएप नंबर बताएं जिस पर हम संपर्क कर सकें।`);
+                        break;
+                    case 'AWAITING_PHONE':
+                        if (userMessage.match(/^\d{10}$/)) {
+                            userData.phone = userMessage;
+                            chatState = 'AWAITING_LOCATION';
+                            addBotMessage("धन्यवाद। आप किस शहर से हैं?");
+                        } else {
+                            addBotMessage("कृपया एक मान्य 10-अंकीय मोबाइल नंबर दर्ज करें।");
+                        }
+                        break;
+                    case 'AWAITING_LOCATION':
+                        userData.location = userMessage;
+                        if (['home loan', 'personal loan', 'business loan', 'car loan'].includes(userData.need)) {
+                            chatState = 'AWAITING_AMOUNT';
+                            addBotMessage("लगभग कितने लोन अमाउंट की आवश्यकता है आपको? (उदाहरण: 5 लाख)");
+                        } else {
+                            processAndForwardRequest();
+                        }
+                        break;
+                    case 'AWAITING_AMOUNT':
+                        userData.amount = userMessage;
+                        processAndForwardRequest();
+                        break;
+                }
+            }, 1200);
+        }
+
+        function startChat() {
+            resetChat();
+            chatMessages.innerHTML = '';
+            addBotMessage("नमस्ते! मैं मारू-मित्र हूँ। मैं आपकी किस प्रकार सहायता कर सकता हूँ? (उदा. Home Loan, Personal Loan, Insurance)");
+        }
+
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const userMessage = chatInput.value.trim();
+            if (userMessage && !chatInput.disabled) handleConversation(userMessage);
+        });
+
+        chatToggleButton.addEventListener('click', () => {
+            isChatOpen = !isChatOpen;
+            chatWindow.classList.toggle('hidden');
+            proactiveBubble.classList.remove('show');
+            if (isChatOpen) {
+                document.getElementById('chat-icon-open').classList.add('hidden');
+                document.getElementById('chat-icon-close').classList.remove('hidden');
+                startChat();
+                chatInput.focus();
+            } else {
+                document.getElementById('chat-icon-open').classList.remove('hidden');
+                document.getElementById('chat-icon-close').classList.add('hidden');
+            }
+        });
         
+        setTimeout(() => { if (!isChatOpen) { proactiveBubble.classList.add('show'); chatToggleButton.classList.add('animated'); }}, 5000);
+        setTimeout(() => { proactiveBubble.classList.remove('show'); }, 15000);
+
         // --- MODAL & FORM LOGIC ---
         function openApplyModal(e) {
             const loanType = e.target.closest('.page')?.dataset.loanType || 'General Enquiry';
@@ -599,6 +756,4 @@
     </script>
 </body>
 </html>
-
-
 

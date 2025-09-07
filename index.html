@@ -1,290 +1,1803 @@
-<!doctype html>
-<html lang="hi">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Apply - Shree Karni Kripa Associates (SKF Ajmer)</title>
-  <style>
-    /* Basic clean styling — modify to match your theme */
-    :root{--blue:#0b66ff;--muted:#6b7280;--card:#ffffff}
-    body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Noto Sans", sans-serif; background:#f4f7fb; margin:0; color:#0b1726;}
-    .container{max-width:920px;margin:28px auto;padding:18px;}
-    .card{background:var(--card);border-radius:12px;box-shadow:0 6px 20px rgba(11,22,38,0.06);padding:20px;margin-bottom:16px;}
-    h1,h2{margin:0 0 12px 0}
-    label{display:block;margin:10px 0 6px;font-weight:600}
-    input[type=text], input[type=tel], input[type=number], select, textarea{
-      width:100%;padding:10px;border:1px solid #e6e9ef;border-radius:8px;font-size:15px;
-    }
-    .row{display:flex;gap:12px}
-    .col{flex:1}
-    .btn{background:var(--blue);color:white;padding:10px 16px;border-radius:8px;border:0;font-weight:700;cursor:pointer}
-    .btn.secondary{background:#eef2ff;color:var(--blue);border:1px solid rgba(11,102,255,0.12)}
-    .muted{color:var(--muted);font-size:14px}
-    .steps{display:flex;gap:8px;margin-bottom:12px}
-    .step{flex:1;padding:8px;border-radius:8px;background:#eef4ff;color:var(--blue);text-align:center;font-weight:600}
-    .hidden{display:none}
-    .right-panel{min-width:260px}
-    .flex{display:flex;gap:16px;align-items:flex-start}
-    .sticky-apply{position:sticky;top:18px;height:fit-content}
-    .small{font-size:13px;color:var(--muted)}
-    .whatsapp-btn{background:#25D366;color:white;padding:10px;border-radius:8px;border:0;font-weight:700;cursor:pointer;width:100%;}
-    .consent{display:flex;gap:8px;align-items:center;margin-top:10px}
-    pre{background:#f7fafc;padding:10px;border-radius:8px;overflow:auto}
-    @media(max-width:760px){.flex{flex-direction:column}.right-panel{min-width:unset}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan & Insurance Services in Rajasthan | Shree Karni Kripa Associates, Ajmer</title>
+    <meta name="description" content="SKF Ajmer provides Home, Personal, & Business Loans across all of Rajasthan. Get expert financial advice and quick insurance solutions in Jaipur, Jodhpur, Udaipur & more.">
+    <meta name="keywords" content="loan in rajasthan, finance rajasthan, shree karni kripa associates, home loan jaipur, personal loan jodhpur, business loan ajmer, insurance rajasthan, skf ajmer">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .page.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .nav-link.active {
+            color: #ea580c; /* orange-600 */
+            font-weight: 700;
+        }
+        .header-shadow {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        /* Animation on Scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+         /* Spinner Styles */
+        .loader {
+            width: 24px;
+            height: 24px;
+            border: 3px solid #FFF;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+        }
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background-color: #9ca3af;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+          0%, 80%, 100% { transform: scale(0); }
+          40% { transform: scale(1.0); }
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Chat Styles */
+        .chat-bubble {
+            max-width: 85%;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            margin-bottom: 0.5rem;
+            word-wrap: break-word;
+        }
+        .user-bubble {
+            background-color: #f97316; /* orange-500 */
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 0.25rem;
+        }
+        .ai-bubble {
+            background-color: #f1f5f9; /* slate-100 */
+            color: #1e293b; /* slate-800 */
+            align-self: flex-start;
+            border-bottom-left-radius: 0.25rem;
+        }
+        #chat-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .whatsapp-button {
+            display: inline-block;
+            background-color: #25D366;
+            color: white !important;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 8px;
+            margin-right: 8px;
+            transition: background-color 0.2s;
+        }
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+        }
+
+        /* Floating Animation for Chat Icon */
+        @keyframes floatAnimation {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        #chat-toggle-button.animated {
+            animation: floatAnimation 3s ease-in-out infinite;
+        }
+
+        /* Proactive Engagement Bubble */
+        .proactive-bubble {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            background-color: white;
+            color: #1e293b;
+            padding: 12px 16px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            width: max-content;
+            max-width: 250px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .proactive-bubble.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            z-index: 1001;
+        }
+        /* Triangle for the bubble */
+        .proactive-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 24px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid white;
+        }
+        .emi-explanation-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f8fafc;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+            color: #334155;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            min-height: 50px;
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <div class="card">
-      <h1>Apply for Loan — SKF Ajmer</h1>
-      <p class="muted">Application will be sent directly to WhatsApp: <strong>+91 9214104963</strong>. कोई backend नहीं — सब WhatsApp पर मिलेगा।</p>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- HEADER: Universal Element -->
+    <header id="header" class="bg-white sticky top-0 z-50 transition-shadow duration-300">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#home" class="flex items-center space-x-3 page-link">
+                <img src="https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png" alt="Shree Karni Kripa Associates" class="h-14 w-auto">
+                <span class="font-bold text-xl text-gray-800 hidden sm:block">Shree Karni Kripa Associates</span>
+            </a>
+
+            <!-- Center: Menu (Desktop) -->
+            <ul class="hidden lg:flex items-center space-x-6 text-gray-700 font-medium">
+                <li><a href="#home" class="nav-link page-link hover:text-orange-600">Home</a></li>
+                <li class="dropdown relative">
+                    <a href="#home-loan" class="nav-link page-link hover:text-orange-600 flex items-center">Loans <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+                    <ul class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 py-2 w-56">
+                        <li><a href="#home-loan" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 page-link">Home Loan</a></li>
+                        <li><a href="#business-loan" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 page-link">Business Loan</a></li>
+                        <li><a href="#personal-loan" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 page-link">Personal Loan</a></li>
+                        <li><a href="#car-loan" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 page-link">Car Loan</a></li>
+                        <li><a href="#lap-loan" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 page-link">Loan Against Property (LAP)</a></li>
+                    </ul>
+                </li>
+                 <li class="dropdown relative">
+                    <a href="#health-insurance" class="nav-link page-link hover:text-orange-600 flex items-center">Insurance <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+                    <ul class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 py-2 w-48">
+                        <li><a href="#health-insurance" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 page-link">Health Insurance</a></li>
+                        <li><a href="#life-insurance" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 page-link">Life Insurance</a></li>
+                        <li><a href="#vehicle-insurance" class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 page-link">Vehicle Insurance</a></li>
+                    </ul>
+                </li>
+                <li><a href="#about" class="nav-link page-link hover:text-orange-600">About Us</a></li>
+                <li><a href="https://karni-kripa.blogspot.com/" target="_blank" rel="noopener noreferrer" class="nav-link hover:text-orange-600">Blog</a></li>
+                <li><a href="#contact" class="nav-link page-link hover:text-orange-600">Contact Us</a></li>
+            </ul>
+
+            <!-- Right Side: Call Button -->
+            <a href="tel:9214104963" class="hidden md:flex items-center space-x-2 bg-orange-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                <span>Call 9214104963</span>
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden text-gray-600">
+                 <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4">
+             <ul class="flex flex-col space-y-3">
+                <li><a href="#home" class="nav-link page-link block text-gray-700 hover:text-orange-600">Home</a></li>
+                <li><a href="#home-loan" class="nav-link page-link block text-gray-700 hover:text-orange-600">Home Loan</a></li>
+                <li><a href="#business-loan" class="nav-link page-link block text-gray-700 hover:text-orange-600">Business Loan</a></li>
+                 <li><a href="#personal-loan" class="nav-link page-link block text-gray-700 hover:text-orange-600">Personal Loan</a></li>
+                 <li><a href="#car-loan" class="nav-link page-link block text-gray-700 hover:text-orange-600">Car Loan</a></li>
+                 <li><a href="#lap-loan" class="nav-link page-link block text-gray-700 hover:text-orange-600">Loan Against Property</a></li>
+                <li><a href="#health-insurance" class="nav-link page-link block text-gray-700 hover:text-orange-600">Health Insurance</a></li>
+                <li><a href="#about" class="nav-link page-link block text-gray-700 hover:text-orange-600">About Us</a></li>
+                <li><a href="https://karni-kripa.blogspot.com/" target="_blank" rel="noopener noreferrer" class="nav-link block text-gray-700 hover:text-orange-600">Blog</a></li>
+                <li><a href="#contact" class="nav-link page-link block text-gray-700 hover:text-orange-600">Contact Us</a></li>
+                 <li>
+                    <a href="tel:9214104963" class="flex mt-2 items-center justify-center space-x-2 bg-orange-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                        <span>Call 9214104963</span>
+                    </a>
+                 </li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page 1: Homepage -->
+        <div id="home-page" class="page">
+             <section class="relative bg-cover bg-center text-white" style="background-image: url('https://res.cloudinary.com/dhme90fr1/image/upload/v1756626261/PHOTO-2025-08-31-13-08-02_2_szo0ga.jpg');">
+                <div class="absolute inset-0 bg-slate-800 opacity-60"></div>
+                <div class="container mx-auto px-6 py-24 md:py-36 text-center relative z-10">
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-on-scroll">Your Trusted Loan & Insurance Advisors</h1>
+                    <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-8 animate-on-scroll">"Sapne aap dekho, poore hum karenge." Get the <span class="font-semibold">Best Financial Solutions in Rajasthan</span> for all your needs with Shree Karni Kripa Associates.</p>
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4 animate-on-scroll">
+                        <a href="#home-loan" class="page-link bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors w-full sm:w-auto">Check Loan Eligibility</a>
+                        <a href="#health-insurance" class="page-link bg-white hover:bg-gray-200 text-orange-600 font-bold py-3 px-8 rounded-lg transition-colors w-full sm:w-auto">Get Free Insurance Quote</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- New AI Chat Teaser Section -->
+            <section class="py-16 md:py-24 bg-orange-50">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">Koi Sawaal Hai?</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8 animate-on-scroll">Hamaare AI sahayak, <span class="font-bold text-orange-700">मारू-मित्र ✨,</span> se turant jawaab paayein. Neeche dayein kone mein unki photo par click karein!</p>
+                    <div class="flex justify-center animate-on-scroll">
+                        <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="मारू-मित्र AI Assistant" class="w-24 h-24 rounded-full border-4 border-white shadow-lg">
+                    </div>
+                </div>
+            </section>
+            
+            <section class="py-16 md:py-24 bg-white">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll">Financial Solutions for Every Need</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Service links updated to be page-links -->
+                        <a href="#home-loan" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll">
+                            <div class="text-4xl mb-4">🏠</div>
+                            <h3 class="text-xl font-semibold mb-2">Home Loan</h3>
+                            <p class="text-gray-600">Take the first step towards your dream home.</p>
+                        </a>
+                        <a href="#business-loan" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 100ms;">
+                            <div class="text-4xl mb-4">💼</div>
+                            <h3 class="text-xl font-semibold mb-2">Business Loan</h3>
+                            <p class="text-gray-600">Elevate your business to new heights.</p>
+                        </a>
+                        <a href="#personal-loan" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 200ms;">
+                            <div class="text-4xl mb-4">🙍‍♂️</div>
+                            <h3 class="text-xl font-semibold mb-2">Personal Loan</h3>
+                            <p class="text-gray-600">Fulfill your personal needs with ease.</p>
+                        </a>
+                        <a href="#car-loan" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 300ms;">
+                            <div class="text-4xl mb-4">🚗</div>
+                            <h3 class="text-xl font-semibold mb-2">Car Loan</h3>
+                            <p class="text-gray-600">Bring home your favorite car, hassle-free.</p>
+                        </a>
+                        <a href="#lap-loan" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 400ms;">
+                            <div class="text-4xl mb-4">📜</div>
+                            <h3 class="text-xl font-semibold mb-2">Loan Against Property</h3>
+                            <p class="text-gray-600">Unlock the value of your property for your needs.</p>
+                        </a>
+                        <a href="#health-insurance" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 500ms;">
+                            <div class="text-4xl mb-4">❤️</div>
+                            <h3 class="text-xl font-semibold mb-2">Health Insurance</h3>
+                            <p class="text-gray-600">Protect your family in medical emergencies.</p>
+                        </a>
+                        <a href="#life-insurance" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 600ms;">
+                            <div class="text-4xl mb-4">👨‍👩‍👧‍👦</div>
+                            <h3 class="text-xl font-semibold mb-2">Life Insurance</h3>
+                            <p class="text-gray-600">Secure the future of your loved ones.</p>
+                        </a>
+                        <a href="#vehicle-insurance" class="page-link service-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 animate-on-scroll" style="transition-delay: 700ms;">
+                            <div class="text-4xl mb-4">🏍️</div>
+                            <h3 class="text-xl font-semibold mb-2">Vehicle Insurance</h3>
+                            <p class="text-gray-600">Insure your car or bike against unforeseen events.</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+             <section class="py-16 md:py-24 bg-gray-50">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll">Why Trust SKF Associates?</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="p-6 animate-on-scroll">
+                            <div class="flex justify-center items-center mb-4"><svg class="h-12 w-12 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" /></svg></div>
+                            <h3 class="text-xl font-semibold mb-2">Tied-up with All Major Banks</h3>
+                            <p class="text-gray-600">We are associated with all major public and private banks like HDFC, ICICI, SBI to provide you the <span class="font-semibold">Best Loan Offers</span>.</p>
+                        </div>
+                        <div class="p-6 animate-on-scroll" style="transition-delay: 200ms;">
+                            <div class="flex justify-center items-center mb-4"><svg class="h-12 w-12 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>
+                            <h3 class="text-xl font-semibold mb-2">Quick & Transparent Process</h3>
+                            <p class="text-gray-600">Our process is transparent. We ensure quick loan approvals with minimum documentation.</p>
+                        </div>
+                        <div class="p-6 animate-on-scroll" style="transition-delay: 400ms;">
+                            <div class="flex justify-center items-center mb-4"><svg class="h-12 w-12 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" /></svg></div>
+                            <h3 class="text-xl font-semibold mb-2">Expert & Honest Advice</h3>
+                            <p class="text-gray-600">We don't just provide loans; we understand your situation and give the right advice that is always in your best interest.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Brands Who Trust Us Section -->
+            <section class="py-16 md:py-24 bg-white">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll">Brands Who Trust Us</h2>
+                    <div id="brands-grid" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-12 items-center animate-on-scroll">
+                        <div class="brand-logo">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621188/imgi_41_SBI_psonew.png" alt="SBI Bank" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756622692/imgi_118_AU-Logo-unit-2_prhzvg.png" alt="AU Small Finance Bank" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                         <div class="brand-logo">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621188/imgi_38_VASTU-HOUSING_dxjhoe.png" alt="Vastu Housing Finance" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756622383/imgi_34_piramal-new_moq4t8.png" alt="Piramal Finance" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621451/imgi_30_tata-capital-housing-updated_t0xydb.png" alt="Tata Capital" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621451/imgi_88_aditya-upodated_ihx4kj.png" alt="Aditya Birla Capital" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <!-- Hidden by default -->
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621451/imgi_89_dcb_rmqiqi.png" alt="DCB Bank" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                        <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756622670/imgi_62_UGro-capital_uztle4.jpg" alt="UGro Capital" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                         <div class="brand-logo hidden">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621451/imgi_34_piramal-new_1_ytnqe8.png" alt="Piramal Finance" class="mx-auto h-16 grayscale hover:grayscale-0 transition-all duration-300 object-contain">
+                        </div>
+                    </div>
+                    <div id="view-more-container" class="mt-12 animate-on-scroll">
+                        <button id="view-more-brands-btn" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors">View All Partners</button>
+                    </div>
+                </div>
+            </section>
+
+             <section class="py-16 md:py-24 bg-orange-600 text-white">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">Ready to achieve your financial goals?</h2>
+                    <p class="text-lg text-orange-100 max-w-2xl mx-auto mb-8 animate-on-scroll">Talk to our experts today for a free consultation.</p>
+                    <a href="#contact" class="page-link bg-white hover:bg-gray-200 text-orange-600 font-bold py-3 px-8 rounded-lg transition-colors animate-on-scroll">Contact Us Now</a>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Loan Category Page: Home Loan -->
+        <div id="home-loan-page" class="page" data-category="home-loan">
+            <section class="py-12 bg-white">
+                <div class="container mx-auto px-6">
+                     <a href="#home" class="page-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
+                     <div class="text-center">
+                        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Home Loan in Rajasthan - Low Interest Rates</h1>
+                        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Whether you're buying a new home, constructing one, or renovating your current space, Shree Karni Kripa Associates has the perfect home loan solution for you.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl font-bold text-center mb-10 animate-on-scroll">We Offer the Following Types of Home Loans</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <a href="#new-purchase-loan" class="page-link block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-gray-200 animate-on-scroll">
+                            <h3 class="text-xl font-semibold text-orange-600 mb-2">New Purchase Loan</h3>
+                            <p class="text-gray-600">To buy your dream ready-to-move-in home or flat. The most popular and straightforward loan.</p>
+                        </a>
+                        <a href="#construction-loan" class="page-link block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-gray-200 animate-on-scroll" style="transition-delay: 200ms;">
+                            <h3 class="text-xl font-semibold text-orange-600 mb-2">Construction Loan</h3>
+                            <p class="text-gray-600">To build a house on your own land. Funds are disbursed based on construction stages.</p>
+                        </a>
+                        <a href="#renovation-loan" class="page-link block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-gray-200 animate-on-scroll" style="transition-delay: 400ms;">
+                            <h3 class="text-xl font-semibold text-orange-600 mb-2">Home Renovation Loan</h3>
+                            <p class="text-gray-600">To repair, furnish, or give a new look to your existing home.</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Loan Detail Page: New Purchase Loan -->
+        <div id="new-purchase-loan-page" class="page" data-parent="home-loan">
+            <section class="py-12 bg-white">
+                 <div class="container mx-auto px-6">
+                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">New Home Purchase Loan</h1>
+                    <p class="text-lg text-gray-600 max-w-4xl">This loan is for individuals looking to buy a new flat from a builder or a ready-built house (resale property). We connect you with the best banks for a quick and easy loan process.</p>
+                </div>
+            </section>
+
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <!-- Left Side: Details -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-white p-8 rounded-lg shadow-md mb-8 animate-on-scroll">
+                             <h2 class="text-2xl font-bold mb-6">Key Loan Information</h2>
+                             <div class="grid grid-cols-2 md:grid-cols-2 gap-6 text-center">
+                                <div class="bg-orange-50 p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600">Interest Rate (ROI)</p>
+                                    <p class="text-xl font-bold text-orange-700">8.50% p.a. onwards*</p>
+                                </div>
+                                <div class="bg-orange-50 p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600">Processing Fee (PF)</p>
+                                    <p class="text-xl font-bold text-orange-700">0.5% onwards*</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600">Loan Tenure</p>
+                                    <p class="text-xl font-bold text-green-700">Up to 30 Years</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600">Loan Amount</p>
+                                    <p class="text-xl font-bold text-green-700">Up to 90% of Property Value</p>
+                                </div>
+                            </div>
+                            <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on the applicant's profile.</p>
+                        </div>
+                        
+                        <div class="bg-white p-8 rounded-lg shadow-md animate-on-scroll">
+                            <h3 class="text-2xl font-bold mb-4">Required Documents</h3>
+                            <div class="text-gray-700 space-y-3">
+                                <p><strong class="font-semibold">For Salaried:</strong> ID Proof (PAN, Aadhaar), last 3 months' salary slips, 6 months' bank statement, Form 16.</p>
+                                <p><strong class="font-semibold">For Self-Employed:</strong> ID Proof, last 2 years' ITR, proof of business, 1-year bank statement.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Side: EMI Calculator & Apply -->
+                    <div class="space-y-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container animate-on-scroll">
+                            <!-- EMI Calculator will be injected here -->
+                        </div>
+                        
+                        <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center animate-on-scroll">
+                            <h3 class="text-2xl font-bold mb-3">Take the first step towards your dream home!</h3>
+                            <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now for New Home Loan</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Loan Detail Page: Construction Loan -->
+        <div id="construction-loan-page" class="page" data-parent="home-loan">
+            <section class="py-12 bg-white">
+                 <div class="container mx-auto px-6">
+                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Home Construction Loan</h1>
+                    <p class="text-lg text-gray-600 max-w-4xl">Build the house of your dreams on your own plot. With a construction loan, funds are disbursed in installments based on the stages of construction (foundation, roofing, finishing), ensuring proper utilization of funds.</p>
+                </div>
+            </section>
+
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-2">
+                        <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                             <h2 class="text-2xl font-bold mb-6">Loan Details</h2>
+                             <div class="grid grid-cols-2 md:grid-cols-2 gap-6 text-center">
+                                <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate (ROI)</p><p class="text-xl font-bold text-orange-700">8.75% p.a. onwards*</p></div>
+                                <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Processing Fee (PF)</p><p class="text-xl font-bold text-orange-700">Up to 0.5%*</p></div>
+                                <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-green-700">Up to 30 Years</p></div>
+                                <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Amount</p><p class="text-xl font-bold text-green-700">Up to 90% of Project Cost</p></div>
+                            </div>
+                            <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on applicant's profile.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg shadow-md">
+                            <h3 class="text-2xl font-bold mb-4">Required Documents</h3>
+                            <p class="text-gray-700">In addition to standard documents, you will need the plot ownership documents and an approved construction plan/map from the relevant authority.</p>
+                        </div>
+                    </div>
+                     <div class="space-y-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container">
+                            <!-- EMI Calculator will be injected here -->
+                        </div>
+                        <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center">
+                            <h3 class="text-2xl font-bold mb-3">Start Building Your Dream Home!</h3>
+                            <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply for Construction Loan</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Loan Detail Page: Renovation Loan -->
+        <div id="renovation-loan-page" class="page" data-parent="home-loan">
+             <section class="py-12 bg-white">
+                 <div class="container mx-auto px-6">
+                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Home Renovation Loan</h1>
+                    <p class="text-lg text-gray-600 max-w-4xl">Give your home a fresh new look. A home renovation loan can be used for repairs, painting, interior upgrades, flooring, or any other improvements to enhance your living space.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                 <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+                     <div class="lg:col-span-2">
+                        <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                             <h2 class="text-2xl font-bold mb-6">Loan Details</h2>
+                             <div class="grid grid-cols-2 gap-6 text-center">
+                                <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate (ROI)</p><p class="text-xl font-bold text-orange-700">9.50% p.a. onwards*</p></div>
+                                <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-green-700">Up to 15 Years</p></div>
+                            </div>
+                             <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on applicant's profile.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-lg shadow-md">
+                            <h3 class="text-2xl font-bold mb-4">Usage</h3>
+                            <p class="text-gray-700">Can be used for tiling, flooring, roofing, painting, electrical work, plumbing, and more. You will need to provide a renovation estimate from a contractor.</p>
+                        </div>
+                    </div>
+                     <div class="space-y-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container">
+                           <!-- EMI Calculator will be injected here -->
+                        </div>
+                        <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center">
+                            <h3 class="text-2xl font-bold mb-3">Upgrade Your Living Space!</h3>
+                            <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply for Renovation Loan</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Business Loan Category Page -->
+        <div id="business-loan-page" class="page" data-category="business-loan">
+             <section class="py-12 bg-white text-center">
+                <div class="container mx-auto px-6">
+                    <a href="#home" class="page-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Business Loan in Rajasthan - Easy Process</h1>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">From working capital to business expansion, we provide customized business loan solutions for entrepreneurs and companies.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl font-bold text-center mb-10">Types of Business Loans We Offer</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <a href="#working-capital-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Working Capital Loan</h3>
+                            <p class="text-gray-600">Manage your day-to-day business expenses, pay salaries, and manage inventory with ease.</p>
+                        </a>
+                        <a href="#term-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Term Loan</h3>
+                            <p class="text-gray-600">For long-term investments, business expansion, or purchasing new machinery and assets.</p>
+                        </a>
+                        <a href="#msme-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">MSME & Mudra Loan</h3>
+                            <p class="text-gray-600">Specialized loans for Micro, Small, and Medium Enterprises under government schemes.</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+         <!-- Working Capital Loan Detail Page -->
+         <div id="working-capital-loan-page" class="page" data-parent="business-loan">
+            <section class="py-12 bg-white">
+                 <div class="container mx-auto px-6">
+                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Working Capital Loan</h1>
+                    <p class="text-lg text-gray-600 max-w-4xl">Ensure smooth business operations with a working capital loan. This unsecured loan helps you manage cash flow gaps, purchase raw materials, and cover operational expenses without any collateral.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                         <div class="lg:col-span-2">
+                             <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                                <h2 class="text-2xl font-bold mb-6">Loan Details</h2>
+                                <div class="grid grid-cols-2 gap-6 text-center">
+                                    <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate (ROI)</p><p class="text-xl font-bold text-orange-700">16.75% p.a. onwards*</p></div>
+                                    <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Type</p><p class="text-xl font-bold text-orange-700">Unsecured</p></div>
+                                    <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-green-700">Up to 5 Years</p></div>
+                                    <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Amount</p><p class="text-xl font-bold text-green-700">Up to ₹50 Lakhs</p></div>
+                                </div>
+                                <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on business vintage and turnover.</p>
+                            </div>
+                         </div>
+                         <div class="space-y-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container">
+                                <!-- EMI Calculator form will be inserted here by JS -->
+                            </div>
+                            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center">
+                                <h3 class="text-2xl font-bold mb-3">Keep Your Business Running Smoothly!</h3>
+                                <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Personal Loan Category Page -->
+        <div id="personal-loan-page" class="page" data-category="personal-loan">
+             <section class="py-12 bg-white text-center">
+                <div class="container mx-auto px-6">
+                    <a href="#home" class="page-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Personal Loan in Rajasthan - Quick Approval</h1>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Get quick and easy personal loans for any purpose - whether it's a wedding, vacation, medical emergency, or any other personal need. No collateral required.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl font-bold text-center mb-10">Personal Loans For All Your Needs</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <a href="#wedding-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Wedding Loan</h3>
+                            <p class="text-gray-600">Finance the grand celebration of your dreams without any financial stress.</p>
+                        </a>
+                        <a href="#travel-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Travel Loan</h3>
+                            <p class="text-gray-600">Fund your dream vacation and explore the world. Pack your bags, we'll handle the finances.</p>
+                        </a>
+                        <a href="#medical-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Medical Emergency Loan</h3>
+                            <p class="text-gray-600">Get instant funds to handle unforeseen medical expenses for you or your family.</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Medical Loan Detail Page -->
+         <div id="medical-loan-page" class="page" data-parent="personal-loan">
+            <section class="py-12 bg-white">
+                 <div class="container mx-auto px-6">
+                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Personal Loan for Medical Emergency</h1>
+                    <p class="text-lg text-gray-600 max-w-4xl">Medical emergencies can be financially draining. Our personal loans provide quick access to funds for hospital bills, treatments, and other medical expenses without any delay.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                         <div class="lg:col-span-2">
+                             <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                                <h2 class="text-2xl font-bold mb-6">Loan Details</h2>
+                                <div class="grid grid-cols-2 gap-6 text-center">
+                                    <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate (ROI)</p><p class="text-xl font-bold text-orange-700">9.99% p.a. onwards*</p></div>
+                                    <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Processing Fee (PF)</p><p class="text-xl font-bold text-orange-700">Up to 2%*</p></div>
+                                    <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-green-700">Up to 5 Years</p></div>
+                                    <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Amount</p><p class="text-xl font-bold text-green-700">Up to ₹25 Lakhs</p></div>
+                                </div>
+                                <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on applicant's profile.</p>
+                            </div>
+                         </div>
+                         <div class="space-y-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container">
+                                <!-- EMI Calculator form will be inserted here by JS -->
+                            </div>
+                            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center">
+                                <h3 class="text-2xl font-bold mb-3">Get Funds for Medical Needs!</h3>
+                                <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Car Loan Category Page -->
+        <div id="car-loan-page" class="page" data-category="car-loan">
+             <section class="py-12 bg-white text-center">
+                <div class="container mx-auto px-6">
+                     <a href="#home" class="page-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Car Loan Solutions</h1>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Drive home your dream car with our easy and flexible car loan options. We offer competitive rates for both new and used cars.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl font-bold text-center mb-10">Our Car Loan Offerings</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <a href="#new-car-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
+                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">New Car Loan</h3>
+                            <p class="text-gray-600">Get up to 100% on-road funding for your brand new car from any authorized showroom.</p>
+                        </a>
+                        <a href="#used-car-loan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
+                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Used Car Loan</h3>
+                            <p class="text-gray-600">Finance your purchase of a pre-owned car with our attractive used car loan schemes.</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- New Car Loan Detail Page -->
+         <div id="new-car-loan-page" class="page" data-parent="car-loan">
+            <section class="py-12 bg-white">
+                 <div class="container mx-auto px-6">
+                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">New Car Loan</h1>
+                    <p class="text-lg text-gray-600 max-w-4xl">Owning a new car is now easier than ever. We provide hassle-free loans with quick approvals and attractive interest rates to get you on the road faster.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                         <div class="lg:col-span-2">
+                             <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                                <h2 class="text-2xl font-bold mb-6">Loan Details</h2>
+                                <div class="grid grid-cols-2 gap-6 text-center">
+                                    <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate (ROI)</p><p class="text-xl font-bold text-orange-700">9.00% p.a. onwards*</p></div>
+                                    <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Processing Fee (PF)</p><p class="text-xl font-bold text-orange-700">Up to 1.5%*</p></div>
+                                    <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-green-700">Up to 7 Years</p></div>
+                                    <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Amount</p><p class="text-xl font-bold text-green-700">Up to 100% On-Road Price</p></div>
+                                </div>
+                                <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. Rates depend on car model and applicant's profile.</p>
+                            </div>
+                         </div>
+                         <div class="space-y-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container">
+                                <!-- EMI Calculator form will be inserted here by JS -->
+                            </div>
+                            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center">
+                                <h3 class="text-2xl font-bold mb-3">Get Behind the Wheel Today!</h3>
+                                <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Loan Against Property (LAP) Category Page -->
+        <div id="lap-loan-page" class="page" data-category="lap-loan">
+             <section class="py-12 bg-white text-center">
+                <div class="container mx-auto px-6">
+                     <a href="#home" class="page-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Loan Against Property (LAP)</h1>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Unlock the hidden value of your residential or commercial property. Get a high-value loan for your business or personal needs at attractive interest rates.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl font-bold text-center mb-10">Use Loan Against Property For</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <a href="#lap-for-business-page" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Business Expansion</h3>
+                            <p class="text-gray-600">Fund your business expansion plans, purchase new machinery, or manage working capital.</p>
+                        </a>
+                        <a href="#lap-for-personal-needs-page" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Personal Needs</h3>
+                            <p class="text-gray-600">Finance your child's education, a wedding in the family, or any other major personal expense.</p>
+                        </a>
+                        <a href="#lap-balance-transfer-page" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">LAP Balance Transfer</h3>
+                            <p class="text-gray-600">Transfer your existing high-interest LAP to another bank to lower your EMIs.</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- LAP for Business Detail Page -->
+        <div id="lap-for-business-page" class="page" data-parent="lap-loan">
+            <section class="py-12 bg-white">
+                 <div class="container mx-auto px-6">
+                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">LAP for Business Expansion</h1>
+                    <p class="text-lg text-gray-600 max-w-4xl">Leverage your property's value to secure the capital needed for your business growth. It's an ideal solution for long-term funding with lower interest rates compared to unsecured business loans.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                         <div class="lg:col-span-2">
+                             <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                                <h2 class="text-2xl font-bold mb-6">Loan Details</h2>
+                                <div class="grid grid-cols-2 gap-6 text-center">
+                                    <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate (ROI)</p><p class="text-xl font-bold text-orange-700">9.50% p.a. onwards*</p></div>
+                                    <div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan to Value (LTV)</p><p class="text-xl font-bold text-orange-700">Up to 70%*</p></div>
+                                    <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-green-700">Up to 15 Years</p></div>
+                                    <div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Amount</p><p class="text-xl font-bold text-green-700">Up to ₹5 Crores</p></div>
+                                </div>
+                                <p class="text-xs text-center mt-4 text-gray-500">*T&C Apply. LTV depends on property type and valuation.</p>
+                            </div>
+                         </div>
+                         <div class="space-y-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container">
+                                <!-- EMI Calculator form will be inserted here by JS -->
+                            </div>
+                            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center">
+                                <h3 class="text-2xl font-bold mb-3">Fund Your Business Growth!</h3>
+                                <a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- Health Insurance Category Page -->
+        <div id="health-insurance-page" class="page" data-category="health-insurance">
+             <section class="py-12 bg-white text-center">
+                <div class="container mx-auto px-6">
+                    <a href="#home" class="page-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Health Insurance Plans</h1>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Protect your family's health and finances against rising medical costs. Choose from a wide range of health insurance plans tailored to your needs.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl font-bold text-center mb-10">Types of Health Insurance</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <a href="#family-floater-plan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Family Floater Plan</h3>
+                            <p class="text-gray-600">A single policy that covers your entire family. Cost-effective and convenient.</p>
+                        </a>
+                        <a href="#individual-plan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Individual Health Plan</h3>
+                            <p class="text-gray-600">Dedicated health coverage for a single individual, offering comprehensive benefits.</p>
+                        </a>
+                        <a href="#senior-citizen-plan" class="page-link block bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                            <h3 class="text-2xl font-semibold text-orange-600 mb-2">Senior Citizen Plan</h3>
+                            <p class="text-gray-600">Specially designed plans for individuals above 60 years, covering age-related health issues.</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Family Floater Plan Detail Page -->
+         <div id="family-floater-plan-page" class="page" data-parent="health-insurance">
+            <section class="py-12 bg-white">
+                 <div class="container mx-auto px-6">
+                    <a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Family Floater Health Plan</h1>
+                    <p class="text-lg text-gray-600 max-w-4xl">Secure your entire family's health under a single, affordable premium. The sum insured floats among all covered members, ensuring comprehensive protection for everyone.</p>
+                </div>
+            </section>
+            <section class="py-16 bg-gray-50">
+                <div class="container mx-auto px-6 grid lg:grid-cols-5 gap-12">
+                     <div class="lg:col-span-3 bg-white p-8 rounded-lg shadow-md">
+                        <h2 class="text-2xl font-bold mb-6">Key Features & Benefits</h2>
+                        <ul class="space-y-4">
+                            <li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Single Premium:</strong> One premium for the entire family, making it more affordable than individual plans.</span></li>
+                            <li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Shared Sum Insured:</strong> Any member can utilize the full sum insured during a medical emergency.</span></li>
+                            <li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Cashless Hospitalization:</strong> Access to a wide network of hospitals for cashless treatment.</span></li>
+                            <li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Tax Benefits:</strong> Save tax under Section 80D of the Income Tax Act.</span></li>
+                        </ul>
+                    </div>
+                     <div class="lg:col-span-2 bg-orange-600 text-white p-8 rounded-lg shadow-lg flex flex-col justify-center text-center">
+                        <h3 class="text-3xl font-bold mb-4">Protect Your Loved Ones</h3>
+                        <p class="text-orange-100 mb-6">Get a personalized quote and find the best health plan for your family's needs.</p>
+                        <a href="#contact" class="page-link w-full inline-block bg-white text-orange-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Get a Free Quote</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- About Us Page -->
+        <div id="about-page" class="page">
+            <section class="py-16 md:py-24 bg-white">
+                <div class="container mx-auto px-6">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 animate-on-scroll">Our Story: Your Trusted Financial Partner</h1>
+                            <p class="text-lg text-gray-600 leading-relaxed mb-4 animate-on-scroll">Shree Karni Kripa Associates was founded with a single mission: to simplify finance for the people of India. We noticed that a lack of proper information often led people to make incorrect financial decisions. Our goal is to make the process of getting loans and insurance simple, transparent, and beneficial for you.</p>
+                            <p class="text-lg text-gray-600 leading-relaxed animate-on-scroll">With over 15 years of experience, we have built a legacy of trust and expertise, helping thousands of families and businesses achieve their financial goals.</p>
+                        </div>
+                        <div class="animate-on-scroll">
+                             <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756626261/PHOTO-2025-08-31-13-08-02_2_szo0ga.jpg" alt="Shree Karni Kripa Associates Office" class="rounded-lg shadow-xl w-full">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-16 md:py-24 bg-gray-50">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll">Meet Our Founder</h2>
+                    <div class="flex justify-center animate-on-scroll">
+                        <div class="bg-white p-6 rounded-lg shadow-md text-center max-w-sm">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756626261/PHOTO-2025-08-31-13-08-02_hejop2.jpg" alt="Rajendera Singh - Founder" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-orange-200 object-cover">
+                            <h3 class="text-xl font-semibold">Rajendera Singh</h3>
+                            <p class="text-orange-600 font-medium">Founder & Chief Advisor</p>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mt-20 mb-12 animate-on-scroll">Meet Our Expert Team</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md text-center animate-on-scroll" style="transition-delay: 100ms;">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/PHOTO-2025-08-28-13-18-32_h8oozl.jpg" alt="Krishna Singh" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-orange-200 object-cover">
+                            <h3 class="text-xl font-semibold">Krishna Singh</h3>
+                            <p class="text-orange-600 font-medium">Marketing Manager & Senior Team Leader</p>
+                        </div>
+                         <div class="bg-white p-6 rounded-lg shadow-md text-center animate-on-scroll" style="transition-delay: 200ms;">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756628063/PHOTO-2025-08-28-13-05-09_oqhbv6.jpg" alt="Sona Mulani" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-orange-200 object-cover">
+                            <h3 class="text-xl font-semibold">Sona Mulani</h3>
+                            <p class="text-orange-600 font-medium">Branch Manager</p>
+                        </div>
+                         <div class="bg-white p-6 rounded-lg shadow-md text-center animate-on-scroll" style="transition-delay: 300ms;">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/c_thumb,g_face,h_200,w_200/PHOTO-2025-08-28-13-00-15_gb2ei3.jpg" alt="Mohammad Sharif" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-orange-200 object-cover">
+                            <h3 class="text-xl font-semibold">Mohammad Sharif</h3>
+                            <p class="text-orange-600 font-medium">Operation Head</p>
+                        </div>
+                         <div class="bg-white p-6 rounded-lg shadow-md text-center animate-on-scroll" style="transition-delay: 400ms;">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/PHOTO-2025-08-28-13-18-11_b5qpie.jpg" alt="Mannu Choudhary" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-orange-200 object-cover">
+                            <h3 class="text-xl font-semibold">Mannu Choudhary</h3>
+                            <p class="text-orange-600 font-medium">Team Leader</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Us Page -->
+        <div id="contact-page" class="page">
+            <section class="py-16 md:py-20 bg-white">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h1 class="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">We are always ready to help. Reach out to us via phone, visit our office, or leave a message below.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                        <!-- Left Column: Contact Details & Map -->
+                        <div class="space-y-8">
+                            <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                                <h3 class="font-bold text-xl mb-4">Contact Information</h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <strong class="text-gray-800">📞 Contact Numbers:</strong>
+                                        <p><a href="tel:9214104963" class="text-orange-600 hover:underline">9214104963</a> | <a href="tel:9352358494" class="text-orange-600 hover:underline">93523 58494</a></p>
+                                        <p><a href="tel:7850836707" class="text-orange-600 hover:underline">78508 36707</a> | <a href="tel:8118838772" class="text-orange-600 hover:underline">81188 38772</a></p>
+                                    </div>
+                                     <p><strong class="text-gray-800">📧 Email ID:</strong> <a href="mailto:insurancesolution2018@gmail.com" class="text-orange-600 hover:underline">insurancesolution2018@gmail.com</a></p>
+                                    <p><strong class="text-gray-800">📍 Our Office:</strong><br><span class="text-gray-700">Second Floor, Bhansali Property, Kayad Rd, front of Chodhari Market, Ghugra, Ajmer, Ghooghra, Rajasthan 305023</span></p>
+                                    <p><strong class="text-gray-800">⏰ Office Timing:</strong><br><span class="text-gray-700">Morning 9:30 AM to Evening 6:30 PM</span></p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                                <h3 class="font-bold text-xl mb-4">Follow Us</h3>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="text-gray-500 hover:text-orange-600"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.582 0 0 .582 0 1.295v21.41C0 23.418.582 24 1.325 24H12.82v-9.29H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.742 0 1.325-.582 1.325-1.295V1.295C24 .582 23.418 0 22.675 0z"/></svg></a>
+                                    <a href="#" class="text-gray-500 hover:text-sky-500"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.223.085a4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+                                    <a href="#" class="text-gray-500 hover:text-pink-600"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98C23.986 15.667 24 15.259 24 12s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Contact Form -->
+                        <div class="bg-white p-8 rounded-lg shadow-md">
+                            <h3 class="text-2xl font-bold mb-2">Request a Call Back</h3>
+                            <p class="text-gray-600 mb-6">Fill out the form below and our expert will contact you shortly.</p>
+                            <form id="contact-form" class="space-y-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="name" class="block text-gray-700 font-medium mb-1">Your Name*</label>
+                                        <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                                    </div>
+                                    <div>
+                                        <label for="phone" class="block text-gray-700 font-medium mb-1">WhatsApp Number*</label>
+                                        <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="city" class="block text-gray-700 font-medium mb-1">City*</label>
+                                    <input type="text" id="city" name="city" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                                </div>
+                                <div>
+                                    <label for="service" class="block text-gray-700 font-medium mb-1">Service Needed*</label>
+                                    <select id="service" name="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                        <option>Home Loan</option>
+                                        <option>Personal Loan</option>
+                                        <option>Business Loan</option>
+                                        <option>Loan Against Property</option>
+                                        <option>Car Loan</option>
+                                        <option>Health Insurance</option>
+                                        <option>Life Insurance</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="best-time" class="block text-gray-700 font-medium mb-1">Best Time to Call</label>
+                                    <select id="best-time" name="best-time" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                        <option>Anytime (9 AM - 6 PM)</option>
+                                        <option>Morning (9 AM - 12 PM)</option>
+                                        <option>Afternoon (12 PM - 3 PM)</option>
+                                        <option>Evening (3 PM - 6 PM)</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="w-full bg-orange-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-600 transition-colors flex items-center justify-center space-x-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V10a2 2 0 012-2h8z" /></svg>
+                                    <span>Send Enquiry on WhatsApp</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Map Section -->
+                    <div class="mt-12">
+                         <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.539352758113!2d74.6713745749318!3d26.24424388907844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396b9b32c8646199%3A0xe9621d9f8a37785!2sBhansali%20Property!5e0!3m2!1sen!2sin!4v1725102035252!5m2!1sen!2sin" 
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-lg shadow-md">
+                        </iframe>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- FULLY BUILT PAGES -->
+         <div id="life-insurance-page" class="page" data-parent="health-insurance"><section class="py-12 bg-white"><div class="container mx-auto px-6"><a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a><h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 text-center">Life Insurance Plans</h1><p class="text-lg text-gray-600 max-w-4xl mx-auto text-center">Secure your family's financial future and achieve long-term goals with our comprehensive life insurance plans. Protect your loved ones from uncertainties and build a legacy of security.</p></div></section><section class="py-16 bg-gray-50"><div class="container mx-auto px-6 grid lg:grid-cols-5 gap-12"><div class="lg:col-span-3 bg-white p-8 rounded-lg shadow-md"><h2 class="text-2xl font-bold mb-6">Key Features & Benefits</h2><ul class="space-y-4"> <li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Financial Security:</strong> Provides a lump sum amount to your family in your absence to cover their living expenses and future needs.</span></li><li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Wealth Creation:</strong> Plans like ULIPs and Endowment policies help you invest and grow your money over time.</span></li><li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Tax Benefits:</strong> Save tax on premiums paid under Section 80C, and get tax-free maturity benefits under Section 10(10D).</span></li></ul></div><div class="lg:col-span-2 bg-orange-600 text-white p-8 rounded-lg shadow-lg flex flex-col justify-center text-center"><h3 class="text-3xl font-bold mb-4">Secure Your Family's Future</h3><p class="text-orange-100 mb-6">Let's find the perfect life insurance plan that fits your life goals and budget.</p><a href="#contact" class="page-link w-full inline-block bg-white text-orange-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Get a Free Consultation</a></div></div></section></div>
+         <div id="vehicle-insurance-page" class="page" data-parent="health-insurance"><section class="py-12 bg-white"><div class="container mx-auto px-6"><a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a><h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 text-center">Vehicle Insurance Plans</h1><p class="text-lg text-gray-600 max-w-4xl mx-auto text-center">Protect your car or two-wheeler from accidents, theft, and other damages. A vehicle insurance policy is mandatory and essential for your peace of mind on the road.</p></div></section><section class="py-16 bg-gray-50"><div class="container mx-auto px-6 grid lg:grid-cols-5 gap-12"><div class="lg:col-span-3 bg-white p-8 rounded-lg shadow-md"><h2 class="text-2xl font-bold mb-6">Key Features & Benefits</h2><ul class="space-y-4"><li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Comprehensive Cover:</strong> Protection against damage to your own vehicle and third-party liabilities in a single policy.</span></li><li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Cashless Claims:</strong> Get your vehicle repaired at a wide network of partner garages across India without paying cash.</span></li><li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">No Claim Bonus (NCB):</strong> Get rewarded with a discount on your premium for every claim-free year.</span></li></ul></div><div class="lg:col-span-2 bg-orange-600 text-white p-8 rounded-lg shadow-lg flex flex-col justify-center text-center"><h3 class="text-3xl font-bold mb-4">Drive with Confidence</h3><p class="text-orange-100 mb-6">Get the best insurance for your vehicle at an affordable price.</p><a href="#contact" class="page-link w-full inline-block bg-white text-orange-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">Get a Free Quote</a></div></div></section></div>
+         <div id="used-car-loan-page" class="page" data-parent="car-loan"><section class="py-12 bg-white"><div class="container mx-auto px-6"><a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a><h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Used Car Loan</h1><p class="text-lg text-gray-600 max-w-4xl">Get the best financing options for pre-owned cars. Our used car loans come with attractive interest rates, flexible tenures, and quick processing.</p></div></section><section class="py-16 bg-gray-50"><div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12"><div class="lg:col-span-2"><div class="bg-white p-8 rounded-lg shadow-md mb-8"><h2 class="text-2xl font-bold mb-6">Loan Details</h2><div class="grid grid-cols-2 gap-6 text-center"><div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate</p><p class="text-xl font-bold text-orange-700">13.50% p.a. onwards*</p></div><div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Amount</p><p class="text-xl font-bold text-orange-700">Up to 200% of car's value*</p></div><div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-green-700">Up to 5 Years</p></div></div><p class="text-xs text-center mt-4 text-gray-500">*T&C Apply.</p></div></div><div class="space-y-8"><div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container"></div><div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center"><h3 class="text-2xl font-bold mb-3">Own a Pre-Loved Car!</h3><a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200">Apply Now</a></div></div></div></section></div>
+         <div id="individual-plan-page" class="page" data-parent="health-insurance"><section class="py-12 bg-white"><div class="container mx-auto px-6"><a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a><h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Individual Health Plan</h1><p class="text-lg text-gray-600 max-w-4xl">Get comprehensive health coverage for yourself with an individual health plan. It covers hospitalization, pre & post-hospitalization expenses, and more.</p></div></section><section class="py-16 bg-gray-50"><div class="container mx-auto px-6 grid lg:grid-cols-5 gap-12"><div class="lg:col-span-3 bg-white p-8 rounded-lg shadow-md"><h2 class="text-2xl font-bold mb-6">Key Features & Benefits</h2><ul class="space-y-4"><li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Dedicated Coverage:</strong> The entire sum insured is dedicated to one person, ensuring maximum availability.</span></li><li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Comprehensive Benefits:</strong> Often includes benefits like maternity cover, critical illness cover, and OPD expenses.</span></li><li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Tax Savings:</strong> Avail tax benefits on the premium paid under Section 80D.</span></li></ul></div><div class="lg:col-span-2 bg-orange-600 text-white p-8 rounded-lg shadow-lg flex flex-col justify-center text-center"><h3 class="text-3xl font-bold mb-4">Prioritize Your Health</h3><p class="text-orange-100 mb-6">Get a quote for a plan that puts your health first.</p><a href="#contact" class="page-link w-full inline-block bg-white text-orange-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200">Get a Free Quote</a></div></div></section></div>
+         <div id="senior-citizen-plan-page" class="page" data-parent="health-insurance"><section class="py-12 bg-white"><div class="container mx-auto px-6"><a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a><h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Senior Citizen Health Plan</h1><p class="text-lg text-gray-600 max-w-4xl">Health insurance plans specially designed for individuals above the age of 60, offering coverage for age-related ailments and critical illnesses.</p></div></section><section class="py-16 bg-gray-50"><div class="container mx-auto px-6 grid lg:grid-cols-5 gap-12"><div class="lg:col-span-3 bg-white p-8 rounded-lg shadow-md"><h2 class="text-2xl font-bold mb-6">Key Features & Benefits</h2><ul class="space-y-4"><li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Higher Sum Insured:</strong> Provides adequate coverage for higher medical expenses in old age.</span></li><li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Covers Pre-existing Diseases:</strong> Covers pre-existing conditions after a shorter waiting period.</span></li><li class="flex items-start"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span><strong class="font-semibold">Annual Health Check-ups:</strong> Includes free annual preventive health check-ups.</span></li></ul></div><div class="lg:col-span-2 bg-orange-600 text-white p-8 rounded-lg shadow-lg flex flex-col justify-center text-center"><h3 class="text-3xl font-bold mb-4">Health is Wealth</h3><p class="text-orange-100 mb-6">Ensure a healthy and stress-free life for your elders.</p><a href="#contact" class="page-link w-full inline-block bg-white text-orange-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200">Get a Free Quote</a></div></div></section></div>
+         <div id="term-loan-page" class="page" data-parent="business-loan"><section class="py-12 bg-white"><div class="container mx-auto px-6"><a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a><h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Term Loan for Business</h1><p class="text-lg text-gray-600 max-w-4xl">Secure long-term funding for major business investments like machinery purchase, infrastructure expansion, or technology upgrades with our flexible term loans.</p></div></section><section class="py-16 bg-gray-50"><div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12"><div class="lg:col-span-2"><div class="bg-white p-8 rounded-lg shadow-md mb-8"><h2 class="text-2xl font-bold mb-6">Loan Details</h2><div class="grid grid-cols-2 gap-6 text-center"><div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate</p><p class="text-xl font-bold text-orange-700">12.75% p.a. onwards*</p></div><div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Type</p><p class="text-xl font-bold text-orange-700">Secured</p></div><div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-green-700">Up to 10 Years</p></div><div class="bg-green-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Amount</p><p class="text-xl font-bold text-green-700">Up to ₹25 Crores</p></div></div><p class="text-xs text-center mt-4 text-gray-500">*T&C Apply.</p></div></div><div class="space-y-8"><div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container"></div><div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center"><h3 class="text-2xl font-bold mb-3">Expand Your Business!</h3><a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200">Apply Now</a></div></div></div></section></div>
+         <div id="msme-loan-page" class="page" data-parent="business-loan"><section class="py-12 bg-white"><div class="container mx-auto px-6"><a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a><h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">MSME & Mudra Loan</h1><p class="text-lg text-gray-600 max-w-4xl">Empower your small business with government-backed loan schemes like MSME and Mudra loans, designed to support micro, small, and medium enterprises.</p></div></section><section class="py-16 bg-gray-50"><div class="container mx-auto px-6"><div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto"><h2 class="text-2xl font-bold mb-6">Key Information</h2><p class="text-gray-700 mb-4">Mudra loans under the Pradhan Mantri Mudra Yojana (PMMY) are offered by various banks like SBI, Bank of Baroda, etc. The interest rates are set as per RBI guidelines and vary. We help you navigate the process and choose the best bank for your needs.</p><p class="font-semibold">Loan Categories:</p><ul class="list-disc list-inside ml-4 mt-2"><li>Shishu: Up to ₹50,000</li><li>Kishor: ₹50,001 to ₹5 Lakh</li><li>Tarun: ₹5 Lakh to ₹10 Lakh</li></ul></div></div></section></div>
+         <div id="wedding-loan-page" class="page" data-parent="personal-loan"><section class="py-12 bg-white"><div class="container mx-auto px-6"><a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a><h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Wedding Loan</h1><p class="text-lg text-gray-600 max-w-4xl">Plan the wedding of your dreams without any financial worries. Our personal loans for weddings cover all expenses, from venue booking to jewelry shopping.</p></div></section><section class="py-16 bg-gray-50"><div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12"><div class="lg:col-span-2"><div class="bg-white p-8 rounded-lg shadow-md mb-8"><h2 class="text-2xl font-bold mb-6">Loan Details</h2><div class="grid grid-cols-2 gap-6 text-center"><div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate</p><p class="text-xl font-bold text-orange-700">9.99% p.a. onwards*</p></div><div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Amount</p><p class="text-xl font-bold text-orange-700">Up to ₹40 Lakhs</p></div></div><p class="text-xs text-center mt-4 text-gray-500">*T&C Apply.</p></div></div><div class="space-y-8"><div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container"></div><div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center"><h3 class="text-2xl font-bold mb-3">Celebrate Grandly!</h3><a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200">Apply Now</a></div></div></div></section></div>
+         <div id="travel-loan-page" class="page" data-parent="personal-loan"><section class="py-12 bg-white"><div class="container mx-auto px-6"><a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a><h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Travel Loan</h1><p class="text-lg text-gray-600 max-w-4xl">Don't postpone your travel plans. Fund your dream vacation, be it a domestic trip or an international tour, with our easy and instant travel loans.</p></div></section><section class="py-16 bg-gray-50"><div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12"><div class="lg:col-span-2"><div class="bg-white p-8 rounded-lg shadow-md mb-8"><h2 class="text-2xl font-bold mb-6">Loan Details</h2><div class="grid grid-cols-2 gap-6 text-center"><div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate</p><p class="text-xl font-bold text-orange-700">9.99% p.a. onwards*</p></div><div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Amount</p><p class="text-xl font-bold text-orange-700">Up to ₹25 Lakhs</p></div></div><p class="text-xs text-center mt-4 text-gray-500">*T&C Apply.</p></div></div><div class="space-y-8"><div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container"></div><div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center"><h3 class="text-2xl font-bold mb-3">Explore the World!</h3><a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200">Apply Now</a></div></div></div></section></div>
+         <div id="lap-for-personal-needs-page" class="page" data-parent="lap-loan"><section class="py-12 bg-white"><div class="container mx-auto px-6"><a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a><h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">LAP for Personal Needs</h1><p class="text-lg text-gray-600 max-w-4xl">Utilize your property to fund significant personal expenses like your child's higher education abroad, a family wedding, or any other major life event.</p></div></section><section class="py-16 bg-gray-50"><div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12"><div class="lg:col-span-2"><div class="bg-white p-8 rounded-lg shadow-md mb-8"><h2 class="text-2xl font-bold mb-6">Loan Details</h2><div class="grid grid-cols-2 gap-6 text-center"><div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Interest Rate</p><p class="text-xl font-bold text-orange-700">9.50% p.a. onwards*</p></div><div class="bg-orange-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Loan Tenure</p><p class="text-xl font-bold text-orange-700">Up to 15 Years</p></div></div><p class="text-xs text-center mt-4 text-gray-500">*T&C Apply.</p></div></div><div class="space-y-8"><div class="bg-white p-6 rounded-lg shadow-md emi-calculator-container"></div><div class="bg-green-500 text-white p-6 rounded-lg shadow-lg text-center"><h3 class="text-2xl font-bold mb-3">Fulfill Your Dreams!</h3><a href="#contact" class="page-link w-full inline-block bg-white text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200">Apply Now</a></div></div></div></section></div>
+         <div id="lap-balance-transfer-page" class="page" data-parent="lap-loan"><section class="py-12 bg-white"><div class="container mx-auto px-6"><a href="#" class="back-link text-orange-600 hover:underline mb-6 inline-block">&larr; Back</a><h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">LAP Balance Transfer</h1><p class="text-lg text-gray-600 max-w-4xl">Reduce your financial burden by transferring your existing high-interest Loan Against Property to one of our partner banks offering lower rates. Save on your EMIs and improve your cash flow.</p></div></section><section class="py-16 bg-gray-50"><div class="container mx-auto px-6"><div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto"><h2 class="text-2xl font-bold mb-6">Benefits of Balance Transfer</h2><ul class="list-disc list-inside ml-4 space-y-2"><li>Lower Interest Rates leading to reduced EMIs.</li><li>Option to get a Top-up Loan on your existing loan amount.</li><li>Opportunity to switch to a lender with better service and terms.</li></ul><div class="mt-8 text-center"><a href="#contact" class="page-link inline-block bg-green-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-600">Enquire Now to Save Money</a></div></div></div></section></div>
+
+    </main>
+
+    <!-- AI Chat Widget -->
+    <div id="ai-chat-widget" class="fixed bottom-5 right-5 z-[1000]">
+        <div id="proactive-bubble" class="proactive-bubble">
+            Jai Mata Ji Sa! Main aapki sahayta kaise kar sakta hoon?
+        </div>
+        <!-- Chat Bubble Button -->
+        <button id="chat-toggle-button" class="bg-orange-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-orange-600 transition-transform hover:scale-110">
+            <img id="chat-icon-open" src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="Chat with Maru-Mitra" class="w-full h-full rounded-full object-cover">
+            <svg id="chat-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+        <!-- Chat Window -->
+        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 md:w-96 bg-white rounded-lg shadow-2xl flex flex-col" style="height: 60vh;">
+            <!-- Header -->
+            <div class="bg-orange-500 text-white p-4 rounded-t-lg flex items-center space-x-3">
+                <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="मारू-मित्र AI" class="w-12 h-12 rounded-full border-2 border-white object-cover">
+                <div>
+                    <div class="font-bold text-lg">मारू-मित्र ✨</div>
+                    <div class="text-xs text-orange-100">Online</div>
+                </div>
+            </div>
+            <!-- Messages -->
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto">
+                <!-- Messages will be added here -->
+            </div>
+            <!-- Input -->
+            <div class="p-4 border-t border-gray-200 bg-white">
+                <form id="chat-form" class="flex items-center space-x-2">
+                    <input type="text" id="chat-input" placeholder="Yahan poochhein..." class="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500">
+                    <button type="submit" class="bg-orange-500 text-white rounded-full p-2 hover:bg-orange-600 flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
 
-    <div class="flex">
-      <div style="flex:1">
-        <div class="card" id="formCard">
-          <div class="steps">
-            <div class="step">1. Basic</div>
-            <div class="step">2. Income</div>
-            <div class="step">3. Docs</div>
-            <div class="step">4. Review</div>
-          </div>
 
-          <!-- STEP 1 -->
-          <div id="step1">
-            <label>Full Name</label>
-            <input id="name" type="text" placeholder="जैसे: मोहित कुमार" />
-
-            <label>Mobile Number</label>
-            <input id="phone" type="tel" placeholder="10-digit mobile number" />
-
-            <label>City</label>
-            <input id="city" type="text" placeholder="Ajmer" />
-
-            <label>Loan Category</label>
-            <select id="loan_category">
-              <option value="Home Loan">Home Loan</option>
-              <option value="Personal Loan">Personal Loan</option>
-              <option value="Business Loan">Business Loan</option>
-              <option value="Car Loan">Car Loan</option>
-              <option value="Loan Against Property">Loan Against Property</option>
-              <option value="Loan on Plot">Loan on Plot</option>
-              <option value="Insurance">Insurance</option>
-            </select>
-
-            <label>Loan Type (Sub)</label>
-            <input id="loan_type" type="text" placeholder="जैसे: Home Purchase Loan" />
-
-            <label>Desired Loan Amount (₹)</label>
-            <input id="loan_amount" type="number" placeholder="3000000" />
-
-            <div style="margin-top:12px;text-align:right">
-              <button class="btn" onclick="goStep(2)">Next →</button>
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-1">
+                     <a href="#home" class="flex items-center space-x-2 mb-4 page-link">
+                         <img src="https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png" alt="Shree Karni Kripa Associates" class="h-14 w-auto">
+                     </a>
+                    <p class="text-gray-400">Your trusted partner for every financial need.</p>
+                     <div class="flex space-x-4 mt-4">
+                        <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.582 0 0 .582 0 1.295v21.41C0 23.418.582 24 1.325 24H12.82v-9.29H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.742 0 1.325-.582 1.325-1.295V1.295C24 .582 23.418 0 22.675 0z"/></svg></a>
+                        <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.223.085a4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+                        <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98C23.986 15.667 24 15.259 24 12s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-white page-link">Home</a></li>
+                        <li><a href="#about" class="hover:text-white page-link">About Us</a></li>
+                        <li><a href="https://karni-kripa.blogspot.com/" target="_blank" rel="noopener noreferrer" class="hover:text-white">Blog</a></li>
+                        <li><a href="#contact" class="hover:text-white page-link">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Our Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home-loan" class="hover:text-white page-link">Home Loan</a></li>
+                        <li><a href="#business-loan" class="hover:text-white page-link">Business Loan</a></li>
+                        <li><a href="#personal-loan" class="hover:text-white page-link">Personal Loan</a></li>
+                        <li><a href="#lap-loan" class="hover:text-white page-link">Loan Against Property</a></li>
+                        <li><a href="#health-insurance" class="hover:text-white page-link">Health Insurance</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="font-semibold text-lg mb-4">Contact Info</h4>
+                    <ul class="space-y-4 text-gray-400">
+                         <li class="flex items-start">
+                             <span class="mr-3 mt-1 flex-shrink-0">📍</span> 
+                             <span>Second Floor, Bhansali Property, Kayad Rd, front of Chodhari Market, Ghugra, Ajmer, Ghooghra, Rajasthan 305023</span>
+                         </li>
+                        <li class="flex items-start">
+                            <span class="mr-3 mt-1 flex-shrink-0">📞</span> 
+                            <div>
+                                <a href="tel:9214104963" class="hover:text-white block">9214104963</a>
+                                <a href="tel:9352358494" class="hover:text-white block">9352358494</a>
+                                <a href="tel:8118838772" class="hover:text-white block">8118838772</a>
+                                <a href="tel:7850836707" class="hover:text-white block">7850836707</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3 mt-1 flex-shrink-0">📧</span> 
+                            <a href="mailto:insurancesolution2018@gmail.com" class="hover:text-white break-all">insurancesolution2018@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </div>
-
-          <!-- STEP 2 -->
-          <div id="step2" class="hidden">
-            <label>Applicant Type</label>
-            <select id="applicant_type">
-              <option value="Salaried">Salaried</option>
-              <option value="Self-Employed">Self-Employed</option>
-            </select>
-
-            <div class="row" style="margin-top:8px">
-              <div class="col">
-                <label>Monthly Income (approx)</label>
-                <input id="income" type="number" placeholder="25000" />
-              </div>
-              <div class="col">
-                <label>Preferred Tenure (years)</label>
-                <input id="tenure" type="number" placeholder="20" />
-              </div>
-            </div>
-
-            <label>Estimated EMI (use calculator)</label>
-            <div style="display:flex;gap:8px;margin-top:8px">
-              <input id="emi_display" readonly type="text" placeholder="EMI will show here" />
-              <button class="btn secondary" onclick="openEmiModal()">Open EMI Calculator</button>
-            </div>
-
-            <div style="margin-top:12px;text-align:right">
-              <button class="btn secondary" onclick="goStep(1)">← Back</button>
-              <button class="btn" onclick="goStep(3)">Next →</button>
-            </div>
-          </div>
-
-          <!-- STEP 3 -->
-          <div id="step3" class="hidden">
-            <label>Documents (quick note)</label>
-            <textarea id="documents_note" placeholder="Aadhaar, PAN, Salary slips (3 months) / ITR (2 years), Bank statements (6 months)" rows="4"></textarea>
-
-            <p class="small">ध्यान: आप फ़ाइल attach करना चाहते हैं तो submit के बाद WhatsApp में attach कर सकते हैं।</p>
-
-            <div style="margin-top:12px;text-align:right">
-              <button class="btn secondary" onclick="goStep(2)">← Back</button>
-              <button class="btn" onclick="goStep(4)">Next →</button>
-            </div>
-          </div>
-
-          <!-- STEP 4 (REVIEW) -->
-          <div id="step4" class="hidden">
-            <h2>Review & Send</h2>
-            <pre id="preview" style="white-space:pre-wrap"></pre>
-
-            <div class="consent">
-              <input id="consent" type="checkbox" />
-              <label class="small">मैं सहमत हूँ कि मेरी जानकारी SKF Ajmer को WhatsApp पर भेजी जाए और संपर्क कर लिया जाए।</label>
-            </div>
-
-            <div style="margin-top:12px;display:flex;gap:8px">
-              <button class="btn secondary" onclick="goStep(3)">← Back</button>
-              <button class="btn" onclick="sendToWhatsApp()">Send via WhatsApp</button>
-            </div>
-          </div>
         </div>
-      </div>
-
-      <!-- RIGHT PANEL (Sticky) -->
-      <div class="right-panel">
-        <div class="card sticky-apply">
-          <h2>Quick Apply</h2>
-          <p class="small">Phone: <strong>+91 9214104963</strong></p>
-          <p class="small">Apply quickly and our expert will contact you on WhatsApp.</p>
-          <button class="whatsapp-btn" onclick="copyAndOpenWhatsApp()">Apply on WhatsApp</button>
-          <hr style="margin:12px 0" />
-          <h3 class="small">EMI Calculator</h3>
-          <div style="display:flex;gap:8px">
-            <input id="calc_amount" type="number" placeholder="Loan ₹" />
-            <input id="calc_rate" type="number" placeholder="% p.a" />
-            <input id="calc_years" type="number" placeholder="Years" />
-          </div>
-          <div style="margin-top:8px;display:flex;gap:8px">
-            <button class="btn secondary" onclick="calcEMIInline()">Calculate</button>
-            <div id="calc_result" class="small" style="align-self:center"></div>
-          </div>
+        <div class="bg-gray-900 py-4">
+            <div class="container mx-auto px-6 text-center text-sm text-gray-500">
+                © 2025 Shree Karni Kripa Associates. All Rights Reserved.
+            </div>
         </div>
+    </footer>
 
-        <div class="card">
-          <h3 class="small">Why Apply via WhatsApp?</h3>
-          <ul class="small">
-            <li>तेज़ उत्तर — Direct message to our team</li>
-            <li>Documents attach easily in chat</li>
-            <li>No long forms — simple & fast</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const pages = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pageLinks = document.querySelectorAll('.page-link');
+        const header = document.getElementById('header');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const contactForm = document.getElementById('contact-form');
+        
+        // --- AI Chat Widget Elements ---
+        const chatToggleButton = document.getElementById('chat-toggle-button');
+        const chatWindow = document.getElementById('chat-window');
+        const chatIconOpen = document.getElementById('chat-icon-open');
+        const chatIconClose = document.getElementById('chat-icon-close');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const proactiveBubble = document.getElementById('proactive-bubble');
+        let conversationHistory = [];
+        let chatState = {
+            awaiting: null, 
+            form_data: {}
+        };
 
-  </div>
 
-<script>
-const SKF_NUMBER = "+919214104963"; // change if needed (include country code)
-function goStep(n){
-  for(let i=1;i<=4;i++){ document.getElementById('step'+i).classList.add('hidden') }
-  document.getElementById('step'+n).classList.remove('hidden');
-  if(n===4) populatePreview();
-}
-function openEmiModal(){ // quick small calc: use current values
-  const P = Number(document.getElementById('loan_amount').value)||0;
-  const rA = Number(document.getElementById('tenure').value)||0;
-  if(!P || !rA){ alert('कृपया Loan amount और Tenure डालें (Step 1 & 2).'); return; }
-  const rate = 9; // default example
-  const res = calculateEMI(P, rate, rA);
-  document.getElementById('emi_display').value = '₹'+res.emi + ' /month @'+rate+'%';
-}
-function populatePreview(){
-  const data = collectForm();
-  const ts = new Date().toLocaleString('en-IN');
-  const text = [
-    `*New Lead — SKF Ajmer*`,
-    `Timestamp: ${ts}`,
-    `Name: ${data.name}`,
-    `Mobile: ${data.phone}`,
-    `City: ${data.city}`,
-    `Loan Category: ${data.loan_category}`,
-    `Loan Type: ${data.loan_type}`,
-    `Loan Amount: ₹${data.loan_amount}`,
-    `Applicant Type: ${data.applicant_type}`,
-    `Monthly Income: ₹${data.income}`,
-    `Tenure (yrs): ${data.tenure}`,
-    `Documents: ${data.documents_note}`,
-    `Ref: Website (WhatsApp only)`,
-  ].join('\\n');
-  document.getElementById('preview').innerText = text;
-}
-function collectForm(){
-  return {
-    name: document.getElementById('name').value.trim(),
-    phone: document.getElementById('phone').value.trim(),
-    city: document.getElementById('city').value.trim(),
-    loan_category: document.getElementById('loan_category').value,
-    loan_type: document.getElementById('loan_type').value.trim(),
-    loan_amount: document.getElementById('loan_amount').value,
-    applicant_type: document.getElementById('applicant_type').value,
-    income: document.getElementById('income').value,
-    tenure: document.getElementById('tenure').value,
-    documents_note: document.getElementById('documents_note').value.trim(),
-    timestamp: new Date().toISOString()
-  }
-}
-function sendToWhatsApp(){
-  if(!document.getElementById('consent').checked){ alert('कृपया consent agree करें।'); return; }
-  const d = collectForm();
-  if(!d.name || !d.phone){ alert('कृपया Name और Mobile number भरें।'); goStep(1); return; }
-  const msg = [
-    `*New Lead — SKF Ajmer*`,
-    `Timestamp: ${new Date().toLocaleString('en-IN')}`,
-    `Name: ${d.name}`,
-    `Mobile: ${d.phone}`,
-    `City: ${d.city}`,
-    `Loan Category: ${d.loan_category}`,
-    `Loan Type: ${d.loan_type}`,
-    `Loan Amount: ₹${d.loan_amount}`,
-    `Applicant Type: ${d.applicant_type}`,
-    `Monthly Income: ₹${d.income}`,
-    `Tenure (yrs): ${d.tenure}`,
-    `Documents: ${d.documents_note}`,
-    `Source: Website (WhatsApp only)`
-  ].join('\\n');
-  openWhatsApp(msg);
-}
-function openWhatsApp(message){
-  const phone = SKF_NUMBER.replace(/\D/g,''); // digits only
-  const encoded = encodeURIComponent(message);
-  const url = `https://wa.me/${phone}?text=${encoded}`;
-  window.open(url,'_blank');
-}
+        const emiCalculatorHTML = `
+            <h3 class="text-2xl font-bold mb-4 text-center">EMI Calculator</h3>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Loan Amount (₹)</label>
+                    <input type="number" class="loanAmount w-full mt-1 p-2 border rounded-md" value="2500000">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Interest Rate (%)</label>
+                    <input type="number" step="0.01" class="interestRate w-full mt-1 p-2 border rounded-md" value="8.5">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Loan Tenure (Years)</label>
+                    <input type="number" class="loanTenure w-full mt-1 p-2 border rounded-md" value="20">
+                </div>
+            </div>
+            <div class="mt-6 text-center bg-orange-50 p-4 rounded-lg">
+                <p class="text-gray-600">Monthly EMI</p>
+                <p class="emiResult text-2xl font-bold text-orange-700">₹0</p>
+            </div>
+             <button class="calculateBtn w-full mt-4 bg-orange-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-600">Calculate</button>
+             <button class="explain-emi-btn w-full mt-2 bg-slate-200 text-slate-700 font-bold py-2 px-4 rounded-lg hover:bg-slate-300 flex items-center justify-center">
+                 ✨ EMI Ko Saral Bhasha Mein Samjhein
+             </button>
+             <div class="emi-explanation-result hidden"></div>
+        `;
 
-// QUICK BUTTON: copy and open blank WA
-function copyAndOpenWhatsApp(){
-  const msg = `Hello Shree Karni Kripa Associates, I want a loan. Please contact me. - [Visitor]`;
-  openWhatsApp(msg);
-}
+        function showPage(pageId) {
+            pages.forEach(page => page.classList.remove('active'));
+            let targetPage = document.getElementById(pageId + '-page');
 
-/* EMI Calculator */
-function calculateEMI(principal, annualRatePercent, years) {
-  const r = annualRatePercent / 12 / 100;
-  const n = years * 12;
-  if(n===0 || r===0) {
-    const emi = Math.round(principal / (n||1));
-    return { emi, total: emi*n, totalInterest: Math.max(0, emi*n - principal) };
-  }
-  const emi = (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-  const total = emi * n;
-  const totalInterest = total - principal;
-  return { emi: Math.round(emi), total: Math.round(total), totalInterest: Math.round(totalInterest) };
-}
-function calcEMIInline(){
-  const P = Number(document.getElementById('calc_amount').value)||0;
-  const R = Number(document.getElementById('calc_rate').value)||0;
-  const Y = Number(document.getElementById('calc_years').value)||0;
-  if(!P || !R || !Y){ alert('Please enter Loan, Rate and Years'); return; }
-  const res = calculateEMI(P,R,Y);
-  document.getElementById('calc_result').innerText = `EMI ₹${res.emi} | Total ₹${res.total} | Interest ₹${res.totalInterest}`;
-  // copy EMI to review field
-  document.getElementById('emi_display').value = '₹'+res.emi + ' /month @'+R+'%';
-}
-</script>
+            if (targetPage) {
+                targetPage.classList.add('active');
+            } else {
+                document.getElementById('home-page').classList.add('active');
+                pageId = 'home';
+            }
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const linkHref = link.getAttribute('href').substring(1);
+                
+                const targetPageCategory = targetPage ? targetPage.dataset.category : null;
+
+                if (linkHref === pageId || (targetPageCategory && linkHref.includes(targetPageCategory))) {
+                    link.classList.add('active');
+                }
+            });
+             if (!document.querySelector('.nav-link.active')) {
+                document.querySelector('.nav-link[href="#home"]').classList.add('active');
+             }
+
+            window.scrollTo(0, 0);
+        }
+
+        function handleLinkClick(e) {
+            const href = this.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const pageId = href.substring(1);
+                window.location.hash = pageId;
+                showPage(pageId);
+                mobileMenu.classList.add('hidden');
+            }
+        }
+
+        pageLinks.forEach(link => link.addEventListener('click', handleLinkClick));
+        
+        document.querySelectorAll('.back-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const parentPageId = e.target.closest('.page').dataset.parent;
+                if (parentPageId) {
+                    window.location.hash = parentPageId;
+                } else {
+                    window.location.hash = 'home';
+                }
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            const pageId = window.location.hash.substring(1) || 'home';
+            showPage(pageId);
+        });
+        
+        const initialPageId = window.location.hash.substring(1) || 'home';
+        showPage(initialPageId);
+
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        window.addEventListener('scroll', () => header.classList.toggle('header-shadow', window.scrollY > 10));
+
+        function calculateEMI(container) {
+            const p = parseFloat(container.querySelector('.loanAmount').value);
+            const r = parseFloat(container.querySelector('.interestRate').value) / 100 / 12;
+            const n = parseFloat(container.querySelector('.loanTenure').value) * 12;
+            const emiResultEl = container.querySelector('.emiResult');
+
+            if (p && r && n > 0) {
+                const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+                emiResultEl.textContent = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(emi);
+            } else {
+                emiResultEl.textContent = '₹0';
+            }
+        }
+
+        async function getEmiExplanation(container) {
+            const p = container.querySelector('.loanAmount').value;
+            const r = container.querySelector('.interestRate').value;
+            const n = container.querySelector('.loanTenure').value;
+            const emi = container.querySelector('.emiResult').textContent;
+            const resultDiv = container.querySelector('.emi-explanation-result');
+
+            if (!p || !r || !n || emi === '₹0') {
+                resultDiv.innerHTML = "Pehle EMI calculate karein.";
+                resultDiv.classList.remove('hidden');
+                return;
+            }
+            
+            resultDiv.classList.remove('hidden');
+            resultDiv.innerHTML = '<div class="flex justify-center items-center"><span class="loader" style="width:24px; height:24px; border-width:3px;"></span></div>';
+            
+            const apiKey = ""; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            const systemPrompt = "You are a friendly financial advisor named 'मारू-मित्र'. Your goal is to explain complex financial topics in simple, easy-to-understand Hinglish. You are reassuring and build confidence in the user.";
+            const userPrompt = `Please explain this EMI schedule in simple Hinglish in a single paragraph.
+- Loan Amount: ₹${p}
+- Interest Rate: ${r}% per year
+- Loan Tenure: ${n} years
+- Calculated Monthly EMI: ${emi}
+
+Cover these points:
+1. Confirm the EMI is for the given loan.
+2. Explain that in the initial years, a larger portion of the EMI goes towards interest.
+3. Explain that in the later years, more of the EMI goes towards paying off the principal amount.
+4. Briefly mention that making extra payments (prepayment) can help reduce the total interest paid.
+5. Keep the tone encouraging and professional.`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userPrompt }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!response.ok) throw new Error(`API error: ${response.statusText}`);
+                const result = await response.json();
+                const explanation = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (explanation) {
+                    resultDiv.innerHTML = explanation.replace(/\n/g, '<br>');
+                } else {
+                    throw new Error("Empty explanation from AI.");
+                }
+            } catch (error) {
+                console.error("EMI Explanation Error:", error);
+                resultDiv.innerHTML = "Sorry, we couldn't get the explanation at this time.";
+            }
+        }
+
+
+        document.querySelectorAll('.emi-calculator-container').forEach(container => {
+            container.innerHTML = emiCalculatorHTML;
+            container.querySelector('.calculateBtn').addEventListener('click', () => calculateEMI(container));
+            container.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', () => calculateEMI(container));
+            });
+            container.querySelector('.explain-emi-btn').addEventListener('click', () => getEmiExplanation(container));
+            calculateEMI(container);
+        });
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const city = document.getElementById('city').value;
+                const service = document.getElementById('service').value;
+                const bestTime = document.getElementById('best-time').value;
+                const whatsappNumber = '918118838772';
+                
+                let fullMessage = `*New Enquiry from Website*\n\n`;
+                fullMessage += `*Name:* ${name}\n`;
+                fullMessage += `*Phone:* ${phone}\n`;
+                fullMessage += `*City:* ${city}\n`;
+                fullMessage += `*Service Needed:* ${service}\n`;
+                fullMessage += `*Best Time to Call:* ${bestTime}`;
+                
+                const encodedMessage = encodeURIComponent(fullMessage);
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                window.open(whatsappURL, '_blank');
+                contactForm.reset();
+            });
+        }
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+        
+        // --- Gemini AI Chat Widget Logic ---
+
+        function appendMessage(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chat-bubble', sender === 'user' ? 'user-bubble' : 'ai-bubble');
+            messageElement.innerHTML = message;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function showTypingIndicator() {
+            const typingElement = document.createElement('div');
+            typingElement.id = 'typing-indicator';
+            typingElement.classList.add('chat-bubble', 'ai-bubble');
+            typingElement.innerHTML = `<div class="typing-indicator"><span></span><span></span><span></span></div>`;
+            chatMessages.appendChild(typingElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const typingElement = document.getElementById('typing-indicator');
+            if (typingElement) {
+                typingElement.remove();
+            }
+        }
+
+        // --- NEW LOAN ELIGIBILITY CALCULATION LOGIC ---
+        function calculateEligibility(data) {
+            const { income, age, emi, propertySize, propertyRate, loanType } = data;
+            const retirementAge = 60;
+            let result = {};
+
+            // 1. Income-based Calculation
+            const maxAllowedEmi = (income * 0.55) - emi;
+            let incomeBasedLoan = 0;
+            let finalTenure = 0;
+            let avgROI = 0;
+            let calculatedEMI = 0;
+            
+            if (maxAllowedEmi > 0) {
+                if (loanType === 'Home Loan' || loanType === 'LAP') {
+                    finalTenure = Math.min(25, retirementAge - age);
+                    avgROI = 10 / 100 / 12; // 10%
+                } else if (loanType === 'Business Loan') {
+                    finalTenure = Math.min(7, retirementAge - age);
+                     avgROI = 15 / 100 / 12; // 15%
+                } else { // Personal Loan
+                    finalTenure = Math.min(5, retirementAge - age);
+                     avgROI = 14 / 100 / 12; // 14%
+                }
+
+                if (finalTenure > 0) {
+                     const n = finalTenure * 12;
+                     // Formula to calculate Loan Amount from EMI: P = EMI * [ (1+r)^n - 1 ] / [ r * (1+r)^n ]
+                     incomeBasedLoan = maxAllowedEmi * (Math.pow(1 + avgROI, n) - 1) / (avgROI * Math.pow(1 + avgROI, n));
+                }
+            }
+            result.incomeEligibility = incomeBasedLoan > 0 ? incomeBasedLoan : 0;
+            result.maxTenure = finalTenure > 0 ? finalTenure : 0;
+
+            // 2. Property-based Calculation (if applicable)
+            let propertyBasedLoan = 0;
+            if (propertySize && propertyRate) {
+                const propertyValue = propertySize * propertyRate;
+                propertyBasedLoan = propertyValue * 0.60; // 60% LTV
+                result.propertyValue = propertyValue;
+                result.propertyEligibility = propertyBasedLoan;
+            }
+
+            // 3. Final Eligibility
+            if (loanType === 'Home Loan' || loanType === 'LAP') {
+                result.finalLoan = Math.min(result.incomeEligibility, result.propertyEligibility);
+            } else {
+                result.finalLoan = result.incomeEligibility;
+            }
+            
+            // 4. Calculate final EMI
+            if(result.finalLoan > 0 && avgROI > 0 && result.maxTenure > 0){
+                 const p = result.finalLoan;
+                 const r = avgROI;
+                 const n = result.maxTenure * 12;
+                 calculatedEMI = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            }
+            result.finalEMI = calculatedEMI;
+
+            // 5. Format Output
+            const f = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
+            let output = `<div class="p-3 bg-slate-50 rounded-lg text-sm">`;
+            output += `<h4 class="font-bold text-base mb-2 text-orange-600">Loan Eligibility Anumaan</h4>`;
+            output += `<p><b>Loan Type:</b> ${loanType}</p>`;
+            if(result.propertyValue) output += `<p><b>Property Value:</b> ${f.format(result.propertyValue)}</p>`;
+            if(result.propertyEligibility) output += `<p><b>Property ke aadhar par:</b> ${f.format(result.propertyEligibility)}</p>`;
+            output += `<p><b>Aapki income ke aadhar par:</b> ${f.format(result.incomeEligibility)}</p><hr class="my-2">`;
+            output += `<p class="font-bold"><b>Aapko lagbhag ${f.format(result.finalLoan)} tak ka loan mil sakta hai.</b></p>`;
+            if(result.finalEMI > 0) output += `<p><b>Anumaanit EMI:</b> ${f.format(result.finalEMI)} / mahina</p>`;
+            if(result.maxTenure > 0) output += `<p><b>Adhiktam Avadhi:</b> ${result.maxTenure} saal tak</p>`;
+            output += `<p class="text-xs mt-2 text-gray-500">*Yeh ek anumaan hai. Final amount bank ki jaanch par nirbhar karega.</p>`;
+            output += `</div>`;
+            return output;
+        }
+
+
+        function handleConversationFlow(value) {
+            const sanitizedValue = value.trim();
+            const numValue = parseInt(sanitizedValue.replace(/\D/g,''));
+
+            switch (chatState.awaiting) {
+                // Loan Form Flow
+                case 'awaiting_name':
+                    if (sanitizedValue) {
+                        chatState.form_data.name = sanitizedValue;
+                        chatState.awaiting = 'awaiting_phone';
+                        appendMessage("धन्यवाद। अब कृपया अपना व्हाट्सएप नंबर बताएं।", 'ai');
+                    } else { appendMessage("कृपया अपना नाम बताएं।", 'ai'); }
+                    break;
+                case 'awaiting_phone':
+                    if (sanitizedValue.match(/^[6-9]\d{9}$/)) {
+                        chatState.form_data.phone = sanitizedValue;
+                        chatState.awaiting = 'awaiting_profession';
+                        appendMessage("आप क्या काम करते हैं? (जैसे - salaried, business, etc.)", 'ai');
+                    } else { appendMessage("कृपया 10 अंकों का सही व्हाट्सएप नंबर बताएं।", 'ai'); }
+                    break;
+                case 'awaiting_profession':
+                     if (sanitizedValue) {
+                        chatState.form_data.profession = sanitizedValue;
+                        chatState.awaiting = 'awaiting_income';
+                        appendMessage("आपकी मासिक आय (monthly income) कितनी है?", 'ai');
+                    } else { appendMessage("कृपया बताएं आप क्या काम करते हैं।", 'ai'); }
+                    break;
+                case 'awaiting_income':
+                    if (!isNaN(numValue) && numValue > 0) {
+                        chatState.form_data.income = numValue;
+                        chatState.awaiting = 'awaiting_emi';
+                        appendMessage("क्या आपकी कोई मौजूदा EMI चल रही है? यदि हाँ, तो कुल राशि बताएं। नहीं तो '0' लिखें।", 'ai');
+                    } else { appendMessage("कृपया अपनी सही मासिक आय बताएं।", 'ai'); }
+                    break;
+                case 'awaiting_emi':
+                     if (!isNaN(numValue)) {
+                        chatState.form_data.emi = numValue;
+                        chatState.awaiting = 'awaiting_overdue';
+                        appendMessage("क्या आपका कोई लोन overdue या settled है? (हाँ / नहीं)", 'ai');
+                    } else { appendMessage("कृपया अपनी कुल EMI राशि सही से बताएं।", 'ai'); }
+                    break;
+                case 'awaiting_overdue':
+                    const validResponses = ['हाँ', 'नहीं', 'ha', 'nahi', 'yes', 'no', 'han', 'na'];
+                    if (validResponses.includes(sanitizedValue.toLowerCase())) {
+                        chatState.form_data.overdue = sanitizedValue;
+                        
+                        const loanType = chatState.form_data.loan_type || "Personal Loan";
+                        const estimationResult = calculateEligibility({
+                            income: chatState.form_data.income,
+                            age: 30, // Assuming default age for PL/BL
+                            emi: chatState.form_data.emi,
+                            loanType: loanType
+                        });
+                        
+                        let summary = `Loan Enquiry (${loanType}) from Website:\n\n`;
+                        summary += `*Name:* ${chatState.form_data.name}\n`;
+                        summary += `*Phone:* ${chatState.form_data.phone}\n`;
+                        summary += `*Profession:* ${chatState.form_data.profession}\n`;
+                        summary += `*Income:* ₹${new Intl.NumberFormat('en-IN').format(chatState.form_data.income)}\n`;
+                        summary += `*Current EMI:* ₹${new Intl.NumberFormat('en-IN').format(chatState.form_data.emi)}\n`;
+                        summary += `*Overdue/Settled:* ${chatState.form_data.overdue}`;
+                        
+                        const encodedMessage = encodeURIComponent(summary);
+                        const whatsappURL = `https://wa.me/918118838772?text=${encodedMessage}`;
+
+                        const finalMessage = estimationResult + `<br>आपकी पूरी जानकारी हमारे एक्सपर्ट को भेजने के लिए नीचे दिए गए बटन पर क्लिक करें। वो जल्द ही आपसे संपर्क करेंगे।<br><a href="${whatsappURL}" target="_blank" class="whatsapp-button">WhatsApp पर जानकारी भेजें</a>`;
+                        appendMessage(finalMessage, 'ai');
+                        
+                        // Reset state
+                        chatState = { awaiting: null, form_data: {} };
+                        conversationHistory = []; 
+                    } else { appendMessage("कृपया 'हाँ' या 'नहीं' में जवाब दें।", 'ai'); }
+                    break;
+
+                 // Eligibility Calculator Flow
+                case 'eligibility_income':
+                    if (!isNaN(numValue) && numValue > 0) {
+                        chatState.form_data.income = numValue;
+                        chatState.awaiting = 'eligibility_age';
+                        appendMessage("ठीक है। आपकी उम्र (saal mein) कितनी है?", 'ai');
+                    } else { appendMessage("कृपया अपनी सही मासिक आय बताएं।", 'ai'); }
+                    break;
+                case 'eligibility_age':
+                    if (!isNaN(numValue) && numValue > 18 && numValue < 60) {
+                        chatState.form_data.age = numValue;
+                        chatState.awaiting = 'eligibility_emi';
+                        appendMessage("क्या आपकी कोई मौजूदा EMI चल रही है? (total amount, nahi to 0 likhein)", 'ai');
+                    } else { appendMessage("कृपया अपनी सही उम्र बताएं।", 'ai'); }
+                    break;
+                case 'eligibility_emi':
+                     if (!isNaN(numValue)) {
+                        chatState.form_data.emi = numValue;
+                        chatState.awaiting = 'eligibility_property_known';
+                        appendMessage("क्या आप Home Loan या Loan against Property के लिए पूछ रहे हैं? (हाँ / नहीं)", 'ai');
+                    } else { appendMessage("कृपया अपनी कुल EMI राशि सही से बताएं।", 'ai'); }
+                    break;
+                case 'eligibility_property_known':
+                    const yesNo = ['हाँ', 'नहीं', 'ha', 'nahi', 'yes', 'no', 'han', 'na'];
+                    if (yesNo.includes(sanitizedValue.toLowerCase())) {
+                        if (['yes', 'ha', 'हाँ', 'han'].includes(sanitizedValue.toLowerCase())) {
+                            chatState.awaiting = 'eligibility_property_size';
+                            appendMessage("Property ka size kya hai? (Gaj ya Sq.Ft. mein)", 'ai');
+                        } else {
+                            chatState.form_data.loanType = "Personal Loan"; // Assume PL if no property
+                            const result = calculateEligibility(chatState.form_data);
+                            appendMessage(result, 'ai');
+                            chatState = { awaiting: null, form_data: {} };
+                            conversationHistory = [];
+                        }
+                    } else { appendMessage("कृपया 'हाँ' या 'नहीं' में जवाब दें।", 'ai'); }
+                    break;
+                case 'eligibility_property_size':
+                    if (!isNaN(numValue) && numValue > 0) {
+                        chatState.form_data.propertySize = numValue;
+                        chatState.awaiting = 'eligibility_property_rate';
+                        appendMessage("Aur property ka rate kya hai? (per Gaj ya per Sq.Ft.)", 'ai');
+                    } else { appendMessage("कृपया property का size सही से बताएं।", 'ai'); }
+                    break;
+                case 'eligibility_property_rate':
+                    if (!isNaN(numValue) && numValue > 0) {
+                        chatState.form_data.propertyRate = numValue;
+                        chatState.form_data.loanType = "Home Loan"; // Assume Home Loan with property details
+                        const result = calculateEligibility(chatState.form_data);
+                        appendMessage(result, 'ai');
+                        chatState = { awaiting: null, form_data: {} };
+                        conversationHistory = [];
+                    } else { appendMessage("कृपया property का rate सही से बताएं।", 'ai'); }
+                    break;
+            }
+        }
+
+
+        async function getAIResponse(userQuery) {
+            // Handle stateful conversation for loan form
+            if (chatState.awaiting) {
+                handleConversationFlow(userQuery);
+                return; // Stop further processing by Gemini
+            }
+            
+            showTypingIndicator();
+            conversationHistory.push({ role: "user", parts: [{ text: userQuery }] });
+
+            const apiKey = ""; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            const systemPrompt = `You are "मारू-मित्र," an advanced, empathetic, and highly accurate AI financial advisor for Shree Karni Kripa Associates. Your primary language is conversational Hinglish and you must understand Hindi, English and Marwadi. You are an expert in Indian finance.
+
+**Your Persona:**
+- **Expert:** You have deep knowledge of loans, insurance, and general financial concepts in the Indian context.
+- **Empathetic:** You understand that financial matters can be stressful. Your tone is always reassuring and helpful.
+- **Proactive:** You anticipate user needs and guide them effectively.
+- **Ethical:** You never give guaranteed financial advice. Always state that final rates and eligibility depend on the bank's policies and the applicant's profile. Conclude complex advice by recommending a consultation with SKF's human experts.
+
+**Core Knowledge Base (Your Single Source of Truth for Company Info):**
+- **Company Name:** श्री करणी कृपा एसोसिएट्स (SKF अजमेर)
+- **Services:** Home Loan, Personal Loan (starting ROI 9.99%), Business Loan (starting ROI 16.75%), Vehicle Loans, Loan Against Property (LAP), Life/Health/Vehicle Insurance, DSA Support.
+- **Address:** Second Floor, Bhansali Property, Kayad Rd, front of Chodhari Market, Ghugra, Ajmer, Rajasthan - 305023.
+- **Office Hours:** 9:30 AM to 6:30 PM.
+- **Contact:** Use 8118838772 (Krishna Singh) for primary WhatsApp contact.
+
+**Advanced Conversation Flow & Logic:**
+
+1.  **Loan Eligibility Inquiry ("kitna loan mil sakta hai", "loan eligibility"):** If the user asks about their loan eligibility, you MUST start the eligibility calculator flow. Respond ONLY with this JSON: \`{"action": "start_eligibility_calculator"}\`.
+
+2.  **Specific Loan Inquiry ("home loan chahiye"):** If a user asks for a specific loan type, you MUST start the lead collection process for that loan. Respond ONLY with this JSON: \`{"action": "start_loan_form", "loan_type": "Home Loan"}\`. (Replace "Home Loan" with the detected type).
+
+3.  **Vague Loan Inquiry ("loan lena hai"):** Ask for the purpose. "Zaroor! Main aapki sahayta kar sakta hoon. Kya aap bata sakte hain ki aapko loan kis kaam ke liye chahiye - jaise ghar, business, ya personal kharch ke liye?"
+
+4.  **Insurance Inquiry:**
+    * **Vague ("insurance chahiye"):** Ask for the type. "Aap kis tarah ke insurance ke baare mein jaanna chahte hain - Health, Life, ya Vehicle Insurance?"
+    * **Health Insurance:** Ask: "Aapko health insurance apne liye chahiye ya poori family ke liye?" Then briefly explain Individual vs. Family Floater plans.
+    * **Life Insurance:** Explain its purpose (securing family's future) and mention Term Plan or Endowment Plans.
+    * **ALL insurance queries must end by guiding the user to an expert via the WhatsApp contact button.**
+
+5.  **General Financial Questions ("what is cibil score", "tax kaise bachayein", "sum insured kya hota hai"):** Answer these accurately and simply in 1-2 paragraphs. After answering, ALWAYS bridge to a call-to-action. Example: "...CIBIL score aesa hota hai. Apni loan eligibility par salah lene ke liye, aap hamare expert se baat kar sakte hain." Then, provide the WhatsApp contact button.
+
+6.  **No Income Proof Query ("salary slip nahi hai"):** Respond with empathy. "चिंता न करें, अगर आपके पास सैलरी स्लिप या ITR जैसे इनकम प्रूफ नहीं हैं, तब भी लोन मिलने की संभावनाएं होती हैं। हम आपके बैंक स्टेटमेंट, property, ya kheti ki zameen ke aadhar par bhi loan dilane mein madad kar sakte hain. Sahi jaankari ke liye, behtar hoga ki aap hamare expert se baat karein." Then, provide the WhatsApp contact button.
+
+7.  **Contact Request ('whatsapp number'):** If asked directly, respond ONLY with this HTML: "Aap hamare expert, Krishna Singh se is number par WhatsApp se jud sakte hain:<br><a href='https://wa.me/918118838772' target='_blank' class='whatsapp-button'>WhatsApp Krishna Singh</a>".
+`;
+            
+            const payload = {
+                contents: conversationHistory,
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+            };
+            
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!response.ok) throw new Error(`API error: ${response.statusText}`);
+                
+                const result = await response.json();
+                let aiResponse = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                removeTypingIndicator();
+                
+                let isAction = false;
+                if (aiResponse && aiResponse.startsWith('{')) {
+                    try {
+                        const parsedResponse = JSON.parse(aiResponse);
+                        if (parsedResponse.action === 'start_loan_form') {
+                            isAction = true;
+                            chatState.awaiting = 'awaiting_name';
+                            chatState.form_data.loan_type = parsedResponse.loan_type || 'Loan';
+                            appendMessage("लोन की जानकारी के लिए, मुझे आपकी कुछ बेसिक जानकारी चाहिए होगी। कृपया अपना पूरा नाम बताएं।", 'ai');
+                        } else if (parsedResponse.action === 'start_eligibility_calculator') {
+                            isAction = true;
+                            chatState.awaiting = 'eligibility_income';
+                            appendMessage("Bilkul! Aapki loan eligibility jaanne ke liye, kripya apni monthly income (mahine ki aamdani) batayein.", 'ai');
+                        }
+                    } catch (e) { /* Not a JSON action, do nothing */ }
+                }
+
+                if (!isAction) {
+                    if (aiResponse) {
+                        conversationHistory.push({ role: "model", parts: [{ text: aiResponse }] });
+                        appendMessage(aiResponse, 'ai');
+                    } else { throw new Error("Invalid or empty response from AI."); }
+                }
+
+            } catch (error) {
+                console.error("Gemini API Error:", error);
+                removeTypingIndicator();
+                appendMessage("माफ़ करें, मुझे अभी कुछ तकनीकी समस्या आ रही है। कृपया थोड़ी देर बाद प्रयास करें।", 'ai');
+            }
+        }
+
+        chatToggleButton.addEventListener('click', () => {
+            chatWindow.classList.toggle('hidden');
+            chatIconOpen.classList.toggle('hidden');
+            chatIconClose.classList.toggle('hidden');
+
+            if (!chatWindow.classList.contains('hidden') && conversationHistory.length === 0) {
+                const welcomeMessage = "राम राम! मैं हूं मारू-मित्र, आपकी फाइनेंशियल सहायता के लिए। आप क्या जानना चाहेंगे - लोन या बीमा के बारे में?";
+                appendMessage(welcomeMessage, 'ai');
+                conversationHistory.push({ role: "model", parts: [{ text: welcomeMessage }] });
+            }
+        });
+
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const userQuery = chatInput.value.trim();
+            if (!userQuery) return;
+
+            appendMessage(userQuery, 'user');
+            getAIResponse(userQuery);
+            chatInput.value = '';
+        });
+
+        // --- Proactive Engagement Logic ---
+        const proactiveTimeout = setTimeout(() => {
+            proactiveBubble.classList.add('show');
+            chatToggleButton.classList.add('animated');
+        }, 5000);
+
+        function hideProactiveBubble() {
+            proactiveBubble.classList.remove('show');
+            chatToggleButton.classList.remove('animated');
+            clearTimeout(proactiveTimeout);
+            window.removeEventListener('scroll', hideProactiveBubble, { once: true });
+            document.body.removeEventListener('click', hideProactiveBubbleOnClick);
+        }
+
+        function hideProactiveBubbleOnClick(e) {
+            if (!chatToggleButton.contains(e.target)) {
+                hideProactiveBubble();
+            }
+        }
+
+        window.addEventListener('scroll', hideProactiveBubble, { once: true });
+        document.body.addEventListener('click', hideProactiveBubbleOnClick);
+        chatToggleButton.addEventListener('click', hideProactiveBubble);
+
+        // --- View More Brands Logic ---
+        const viewMoreBrandsBtn = document.getElementById('view-more-brands-btn');
+        const viewMoreContainer = document.getElementById('view-more-container');
+        const brandsGrid = document.getElementById('brands-grid');
+
+        if (viewMoreBrandsBtn) {
+            const hiddenLogos = brandsGrid.querySelectorAll('.brand-logo.hidden');
+            if (hiddenLogos.length > 0) {
+                viewMoreBrandsBtn.addEventListener('click', () => {
+                    hiddenLogos.forEach(logo => {
+                        logo.classList.remove('hidden');
+                    });
+                    viewMoreContainer.style.display = 'none'; // Hide the button's container
+                });
+            } else {
+                viewMoreContainer.style.display = 'none'; // No hidden logos, so hide the button container
+            }
+        }
+
+    });
+    </script>
 </body>
 </html>
+

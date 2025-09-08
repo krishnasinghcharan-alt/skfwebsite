@@ -121,6 +121,22 @@
         .swiper-slide:hover {
             transform: scale(1.1);
         }
+
+        /* Thank you modal */
+        #thank-you-modal { z-index: 1003; }
+        #confetti-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+        /* Loan Page Carousel */
+        .loan-image-carousel {
+            height: 400px;
+            width: 100%;
+        }
+        .loan-image-carousel .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -149,9 +165,14 @@
             <div class="container mx-auto px-6 py-3 flex justify-between items-center">
                 <a href="#home" class="page-link flex items-center space-x-3">
                     <img src="https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png" alt="Shree Karni Kripa Associates" class="h-14 w-auto flex-shrink-0">
+                    <!-- Desktop Name -->
                     <div class="hidden md:block">
                         <span class="font-bold text-xl text-gray-800">Shree Karni Kripa Associates</span>
                         <p class="text-sm text-gray-500">Your Trusted Partner in Finance & Insurance</p>
+                    </div>
+                    <!-- Mobile Name -->
+                    <div class="md:hidden">
+                         <span class="font-bold text-xl text-gray-800">S<span class="text-red-600">K</span>F Associates</span>
                     </div>
                 </a>
                 <div class="flex items-center gap-4">
@@ -220,30 +241,30 @@
             <section class="py-16 md:py-24 bg-white">
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll">Our Financial Services</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
                         <a href="#home-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate-on-scroll">
-                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757241971/WhatsApp_Image_2025-09-07_at_3.20.38_PM_lqp1dy.jpg" alt="Home Loan" class="w-full h-56 object-cover">
-                            <div class="p-6 bg-gray-50"><h3 class="text-xl font-bold text-gray-800">Home Loan</h3></div>
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757241971/WhatsApp_Image_2025-09-07_at_3.20.38_PM_lqp1dy.jpg" alt="Home Loan" class="w-full h-48 object-cover">
+                            <div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Home Loan</h3></div>
                         </a>
                         <a href="#business-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate-on-scroll" style="transition-delay: 100ms;">
-                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-36_b8guao.jpg" alt="Business Loan" class="w-full h-56 object-cover">
-                            <div class="p-6 bg-gray-50"><h3 class="text-xl font-bold text-gray-800">Business Loan</h3></div>
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-36_b8guao.jpg" alt="Business Loan" class="w-full h-48 object-cover">
+                            <div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Business Loan</h3></div>
                         </a>
                         <a href="#personal-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate-on-scroll" style="transition-delay: 200ms;">
-                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-34_q09kn6.jpg" alt="Personal Loan" class="w-full h-56 object-cover">
-                            <div class="p-6 bg-gray-50"><h3 class="text-xl font-bold text-gray-800">Personal Loan</h3></div>
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-34_q09kn6.jpg" alt="Personal Loan" class="w-full h-48 object-cover">
+                            <div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Personal Loan</h3></div>
                         </a>
                          <a href="#car-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate-on-scroll" style="transition-delay: 300ms;">
-                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757237853/WhatsApp_Image_2025-09-07_at_3.06.10_PM_d8n3iz.jpg" alt="Car Loan" class="w-full h-56 object-cover">
-                            <div class="p-6 bg-gray-50"><h3 class="text-xl font-bold text-gray-800">Car Loan</h3></div>
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757237853/WhatsApp_Image_2025-09-07_at_3.06.10_PM_d8n3iz.jpg" alt="Car Loan" class="w-full h-48 object-cover">
+                            <div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Car Loan</h3></div>
                         </a>
                         <a href="#lap-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate-on-scroll" style="transition-delay: 400ms;">
-                             <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757240471/WhatsApp_Image_2025-09-07_at_3.20.41_PM_yunya8.jpg" alt="Loan Against Property" class="w-full h-56 object-cover">
-                            <div class="p-6 bg-gray-50"><h3 class="text-xl font-bold text-gray-800">Loan Against Property</h3></div>
+                             <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757240471/WhatsApp_Image_2025-09-07_at_3.20.41_PM_yunya8.jpg" alt="Loan Against Property" class="w-full h-48 object-cover">
+                            <div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Loan Against Property</h3></div>
                         </a>
                          <a href="#health-insurance" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate-on-scroll" style="transition-delay: 500ms;">
-                            <img src="https://placehold.co/600x400/ecfdf5/16a34a?text=Health+Insurance" alt="Health Insurance" class="w-full h-56 object-cover">
-                            <div class="p-6 bg-gray-50"><h3 class="text-xl font-bold text-gray-800">Health Insurance</h3></div>
+                            <img src="https://placehold.co/600x400/ecfdf5/16a34a?text=Health+Insurance" alt="Health Insurance" class="w-full h-48 object-cover">
+                            <div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Health Insurance</h3></div>
                         </a>
                     </div>
                 </div>
@@ -610,6 +631,16 @@
         <!-- Chatbot will be injected here by JS -->
     </div>
 
+    <!-- Thank You Modal -->
+    <div id="thank-you-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center">
+        <div class="bg-white p-8 rounded-lg shadow-2xl text-center relative max-w-sm w-full">
+            <canvas id="confetti-canvas"></canvas>
+            <h2 class="text-3xl font-bold text-green-600 mb-4">Thank You!</h2>
+            <p class="text-gray-700 mb-6">Your details have been submitted. Our team will connect with you shortly.</p>
+            <button id="continue-whatsapp-btn" class="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition-colors">Continue with WhatsApp</button>
+        </div>
+    </div>
+
     <footer class="bg-slate-800 text-gray-300">
         <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-sm">
@@ -683,7 +714,13 @@ document.addEventListener('DOMContentLoaded', function () {
         'home-loan': {
             name: 'Home Loan',
             overview: 'Apne ghar ka sapna saakar karein. We offer a wide range of home loan products designed to meet your unique needs, whether you are buying, constructing, or renovating your home. With competitive interest rates and long tenure, we make home ownership affordable and easy.',
-            image: 'https://res.cloudinary.com/dhme90fr1/image/upload/v1757241971/WhatsApp_Image_2025-09-07_at_3.20.38_PM_lqp1dy.jpg',
+            images: [
+                'https://res.cloudinary.com/dhme90fr1/image/upload/v1757241971/WhatsApp_Image_2025-09-07_at_3.20.38_PM_lqp1dy.jpg',
+                'https://res.cloudinary.com/dhme90fr1/image/upload/v1757240471/WhatsApp_Image_2025-09-07_at_3.20.41_PM_yunya8.jpg',
+                'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239691/PHOTO-2025-09-07-15-20-33_aaexip.jpg',
+                'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239662/PHOTO-2025-09-07-15-20-40_udm8ze.jpg',
+                'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239662/PHOTO-2025-09-07-15-20-39_udei1z.jpg',
+            ],
             subtypes: {
                 'purchase': { name: 'New Home Purchase', roi: '8.50%', tenure: '30 Years', eligibility: 'Applicant must be an Indian resident, aged between 21 to 65 years. Salaried individuals or self-employed professionals with a stable income source and a good credit score (700+) are eligible.', features: ['Attractive interest rates', 'Flexible repayment tenure up to 30 years', 'Loan amounts up to 90% of property value', 'Quick and transparent processing'], documents: ['PAN Card & Aadhaar Card', 'Latest 3 months salary slips', 'Form 16 or ITR for last 2 years', 'Last 6 months bank statements', 'Allotment letter or Sale agreement of the property'], faq: [ { q: 'Can I get 100% financing for my home?', a: 'Most banks finance up to 80-90% of the property value. The rest needs to be contributed by the buyer as a down payment.' }, { q: 'Can a co-applicant be added to the home loan?', a: 'Yes, you can add a co-applicant, like your spouse or immediate family member, which can also help in increasing your loan eligibility.' } ] },
                 'construction': { name: 'Home Construction', roi: '8.75%', tenure: '30 Years', eligibility: 'You must own a plot of land with clear titles. A detailed construction estimate, approved by a certified architect, and necessary permissions from local authorities are required.', features: ['Finance for construction on a freehold or leasehold plot', 'Loan disbursed in tranches based on construction stage', 'Flexible tenure and repayment options', 'Expert legal and technical counselling'], documents: ['Proof of land ownership (Title Deed)', 'Approved building plans from local authorities', 'Construction cost estimate from an architect', 'Standard KYC and income documents'], faq: [ { q: 'How is the loan disbursed for construction?', a: 'The loan is typically disbursed in 4-5 installments based on the progress of construction, which is verified by the bank.' } ] },
@@ -693,7 +730,12 @@ document.addEventListener('DOMContentLoaded', function () {
         'business-loan': {
             name: 'Business Loan',
             overview: 'Apne business ko nayi unchaiyon tak pahunchayein. Our business loans are designed to provide the financial support you need for expansion, purchasing machinery, or managing working capital. We offer both secured and unsecured options to fit your business needs.',
-            image: 'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-36_b8guao.jpg',
+            images: [
+                'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-36_b8guao.jpg',
+                'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239662/PHOTO-2025-09-07-15-20-36_1_kwtbrl.jpg',
+                'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239662/PHOTO-2025-09-07-15-20-40_1_khdviy.jpg',
+                'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239662/PHOTO-2025-09-07-15-20-37_yylckg.jpg'
+            ],
             subtypes: {
                 'working-capital': { name: 'Working Capital Loan', roi: '12.50%', tenure: '5 Years', eligibility: 'For businesses operational for at least 3 years with stable sales and profit. Required documents include GST returns and audited financials.', features: ['Maintains liquidity for daily operations', 'Flexible usage of funds', 'Overdraft facility available', 'Quick processing and disbursal'], documents: ['Business registration documents', 'GST returns for the last year', 'Audited financials for last 3 years', 'Bank statements for the last 12 months'], faq: [ { q: 'What is the difference between a cash credit and an overdraft facility?', a: 'Both are working capital loans. A cash credit is a short-term loan against inventory and receivables, while an overdraft allows you to withdraw more than your account balance up to a sanctioned limit.' } ] },
                 'term': { name: 'Term Loan', roi: '11.75%', tenure: '7 Years', eligibility: 'For established businesses looking for funds for capital expenditure like machinery purchase or expansion. A strong business plan and profitability track record are essential.', features: ['Ideal for long-term capital needs', 'Fixed repayment schedule (EMI)', 'Attractive interest rates', 'Can be secured against assets'], documents: ['Detailed project report for the proposed expenditure', 'Quotations for machinery or equipment', 'Company KYC and financials', 'Promoter\'s KYC and financials'], faq: [ { q: 'Can a term loan be prepaid?', a: 'Yes, most banks allow prepayment of term loans, though some may charge a prepayment penalty. It is advisable to check the terms before applying.' } ] },
@@ -703,7 +745,10 @@ document.addEventListener('DOMContentLoaded', function () {
         'personal-loan': {
              name: 'Personal Loan',
              overview: 'Har zaroorat ke liye, turant financial solution. Personal loans are the perfect solution for your immediate financial needs, be it a wedding, vacation, or medical emergency. With minimal documentation and quick disbursal, get the funds you need without any hassle.',
-             image: 'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-34_q09kn6.jpg',
+             images: [
+                'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-34_q09kn6.jpg',
+                'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-35_kxclyr.jpg'
+             ],
             subtypes: {
                 'wedding': { name: 'Wedding Loan', roi: '10.99%', tenure: '5 Years', eligibility: 'Available for both salaried and self-employed individuals with a strong credit history and a minimum monthly income of ₹25,000.', features: ['Covers all wedding-related expenses', 'Quick approval and disbursal', 'No collateral required', 'Flexible repayment tenure'], documents: ['PAN & Aadhaar Card', 'Last 3 months salary slips', 'Last 6 months bank statement', 'Employment ID card'], faq: [ { q: 'How much loan can I get for a wedding?', a: 'The loan amount depends on your income, credit score, and repayment capacity. It can range from ₹50,000 to ₹40 Lakhs.' } ] },
                 'travel': { name: 'Travel Loan', roi: '11.49%', tenure: '3 Years', eligibility: 'Indian residents with a stable job and a good credit score can apply. Some lenders might ask for travel bookings.', features: ['Fund your dream vacation', 'Easy EMIs make travel affordable', 'No need to dip into your savings', 'Instant online approval'], documents: ['KYC Documents', 'Income proof', 'Bank statements', 'Optionally, travel tickets or hotel bookings'], faq: [ { q: 'Is a travel loan better than using a credit card?', a: 'Travel loans often come with lower interest rates than credit cards, making them a more cost-effective option for planned vacations.' } ] },
@@ -713,7 +758,11 @@ document.addEventListener('DOMContentLoaded', function () {
         'car-loan': {
             name: 'Car Loan',
             overview: 'Apni pasand ki car ghar laayein. Our car loans make it easy to buy your dream car with attractive interest rates, flexible tenures, and high loan-to-value ratios for both new and pre-owned cars.',
-            image: 'https://res.cloudinary.com/dhme90fr1/image/upload/v1757237853/WhatsApp_Image_2025-09-07_at_3.06.10_PM_d8n3iz.jpg',
+            images: [
+                'https://res.cloudinary.com/dhme90fr1/image/upload/v1757237853/WhatsApp_Image_2025-09-07_at_3.06.10_PM_d8n3iz.jpg',
+                'https://res.cloudinary.com/dhme90fr1/image/upload/v1757237853/WhatsApp_Image_2025-09-07_at_3.06.11_PM_aolonf.jpg',
+                'https://res.cloudinary.com/dhme90fr1/image/upload/v1757237853/WhatsApp_Image_2025-09-07_at_3.06.10_PM_1_hsvkki.jpg'
+            ],
             subtypes: {
                 'new': { name: 'New Car Loan', roi: '9.00%', tenure: '7 Years', eligibility: 'Minimum age of 21 years and a stable income source are required. Loan approval depends on the car model and your credit profile.', features: ['Funding up to 100% of the on-road price', 'Flexible repayment tenure up to 7 years', 'Quick processing and minimal paperwork', 'Special schemes and offers available'], documents: ['Pro-forma invoice from the car dealer', 'KYC documents', 'Income proof (Salary slip/ITR)', 'Bank statements'], faq: [ { q: 'What does "on-road price" include?', a: 'The on-road price includes the ex-showroom price, RTO registration charges, road tax, and insurance.' } ] },
                 'used': { name: 'Used Car Loan', roi: '11.00%', tenure: '5 Years', eligibility: 'The car should not be more than 5-7 years old. A valuation report of the car from a certified professional is mandatory.', features: ['Get up to 90% of the car\'s valuation as a loan', 'Affordable EMIs', 'Helps in buying a better car within your budget', 'Thorough check on car documents by the bank'], documents: ['RC copy of the vehicle', 'Vehicle valuation report', 'Seller-buyer agreement', 'Standard KYC and income documents'], faq: [ { q: 'Is the interest rate for used car loans higher?', a: 'Yes, interest rates for used car loans are generally slightly higher than new car loans due to the higher perceived risk.' } ] },
@@ -722,7 +771,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'lap-loan': {
             name: 'Loan Against Property',
             overview: 'Unlock the value of your property. A Loan Against Property (LAP) is a secured loan that you can avail by mortgaging your residential or commercial property. This is a great way to get a large loan amount at a lower interest rate for various purposes like business expansion, education, or weddings.',
-            image: 'https://res.cloudinary.com/dhme90fr1/image/upload/v1757240471/WhatsApp_Image_2025-09-07_at_3.20.41_PM_yunya8.jpg',
+            images: ['https://res.cloudinary.com/dhme90fr1/image/upload/v1757240471/WhatsApp_Image_2025-09-07_at_3.20.41_PM_yunya8.jpg'],
             subtypes: {}, roi: '9.50%', tenure: '15 Years',
             eligibility: 'Owner of the property (residential or commercial). The property must have a clear title and be free from any legal disputes. Your income and repayment capacity will also be assessed.',
             features: ['High loan amount based on property value', 'Lower interest rates compared to unsecured loans', 'Longer repayment tenure', 'Can be used for any personal or business purpose'],
@@ -732,7 +781,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'health-insurance': {
             name: 'Health Insurance',
             overview: 'Protect your health and finances. Health insurance provides a financial safety net against high medical expenses, ensuring you and your family receive the best possible care without financial worries.',
-            image: 'https://placehold.co/600x400/ecfdf5/16a34a?text=Health+Insurance',
+            images: ['https://placehold.co/800x500/ecfdf5/16a34a?text=Health+Insurance'],
             subtypes: {
                 'individual': { name: 'Individual Health Cover', tenure: '1 Year', eligibility: 'Any individual between 18 to 65 years of age can purchase this policy.', features: ['Comprehensive coverage for hospitalization expenses', 'Cashless treatment at network hospitals', 'Tax benefits under Section 80D', 'No-claim bonus benefits'], documents: ['Age proof (Aadhaar, Passport)', 'Address proof', 'Identity proof', 'Medical check-up reports (if required)'], faq: [{q: 'What is a waiting period in health insurance?', a: 'A waiting period is the duration you must wait before you can claim some or all benefits of your health insurance policy. This is common for pre-existing conditions.'}] },
                 'family': { name: 'Family Floater Plan', tenure: '1 Year', eligibility: 'Covers the entire family under a single policy, including self, spouse, children, and sometimes parents.', features: ['Single premium for the whole family', 'Sum insured floats among all family members', 'Cost-effective compared to individual policies', 'Comprehensive coverage'], documents: ['KYC documents of the primary insured person', 'Details of all family members to be covered'], faq: [{q: 'Can I add my parents to my family floater plan?', a: 'Some policies allow adding parents, but it\'s often recommended to get a separate senior citizen policy for them due to their higher health risks.'}] }
@@ -741,7 +790,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'life-insurance': {
             name: 'Life Insurance',
             overview: 'Secure your family\'s future. Life insurance provides a lump-sum amount to your family in your absence, ensuring they can maintain their lifestyle and achieve their financial goals without any burden.',
-            image: 'https://placehold.co/600x400/eef2ff/4f46e5?text=Life+Insurance',
+            images: ['https://placehold.co/800x500/eef2ff/4f46e5?text=Life+Insurance'],
             subtypes: {
                 'term': { name: 'Term Plan', tenure: 'Up to 85 years', eligibility: 'Available for individuals from 18 to 65 years. Provides high coverage at a low premium for a fixed term.', features: ['Pure risk cover', 'High sum assured at affordable premiums', 'Rider options for critical illness & accidental death', 'Tax benefits'], documents: ['Age & Identity Proof', 'Income Proof', 'Address Proof', 'Medical History'], faq: [{q: 'What happens if I survive the policy term?', a: 'In a pure term plan, no maturity benefit is paid if you survive the policy term. However, some plans now offer a "Return of Premium" option at a higher cost.'}] },
                 'endowment': { name: 'Endowment Plan', tenure: '10-30 Years', eligibility: 'Combines insurance with savings. Suitable for long-term goal planning.', features: ['Dual benefit of insurance and savings', 'Guaranteed maturity benefit', 'Bonus additions', 'Loan facility available'], documents: ['KYC Documents', 'Income Proof', 'Age Proof'], faq: [{q: 'Is an endowment plan a good investment?', a: 'Endowment plans offer safe, guaranteed returns but are generally lower than market-linked products. They are good for risk-averse individuals.'}] }
@@ -750,7 +799,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'vehicle-insurance': {
             name: 'Vehicle Insurance',
             overview: 'Drive with confidence. Vehicle insurance protects you against financial losses from accidents, theft, or damage to your vehicle, and also covers third-party liabilities as mandated by law.',
-            image: 'https://placehold.co/600x400/fefce8/ca8a04?text=Vehicle+Insurance',
+            images: ['https://placehold.co/800x500/fefce8/ca8a04?text=Vehicle+Insurance'],
             subtypes: {
                 'car': { name: 'Car Insurance', tenure: '1 Year', eligibility: 'Mandatory for all car owners in India.', features: ['Covers damage to your own car (OD)', 'Covers third-party liability', 'No-Claim Bonus (NCB) for claim-free years', 'Add-ons like zero depreciation & roadside assistance'], documents: ['Vehicle Registration Certificate (RC)', 'Driving License of the owner/driver', 'Previous policy details (for renewal)'], faq: [{q: 'What is the difference between third-party and comprehensive insurance?', a: 'Third-party insurance is mandatory and only covers damages to another person or property. Comprehensive insurance covers third-party liability plus damage or theft of your own vehicle.'}] },
                 'bike': { name: 'Bike Insurance', tenure: '1 Year', eligibility: 'Mandatory for all two-wheeler owners.', features: ['Affordable premium', 'Protection against accidents and theft', 'Third-party liability coverage', 'Personal accident cover for owner-driver'], documents: ['Vehicle RC', 'Driving License', 'Old policy copy for renewals'], faq: [{q: 'Is personal accident cover included by default?', a: 'Yes, a personal accident cover of ₹15 lakhs for the owner-driver is mandatory with bike insurance.'}] },
@@ -760,7 +809,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'general-insurance': {
             name: 'General Insurance',
             overview: 'Protect your valuable assets. General insurance provides coverage for a wide range of non-life assets, including your shop, property, and even your travels, safeguarding you from unexpected financial losses.',
-            image: 'https://placehold.co/600x400/f1f5f9/475569?text=General+Insurance',
+            images: ['https://placehold.co/800x500/f1f5f9/475569?text=General+Insurance'],
             subtypes: {
                 'shop': { name: 'Shopkeeper Insurance', tenure: '1 Year', eligibility: 'For owners of small to medium-sized shops.', features: ['Protection against fire, theft, and natural calamities', 'Covers building, stock, and contents', 'Liability coverage options', 'All-in-one package policy'], documents: ['Shop registration documents', 'Address proof of the shop', 'List of contents to be insured'], faq: [{q: 'Does it cover loss of money in the shop?', a: 'Yes, many shopkeeper policies offer an add-on or built-in cover for loss of money in transit or from a safe.'}] },
                 'property': { name: 'Property Insurance', tenure: '1 Year', eligibility: 'For owners of residential or commercial properties.', features: ['Coverage against fire, floods, earthquakes', 'Protection for building structure and contents', 'Option to include rent loss cover', 'Customizable plans'], documents: ['Proof of ownership', 'Valuation report of the property', 'Address proof'], faq: [{q: 'Is property insurance the same as home insurance?', a: 'Home insurance is a type of property insurance specifically for residential homes. Property insurance is a broader term that can also cover commercial buildings.'}] },
@@ -782,15 +831,17 @@ document.addEventListener('DOMContentLoaded', function () {
         const pageMappings = {
             'join-dsa': 'join-us-page',
             'join-connector': 'join-us-page',
-            'eligibility-form': 'eligibility-form-page'
+            'eligibility-form': 'eligibility-form-page',
+            'contact': 'contact-page' // Added for contact page
         };
-        const targetPageId = pageMappings[pageId] || (Object.keys(productData).some(key => pageId.startsWith(key)) ? 'loan-page-template' : `${pageId}-page`);
+        const isProductPage = Object.keys(productData).some(key => pageId.startsWith(key));
+        const targetPageId = pageMappings[pageId] || (isProductPage ? 'loan-page-template' : `${pageId}-page`);
         
         const targetPage = document.getElementById(targetPageId) || document.getElementById('home-page');
         if(targetPage) {
             targetPage.classList.add('active');
             if (pageId === 'emi-calculator') renderEmiCalculator();
-            if (pageMappings[pageId] === 'loan-page-template' || Object.keys(productData).some(key => pageId.startsWith(key))) renderLoanPage(pageId);
+            if (isProductPage) renderLoanPage(pageId);
 
             if (pageId === 'join-dsa' || pageId === 'join-connector') {
                 setTimeout(() => {
@@ -822,6 +873,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const subtype = subTypeKey ? mainCategory.subtypes[subTypeKey] : null;
         const contentData = subtype || mainCategory;
         const isInsurance = pageId.includes('insurance');
+        const images = mainCategory.images || [];
 
         let breadcrumbHtml = `<a href="#home" class="page-link hover:text-orange-600">Home</a> <span class="mx-2">/</span> <a href="#${mainCategoryKey}" class="page-link hover:text-orange-600">${mainCategory.name}</a>`;
         if (subtype) {
@@ -867,6 +919,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 </div>`;
         }
+        
+        const imageCarouselHtml = `
+            <div class="swiper-container loan-image-carousel rounded-lg overflow-hidden">
+                <div class="swiper-wrapper">
+                    ${images.map(img => `<div class="swiper-slide"><img src="${img}" alt="${mainCategory.name}"></div>`).join('')}
+                </div>
+                <div class="swiper-button-next text-white"></div>
+                <div class="swiper-button-prev text-white"></div>
+                <div class="swiper-pagination"></div>
+            </div>`;
+
 
         let mainContentHtml = `
             <div class="bg-white p-8 rounded-lg shadow-md space-y-8">
@@ -874,7 +937,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">${contentData.name}</h1>
                     <p class="text-lg text-gray-600">${subtype ? contentData.eligibility : contentData.overview}</p>
                 </div>
-                <img src="${mainCategory.image}" alt="${mainCategory.name}" class="w-full h-64 object-cover rounded-lg">
+                ${imageCarouselHtml}
                 
                 <div class="grid md:grid-cols-3 gap-4 text-center">
                     ${infoGridHtml}
@@ -909,6 +972,26 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>`;
         mainContentContainer.innerHTML = mainContentHtml;
         addLinkListeners(mainContentContainer);
+        
+        new Swiper('.loan-image-carousel', {
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+        });
         
         if (!isInsurance) {
             mainContentContainer.querySelector('.emi-calculator-form').addEventListener('submit', handleEmiCalculation);
@@ -1386,15 +1469,13 @@ document.addEventListener('DOMContentLoaded', function () {
             message += `💸 *Required Loan Amount:* ₹${data.requiredLoanAmount}\n`;
 
             const url = `https://wa.me/${forwardTo.number}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-            eligibilityForm.reset();
-            incomeField.classList.add('hidden');
-            salaryField.classList.remove('hidden');
-            runningLoanDetails.classList.add('hidden');
+            
+            // Show Thank You Modal and trigger confetti
+            showThankYouModal(url);
         });
     }
 
-    // --- AI Maaru Chatbot Logic ---
+    // --- AI Maaru Chatbot Full Logic ---
     const chatContainer = document.getElementById('chat-container');
     chatContainer.innerHTML = `
         <div id="proactive-bubble-container"></div>
@@ -1402,10 +1483,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div id="chat-header">
                 <div id="chat-header-info">
                     <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="AI Maaru">
-                    <div>
-                        <h3>AI Maaru ✨</h3>
-                        <p>Your Financial Assistant</p>
-                    </div>
+                    <div><h3>AI Maaru ✨</h3><p>Your Financial Assistant</p></div>
                 </div>
                 <button id="chat-close-btn">&times;</button>
             </div>
@@ -1415,13 +1493,128 @@ document.addEventListener('DOMContentLoaded', function () {
                 <button id="chat-send-btn">Send</button>
             </div>
         </div>
-        <button id="chat-toggle-button">
-            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="Chat with AI Maaru">
-        </button>
-    `;
-    
-    // ... (The rest of the AI Maaru chatbot JS logic would go here)
+        <button id="chat-toggle-button"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="Chat with AI Maaru"></button>`;
         
+    const chatWindow = document.getElementById('chat-window');
+    const chatToggleBtn = document.getElementById('chat-toggle-button');
+    const chatCloseBtn = document.getElementById('chat-close-btn');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+    const chatSendBtn = document.getElementById('chat-send-btn');
+    const proactiveBubbleContainer = document.getElementById('proactive-bubble-container');
+
+    const toggleChatWindow = () => chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+    
+    chatToggleBtn.addEventListener('click', () => {
+        toggleChatWindow();
+        if(chatWindow.style.display === 'flex') {
+             hideProactiveBubble();
+             if (chatMessages.children.length === 0) sendGreeting();
+        }
+    });
+    chatCloseBtn.addEventListener('click', toggleChatWindow);
+
+    const addMessage = (text, type, options = []) => {
+        chatMessages.innerHTML += `<div class="chat-bubble ${type}-bubble">${text}</div>`;
+        if (options.length > 0) {
+            const optionsHtml = options.map(opt => `<button class="chat-option-btn" data-value="${opt.value}">${opt.label}</button>`).join('');
+            chatMessages.innerHTML += `<div class="chat-options">${optionsHtml}</div>`;
+            document.querySelectorAll('.chat-option-btn').forEach(btn => btn.addEventListener('click', handleOptionClick));
+        }
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    const handleUserInput = () => {
+        const text = chatInput.value.trim();
+        if (!text) return;
+        addMessage(text, 'user');
+        chatInput.value = '';
+        processUserMessage(text);
+    };
+    
+    chatSendBtn.addEventListener('click', handleUserInput);
+    chatInput.addEventListener('keypress', (e) => e.key === 'Enter' && handleUserInput());
+
+    function handleOptionClick(e) {
+        const { value, label } = e.target.dataset;
+        addMessage(e.target.textContent, 'user');
+        document.querySelector('.chat-options')?.remove();
+        processUserMessage(value || e.target.textContent);
+    }
+    
+    const sendGreeting = () => {
+        addMessage("Namaste! 🙏 Main hoon AI Maaru, aapka financial assistant. Main aapki kaise sahayata kar sakta hoon?", 'ai', [
+            { label: 'Loan ke baare mein jaanein', value: 'loan_info' },
+            { label: 'Check Loan Eligibility', value: 'check_eligibility' },
+            { label: 'Insurance ke baare mein jaanein', value: 'insurance_info' },
+            { label: 'Contact Us', value: 'contact_us' }
+        ]);
+    };
+    
+    const processUserMessage = (msg) => {
+        setTimeout(() => {
+            switch (msg.toLowerCase()) {
+                case 'loan_info':
+                    addMessage("Bilkul! Aap kis tarah ke loan ke baare mein janna chahte hain?", 'ai', [
+                        { label: 'Home Loan', value: 'home-loan' }, { label: 'Business Loan', value: 'business-loan' },
+                        { label: 'Personal Loan', value: 'personal-loan' }, { label: 'Car Loan', value: 'car-loan' }
+                    ]);
+                    break;
+                case 'check_eligibility':
+                     addMessage("Great! Chaliye aapki eligibility check karte hain. Please <a href='#eligibility-form' class='page-link text-blue-600 font-semibold'>Smart Eligibility Form</a> bharein. Isse hum aapko sabse behtar options de payenge.", 'ai');
+                     break;
+                case 'insurance_info':
+                     addMessage("Zaroor! Hum kai tarah ke insurance provide karte hain. Aap kisme interested hain?", 'ai', [
+                        { label: 'Health Insurance', value: 'health-insurance' }, { label: 'Life Insurance', value: 'life-insurance' },
+                        { label: 'Vehicle Insurance', value: 'vehicle-insurance' }, { label: 'General Insurance', value: 'general-insurance' }
+                     ]);
+                     break;
+                 case 'contact_us':
+                    addMessage("Aap humse 9214104963 par call kar sakte hain, ya phir office visit kar sakte hain: 2nd Floor, Bhansali Complex, Kayad Road, Ajmer.", 'ai');
+                    break;
+                default:
+                    if (productData[msg]) {
+                         addMessage(`Aapne ${productData[msg].name} chuna hai. Iske baare mein adhik jaankari ke liye, aap <a href='#${msg}' class='page-link text-blue-600 font-semibold'>${productData[msg].name} page</a> par jaa sakte hain. Kya main aapki aur koi sahayata kar sakta hoon?`, 'ai', [ { label: 'Haan', value: 'loan_info' }, { label: 'Nahi, dhanyavaad!', value: 'thanks' }]);
+                    } else {
+                         addMessage("Maaf kijiye, main samajh nahi paya. Kripya diye gaye options mein se chunein.", 'ai', [
+                            { label: 'Loan Info', value: 'loan_info' }, { label: 'Eligibility Check', value: 'check_eligibility' },
+                            { label: 'Insurance Info', value: 'insurance_info' }
+                        ]);
+                    }
+                    break;
+            }
+             document.querySelectorAll('#chat-messages a.page-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        window.location.hash = href;
+                        toggleChatWindow();
+                    }
+                });
+            });
+        }, 500);
+    };
+
+    let proactiveTimeout;
+    const showProactiveBubble = () => {
+        if (chatWindow.style.display === 'flex') return;
+        proactiveBubbleContainer.innerHTML = `<div class="proactive-bubble">Namaste! Loan ya Insurance ki jaankari chahiye?</div>`;
+        setTimeout(() => document.querySelector('.proactive-bubble')?.classList.add('show'), 100);
+        clearTimeout(proactiveTimeout);
+        proactiveTimeout = setTimeout(hideProactiveBubble, 7000);
+    };
+    const hideProactiveBubble = () => {
+        const bubble = document.querySelector('.proactive-bubble');
+        if (bubble) {
+            bubble.classList.remove('show');
+            setTimeout(() => bubble.remove(), 300);
+        }
+    };
+    setTimeout(showProactiveBubble, 5000);
+    chatToggleBtn.addEventListener('mouseenter', hideProactiveBubble);
+
+
     new Swiper('.brands-carousel', {
         loop: true,
         slidesPerView: 2,
@@ -1449,6 +1642,83 @@ document.addEventListener('DOMContentLoaded', function () {
             },
         }
     });
+
+    // --- Thank You Modal & Confetti Logic ---
+    const thankYouModal = document.getElementById('thank-you-modal');
+    const continueWhatsAppBtn = document.getElementById('continue-whatsapp-btn');
+    let whatsappUrl = '';
+
+    function showThankYouModal(url) {
+        whatsappUrl = url;
+        thankYouModal.classList.remove('hidden');
+        launchConfetti();
+    }
+    
+    continueWhatsAppBtn.addEventListener('click', () => {
+        window.open(whatsappUrl, '_blank');
+        thankYouModal.classList.add('hidden');
+        document.getElementById('smart-eligibility-form').reset();
+    });
+
+    // Confetti Logic
+    function launchConfetti() {
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+        
+        let confetti = [];
+        const confettiCount = 100;
+        const gravity = 0.5;
+        const terminalVelocity = 5;
+        const drag = 0.075;
+        const colors = [
+            { front: 'red', back: 'darkred' }, { front: 'green', back: 'darkgreen' },
+            { front: 'blue', back: 'darkblue' }, { front: 'yellow', back: 'darkyellow' },
+            { front: 'orange', back: 'darkorange' }, { front: 'pink', back: 'darkpink' },
+            { front: 'purple', back: 'darkpurple' }, { front: 'turquoise', back: 'darkturquoise' }
+        ];
+
+        const randomRange = (min, max) => Math.random() * (max - min) + min;
+
+        for (let i = 0; i < confettiCount; i++) {
+            confetti.push({
+                color: colors[Math.floor(randomRange(0, colors.length))],
+                dimensions: { x: randomRange(5, 10), y: randomRange(8, 15) },
+                position: { x: randomRange(0, canvas.width), y: -10 },
+                rotation: randomRange(0, 2 * Math.PI),
+                scale: { x: 1, y: 1 },
+                velocity: { x: randomRange(-25, 25), y: randomRange(0, -50) }
+            });
+        }
+
+        let animationFrame;
+        function render() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confetti.forEach((confetto, index) => {
+                let width = confetto.dimensions.x * confetto.scale.x;
+                let height = confetto.dimensions.y * confetto.scale.y;
+                ctx.translate(confetto.position.x, confetto.position.y);
+                ctx.rotate(confetto.rotation);
+                confetto.velocity.x -= confetto.velocity.x * drag;
+                confetto.velocity.y = Math.min(confetto.velocity.y + gravity, terminalVelocity);
+                confetto.position.x += confetto.velocity.x;
+                confetto.position.y += confetto.velocity.y;
+                if (confetto.position.y >= canvas.height) confetti.splice(index, 1);
+                ctx.fillStyle = confetto.velocity.y < 0 ? confetto.color.back : confetto.color.front;
+                ctx.fillRect(-width / 2, -height / 2, width, height);
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+            });
+
+            if (confetti.length > 0) {
+                animationFrame = requestAnimationFrame(render);
+            } else {
+                 cancelAnimationFrame(animationFrame);
+            }
+        }
+        render();
+    }
+
 });
 </script>
 </body>

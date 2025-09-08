@@ -62,8 +62,9 @@
         #chat-header-info h3 { font-weight: bold; font-size: 1rem; }
         #chat-header-info p { font-size: 0.75rem; opacity: 0.9; }
         #chat-close-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
-        #chat-messages { flex-grow: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; background-color: #f1f5f9; }
-        .chat-bubble { max-width: 85%; padding: 0.75rem 1rem; border-radius: 1rem; word-wrap: break-word; }
+        #chat-messages { flex-grow: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; background-color: #f1f5f9; scroll-behavior: smooth; }
+        .chat-bubble { max-width: 85%; padding: 0.75rem 1rem; border-radius: 1rem; word-wrap: break-word; opacity: 0; transform: translateY(10px); animation: slide-in 0.4s forwards; }
+        @keyframes slide-in { to { opacity: 1; transform: translateY(0); } }
         .user-bubble { background-color: #1e293b; color: white; align-self: flex-end; border-bottom-right-radius: 0.25rem; }
         .ai-bubble { background-color: #ffffff; color: #1e293b; align-self: flex-start; border-bottom-left-radius: 0.25rem; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
         #chat-input-container { border-top: 1px solid #e2e8f0; padding: 0.75rem; display: flex; gap: 0.5rem; }
@@ -71,22 +72,19 @@
         #chat-send-btn { background-color: #f97316; color: white; border: none; padding: 0 1.25rem; border-radius: 8px; cursor: pointer; font-weight: 600; }
         #chat-toggle-button { background-color: #f97316; color: white; width: 60px; height: 60px; border-radius: 50%; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: flex; justify-content: center; align-items: center; }
         #chat-toggle-button img { width: 52px; height: 52px; border-radius: 50%; }
-        .typing-indicator { display: flex; align-items: center; padding: 0.75rem 1rem; }
-        .typing-indicator span { height: 8px; width: 8px; background-color: #9ca3af; border-radius: 50%; display: inline-block; margin: 0 2px; animation: bounce 1.4s infinite ease-in-out both; }
-        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
-        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1.0); } }
-        .chat-options { display: flex; flex-wrap: wrap; gap: 8px; padding-left: 1rem; margin-top: 8px; }
-        .chat-option-btn { background-color: #fff; border: 1px solid #f97316; color: #f97316; padding: 6px 12px; border-radius: 16px; font-size: 0.875rem; cursor: pointer; transition: all 0.2s; }
-        .chat-option-btn:hover { background-color: #f97316; color: #fff; }
-        .whatsapp-connect-btn { display: inline-flex; align-items: center; gap: 8px; background-color: #25D366; color: white !important; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 8px; transition: background-color 0.2s; border: none; cursor: pointer; }
-        .whatsapp-connect-btn:hover { background-color: #128C7E; }
-        @keyframes floatAnimation { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-        #chat-toggle-button.animated { animation: floatAnimation 2.5s ease-in-out infinite; }
+        
         .proactive-bubble { position: absolute; bottom: 80px; right: 0; background-color: white; color: #1e293b; padding: 12px 16px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); width: max-content; max-width: 250px; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease-out, transform 0.3s ease-out; pointer-events: none; z-index: -1; }
         .proactive-bubble.show { opacity: 1; transform: translateY(0); pointer-events: auto; z-index: 1001; }
         .proactive-bubble::after { content: ''; position: absolute; bottom: -8px; right: 24px; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid white; }
         
+        /* Confetti styles */
+        .confetti-piece { position: absolute; width: 10px; height: 20px; background: #ffd300; top: 0; opacity: 0; }
+        .confetti-piece.blue { background: #17d3ff; }
+        .confetti-piece.green { background: #00e06d; }
+        .confetti-piece.pink { background: #ff4daa; }
+        .confetti-piece.purple { background: #9b59b6; }
+        @keyframes fall { to { transform: translateY(100vh) rotate(360deg); opacity: 1; } }
+
         /* Watermark */
         body::after {
             content: "";
@@ -640,6 +638,8 @@
             <button id="continue-whatsapp-btn" class="w-full bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition-colors">Continue with WhatsApp</button>
         </div>
     </div>
+    
+    <div id="confetti-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
 
     <footer class="bg-slate-800 text-gray-300">
         <div class="container mx-auto px-6 py-12">
@@ -1483,14 +1483,17 @@ document.addEventListener('DOMContentLoaded', function () {
             <div id="chat-header">
                 <div id="chat-header-info">
                     <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="AI Maaru">
-                    <div><h3>AI Maaru ✨</h3><p>Your Financial Assistant</p></div>
+                    <div><h3>AI MAARU MITRA</h3><p>Your SKF Assistant</p></div>
                 </div>
                 <button id="chat-close-btn">&times;</button>
             </div>
             <div id="chat-messages"></div>
+            <div id="chat-quick-replies" class="p-3 bg-white border-t border-gray-200"></div>
             <div id="chat-input-container">
                 <input type="text" id="chat-input" placeholder="Type your message...">
-                <button id="chat-send-btn">Send</button>
+                <button id="chat-send-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </button>
             </div>
         </div>
         <button id="chat-toggle-button"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="Chat with AI Maaru"></button>`;
@@ -1501,104 +1504,341 @@ document.addEventListener('DOMContentLoaded', function () {
     const chatMessages = document.getElementById('chat-messages');
     const chatInput = document.getElementById('chat-input');
     const chatSendBtn = document.getElementById('chat-send-btn');
-    const proactiveBubbleContainer = document.getElementById('proactive-bubble-container');
+    const chatQuickReplies = document.getElementById('chat-quick-replies');
+    const chatInputContainer = document.getElementById('chat-input-container');
+    const confettiContainer = document.getElementById('confetti-container');
 
-    const toggleChatWindow = () => chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
-    
-    chatToggleBtn.addEventListener('click', () => {
-        toggleChatWindow();
-        if(chatWindow.style.display === 'flex') {
-             hideProactiveBubble();
-             if (chatMessages.children.length === 0) sendGreeting();
+    let state = 'AWAITING_PRODUCT';
+    let userData = { purpose: null, product: null };
+    let clarificationAttempts = 0;
+
+    const teamNumbers = {
+        'Home Loan': '918118838772',
+        'Loan Against Property': '918118838772',
+        'Personal Loan': '918118822628',
+        'Business Loan': '919352358494',
+        'Car Loan': '919358973156',
+        'Insurance': '919214104963',
+        'fallback': '919214104963'
+    };
+
+    const toggleChatWindow = () => {
+        const isOpening = chatWindow.style.display !== 'flex';
+        chatWindow.style.display = isOpening ? 'flex' : 'none';
+        if (isOpening) {
+            hideProactiveBubble();
+            if (chatMessages.children.length === 0) startConversation();
         }
-    });
+    };
+    
+    chatToggleBtn.addEventListener('click', toggleChatWindow);
     chatCloseBtn.addEventListener('click', toggleChatWindow);
 
-    const addMessage = (text, type, options = []) => {
-        chatMessages.innerHTML += `<div class="chat-bubble ${type}-bubble">${text}</div>`;
-        if (options.length > 0) {
-            const optionsHtml = options.map(opt => `<button class="chat-option-btn" data-value="${opt.value}">${opt.label}</button>`).join('');
-            chatMessages.innerHTML += `<div class="chat-options">${optionsHtml}</div>`;
-            document.querySelectorAll('.chat-option-btn').forEach(btn => btn.addEventListener('click', handleOptionClick));
-        }
+    function addBotMessage(message, delay = 500) {
+        setTimeout(() => {
+            const messageEl = document.createElement('div');
+            messageEl.className = 'ai-bubble chat-bubble';
+            messageEl.innerHTML = message;
+            chatMessages.appendChild(messageEl);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, delay);
+    }
+
+    function addUserMessage(message) {
+        const messageEl = document.createElement('div');
+        messageEl.className = 'user-bubble chat-bubble';
+        messageEl.innerHTML = message;
+        chatMessages.appendChild(messageEl);
         chatMessages.scrollTop = chatMessages.scrollHeight;
-    };
-
-    const handleUserInput = () => {
-        const text = chatInput.value.trim();
-        if (!text) return;
-        addMessage(text, 'user');
         chatInput.value = '';
-        processUserMessage(text);
-    };
-    
-    chatSendBtn.addEventListener('click', handleUserInput);
-    chatInput.addEventListener('keypress', (e) => e.key === 'Enter' && handleUserInput());
-
-    function handleOptionClick(e) {
-        const { value, label } = e.target.dataset;
-        addMessage(e.target.textContent, 'user');
-        document.querySelector('.chat-options')?.remove();
-        processUserMessage(value || e.target.textContent);
     }
     
-    const sendGreeting = () => {
-        addMessage("Namaste! 🙏 Main hoon AI Maaru, aapka financial assistant. Main aapki kaise sahayata kar sakta hoon?", 'ai', [
-            { label: 'Loan ke baare mein jaanein', value: 'loan_info' },
-            { label: 'Check Loan Eligibility', value: 'check_eligibility' },
-            { label: 'Insurance ke baare mein jaanein', value: 'insurance_info' },
-            { label: 'Contact Us', value: 'contact_us' }
+    function showQuickReplies(replies) {
+        chatQuickReplies.innerHTML = '';
+        chatInputContainer.style.display = 'none';
+        const container = document.createElement('div');
+        container.className = 'flex flex-wrap justify-center gap-2';
+        
+        replies.forEach(reply => {
+            const button = document.createElement('button');
+            button.innerText = reply.label;
+            button.className = 'px-4 py-2 bg-orange-100 text-orange-700 font-semibold rounded-full hover:bg-orange-200 transition';
+            button.onclick = () => {
+                addUserMessage(reply.label);
+                handleUserInput(reply.value);
+                chatQuickReplies.innerHTML = '';
+                chatInputContainer.style.display = 'flex';
+                chatInput.focus();
+            };
+            container.appendChild(button);
+        });
+        chatQuickReplies.appendChild(container);
+    }
+    
+    function showFinalButtons(buttons) {
+        chatQuickReplies.innerHTML = '';
+        chatInputContainer.style.display = 'none';
+        const container = document.createElement('div');
+        container.className = 'flex flex-wrap justify-center gap-3 p-2';
+
+        buttons.forEach(buttonInfo => {
+            const button = document.createElement('button');
+            button.innerText = buttonInfo.label;
+            button.className = buttonInfo.class;
+            button.onclick = buttonInfo.action;
+            container.appendChild(button);
+        });
+        chatQuickReplies.appendChild(container);
+    }
+
+    function startConversation() {
+        addBotMessage("🙏 जय माता जी — मैं SKF से आपका मददगार हूँ।");
+        setTimeout(() => addBotMessage("बताइए आपको किस loan या insurance की ज़रूरत है?"), 600);
+        state = 'AWAITING_PURPOSE';
+    }
+
+    function handleUserInput(text) {
+        clarificationAttempts = 0; // Reset on valid input
+        switch (state) {
+            case 'AWAITING_PURPOSE': processPurpose(text); break;
+            case 'AWAITING_NAME': processName(text); break;
+            case 'AWAITING_MOBILE': processMobile(text); break;
+            case 'AWAITING_CITY': processCity(text); break;
+            case 'AWAITING_PINCODE': processPincode(text); break;
+            case 'AWAITING_EMPLOYMENT': processEmployment(text); break;
+            case 'AWAITING_INCOME': processIncome(text); break;
+            case 'AWAITING_RUNNING_LOAN': processRunningLoan(text); break;
+            case 'AWAITING_LOAN_DETAILS': processLoanDetails(text); break;
+            case 'AWAITING_LOAN_AMOUNT': processLoanAmount(text); break;
+            case 'AWAITING_TENURE': processTenure(text); break;
+            case 'AWAITING_INSURANCE_TYPE': processInsuranceType(text); break;
+        }
+    }
+
+    function processPurpose(text) {
+        const p = text.toLowerCase();
+        if (p.includes('home') || p.includes('house') || p.includes('flat')) userData.product = 'Home Loan';
+        else if (p.includes('personal')) userData.product = 'Personal Loan';
+        else if (p.includes('business') || p.includes('shop')) userData.product = 'Business Loan';
+        else if (p.includes('car') || p.includes('bike') || p.includes('vehicle')) userData.product = 'Car Loan';
+        else if (p.includes('property') || p.includes('lap')) userData.product = 'Loan Against Property';
+        else if (p.includes('insurance')) {
+            userData.product = 'Insurance';
+            askInsuranceType();
+            return;
+        } else {
+            handleUnclearInput("माफ़ कीजिए, मैं समझ नहीं पाया। क्या आप Home Loan, Personal Loan, Business Loan, Car Loan, LAP या Insurance में से कुछ ढूंढ रहे हैं?");
+            return;
+        }
+        userData.purpose = text;
+        addBotMessage(`Great! ${userData.product} के लिए, मुझे आपसे कुछ details चाहिए होंगी।`);
+        askName();
+    }
+    
+    function askInsuranceType() {
+        state = 'AWAITING_INSURANCE_TYPE';
+        addBotMessage("ज़रूर, आप किस तरह का insurance करवाना चाहते हैं?");
+        showQuickReplies([
+            {label: 'Health Insurance', value: 'Health'},
+            {label: 'Life Insurance', value: 'Life'},
+            {label: 'Vehicle Insurance', value: 'Vehicle'}
         ]);
+    }
+
+    function processInsuranceType(type) {
+        userData.insuranceType = type;
+        addBotMessage(`ठीक है, ${type} Insurance के लिए, मुझे कुछ जानकारी चाहिए।`);
+        askName();
+    }
+
+    function askName() { state = 'AWAITING_NAME'; addBotMessage("आपका पूरा नाम क्या है?"); }
+    function processName(name) {
+        if (name.trim().length < 3) { handleUnclearInput("Please अपना पूरा नाम बताएं।"); return; }
+        userData.name = name.trim();
+        askMobile();
+    }
+    
+    function askMobile() { state = 'AWAITING_MOBILE'; addBotMessage("आपका 10-digit mobile number दीजिए।"); }
+    function processMobile(mobile) {
+        if (!/^[6-9]\d{9}$/.test(mobile.trim())) { handleUnclearInput("यह एक valid mobile number नहीं लग रहा। कृपया 10-digit number दें जो 6, 7, 8, या 9 से शुरू हो।"); return; }
+        userData.mobile = mobile.trim();
+        askCity();
+    }
+
+    function askCity() { state = 'AWAITING_CITY'; addBotMessage("आप किस शहर से हैं?"); }
+    function processCity(city) {
+        if(city.trim().length < 2) { handleUnclearInput("Please अपने शहर का नाम बताएं।"); return; }
+        userData.city = city.trim();
+        askPincode();
+    }
+
+    function askPincode() { state = 'AWAITING_PINCODE'; addBotMessage("आपके area का 6-digit pincode क्या है?"); }
+    function processPincode(pincode) {
+        if(!/^\d{6}$/.test(pincode.trim())) { handleUnclearInput("Pincode 6 digits का होना चाहिए। Please सही pincode बताएं।"); return; }
+        userData.pincode = pincode.trim();
+        askEmployment();
+    }
+
+    function askEmployment() {
+        state = 'AWAITING_EMPLOYMENT';
+        addBotMessage("आप Job करते हैं, Business करते हैं या कुछ और?");
+        showQuickReplies([ {label: 'Job', value: 'Job'}, {label: 'Business', value: 'Business'}, {label: 'Other', value: 'Other'} ]);
+    }
+    function processEmployment(type) { userData.employment = type; askIncome(type); }
+    
+    function askIncome(type) {
+        state = 'AWAITING_INCOME';
+        addBotMessage(`आपकी ${type === 'Job' ? 'monthly salary' : 'monthly income'} कितनी है? (जैसे: 50000)`);
+    }
+
+    function processIncome(income) {
+        const incomeNum = parseInt(income.replace(/,/g, ''), 10);
+        if (isNaN(incomeNum) || incomeNum <= 0) { handleUnclearInput("Please एक valid amount बताएं।"); return; }
+        userData.income = incomeNum;
+        if (userData.product === 'Insurance') showSummary(); else askRunningLoan();
+    }
+
+    function askRunningLoan() {
+        state = 'AWAITING_RUNNING_LOAN';
+        addBotMessage("क्या आपकी कोई और loan EMI चल रही है?");
+        showQuickReplies([ {label: 'Yes', value: 'Yes'}, {label: 'No', value: 'No'} ]);
+    }
+    
+    function processRunningLoan(answer) {
+        userData.runningLoan = answer;
+        if (answer === 'Yes') {
+            state = 'AWAITING_LOAN_DETAILS';
+            addBotMessage("Please अपनी running loan की EMI, outstanding amount, और overdue status बताएं।");
+        } else { askLoanAmount(); }
+    }
+
+    function processLoanDetails(details) { userData.runningLoanDetails = details; askLoanAmount(); }
+    function askLoanAmount() { state = 'AWAITING_LOAN_AMOUNT'; addBotMessage("आपको कितना loan amount चाहिए? (जैसे: 500000)"); }
+    function processLoanAmount(amount) {
+        const amountNum = parseInt(amount.replace(/,/g, ''), 10);
+        if (isNaN(amountNum) || amountNum <= 0) { handleUnclearInput("Please एक valid loan amount बताएं।"); return; }
+        userData.loanAmount = amountNum;
+        askTenure();
+    }
+
+    function askTenure() { state = 'AWAITING_TENURE'; addBotMessage("आप कितने साल के लिए loan चाहते हैं? (जैसे: 5)"); }
+    function processTenure(tenure) {
+        const tenureNum = parseInt(tenure, 10);
+        if (isNaN(tenureNum) || tenureNum <= 0 || tenureNum > 30) { handleUnclearInput("Please 1 से 30 साल के बीच का valid tenure बताएं।"); return; }
+        userData.tenure = tenureNum;
+        showSummary();
+    }
+
+    function showSummary() {
+        addBotMessage("✅ Thank you for sharing details!");
+        if (userData.product !== 'Insurance') {
+            const { emi, totalInterest, totalPayment } = calculateEMI();
+            userData.emi = Math.round(emi);
+            let summaryHtml = `<div class="p-4 bg-blue-50 border border-blue-200 rounded-lg"><h3 class="text-lg font-bold text-blue-800 mb-3">EMI Summary</h3><p><strong>Loan Amount:</strong> ₹${userData.loanAmount.toLocaleString('en-IN')}</p><p><strong>Tenure:</strong> ${userData.tenure} Years</p><p class="mt-4 text-2xl font-bold text-orange-600">Monthly EMI: ₹${userData.emi.toLocaleString('en-IN')}</p><hr class="my-3"><p><strong>Total Interest:</strong> ₹${Math.round(totalInterest).toLocaleString('en-IN')}</p><p><strong>Total Payment:</strong> ₹${Math.round(totalPayment).toLocaleString('en-IN')}</p></div>`;
+            addBotMessage(summaryHtml);
+        }
+        setTimeout(askForConsent, 1000);
+    }
+
+    function askForConsent() {
+        state = 'AWAITING_CONSENT';
+        addBotMessage("क्या आप चाहते हैं मैं आपकी enquiry टीम experts को forward करूँ?");
+        showFinalButtons([
+            { label: 'Continue with Experts', class: 'px-5 py-2.5 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition w-full sm:w-auto', action: forwardToTeam },
+            { label: 'Cancel', class: 'px-5 py-2.5 bg-gray-200 text-gray-700 font-bold rounded-lg hover:bg-gray-300 transition w-full sm:w-auto', action: cancelProcess }
+        ]);
+    }
+    
+    function cancelProcess() {
+        addBotMessage("कोई बात नहीं। अगर आपको भविष्य में हमारी ज़रूरत पड़े, तो हम यहीं हैं। SKF से संपर्क करने के लिए धन्यवाद!");
+        chatQuickReplies.innerHTML = '';
+        chatInputContainer.style.display = 'flex';
+        state = 'AWAITING_PURPOSE';
+    }
+
+    function forwardToTeam() {
+        const message = generateWhatsappMessage();
+        const encodedMessage = encodeURIComponent(message);
+        const productForNumber = userData.product === 'Insurance' ? 'Insurance' : userData.product;
+        const number = teamNumbers[productForNumber] || teamNumbers['fallback'];
+        const whatsappUrl = `https://wa.me/${number}?text=${encodedMessage}`;
+
+        showConfetti();
+        addBotMessage("🙏 Thank you! आपकी enquiry हमारी SKF टीम तक पहुंच गई है। Experts जल्द ही आपसे संपर्क करेंगे।");
+        showFinalButtons([ { label: 'Click to send details on WhatsApp', class: 'px-6 py-3 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition w-full animate-pulse', action: () => window.open(whatsappUrl, '_blank') } ]);
+    }
+
+    function calculateEMI() {
+        let rate;
+        switch (userData.product) {
+            case 'Home Loan': rate = 8.5; break;
+            case 'Loan Against Property': rate = 11.0; break;
+            case 'Personal Loan': rate = 9.99; break;
+            case 'Business Loan': rate = 12.0; break;
+            case 'Car Loan': rate = 8.5; break;
+            default: rate = 10.0;
+        }
+        const p = userData.loanAmount, r = rate / 1200, n = userData.tenure * 12;
+        const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+        const totalPayment = emi * n;
+        const totalInterest = totalPayment - p;
+        return { emi, totalInterest, totalPayment };
+    }
+
+    function generateWhatsappMessage() {
+        let msg = `📩 *New Enquiry (SKF)* 📩\n\n`;
+        msg += `*Product:* ${userData.product === 'Insurance' ? `${userData.insuranceType} Insurance` : userData.product}\n`;
+        msg += `*Name:* ${userData.name}\n`;
+        msg += `*Mobile:* ${userData.mobile}\n`;
+        msg += `*City/Pincode:* ${userData.city} / ${userData.pincode}\n`;
+        msg += `*Employment:* ${userData.employment} – Income: ₹${userData.income.toLocaleString('en-IN')}\n`;
+        if (userData.product !== 'Insurance') {
+            msg += `*Running Loan:* ${userData.runningLoan}${userData.runningLoan === 'Yes' ? ` (${userData.runningLoanDetails || 'Details provided'})` : ''}\n`;
+            msg += `*Required Amount:* ₹${userData.loanAmount.toLocaleString('en-IN')}\n`;
+            msg += `*Tenure:* ${userData.tenure} Years\n`;
+            msg += `*EMI Estimate:* ₹${userData.emi.toLocaleString('en-IN')}\n`;
+        }
+        msg += `*Source:* Website Chatbot`;
+        return msg;
+    }
+
+    function handleUnclearInput(fallbackMessage) {
+        clarificationAttempts++;
+        if (clarificationAttempts >= 3) {
+            addBotMessage("लगता है कुछ confusion हो रहा है। आप चाहें तो सीधे हमारे expert से बात कर सकते हैं।");
+            const fallbackUrl = `https://wa.me/${teamNumbers['fallback']}?text=${encodeURIComponent('Hi, I need assistance from the website.')}`;
+            showFinalButtons([ { label: 'Connect with Human Expert', class: 'px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition w-full', action: () => window.open(fallbackUrl, '_blank') } ]);
+            clarificationAttempts = 0;
+            state = 'ENDED';
+        } else {
+            addBotMessage(fallbackMessage);
+        }
+    }
+    
+    function showConfetti() {
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            const colors = ['blue', 'green', 'pink', 'purple'];
+            confetti.className = 'confetti-piece ' + colors[Math.floor(Math.random() * colors.length)];
+            confettiContainer.appendChild(confetti);
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animation = `fall ${3 + Math.random() * 2}s linear ${Math.random() * 2}s forwards`;
+            confetti.addEventListener('animationend', () => confetti.remove());
+        }
+    }
+    
+    const sendBtnAction = () => {
+        const text = chatInput.value.trim();
+        if (text) { addUserMessage(text); handleUserInput(text); }
     };
     
-    const processUserMessage = (msg) => {
-        setTimeout(() => {
-            switch (msg.toLowerCase()) {
-                case 'loan_info':
-                    addMessage("Bilkul! Aap kis tarah ke loan ke baare mein janna chahte hain?", 'ai', [
-                        { label: 'Home Loan', value: 'home-loan' }, { label: 'Business Loan', value: 'business-loan' },
-                        { label: 'Personal Loan', value: 'personal-loan' }, { label: 'Car Loan', value: 'car-loan' }
-                    ]);
-                    break;
-                case 'check_eligibility':
-                     addMessage("Great! Chaliye aapki eligibility check karte hain. Please <a href='#eligibility-form' class='page-link text-blue-600 font-semibold'>Smart Eligibility Form</a> bharein. Isse hum aapko sabse behtar options de payenge.", 'ai');
-                     break;
-                case 'insurance_info':
-                     addMessage("Zaroor! Hum kai tarah ke insurance provide karte hain. Aap kisme interested hain?", 'ai', [
-                        { label: 'Health Insurance', value: 'health-insurance' }, { label: 'Life Insurance', value: 'life-insurance' },
-                        { label: 'Vehicle Insurance', value: 'vehicle-insurance' }, { label: 'General Insurance', value: 'general-insurance' }
-                     ]);
-                     break;
-                 case 'contact_us':
-                    addMessage("Aap humse 9214104963 par call kar sakte hain, ya phir office visit kar sakte hain: 2nd Floor, Bhansali Complex, Kayad Road, Ajmer.", 'ai');
-                    break;
-                default:
-                    if (productData[msg]) {
-                         addMessage(`Aapne ${productData[msg].name} chuna hai. Iske baare mein adhik jaankari ke liye, aap <a href='#${msg}' class='page-link text-blue-600 font-semibold'>${productData[msg].name} page</a> par jaa sakte hain. Kya main aapki aur koi sahayata kar sakta hoon?`, 'ai', [ { label: 'Haan', value: 'loan_info' }, { label: 'Nahi, dhanyavaad!', value: 'thanks' }]);
-                    } else {
-                         addMessage("Maaf kijiye, main samajh nahi paya. Kripya diye gaye options mein se chunein.", 'ai', [
-                            { label: 'Loan Info', value: 'loan_info' }, { label: 'Eligibility Check', value: 'check_eligibility' },
-                            { label: 'Insurance Info', value: 'insurance_info' }
-                        ]);
-                    }
-                    break;
-            }
-             document.querySelectorAll('#chat-messages a.page-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href && href.startsWith('#')) {
-                        e.preventDefault();
-                        window.location.hash = href;
-                        toggleChatWindow();
-                    }
-                });
-            });
-        }, 500);
-    };
+    chatSendBtn.addEventListener('click', sendBtnAction);
+    chatInput.addEventListener('keypress', (e) => e.key === 'Enter' && sendBtnAction());
 
     let proactiveTimeout;
     const showProactiveBubble = () => {
         if (chatWindow.style.display === 'flex') return;
+        const proactiveBubbleContainer = document.getElementById('proactive-bubble-container');
         proactiveBubbleContainer.innerHTML = `<div class="proactive-bubble">Namaste! Loan ya Insurance ki jaankari chahiye?</div>`;
         setTimeout(() => document.querySelector('.proactive-bubble')?.classList.add('show'), 100);
         clearTimeout(proactiveTimeout);
@@ -1628,18 +1868,9 @@ document.addEventListener('DOMContentLoaded', function () {
             clickable: true,
         },
         breakpoints: {
-            640: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-            768: {
-                slidesPerView: 4,
-                spaceBetween: 40,
-            },
-            1024: {
-                slidesPerView: 6,
-                spaceBetween: 50,
-            },
+            640: { slidesPerView: 3, spaceBetween: 30 },
+            768: { slidesPerView: 4, spaceBetween: 40 },
+            1024: { slidesPerView: 6, spaceBetween: 50 },
         }
     });
 
@@ -1663,20 +1894,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // Confetti Logic
     function launchConfetti() {
         const canvas = document.getElementById('confetti-canvas');
+        if(!canvas) return;
         const ctx = canvas.getContext('2d');
         canvas.width = canvas.parentElement.offsetWidth;
         canvas.height = canvas.parentElement.offsetHeight;
         
         let confetti = [];
         const confettiCount = 100;
-        const gravity = 0.5;
-        const terminalVelocity = 5;
-        const drag = 0.075;
+        const gravity = 0.5, terminalVelocity = 5, drag = 0.075;
         const colors = [
             { front: 'red', back: 'darkred' }, { front: 'green', back: 'darkgreen' },
             { front: 'blue', back: 'darkblue' }, { front: 'yellow', back: 'darkyellow' },
-            { front: 'orange', back: 'darkorange' }, { front: 'pink', back: 'darkpink' },
-            { front: 'purple', back: 'darkpurple' }, { front: 'turquoise', back: 'darkturquoise' }
+            { front: 'orange', back: 'darkorange' }, { front: 'pink', back: 'darkpink' }
         ];
 
         const randomRange = (min, max) => Math.random() * (max - min) + min;
@@ -1695,32 +1924,27 @@ document.addEventListener('DOMContentLoaded', function () {
         let animationFrame;
         function render() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            confetti.forEach((confetto, index) => {
-                let width = confetto.dimensions.x * confetto.scale.x;
-                let height = confetto.dimensions.y * confetto.scale.y;
-                ctx.translate(confetto.position.x, confetto.position.y);
-                ctx.rotate(confetto.rotation);
-                confetto.velocity.x -= confetto.velocity.x * drag;
-                confetto.velocity.y = Math.min(confetto.velocity.y + gravity, terminalVelocity);
-                confetto.position.x += confetto.velocity.x;
-                confetto.position.y += confetto.velocity.y;
-                if (confetto.position.y >= canvas.height) confetti.splice(index, 1);
-                ctx.fillStyle = confetto.velocity.y < 0 ? confetto.color.back : confetto.color.front;
+            confetti.forEach((p, index) => {
+                let width = p.dimensions.x * p.scale.x;
+                let height = p.dimensions.y * p.scale.y;
+                ctx.translate(p.position.x, p.position.y);
+                ctx.rotate(p.rotation);
+                p.velocity.x -= p.velocity.x * drag;
+                p.velocity.y = Math.min(p.velocity.y + gravity, terminalVelocity);
+                p.position.x += p.velocity.x;
+                p.position.y += p.velocity.y;
+                if (p.position.y >= canvas.height) confetti.splice(index, 1);
+                ctx.fillStyle = p.velocity.y < 0 ? p.color.back : p.color.front;
                 ctx.fillRect(-width / 2, -height / 2, width, height);
                 ctx.setTransform(1, 0, 0, 1, 0, 0);
             });
 
-            if (confetti.length > 0) {
-                animationFrame = requestAnimationFrame(render);
-            } else {
-                 cancelAnimationFrame(animationFrame);
-            }
+            if (confetti.length > 0) animationFrame = requestAnimationFrame(render);
+            else cancelAnimationFrame(animationFrame);
         }
         render();
     }
-
 });
 </script>
 </body>
 </html>
-

@@ -235,6 +235,27 @@
                  </div>
             </section>
 
+            <!-- Gallery Slider -->
+            <section class="py-16 md:py-20 bg-gray-100">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center animate-on-scroll">Glimpses of Our Journey</h2>
+                    <div class="swiper-container gallery-carousel">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-29_bglcgr.jpg" alt="Team celebrating" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-28_dlonup.jpg" alt="Team meeting" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-30_dl5ijn.jpg" alt="Office event" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-31_1_px7slv.jpg" alt="Team discussion" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-32_a81bds.jpg" alt="Client interaction" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-33_x2vkud.jpg" alt="Award ceremony" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-30_1_fvoeaa.jpg" alt="Team photo" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-31_mnf432.jpg" alt="Festival celebration" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387614/PHOTO-2025-09-09-08-37-33_1_vzeohb.jpg" alt="Group picture" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </section>
+
             <!-- All Loan & Insurance Page Section -->
             <section id="our-services" class="py-16 md:py-24 bg-white">
                 <div class="container mx-auto px-6 text-center">
@@ -2092,6 +2113,25 @@ document.addEventListener('DOMContentLoaded', function () {
             1024: { slidesPerView: 6, spaceBetween: 50 },
         }
     });
+    
+    new Swiper('.gallery-carousel', {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            768: { slidesPerView: 3, spaceBetween: 30 },
+            1024: { slidesPerView: 4, spaceBetween: 40 },
+        }
+    });
 
     // --- Thank You Modal & Confetti Logic ---
     const thankYouModal = document.getElementById('thank-you-modal');
@@ -2167,6 +2207,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
+
 
 
 

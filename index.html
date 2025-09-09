@@ -238,18 +238,18 @@
             <!-- Gallery Slider -->
             <section class="py-16 md:py-20 bg-gray-100">
                 <div class="container mx-auto px-6">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center animate-on-scroll">Glimpses of Our Journey</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center animate-on-scroll">Our Gallery & Motivation</h2>
                     <div class="swiper-container gallery-carousel">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-29_bglcgr.jpg" alt="Team celebrating" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
-                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-28_dlonup.jpg" alt="Team meeting" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
-                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-30_dl5ijn.jpg" alt="Office event" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
-                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-31_1_px7slv.jpg" alt="Team discussion" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
-                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-32_a81bds.jpg" alt="Client interaction" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
-                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-33_x2vkud.jpg" alt="Award ceremony" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
-                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-30_1_fvoeaa.jpg" alt="Team photo" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
-                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-31_mnf432.jpg" alt="Festival celebration" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
-                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387614/PHOTO-2025-09-09-08-37-33_1_vzeohb.jpg" alt="Group picture" class="rounded-lg shadow-lg object-cover h-64 w-full"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-29_bglcgr.jpg" alt="Team celebrating" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-28_dlonup.jpg" alt="Team meeting" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-30_dl5ijn.jpg" alt="Office event" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-31_1_px7slv.jpg" alt="Team discussion" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-32_a81bds.jpg" alt="Client interaction" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-33_x2vkud.jpg" alt="Award ceremony" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-30_1_fvoeaa.jpg" alt="Team photo" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-31_mnf432.jpg" alt="Festival celebration" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
+                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387614/PHOTO-2025-09-09-08-37-33_1_vzeohb.jpg" alt="Group picture" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>
@@ -1234,6 +1234,9 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <tbody id="emi-calendar-table" class="bg-white divide-y divide-gray-200">
                                     <!-- Rows will be inserted here by JS -->
                                 </tbody>
+                                <tfoot id="emi-calendar-footer">
+                                    <!-- "View More" button will be inserted here -->
+                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -1270,8 +1273,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const gcalBtn = document.getElementById('gcal-reminder-btn');
         const waBtn = document.getElementById('wa-reminder-btn');
         const tableBody = document.getElementById('emi-calendar-table');
+        const tableFooter = document.getElementById('emi-calendar-footer');
 
         tableBody.innerHTML = '<tr><td colspan="5" class="text-center p-4">Calculate EMI to see the breakdown.</td></tr>';
+        tableFooter.innerHTML = '';
 
         if (amount > 0 && rate > 0 && tenure > 0) {
             const monthlyRate = rate / (12 * 100);
@@ -1303,25 +1308,48 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             suggestionsContainer.innerHTML = `<p>${suggestion}</p>`;
 
-            // Populate table
+            // Populate table with "View More" logic
             let balance = amount;
-            let tableHtml = '';
+            const allRows = [];
             const today = new Date();
             for (let i = 1; i <= n; i++) {
                 const interest = balance * monthlyRate;
                 const principal = emi - interest;
                 balance -= principal;
                 const paymentDate = new Date(today.getFullYear(), today.getMonth() + i, today.getDate());
-                tableHtml += `
+                allRows.push(`
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${paymentDate.toLocaleDateString('en-IN')}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm">₹${Math.round(principal).toLocaleString('en-IN')}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm">₹${Math.round(interest).toLocaleString('en-IN')}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">₹${Math.round(emi).toLocaleString('en-IN')}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm">₹${Math.round(balance > 0 ? balance : 0).toLocaleString('en-IN')}</td>
-                    </tr>`;
+                    </tr>`);
             }
-            tableBody.innerHTML = tableHtml;
+            
+            const initialRowCount = 12;
+            tableBody.innerHTML = allRows.slice(0, initialRowCount).join('');
+            
+            if (allRows.length > initialRowCount) {
+                const viewMoreRow = document.createElement('tr');
+                const viewMoreCell = document.createElement('td');
+                viewMoreCell.colSpan = 5;
+                viewMoreCell.classList.add('text-center', 'py-4');
+                
+                const viewMoreButton = document.createElement('button');
+                viewMoreButton.innerText = 'View More';
+                viewMoreButton.className = 'bg-blue-500 text-white font-semibold py-2 px-6 rounded-lg hover:bg-blue-600 transition-colors';
+                
+                viewMoreButton.onclick = () => {
+                    tableBody.innerHTML += allRows.slice(initialRowCount).join('');
+                    tableFooter.innerHTML = ''; // Remove the button after clicking
+                };
+                
+                viewMoreCell.appendChild(viewMoreButton);
+                viewMoreRow.appendChild(viewMoreCell);
+                tableFooter.appendChild(viewMoreRow);
+            }
+
 
             [downloadBtn, gcalBtn, waBtn].forEach(btn => btn.disabled = false);
         } else {
@@ -2207,6 +2235,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
+
+
 
 
 

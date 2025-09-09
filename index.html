@@ -38,6 +38,14 @@
         
         .apply-modal { z-index: 1002; }
 
+        @keyframes bounce-sm {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .group:hover .icon-bounce {
+            animation: bounce-sm 0.6s ease-in-out;
+        }
+
         .sidebar { transition: transform 0.3s ease-in-out; }
         @media (max-width: 1023px) {
             .sidebar { position: fixed; top: 0; left: -100%; width: 280px; height: 100%; z-index: 1000; }
@@ -236,7 +244,7 @@
             </section>
 
             <!-- Gallery Slider -->
-            <section class="py-16 md:py-20 bg-gray-100">
+            <section class="py-16 md:py-20 bg-gray-100 overflow-hidden">
                 <div class="container mx-auto px-6">
                     <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center animate-on-scroll">Our Gallery & Motivation</h2>
                     <div class="swiper-container gallery-carousel">
@@ -251,7 +259,7 @@
                             <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-31_mnf432.jpg" alt="Festival celebration" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
                             <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387614/PHOTO-2025-09-09-08-37-33_1_vzeohb.jpg" alt="Group picture" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
                         </div>
-                        <div class="swiper-pagination"></div>
+                        
                     </div>
                 </div>
             </section>
@@ -289,13 +297,81 @@
                 </div>
             </section>
 
-             <section class="py-16 md:py-24 bg-gray-50">
+            <section class="py-16 md:py-24 bg-white">
                 <div class="container mx-auto px-6 text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll">Why Trust SKF Associates?</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="p-6 animate-on-scroll"><div class="flex justify-center items-center mb-4"><svg class="h-12 w-12 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" /></svg></div><h3 class="text-xl font-semibold mb-2">Tied-up with All Major Banks</h3><p class="text-gray-600">We are associated with all major public and private banks like HDFC, ICICI, SBI to provide you the <span class="font-semibold">Best Loan Offers</span>.</p></div>
-                        <div class="p-6 animate-on-scroll" style="transition-delay: 200ms;"><div class="flex justify-center items-center mb-4"><svg class="h-12 w-12 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div><h3 class="text-xl font-semibold mb-2">Quick & Transparent Process</h3><p class="text-gray-600">Our process is transparent. We ensure quick loan approvals with minimum documentation.</p></div>
-                        <div class="p-6 animate-on-scroll" style="transition-delay: 400ms;"><div class="flex justify-center items-center mb-4"><svg class="h-12 w-12 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" /></svg></div><h3 class="text-xl font-semibold mb-2">Expert & Honest Advice</h3><p class="text-gray-600">We don't just provide loans; we understand your situation and give the right advice that is always in your best interest.</p></div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4 animate-on-scroll">Why Choose SKF Ajmer?</h2>
+                    <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto animate-on-scroll" style="transition-delay: 100ms;">Because trust, transparency, and results matter. We are committed to finding the best financial solutions for you.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        <!-- Card 1: Loan Disbursed -->
+                        <div class="group bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 animate-on-scroll" style="transition-delay: 200ms;">
+                            <div class="bg-orange-100 rounded-full p-4 mb-4 inline-block icon-bounce">
+                                <svg class="h-10 w-10 text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75" />
+                                </svg>
+                            </div>
+                            <div class="flex justify-center items-baseline">
+                               <h3 class="counter text-4xl font-extrabold text-slate-800" data-target="300">0</h3>
+                               <span class="text-3xl font-extrabold text-slate-800">&nbsp;Cr+</span>
+                            </div>
+                            <p class="mt-2 text-gray-600 font-semibold">Loan Disbursed</p>
+                        </div>
+                        <!-- Card 2: Happy Customers -->
+                        <div class="group bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 animate-on-scroll" style="transition-delay: 300ms;">
+                            <div class="bg-orange-100 rounded-full p-4 mb-4 inline-block icon-bounce">
+                                <svg class="h-10 w-10 text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m-7.284-2.72a3 3 0 0 0-4.682 2.72 9.094 9.094 0 0 0 3.741.479m7.284-2.72a3 3 0 0 1 2.246 1.125 3 3 0 0 1-8.772 0 3 3 0 0 1 2.246-1.125M12 14.25a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 14.25a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-7.5 7.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm15 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                </svg>
+                            </div>
+                            <div class="flex justify-center items-baseline">
+                                <h3 class="counter text-4xl font-extrabold text-slate-800" data-target="100">0</h3>
+                                <span class="text-3xl font-extrabold text-slate-800">K+</span>
+                            </div>
+                            <p class="mt-2 text-gray-600 font-semibold">Happy Customers</p>
+                        </div>
+                        <!-- Card 3: Bank & NBFC Tie-ups -->
+                        <div class="group bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 animate-on-scroll" style="transition-delay: 400ms;">
+                             <div class="bg-orange-100 rounded-full p-4 mb-4 inline-block icon-bounce">
+                               <svg class="h-10 w-10 text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6M9 11.25h6m-6 4.5h6M6.75 21v-2.25a2.25 2.25 0 0 1 2.25-2.25h3a2.25 2.25 0 0 1 2.25 2.25V21M6.75 3v2.25A2.25 2.25 0 0 0 9 7.5h6a2.25 2.25 0 0 0 2.25-2.25V3" />
+                               </svg>
+                            </div>
+                            <div class="flex justify-center items-baseline">
+                               <h3 class="counter text-4xl font-extrabold text-slate-800" data-target="120">0</h3>
+                               <span class="text-3xl font-extrabold text-slate-800">+</span>
+                            </div>
+                            <p class="mt-2 text-gray-600 font-semibold">Bank & NBFC Tie-ups</p>
+                        </div>
+                         <!-- Card 4: Fast & Hassle-Free Process -->
+                        <div class="group bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 animate-on-scroll" style="transition-delay: 200ms;">
+                            <div class="bg-blue-100 rounded-full p-4 mb-4 inline-block icon-bounce">
+                                <svg class="h-10 w-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M11.35 3.836c-.463.066-.92.143-1.374.237-1.332.33-2.523.9-3.518 1.68a9.753 9.753 0 0 0-4.58 7.394 9.753 9.753 0 0 0 1.518 5.666 9.753 9.753 0 0 0 4.1 3.934 9.753 9.753 0 0 0 5.666 1.518 9.753 9.753 0 0 0 7.394-4.58 9.753 9.753 0 0 0 1.68-3.518 9.753 9.753 0 0 0-.237-1.374m-16.12.016a9.724 9.724 0 0 1 3.48-2.131 9.724 9.724 0 0 1 2.131-3.48m12.338 9.11a9.724 9.724 0 0 1-2.131 3.48 9.724 9.724 0 0 1-3.48 2.131m0-12.338a9.724 9.724 0 0 1 2.131-3.48 9.724 9.724 0 0 1 3.48-2.131" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-800">Fast & Hassle-Free</h3>
+                            <p class="mt-2 text-gray-600 font-semibold">Quick approvals with minimal documentation.</p>
+                        </div>
+                        <!-- Card 5: 0% Hidden Commission -->
+                        <div class="group bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 animate-on-scroll" style="transition-delay: 300ms;">
+                            <div class="bg-blue-100 rounded-full p-4 mb-4 inline-block icon-bounce">
+                               <svg class="h-10 w-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                               </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-800">0% Hidden Commission</h3>
+                            <p class="mt-2 text-gray-600 font-semibold">Complete transparency with no hidden charges.</p>
+                        </div>
+                        <!-- Card 6: Pan-India Service -->
+                        <div class="group bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 animate-on-scroll" style="transition-delay: 400ms;">
+                            <div class="bg-blue-100 rounded-full p-4 mb-4 inline-block icon-bounce">
+                                <svg class="h-10 w-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c.34 0 .672-.015 1-.042M12 21c-.34 0-.672-.015-1-.042M12 3a9.004 9.004 0 0 0-8.716 6.747M12 3a9.004 9.004 0 0 1 8.716 6.747M12 3c.34 0 .672-.015 1 .042M12 3c-.34 0-.672-.015-1-.042M15 9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-800">Pan-India Service</h3>
+                            <p class="mt-2 text-gray-600 font-semibold">Serving clients across the nation with expert advice.</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -317,7 +393,76 @@
                             <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621369/imgi_63_punawala3739_tljctp.png" alt="Poonawalla Fincorp" class="mx-auto h-16 object-contain"></div>
                             <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621450/imgi_82_file_sua6c1.png" alt="Lendingkart" class="mx-auto h-16 object-contain"></div>
                         </div>
-                         <div class="swiper-pagination"></div>
+                         
+                    </div>
+                </div>
+            </section>
+
+            <!-- Customer Testimonials Section -->
+            <section class="py-16 md:py-24 bg-gray-100 overflow-hidden">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 animate-on-scroll">What Our Happy Customers Say</h2>
+                    <div class="swiper-container testimonials-carousel">
+                        <div class="swiper-wrapper pb-12">
+                            <!-- Testimonial 1 -->
+                            <div class="swiper-slide h-auto">
+                                <div class="bg-white p-8 rounded-lg shadow-lg text-left h-full flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center text-yellow-400 mb-4">
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                        </div>
+                                        <p class="text-gray-600 mb-6 italic">"My experience with SKF Associates has been fantastic. They helped me get a loan against property with great ease. The entire process was smooth, and their team was very supportive. Highly recommended!"</p>
+                                    </div>
+                                    <p class="font-bold text-gray-800">- Aakash Chouhan</p>
+                                </div>
+                            </div>
+                             <!-- Testimonial 2 -->
+                            <div class="swiper-slide h-auto">
+                                <div class="bg-white p-8 rounded-lg shadow-lg text-left h-full flex flex-col justify-between">
+                                     <div>
+                                        <div class="flex items-center text-yellow-400 mb-4">
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                        </div>
+                                        <p class="text-gray-600 mb-6 italic">"Best service provider in Ajmer for home loans. Rajendra sir and his team are very professional and cooperative. They made the entire process hassle-free."</p>
+                                    </div>
+                                    <p class="font-bold text-gray-800">- Yogesh Sharma</p>
+                                </div>
+                            </div>
+                            <!-- Testimonial 3 -->
+                           <div class="swiper-slide h-auto">
+                                <div class="bg-white p-8 rounded-lg shadow-lg text-left h-full flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center text-yellow-400 mb-4">
+                                            <!-- 5 stars -->
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                        </div>
+                                        <p class="text-gray-600 mb-6 italic">"Excellent service and cooperative staff. They helped me get my business loan sanctioned quickly. Thank you, SKF team!"</p>
+                                    </div>
+                                    <p class="font-bold text-gray-800">- Virendra Singh</p>
+                                </div>
+                            </div>
+                            <!-- Testimonial 4 -->
+                             <div class="swiper-slide h-auto">
+                                <div class="bg-white p-8 rounded-lg shadow-lg text-left h-full flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center text-yellow-400 mb-4">
+                                            <!-- 5 stars -->
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                        </div>
+                                        <p class="text-gray-600 mb-6 italic">"I got my car loan through SKF Associates. The team was very helpful, especially Sona mam. They guided me at every step and got the work done fast."</p>
+                                    </div>
+                                    <p class="font-bold text-gray-800">- Pooja Verma</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -838,6 +983,8 @@ document.addEventListener('DOMContentLoaded', function () {
         'home-loan': {
             name: 'Home Loan',
             overview: 'Apne ghar ka sapna saakar karein. We offer a wide range of home loan products designed to meet your unique needs, whether you are buying, constructing, or renovating your home. With competitive interest rates and long tenure, we make home ownership affordable and easy.',
+            roi: '8.50%',
+            tenure: '30 Years',
             images: [
                 'https://res.cloudinary.com/dhme90fr1/image/upload/v1757241971/WhatsApp_Image_2025-09-07_at_3.20.38_PM_lqp1dy.jpg',
                 'https://res.cloudinary.com/dhme90fr1/image/upload/v1757240471/WhatsApp_Image_2025-09-07_at_3.20.41_PM_yunya8.jpg',
@@ -854,6 +1001,8 @@ document.addEventListener('DOMContentLoaded', function () {
         'business-loan': {
             name: 'Business Loan',
             overview: 'Apne business ko nayi unchaiyon tak pahunchayein. Our business loans are designed to provide the financial support you need for expansion, purchasing machinery, or managing working capital. We offer both secured and unsecured options to fit your business needs.',
+            roi: '10.50%',
+            tenure: '10 Years',
             images: [
                 'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-36_b8guao.jpg',
                 'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239662/PHOTO-2025-09-07-15-20-36_1_kwtbrl.jpg',
@@ -869,6 +1018,8 @@ document.addEventListener('DOMContentLoaded', function () {
         'personal-loan': {
              name: 'Personal Loan',
              overview: 'Har zaroorat ke liye, turant financial solution. Personal loans are the perfect solution for your immediate financial needs, be it a wedding, vacation, or medical emergency. With minimal documentation and quick disbursal, get the funds you need without any hassle.',
+             roi: '10.25%',
+             tenure: '5 Years',
              images: [
                 'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-34_q09kn6.jpg',
                 'https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-35_kxclyr.jpg'
@@ -882,6 +1033,8 @@ document.addEventListener('DOMContentLoaded', function () {
         'car-loan': {
             name: 'Car Loan',
             overview: 'Apni pasand ki car ghar laayein. Our car loans make it easy to buy your dream car with attractive interest rates, flexible tenures, and high loan-to-value ratios for both new and pre-owned cars.',
+            roi: '9.00%',
+            tenure: '7 Years',
             images: [
                 'https://res.cloudinary.com/dhme90fr1/image/upload/v1757237853/WhatsApp_Image_2025-09-07_at_3.06.10_PM_d8n3iz.jpg',
                 'https://res.cloudinary.com/dhme90fr1/image/upload/v1757237853/WhatsApp_Image_2025-09-07_at_3.06.11_PM_aolonf.jpg',
@@ -905,6 +1058,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'health-insurance': {
             name: 'Health Insurance',
             overview: 'Protect your health and finances. Health insurance provides a financial safety net against high medical expenses, ensuring you and your family receive the best possible care without financial worries.',
+            tenure: '1 Year',
             images: ['https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-27_csvkbm.jpg'],
             subtypes: {
                 'individual': { name: 'Individual Health Cover', tenure: '1 Year', eligibility: 'Any individual between 18 to 65 years of age can purchase this policy.', features: ['Comprehensive coverage for hospitalization expenses', 'Cashless treatment at network hospitals', 'Tax benefits under Section 80D', 'No-claim bonus benefits'], documents: ['Age proof (Aadhaar, Passport)', 'Address proof', 'Identity proof', 'Medical check-up reports (if required)'], faq: [{q: 'What is a waiting period in health insurance?', a: 'A waiting period is the duration you must wait before you can claim some or all benefits of your health insurance policy. This is common for pre-existing conditions.'}] },
@@ -914,15 +1068,17 @@ document.addEventListener('DOMContentLoaded', function () {
         'life-insurance': {
             name: 'Life Insurance',
             overview: 'Secure your family\'s future. Life insurance provides a lump-sum amount to your family in your absence, ensuring they can maintain their lifestyle and achieve their financial goals without any burden.',
+            tenure: 'Up to 85 years',
             images: ['https://placehold.co/800x500/eef2ff/4f46e5?text=Life+Insurance'],
             subtypes: {
                 'term': { name: 'Term Plan', tenure: 'Up to 85 years', eligibility: 'Available for individuals from 18 to 65 years. Provides high coverage at a low premium for a fixed term.', features: ['Pure risk cover', 'High sum assured at affordable premiums', 'Rider options for critical illness & accidental death', 'Tax benefits'], documents: ['Age & Identity Proof', 'Income Proof', 'Address Proof', 'Medical History'], faq: [{q: 'What happens if I survive the policy term?', a: 'In a pure term plan, no maturity benefit is paid if you survive the policy term. However, some plans now offer a "Return of Premium" option at a higher cost.'}] },
-                'endowment': { name: 'Endowment Plan', tenure: '10-30 Years', eligibility: 'Combines insurance with savings. Suitable for long-term goal planning.', features: ['Dual benefit of insurance and savings', 'Guaranteed maturity benefit', 'Bonus additions', 'Loan facility available'], documents: ['KYC Documents', 'Income Proof', 'Age Proof'], faq: [{q: 'Is an endowment plan a good investment?', a: 'Endowment plans offer safe, guaranteed returns but are generally lower than market-linked products. They are good for risk-averse individuals.'}] }
+                'endowment': { name: 'Endowment Plan', tenure: '10-30 Years', eligibility: 'Combines insurance with savings. Suitable for long-term goal planning.', features: ['Dual benefit of insurance and savings', 'Guaranteed maturity benefit', 'Bonus additions', 'Loan facility available'], documents: ['KYC Documents', 'Income Proof', 'Age Proof'], faq: [{q: 'Is an endowment plan a good investment?', a: 'Endowment plans offer safe, guaranteed returns but are generally lower than market-linked products. They are good for risk-avers individuals.'}] }
             }
         },
         'vehicle-insurance': {
             name: 'Vehicle Insurance',
             overview: 'Drive with confidence. Vehicle insurance protects you against financial losses from accidents, theft, or damage to your vehicle, and also covers third-party liabilities as mandated by law.',
+            tenure: '1 Year',
             images: ['https://placehold.co/800x500/fefce8/ca8a04?text=Vehicle+Insurance'],
             subtypes: {
                 'car': { name: 'Car Insurance', tenure: '1 Year', eligibility: 'Mandatory for all car owners in India.', features: ['Covers damage to your own car (OD)', 'Covers third-party liability', 'No-Claim Bonus (NCB) for claim-free years', 'Add-ons like zero depreciation & roadside assistance'], documents: ['Vehicle Registration Certificate (RC)', 'Driving License of the owner/driver', 'Previous policy details (for renewal)'], faq: [{q: 'What is the difference between third-party and comprehensive insurance?', a: 'Third-party insurance is mandatory and only covers damages to another person or property. Comprehensive insurance covers third-party liability plus damage or theft of your own vehicle.'}] },
@@ -933,6 +1089,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'general-insurance': {
             name: 'General Insurance',
             overview: 'Protect your valuable assets. General insurance provides coverage for a wide range of non-life assets, including your shop, property, and even your travels, safeguarding you from unexpected financial losses.',
+            tenure: '1 Year',
             images: ['https://placehold.co/800x500/f1f5f9/475569?text=General+Insurance'],
             subtypes: {
                 'shop': { name: 'Shopkeeper Insurance', tenure: '1 Year', eligibility: 'For owners of small to medium-sized shops.', features: ['Protection against fire, theft, and natural calamities', 'Covers building, stock, and contents', 'Liability coverage options', 'All-in-one package policy'], documents: ['Shop registration documents', 'Address proof of the shop', 'List of contents to be insured'], faq: [{q: 'Does it cover loss of money in the shop?', a: 'Yes, many shopkeeper policies offer an add-on or built-in cover for loss of money in transit or from a safe.'}] },
@@ -1051,7 +1208,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 <div class="swiper-button-next text-white"></div>
                 <div class="swiper-button-prev text-white"></div>
-                <div class="swiper-pagination"></div>
+                
             </div>`;
 
 
@@ -1102,10 +1259,6 @@ document.addEventListener('DOMContentLoaded', function () {
             autoplay: {
                 delay: 3000,
                 disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
             },
             navigation: {
                 nextEl: '.swiper-button-next',
@@ -2131,10 +2284,6 @@ document.addEventListener('DOMContentLoaded', function () {
             delay: 2500,
             disableOnInteraction: false,
         },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
         breakpoints: {
             640: { slidesPerView: 3, spaceBetween: 30 },
             768: { slidesPerView: 4, spaceBetween: 40 },
@@ -2150,15 +2299,55 @@ document.addEventListener('DOMContentLoaded', function () {
             delay: 3000,
             disableOnInteraction: false,
         },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
         breakpoints: {
             640: { slidesPerView: 2, spaceBetween: 20 },
             768: { slidesPerView: 3, spaceBetween: 30 },
             1024: { slidesPerView: 4, spaceBetween: 40 },
         }
+    });
+
+    new Swiper('.testimonials-carousel', {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 30,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        breakpoints: {
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            1024: { slidesPerView: 3, spaceBetween: 30 },
+        }
+    });
+
+    // --- Number Counting Animation ---
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = +counter.getAttribute('data-target');
+                const duration = 3000; // 3 seconds
+                const stepTime = 20; // update every 20ms
+                const increment = target / (duration / stepTime);
+
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current).toLocaleString('en-IN');
+                        setTimeout(updateCounter, stepTime);
+                    } else {
+                        counter.innerText = target.toLocaleString('en-IN');
+                    }
+                };
+                
+                updateCounter();
+                observer.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(counter => {
+        counterObserver.observe(counter);
     });
 
     // --- Thank You Modal & Confetti Logic ---
@@ -2235,6 +2424,14 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 

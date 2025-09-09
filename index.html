@@ -238,7 +238,7 @@
                      <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-8 animate-on-scroll">"Sapne aap dekho, poore hum karenge." Get the Best Financial Solutions in Rajasthan.</p>
                      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 animate-on-scroll">
                          <a href="#eligibility-form" class="page-link bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors w-full sm:w-auto">Apply Now</a>
-                          <a href="#our-services" class="page-link bg-transparent border-2 border-white hover:bg-white hover:text-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors w-full sm:w-auto">Explore Services</a>
+                          <a href="#our-services" class="bg-transparent border-2 border-white hover:bg-white hover:text-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors w-full sm:w-auto">Explore Services</a>
                      </div>
                  </div>
             </section>
@@ -267,8 +267,8 @@
             <!-- All Loan & Insurance Page Section -->
             <section id="our-services" class="py-16 md:py-24 bg-white">
                 <div class="container mx-auto px-6 text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll">Our Financial Services</h2>
-                    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-12 animate-on-scroll">Our Loan & Insurance Services</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
                         <a href="#home-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate-on-scroll">
                             <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757241971/WhatsApp_Image_2025-09-07_at_3.20.38_PM_lqp1dy.jpg" alt="Home Loan" class="w-full h-48 object-contain">
                             <div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Home Loan</h3></div>
@@ -292,6 +292,21 @@
                          <a href="#health-insurance" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate-on-scroll" style="transition-delay: 500ms;">
                             <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-27_csvkbm.jpg" alt="Health Insurance" class="w-full h-48 object-contain">
                             <div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Health Insurance</h3></div>
+                        </a>
+                        <!-- Life Insurance Card -->
+                        <a href="#life-insurance" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate-on-scroll" style="transition-delay: 600ms;">
+                            <img src="https://placehold.co/800x500/eef2ff/4f46e5?text=Life+Insurance" alt="Life Insurance" class="w-full h-48 object-contain bg-white">
+                            <div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Life Insurance</h3></div>
+                        </a>
+                        <!-- Vehicle Insurance Card -->
+                        <a href="#vehicle-insurance" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate-on-scroll" style="transition-delay: 700ms;">
+                            <img src="https://placehold.co/800x500/fefce8/ca8a04?text=Vehicle+Insurance" alt="Vehicle Insurance" class="w-full h-48 object-contain bg-white">
+                            <div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Vehicle Insurance</h3></div>
+                        </a>
+                        <!-- General Insurance Card -->
+                        <a href="#general-insurance" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate-on-scroll" style="transition-delay: 800ms;">
+                            <img src="https://placehold.co/800x500/f1f5f9/475569?text=General+Insurance" alt="General Insurance" class="w-full h-48 object-contain bg-white">
+                            <div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">General Insurance</h3></div>
                         </a>
                     </div>
                 </div>
@@ -791,7 +806,7 @@
                 <div class="container mx-auto px-6">
                     <h3 class="text-2xl font-bold">Work with SKF Ajmer – Rajasthan’s Trusted Loan Partner.</h3>
                     <p class="mt-2">Start your finance career today!</p>
-                    <a href="#join-dsa" class="page-link inline-block mt-6 bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors">Apply Now</a>
+                    <a href="#join-dsa" class="inline-block mt-6 bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors">Apply Now</a>
                 </div>
             </div>
         </div>
@@ -878,10 +893,11 @@
                                 <option value="Business Loan">Business Loan</option>
                                 <option value="Car Loan">Car/Vehicle Loan</option>
                                 <option value="LAP">Loan Against Property</option>
+                                <option value="Insurance">Insurance</option>
                             </select>
                         </div>
                         <div>
-                            <label for="requiredLoanAmount" class="block font-medium text-gray-700">Required Loan Amount (₹)</label>
+                            <label for="requiredLoanAmount" class="block font-medium text-gray-700">Required Loan Amount / Sum Insured (₹)</label>
                             <input type="number" id="requiredLoanAmount" name="requiredLoanAmount" class="w-full mt-1 p-3 border rounded-lg" required>
                         </div>
                         <button type="submit" class="w-full bg-green-600 text-white font-bold py-4 px-6 rounded-lg hover:bg-green-700 transition-colors text-lg">Check Eligibility</button>
@@ -2424,6 +2440,10 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
+
+
+
+
 
 
 

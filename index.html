@@ -1442,10 +1442,35 @@ document.addEventListener('DOMContentLoaded', function () {
             const formData = new FormData(eligibilityForm);
             const data = Object.fromEntries(formData.entries());
 
+            // --- DATA SUBMISSION TO GOOGLE SHEET ---
+            const runningLoanDetailsText = data.runningLoan === 'Yes' ?
+                `EMI: ₹${data.emiAmount || 'N/A'}, Outstanding: ₹${data.outstandingLoan || 'N/A'}, Status: ${data.overdueStatus || 'N/A'}` :
+                'No';
+            
+            const sheetPayload = {
+                name: data.fullName,
+                mobile: data.mobileNumber,
+                city: data.city,
+                pincode: data.pincode,
+                employment: data.employmentType,
+                income: data.monthlySalary || data.monthlyIncome,
+                runningLoan: data.runningLoan,
+                runningLoanDetails: runningLoanDetailsText,
+                loanAmount: data.requiredLoanAmount,
+                product: data.loanType,
+                // These fields are not in the form, so send as blank
+                insuranceType: '',
+                tenure: '',
+                emi: '',
+                roi: ''
+            };
+            sendDataToGoogleSheet(sheetPayload);
+            // --- END OF GOOGLE SHEET SUBMISSION ---
+
             const loanType = data.loanType;
             const forwardTo = teamMemberMapping[loanType] || { name: 'Rajendra Singh', number: '919214104963' };
 
-            let message = '📩 *New Loan Enquiry*\n\n';
+            let message = '📩 *New Loan Enquiry (from Eligibility Form)*\n\n';
             message += `🔹 *Name:* ${data.fullName}\n`;
             message += `📞 *Mobile:* ${data.mobileNumber}\n`;
             message += `🏙 *City:* ${data.city}\n`;
@@ -1492,7 +1517,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div id="chat-input-container">
                 <input type="text" id="chat-input" placeholder="Type your message...">
                 <button id="chat-send-btn">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
                 </button>
             </div>
         </div>
@@ -1593,7 +1618,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function startConversation() {
         addBotMessage("🙏 जय माता जी — मैं SKF से आपका मददगार हूँ।");
-        setTimeout(() => addBotMessage("बताइए आपको किस loan या insurance की ज़रूरत है?"), 600);
+        setTimeout(() => {
+            addBotMessage("बताइए आपको किस loan या insurance की ज़रूरत है?");
+            showQuickReplies([
+                { label: '🏡 Home Loan', value: 'Home Loan' },
+                { label: '💼 Business Loan', value: 'Business Loan' },
+                { label: '👤 Personal Loan', value: 'Personal Loan' },
+                { label: '🚗 Car Loan', value: 'Car Loan' },
+                { label: '💰 Loan Against Property', value: 'Loan Against Property' },
+                { label: '🛡️ Insurance', value: 'Insurance' }
+            ]);
+        }, 600);
         state = 'AWAITING_PURPOSE';
     }
 
@@ -1732,8 +1767,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function showSummary() {
         addBotMessage("✅ Thank you for sharing details!");
         if (userData.product !== 'Insurance') {
-            const { emi, totalInterest, totalPayment } = calculateEMI();
+            const { emi, totalInterest, totalPayment, rate } = calculateEMI();
             userData.emi = Math.round(emi);
+            userData.roi = rate; // Store the ROI to be sent to the sheet
             let summaryHtml = `<div class="p-4 bg-blue-50 border border-blue-200 rounded-lg"><h3 class="text-lg font-bold text-blue-800 mb-3">EMI Summary</h3><p><strong>Loan Amount:</strong> ₹${userData.loanAmount.toLocaleString('en-IN')}</p><p><strong>Tenure:</strong> ${userData.tenure} Years</p><p class="mt-4 text-2xl font-bold text-orange-600">Monthly EMI: ₹${userData.emi.toLocaleString('en-IN')}</p><hr class="my-3"><p><strong>Total Interest:</strong> ₹${Math.round(totalInterest).toLocaleString('en-IN')}</p><p><strong>Total Payment:</strong> ₹${Math.round(totalPayment).toLocaleString('en-IN')}</p></div>`;
             addBotMessage(summaryHtml);
         }
@@ -1756,7 +1792,44 @@ document.addEventListener('DOMContentLoaded', function () {
         state = 'AWAITING_PURPOSE';
     }
 
+    async function sendDataToGoogleSheet(data) {
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbycYpHtM0fkSToYUDR4Xq41cZ0V7zuY3qr1vExI4sM6MQXuSnSDjecO2P4Z2eJyqjwU/exec';
+        const payload = {
+            full_name: data.name || "",
+            mobile_number: data.mobile || "",
+            city: data.city || "",
+            pincode: data.pincode || "",
+            employment_type: data.employment || "",
+            income: data.income || "",
+            running_loan: data.runningLoan || "",
+            running_loan_details: data.runningLoanDetails || "",
+            required_amount: data.loanAmount || "",
+            loan_type: data.product === 'Insurance' ? `${data.insuranceType} Insurance` : (data.product || ""),
+            tenure: data.tenure || "",
+            emi_estimate: data.emi || "",
+            roi: data.roi || ""
+        };
+
+        try {
+            // Using text/plain is a common method to bypass CORS preflight issues with Google Scripts
+            await fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors', // Added to prevent CORS errors with Google Script redirects
+                body: JSON.stringify(payload),
+                 headers: {
+                    "Content-Type": "text/plain;charset=utf-8",
+                },
+            });
+            console.log('Data submission to Google Sheet initiated successfully.');
+        } catch (error) {
+            console.error('Error submitting data to Google Sheet:', error);
+        }
+    }
+
     function forwardToTeam() {
+        // Send data to Google Sheet in the background
+        sendDataToGoogleSheet(userData);
+        
         const message = generateWhatsappMessage();
         const encodedMessage = encodeURIComponent(message);
         const productForNumber = userData.product === 'Insurance' ? 'Insurance' : userData.product;
@@ -1782,7 +1855,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
         const totalPayment = emi * n;
         const totalInterest = totalPayment - p;
-        return { emi, totalInterest, totalPayment };
+        return { emi, totalInterest, totalPayment, rate };
     }
 
     function generateWhatsappMessage() {
@@ -1948,3 +2021,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
+
+
+
+

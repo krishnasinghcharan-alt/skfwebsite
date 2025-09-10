@@ -172,68 +172,107 @@
 <body class="bg-gray-50 text-gray-800">
 
     <!-- HEADER with Multi-Level Dropdown -->
-    <header id="header" class="sticky top-0 z-50 bg-white header-shadow">
-        <!-- Main Navigation -->
-        <nav class="container mx-auto px-6 py-3">
-            <div class="flex justify-between items-center">
-                <a href="#home" class="page-link flex items-center space-x-3 ">
-                    <img src="https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png" alt="Shree Karni Kripa Associates" class="h-12 w-auto flex-shrink-0">
-                    <!-- Desktop Name -->
-                    <div class="hidden md:block">
-                        <span class="font-bold text-xl text-gray-800">Shree Karni Kripa Associates</span>
-                        <p class="text-sm text-gray-500">Your Trusted Partner in Finance & Insurance</p>
-                    </div>
-                    <!-- Mobile Name -->
-                    <div class="md:hidden">
-                         <span class="font-bold text-xl text-gray-800">S<span class="text-orange-500">K</span>F Associates</span>
-                    </div>
+  <header id="header" class="sticky top-0 z-50 bg-white header-shadow">
+  <!-- Main Navigation -->
+  <nav class="container mx-auto px-6 py-3">
+    <div class="flex justify-between items-center">
+      <!-- Logo + Name -->
+      <a href="#home" class="page-link flex items-center space-x-3">
+        <img 
+          src="https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png" 
+          alt="Shree Karni Kripa Associates" 
+          class="h-16 w-auto flex-shrink-0"   <!-- Increased size -->
+        >
+        <!-- Desktop Name -->
+        <div class="hidden md:block">
+          <span class="font-bold text-xl text-gray-800">Shree Karni Kripa Associates</span>
+          <p class="text-sm text-gray-500">Your Trusted Partner in Finance & Insurance</p>
+        </div>
+        <!-- Mobile Name -->
+        <div class="md:hidden">
+          <span class="font-bold text-xl text-gray-800">
+            S<span class="text-orange-500">K</span>F Associates
+          </span>
+        </div>
+      </a>
+
+      <!-- Navigation -->
+      <div class="flex items-center gap-4">
+        <ul class="hidden lg:flex items-center space-x-6 text-gray-700 font-semibold">
+          <li><a href="#home" class="nav-link page-link">Home</a></li>
+
+          <!-- Products Dropdown -->
+          <li class="dropdown relative">
+            <a href="#" class="nav-link flex items-center">
+              Products 
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+            <ul class="dropdown-menu absolute bg-white shadow-lg rounded-md mt-3 py-2 w-56"> <!-- mt-3 added -->
+              <li><a href="#home-loan" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Home Loan</a></li>
+              <li><a href="#personal-loan" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Personal Loan</a></li>
+              <li><a href="#business-loan" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Business Loan</a></li>
+              <li><a href="#car-loan" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Car / Vehicle Loan</a></li>
+              <li><a href="#lap-loan" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Loan Against Property</a></li>
+              
+              <!-- Insurance Submenu -->
+              <li class="dropdown-submenu relative">
+                <a href="#health-insurance" class="page-link flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">
+                  Insurance 
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 5l7 7-7 7"></path>
+                  </svg>
                 </a>
-                <div class="flex items-center gap-4">
-                    <ul class="hidden lg:flex items-center space-x-6 text-gray-700 font-semibold">
-                        <li><a href="#home" class="nav-link page-link">Home</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="nav-link flex items-center">Products <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></a>
-                            <ul class="dropdown-menu absolute bg-white shadow-lg rounded-md mt-2 py-2 w-56">
-                                <li><a href="#home-loan" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Home Loan</a></li>
-                                <li><a href="#personal-loan" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Personal Loan</a></li>
-                                <li><a href="#business-loan" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Business Loan</a></li>
-                                <li><a href="#car-loan" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Car / Vehicle Loan</a></li>
-                                <li><a href="#lap-loan" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Loan Against Property</a></li>
-                                 <li class="dropdown-submenu">
-                                    <a href="#health-insurance" class="page-link flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Insurance <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></a>
-                                    <ul class="dropdown-menu-level-2 bg-white shadow-lg rounded-md py-2 w-56">
-                                        <li><a href="#life-insurance" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Life</a></li>
-                                        <li><a href="#health-insurance" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Health</a></li>
-                                        <li><a href="#vehicle-insurance" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Vehicle</a></li>
-                                        <li><a href="#general-insurance" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">General</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#about" class="nav-link page-link">About Us</a></li>
-                        <li><a href="https://karni-kripa.blogspot.com" target="_blank" rel="noopener noreferrer" class="nav-link">Blog</a></li>
-                        <li><a href="#emi-calculator" class="nav-link page-link">EMI Calculator</a></li>
-                         <li class="dropdown">
-                            <a href="#join-us" class="page-link nav-link flex items-center">Join Us <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></a>
-                            <ul class="dropdown-menu absolute bg-white shadow-lg rounded-md mt-2 py-2 w-56">
-                                 <li><a href="#join-dsa" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Join as DSA</a></li>
-                                 <li><a href="#join-connector" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Join as Connector</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#contact" class="nav-link page-link">Contact Us</a></li>
-                    </ul>
-                     <a href="#eligibility-form" class="page-link hidden lg:block bg-orange-500 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-orange-600 transition-all duration-300 transform hover:scale-105">
-                        Apply Now
-                    </a>
-                    <button id="mobile-menu-button" class="lg:hidden text-gray-600" aria-label="Open menu">
-                         <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
-                    </button>
-                </div>
-            </div>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white px-6 pb-4 border-t"></div>
-    </header>
+                <ul class="dropdown-menu-level-2 absolute left-full top-0 bg-white shadow-lg rounded-md py-2 w-56 mt-0 ml-1"> <!-- shifted right -->
+                  <li><a href="#life-insurance" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Life</a></li>
+                  <li><a href="#health-insurance" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Health</a></li>
+                  <li><a href="#vehicle-insurance" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Vehicle</a></li>
+                  <li><a href="#general-insurance" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">General</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li><a href="#about" class="nav-link page-link">About Us</a></li>
+          <li><a href="https://karni-kripa.blogspot.com" target="_blank" rel="noopener noreferrer" class="nav-link">Blog</a></li>
+          <li><a href="#emi-calculator" class="nav-link page-link">EMI Calculator</a></li>
+
+          <!-- Join Us Dropdown -->
+          <li class="dropdown relative">
+            <a href="#join-us" class="page-link nav-link flex items-center">
+              Join Us 
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+            <ul class="dropdown-menu absolute bg-white shadow-lg rounded-md mt-3 py-2 w-56"> <!-- mt-3 added -->
+              <li><a href="#join-dsa" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Join as DSA</a></li>
+              <li><a href="#join-connector" class="page-link block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50">Join as Connector</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#contact" class="nav-link page-link">Contact Us</a></li>
+        </ul>
+
+        <!-- Apply Now Button -->
+        <a href="#eligibility-form" class="page-link hidden lg:block bg-orange-500 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-orange-600 transition-all duration-300 transform hover:scale-105">
+          Apply Now
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="lg:hidden text-gray-600" aria-label="Open menu">
+          <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-white px-6 pb-4 border-t"></div>
+</header>
 
     <main>
         <!-- Home Page -->

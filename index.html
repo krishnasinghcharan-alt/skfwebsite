@@ -78,7 +78,27 @@
         .top-bar-info { display: none; }
         #main-nav-center { display: none; }
     }
-    .sidebar-link.active { background-color: #f97316; color: white; }
+    .sidebar-link {
+        display: block;
+        padding: 10px 16px;
+        margin-bottom: 5px;
+        border-radius: 8px;
+        transition: all 0.2s ease-in-out;
+        font-weight: 500;
+        color: #4B5563; /* text-gray-600 */
+        border-left: 4px solid transparent;
+    }
+    .sidebar-link:hover {
+        background-color: #FEF3C7; /* amber-100 */
+        color: #D97706; /* amber-600 */
+        transform: translateX(4px);
+    }
+    .sidebar-link.active {
+        background-color: #FFF7ED; /* orange-50 */
+        color: #F97316; /* orange-500 */
+        font-weight: 600;
+        border-left-color: #F97316;
+    }
 
     .faq-question { cursor: pointer; }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
@@ -172,7 +192,7 @@
 <body class="bg-gray-50 text-gray-800">
 <!-- HEADER with Multi-Level Dropdown -->
 
-  <header id="header" class=" top-0 z-50 bg-white header-shadow">
+  <header id="header" class="sticky top-0 z-50 bg-white header-shadow">
   <!-- Main Navigation -->
   <nav class="container mx-auto px-6 py-3">
     <div class="flex justify-between items-center">
@@ -652,6 +672,24 @@
                      <div class="text-center mt-12">
                         <a href="#join-us" class="page-link bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors">Join Our Team</a>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INSTAGRAM FEED SECTION -->
+        <div class="bg-gray-100">
+            <div class="container mx-auto px-6 py-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Latest on Instagram</h2>
+                    <p class="mt-4 text-lg text-gray-600">Follow us <a href="https://www.instagram.com/skf_associate" target="_blank" rel="noopener noreferrer" class="text-orange-500 font-semibold hover:underline">@skf_associate</a> for our latest updates and success stories!</p>
+                </div>
+                
+                <!-- Instagram Feed Widget Placeholder -->
+                <div class="bg-white p-2 rounded-lg shadow-md max-w-4xl mx-auto">
+                    <!-- STEP 6: LightWidget code ko neeche di gayi line ke baad paste karein -->
+                    
+                    <!-- LightWidget WIDGET --><script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/a6a522bccd8f516bac70f8956bbce3fb.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+
                 </div>
             </div>
         </div>
@@ -1723,14 +1761,6 @@ document.addEventListener('DOMContentLoaded', function () {
         sidebarOverlay.classList.remove('open');
     });
 
-    // Close sidebar when clicking on the main content area
-    document.querySelector('main').addEventListener('click', () => {
-        if (sidebarContainer.classList.contains('open')) {
-            sidebarContainer.classList.remove('open');
-            sidebarOverlay.classList.remove('open');
-        }
-    });
-
     // Mobile menu generation logic
     const desktopMenu = document.querySelector('nav ul.hidden.lg\\:flex');
     if (desktopMenu) {
@@ -2524,6 +2554,10 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
+
+
+
+
 
 
 

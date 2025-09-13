@@ -21,11 +21,11 @@
         body { font-family: 'Inter', sans-serif; }
         .page { display: none; animation: fadeIn 0.5s ease-in-out; }
         .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .header-shadow { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
     
     .dropdown .dropdown-menu { display: none; }
-    .dropdown:hover > .dropdown-menu { display: none; }
+    .dropdown:hover > .dropdown-menu { display: block; }
     .dropdown-submenu { position: relative; }
     .dropdown-submenu .dropdown-menu-level-2 { display: none; position: absolute; left: 100%; top: -7px; }
     .dropdown-submenu:hover .dropdown-menu-level-2 { display: block; }
@@ -2524,6 +2524,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
+
 
 
 

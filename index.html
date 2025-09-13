@@ -1707,6 +1707,14 @@ document.addEventListener('DOMContentLoaded', function () {
         sidebarOverlay.classList.remove('open');
     });
 
+    // Close sidebar when clicking on the main content area
+    document.querySelector('main').addEventListener('click', () => {
+        if (sidebarContainer.classList.contains('open')) {
+            sidebarContainer.classList.remove('open');
+            sidebarOverlay.classList.remove('open');
+        }
+    });
+
     // Mobile menu generation logic
     const desktopMenu = document.querySelector('nav ul.hidden.lg\\:flex');
     if (desktopMenu) {
@@ -2491,6 +2499,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
+
 
 
 

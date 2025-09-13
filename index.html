@@ -282,7 +282,7 @@
                  <p class="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-8 animate-on-scroll">"Sapne aap dekho, poore hum karenge." Get the Best Financial Solutions in Rajasthan.</p>
                  <div class="flex flex-col sm:flex-row justify-center items-center gap-4 animate-on-scroll">
                      <a href="#eligibility-form" class="page-link bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors w-full sm:w-auto">Apply Now</a>
-                      <a href="#our-services" class="bg-transparent border-2 border-white hover:bg-white hover:text-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors w-full sm:w-auto">Explore Services</a>
+                      <a href="#our-services" class="page-link bg-transparent border-2 border-white hover:bg-white hover:text-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors w-full sm:w-auto">Explore Services</a>
                  </div>
              </div>
         </section>
@@ -1185,12 +1185,14 @@ document.addEventListener('DOMContentLoaded', function () {
             if (pageId === 'emi-calculator') renderEmiCalculator();
             if (isProductPage) renderLoanPage(pageId);
 
-            if (pageId === 'join-dsa' || pageId === 'join-connector') {
+            if (pageId === 'join-dsa' || pageId === 'join-connector' || pageId === 'our-services') {
                 setTimeout(() => {
                     document.getElementById(pageId)?.scrollIntoView({ behavior: 'smooth' });
                 }, 100);
             } else {
-                 window.scrollTo(0, 0);
+                if (!isProductPage) {
+                    window.scrollTo(0, 0);
+                }
             }
         }
 
@@ -2522,6 +2524,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
+
 
 
 

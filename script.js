@@ -767,15 +767,28 @@ document.addEventListener('DOMContentLoaded', function() {
         const form = e.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
-        data.loanType = `Join Us: ${form.dataset.role || 'Partner'}`;
+        const userName = data.fullName || 'Partner';
+        data.loanType = `Join Us: ${form.dataset.role || 'DSA'}`;
 
+        // 1. Send data to Google Sheet
         sendDataToGoogleSheet(data);
 
-        const teamMember = teamMemberMapping['fallback'];
-        const message = `New Partner Lead:\nRole: ${form.dataset.role}\nName: ${data.fullName}\nMobile: ${data.mobile}`;
-        
-        showThankYouModal(teamMember.number, message);
-        form.reset();
+        // 2. Replace form with a personalized thank you message and WhatsApp button
+        const formContainer = form.parentElement;
+        const whatsappNumber = '919214104963'; // Rajendra Singh's number
+        const message = `Hello Rajendra Singh, I have just applied to join SKF as a partner. My name is ${userName}.`;
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+        formContainer.innerHTML = `
+            <div class="text-center py-10 px-4">
+                <svg class="w-16 h-16 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 class="text-2xl font-bold text-green-600 mt-4">Thank You, ${userName}!</h3>
+                <p class="text-gray-600 mt-2">Your application has been submitted successfully. Our team will get in touch with you shortly.</p>
+                <div class="mt-8">
+                    <a href="${whatsappUrl}" target="_blank" class="inline-block w-full bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition-colors">Chat with Rajendra Singh</a>
+                </div>
+            </div>
+        `;
     }
 
     function setupForms() {

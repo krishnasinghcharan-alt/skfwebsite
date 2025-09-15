@@ -1225,8 +1225,16 @@ document.addEventListener('DOMContentLoaded', function() {
             if (userData.product !== 'Insurance') {
                 const { emi, totalInterest, totalPayment, rate } = calculateEMI();
                 userData.emi = Math.round(emi);
-                userData.roi = rate; // Store the ROI to be sent to the sheet // This is a self-correcting comment. The original code had a bug here.
-                let summaryHtml = `<div class="p-4 bg-blue-50 border border-blue-200 rounded-lg"><h3 class="text-lg font-bold text-blue-800 mb-3">EMI Summary</h3><p><strong>Loan Amount:</strong> ₹${userData.loanAmount.toLocaleString('en-IN')}</p><p><strong>Tenure:</strong> ${userData.tenure} Years</p><p class="mt-4 text-2xl font-bold text-primary-color">Monthly EMI: ₹${userData.emi.toLocaleString('en-IN')}</p><hr class="my-3"><p><strong>Total Interest:</strong> ₹${Math.round(totalInterest).toLocaleString('en-IN')}</p><p><strong>Total Payment:</strong> ₹${Math.round(totalPayment).toLocaleString('en-IN')}</p></div>`;
+                userData.roi = rate;
+                let summaryHtml = `
+                    <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                        <h3 class="text-lg font-bold text-blue-800 mb-3">EMI Summary</h3>
+                        <p><strong>Loan Amount:</strong> ₹${userData.loanAmount.toLocaleString('en-IN')}</p>
+                        <p><strong>Tenure:</strong> ${userData.tenure} Years</p>
+                        <p class="mt-4 text-2xl font-bold text-primary-color">Monthly EMI: ₹${userData.emi.toLocaleString('en-IN')}</p>
+                        <p class="text-sm text-gray-600">(Estimated at ${rate}% ROI)</p>
+                        <p class="mt-4 text-xs text-gray-500 italic">*Disclaimer: यह एक अनुमान है। अंतिम ब्याज दर आपकी प्रोफ़ाइल और बैंक की पॉलिसी के आधार पर भिन्न हो सकती है।</p>
+                    </div>`;
                 addBotMessage(summaryHtml);
             }
             setTimeout(askForConsent, 1000);

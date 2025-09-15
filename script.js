@@ -721,14 +721,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const form = e.target; // The form element
         const submitButton = form.querySelector('button[type="submit"]');
 
-        // Provide immediate feedback to the user
+        // Disable the button to prevent multiple submissions
         submitButton.disabled = true;
-        submitButton.innerHTML = `
-            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            Submitting...
+
+        // Show an immediate thank you message
+        const formContainer = form.parentElement;
+        formContainer.innerHTML = `
+            <div class="text-center py-10">
+                <h2 class="text-3xl font-bold text-green-600 mb-4">Thank You!</h2>
+                <p class="text-gray-700">We have received your details and will contact you soon.</p>
+            </div>
         `;
 
         const formData = new FormData(form);
@@ -738,13 +740,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const teamMember = teamMemberMapping[data.loanType] || teamMemberMapping['fallback'];
         const message = `New Eligibility Lead:\nName: ${data.fullName}\nMobile: ${data.mobile}\nCity: ${data.city}\nLoan Type: ${data.loanType}\nEmployment: ${data.employmentType}\nIncome: ₹${data.monthlyIncome}`;
 
-        // Show modal after a short delay to simulate processing
-        setTimeout(() => {
-            showThankYouModal(teamMember.number, message);
-            form.reset();
-            submitButton.disabled = false;
-            submitButton.innerHTML = 'Submit & Check Eligibility';
-        }, 1500); // 1.5-second delay
+        // You can still trigger the WhatsApp modal if needed, or remove this part
+        // showThankYouModal(teamMember.number, message);
     }
 
     function handleContactFormSubmit(e) {

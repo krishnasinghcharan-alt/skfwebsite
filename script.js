@@ -721,27 +721,31 @@ document.addEventListener('DOMContentLoaded', function() {
         const form = e.target; // The form element
         const submitButton = form.querySelector('button[type="submit"]');
 
-        // Disable the button to prevent multiple submissions
+        // Disable the button and show a loading state
         submitButton.disabled = true;
-
-        // Show an immediate thank you message
-        const formContainer = form.parentElement;
-        formContainer.innerHTML = `
-            <div class="text-center py-10">
-                <h2 class="text-3xl font-bold text-green-600 mb-4">Thank You!</h2>
-                <p class="text-gray-700">We have received your details and will contact you soon.</p>
-            </div>
-        `;
+        submitButton.innerHTML = 'Submitting...';
 
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
         sendDataToGoogleSheet(data);
 
-        const teamMember = teamMemberMapping[data.loanType] || teamMemberMapping['fallback'];
-        const message = `New Eligibility Lead:\nName: ${data.fullName}\nMobile: ${data.mobile}\nCity: ${data.city}\nLoan Type: ${data.loanType}\nEmployment: ${data.employmentType}\nIncome: ₹${data.monthlyIncome}`;
+        // Redirect to WhatsApp after a short delay
+        setTimeout(() => {
+            const message = `New Eligibility Lead:\nName: ${data.fullName}\nMobile: ${data.mobile}\nCity: ${data.city}\nLoan Type: ${data.loanType}\nEmployment: ${data.employmentType}\nIncome: ₹${data.monthlyIncome}`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/918118838772?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
 
-        // You can still trigger the WhatsApp modal if needed, or remove this part
-        // showThankYouModal(teamMember.number, message);
+            // Restore the form to its original state
+            const formContainer = form.parentElement;
+            formContainer.innerHTML = `
+                <div class="text-center py-10">
+                    <h2 class="text-3xl font-bold text-green-600 mb-4">Thank You!</h2>
+                    <p class="text-gray-700">We have received your details and will contact you soon.</p>
+                    <p class="text-sm text-gray-500 mt-2">If you were not redirected, <a href="${whatsappUrl}" target="_blank" class="text-blue-600 underline">click here</a>.</p>
+                </div>
+            `;
+        }, 1500); // 1.5-second delay
     }
 
     function handleContactFormSubmit(e) {
@@ -1319,13 +1323,16 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const message = generateWhatsappMessage();
             const encodedMessage = encodeURIComponent(message);
-            const productForNumber = userData.product === 'Insurance' ? 'Insurance' : userData.product;
-            const number = teamNumbers[productForNumber] || teamNumbers['fallback'];
+            const number = '918118838772'; // Hardcode the number as requested
             const whatsappUrl = `https://wa.me/${number}?text=${encodedMessage}`;
 
             showConfetti();
             addBotMessage("🙏 Thank you! आपकी enquiry हमारी SKF टीम तक पहुंच गई है। Experts जल्द ही आपसे संपर्क करेंगे।");
-            showFinalButtons([ { label: 'Click to send details on WhatsApp', class: 'px-6 py-3 bg-accent-color text-white font-bold rounded-lg hover:bg-green-700 transition w-full animate-pulse', action: () => window.open(whatsappUrl, '_blank') } ]);
+            addBotMessage("आपको WhatsApp पर redirect किया जा रहा है...");
+            chatQuickReplies.innerHTML = ''; // Clear any buttons
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 2000); // 2-second delay for user to read the message
         }
 
         function calculateEMI() {
@@ -1461,8 +1468,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const homePage = document.getElementById('home-page');
         if (!homePage) return;
         homePage.innerHTML = `
-            <section class="relative w-full h-full bg-cover bg-center text-white" style="background-image: url('https://res.cloudinary.com/dhme90fr1/image/upload/v1756626261/PHOTO-2025-08-31-13-08-02_2_szo0ga.jpg');">
-                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent backdrop-blur-sm"></div>
+            <section class="relative w-full h-full bg-cover bg-center text-white" style="background-image: url('https://res.cloudinary.com/dugvqluo2/image/upload/v1757947648/IMG_7817_pgkm5f.jpg');">
+                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
                  <div class="container mx-auto px-6 py-24 md:py-36 text-center relative z-10" style="padding-top: clamp(6rem, 12vw, 9rem); padding-bottom: clamp(6rem, 12vw, 9rem);">
                      <h1 class="font-extrabold leading-tight mb-4" style="font-size: clamp(2.25rem, 1.5rem + 3.75vw, 4.5rem);">Your Trusted Loan & Insurance Advisors</h1>
                      <p class="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto mb-8">"Sapne aap dekho, poore hum karenge." Get the Best Financial Solutions in Rajasthan.</p>

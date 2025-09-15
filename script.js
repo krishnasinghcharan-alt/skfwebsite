@@ -1082,74 +1082,6 @@ document.addEventListener('DOMContentLoaded', function() {
             chatQuickReplies.appendChild(button);
         }
 
-        // --- Handle user input for new flow ---
-        function handleUserInput(input) {
-            switch (state) {
-                case 'AWAITING_NAME':
-                    userData.name = input;
-                    addUserMessage(input);
-                    state = 'AWAITING_MOBILE';
-                    askMobile();
-                    break;
-                case 'AWAITING_MOBILE':
-                    userData.mobile = input;
-                    addUserMessage(input);
-                    state = 'AWAITING_CITY';
-                    askCity();
-                    break;
-                case 'AWAITING_CITY':
-                    userData.city = input;
-                    addUserMessage(input);
-                    state = 'AWAITING_PINCODE';
-                    askPincode();
-                    break;
-                case 'AWAITING_PINCODE':
-                    userData.pincode = input;
-                    addUserMessage(input);
-                    state = 'AWAITING_OCCUPATION';
-                    askOccupation();
-                    break;
-                case 'AWAITING_OCCUPATION':
-                    userData.occupation = input;
-                    addUserMessage(input);
-                    state = 'AWAITING_INCOME';
-                    askIncome();
-                    break;
-                case 'AWAITING_INCOME':
-                    userData.income = input;
-                    addUserMessage(input);
-                    state = 'AWAITING_RUNNING_LOAN';
-                    askRunningLoan();
-                    break;
-                case 'AWAITING_RUNNING_LOAN':
-                    userData.runningLoan = input;
-                    addUserMessage(input);
-                    if (input === 'Yes') {
-                        state = 'AWAITING_EXISTING_LOAN_DETAILS';
-                        askExistingLoanDetails();
-                    } else {
-                        state = 'AWAITING_LOAN_AMOUNT';
-                        askLoanAmount();
-                    }
-                    break;
-                case 'AWAITING_EXISTING_LOAN_DETAILS':
-                    userData.existingLoanDetails = input;
-                    addUserMessage(input);
-                    state = 'AWAITING_LOAN_AMOUNT';
-                    askLoanAmount();
-                    break;
-                case 'AWAITING_LOAN_AMOUNT':
-                    userData.loanAmount = input;
-                    addUserMessage(input);
-                    state = 'AWAITING_TENURE';
-                    askTenure();
-                    break;
-                default:
-                    // Ignore other input in new flow
-                    break;
-            }
-        }
-
         function handleUserInput(input) { // This is the main handler
             clarificationAttempts = 0; // Reset on valid input
             switch (state) {
@@ -1165,10 +1097,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     case 'AWAITING_LOAN_AMOUNT': processLoanAmount(input); break;
                     case 'AWAITING_TENURE': processTenure(input); break;
                     case 'AWAITING_INSURANCE_TYPE': processInsuranceType(input); break;
-                    // The new flow states can be integrated here if needed, or kept separate.
-                    // For now, the second (more complete) handleUserInput is the one being used.
-                    // The first one was renamed to handleUserInput_new_flow to avoid being overwritten.
-                    // If you intend to use the "new flow", you'll need to call handleUserInput_new_flow.
                     default:
                         // For any other input, use AI response
                         addBotMessage('AI Maaru soch raha hai...');
@@ -1400,22 +1328,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 confetti.style.animation = `fall ${3 + Math.random() * 2}s linear ${Math.random() * 2}s forwards`;
                 confetti.addEventListener('animationend', () => confetti.remove());
             }
-        }
-
-        function startConversation() {
-            addBotMessage("🙏 जय माता जी — मैं SKF से आपका मददगार हूँ।");
-            setTimeout(() => {
-                addBotMessage("बताइए आपको किस loan या insurance की ज़रूरत है?");
-                showQuickReplies([
-                    { label: '🏡 Home Loan', value: 'Home Loan' },
-                    { label: '💼 Business Loan', value: 'Business Loan' },
-                    { label: '👤 Personal Loan', value: 'Personal Loan' },
-                    { label: '🚗 Car Loan', value: 'Car Loan' },
-                    { label: '💰 Loan Against Property', value: 'Loan Against Property' },
-                    { label: '🛡️ Insurance', value: 'Insurance' }
-                ]);
-            }, 600);
-            state = 'AWAITING_PURPOSE';
         }
 
         const sendBtnAction = () => {

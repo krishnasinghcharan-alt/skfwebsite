@@ -60,9 +60,9 @@ body {
 }
 
 /* Main content container needs padding to avoid being hidden by the sticky header */
-/* #main-content-container {
+ #main-content-container {
     padding-top: var(--header-height); 
-} */
+}
 
 /**
  * ===================================
@@ -654,4 +654,3 @@ body {
         scroll-behavior: auto !important;
     }
 }
-

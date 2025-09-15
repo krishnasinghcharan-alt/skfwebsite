@@ -50,10 +50,12 @@
     </header>
 
     <!-- Main Content Area -->
-    <main id="main-content-container" class="container">
-        <!-- All page content will be dynamically inserted here by script.js -->
-        <!-- Home Page -->
-        <div id="home-page" class="page"></div>
+    <main id="main-content-container">
+        <!-- The .container class is moved inside a wrapper div for better layout control -->
+        <div class="container">
+            <!-- All page content will be dynamically inserted here by script.js -->
+            <!-- Home Page -->
+            <div id="home-page" class="page"></div>
         <div id="loan-page-template" class="page bg-gray-100">
             <!-- Breadcrumbs and Mobile Nav -->
             <div class="bg-white py-4 border-b sticky top-[65px] z-50">
@@ -80,6 +82,7 @@
         <div id="contact-page" class="page"></div>
         <div id="join-us-page" class="page"></div>
         <div id="eligibility-form-page" class="page"></div>
+        </div>
     </main>
 
     <!-- Sidebar Overlay for Mobile -->

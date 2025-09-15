@@ -127,7 +127,7 @@ img {
 .site-header {
     position: sticky;
     top: 0;
-    width: 100%;
+    width: 100vw;
     padding: 0.5rem 0;
     z-index: 100;
     background-color: var(--surface-color);
@@ -530,3 +530,4 @@ img {
     #why-choose-us .grid { grid-template-columns: repeat(1, 1fr); }
     .container { padding: 0 1rem; }
 }
+

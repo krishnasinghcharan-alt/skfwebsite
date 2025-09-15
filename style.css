@@ -99,6 +99,7 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     overflow-x: hidden;
+        position: relative
 }
 
 /* --- Global Responsive Tweaks --- */
@@ -530,4 +531,5 @@ img {
     #why-choose-us .grid { grid-template-columns: repeat(1, 1fr); }
     .container { padding: 0 1rem; }
 }
+
 

@@ -1237,7 +1237,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>`;
                 addBotMessage(summaryHtml);
             }
-            setTimeout(askForConsent, 1000);
+            
+            // Map and send data to Google Sheet as soon as summary is shown
+            userData.fullName = userData.name;
+            userData.employmentType = userData.employment;
+            userData.monthlyIncome = userData.income;
+            userData.requiredLoanAmount = userData.loanAmount;
+            sendDataToGoogleSheet(userData);
+
+            setTimeout(askForConsent, 1000); // Ask for consent after showing summary and sending data
         }
 
         function askForConsent() {
@@ -1265,13 +1273,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         function forwardToTeam() {
-            // Map chatbot userData to the format expected by Google Sheet function
-            userData.fullName = userData.name;
-            userData.employmentType = userData.employment;
-            userData.monthlyIncome = userData.income;
-            userData.requiredLoanAmount = userData.loanAmount;
-
-            sendDataToGoogleSheet(userData);
+            // Data is already sent to Google Sheet in showSummary().
+            // This function now only handles the WhatsApp redirection.
             
             const message = generateWhatsappMessage();
             const encodedMessage = encodeURIComponent(message);

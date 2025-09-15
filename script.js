@@ -729,14 +729,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = Object.fromEntries(formData.entries());
         sendDataToGoogleSheet(data);
 
+        const teamMember = teamMemberMapping[data.loanType] || teamMemberMapping['fallback'];
+
         // Redirect to WhatsApp after a short delay
         setTimeout(() => {
             const message = `New Eligibility Lead:\nName: ${data.fullName}\nMobile: ${data.mobile}\nCity: ${data.city}\nLoan Type: ${data.loanType}\nEmployment: ${data.employmentType}\nIncome: ₹${data.monthlyIncome}`;
             const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/918118838772?text=${encodedMessage}`;
+            const whatsappUrl = `https://wa.me/${teamMember.number}?text=${encodedMessage}`;
             window.open(whatsappUrl, '_blank');
 
-            // Restore the form to its original state
+            // Show a thank you message on the page
             const formContainer = form.parentElement;
             formContainer.innerHTML = `
                 <div class="text-center py-10">
@@ -1323,8 +1325,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const message = generateWhatsappMessage();
             const encodedMessage = encodeURIComponent(message);
-            const number = '918118838772'; // Hardcode the number as requested
-            const whatsappUrl = `https://wa.me/${number}?text=${encodedMessage}`;
+            const teamMember = teamMemberMapping[userData.product] || teamMemberMapping['fallback'];
+            const whatsappUrl = `https://wa.me/${teamMember.number}?text=${encodedMessage}`;
 
             showConfetti();
             addBotMessage("🙏 Thank you! आपकी enquiry हमारी SKF टीम तक पहुंच गई है। Experts जल्द ही आपसे संपर्क करेंगे।");

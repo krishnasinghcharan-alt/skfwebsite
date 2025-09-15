@@ -1321,6 +1321,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         function forwardToTeam() {
+            // Map chatbot userData to the format expected by Google Sheet function
+            userData.fullName = userData.name;
+            userData.employmentType = userData.employment;
+            userData.monthlyIncome = userData.income;
+            userData.requiredLoanAmount = userData.loanAmount;
+
             sendDataToGoogleSheet(userData);
             
             const message = generateWhatsappMessage();

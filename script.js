@@ -1234,10 +1234,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function askForConsent() {
             state = 'AWAITING_CONSENT';
-            addBotMessage("क्या आप चाहते हैं मैं आपकी enquiry टीम experts को forward करूँ?");
+            addBotMessage("क्या आप चाहते हैं कि मैं आपकी enquiry टीम experts को forward करूँ?");
             showFinalButtons([
-                { label: 'Continue with Experts', class: 'px-5 py-2.5 bg-accent-color text-white font-bold rounded-lg hover:bg-green-700 transition w-full sm:w-auto', action: forwardToTeam },
-                { label: 'Cancel', class: 'px-5 py-2.5 bg-gray-200 text-gray-700 font-bold rounded-lg hover:bg-gray-300 transition w-full sm:w-auto', action: cancelProcess }
+                { 
+                    label: '✅ Yes, Continue with Experts', 
+                    class: 'w-full sm:w-auto text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 bg-gradient-to-r from-green-500 to-teal-500', 
+                    action: forwardToTeam 
+                },
+                { 
+                    label: '❌ No, Cancel', 
+                    class: 'w-full sm:w-auto bg-gray-200 text-gray-700 font-bold py-3 px-6 rounded-lg hover:bg-gray-300 transition', 
+                    action: cancelProcess 
+                }
             ]);
         }
         

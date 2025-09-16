@@ -294,13 +294,11 @@ body {
     position: fixed;
     bottom: 1.25rem; /* 20px */
     right: 1.25rem; /* 20px */
-    width: 60px;
-    height: 60px;
-    background-color: var(--primary-color);
-    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    background-color: transparent;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -313,9 +311,8 @@ body {
 }
 
 #chat-toggle-button img {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
+    width: 124px;
+    height: 124px;
 }
 
 #chat-window {
@@ -354,8 +351,6 @@ body {
 #chat-header-info img {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 #chat-header-info h3 {
@@ -457,7 +452,7 @@ body {
 #back-to-top-btn {
     position: fixed;
     bottom: 1.25rem;
-    right: calc(1.25rem + 60px + 0.75rem); /* Position left of chat button */
+    right: calc(1.25rem + 140px + 0.75rem); /* Position left of chat button */
     background-color: var(--bg-surface);
     color: var(--primary-color);
     width: 50px;

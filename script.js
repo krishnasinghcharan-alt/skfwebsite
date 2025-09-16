@@ -1574,7 +1574,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="grid lg:grid-cols-3 gap-12 items-center max-w-5xl mx-auto">
                             <div class="lg:col-span-1 flex justify-center">
-                                <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756626261/PHOTO-2025-08-31-13-08-02_hejop2.jpg" alt="राजेंद्र सिंह" class="w-48 h-60 rounded-xl object-cover border-4 border-orange-400 shadow-lg">
+                                <img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758028732/image_2025-09-16_184847409_n0ga13.png" alt="राजेंद्र सिंह" class="w-48 h-60 rounded-xl object-cover border-4 border-orange-400 shadow-lg">
                             </div>
                             <div class="lg:col-span-2">
                                 <blockquote class="relative text-xl italic text-gray-200 p-8 border-l-4 border-orange-400 bg-slate-700 rounded-r-lg">

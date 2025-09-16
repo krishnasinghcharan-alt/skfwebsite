@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'LAP': { name: 'Krishna Singh', number: '918118838772' },
         'Personal Loan': { name: 'Saroj Choudhary', number: '918118822628' },
         'Business Loan': { name: 'Sona Mulani', number: '919352358494' },
-        'Car Loan': { name: 'Manu Mam', number: '919358973156' },
+        'Vehicle Loan': { name: 'Manu Mam', number: '919358973156' },
         'Insurance': { name: 'Rajendra Singh', number: '919214104963' },
         'fallback': { name: 'Rajendra Singh', number: '919214104963' } // Default number
     };
@@ -149,12 +149,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (pageId === 'about') renderAboutPage();
             if (pageId === 'contact') renderContactPage();
             if (pageId === 'join-dsa' || pageId === 'join-connector') renderJoinUsPage();
-            if (isProductPage) {
-                // Automatically open the chatbot on loan pages to assist the user
-                setTimeout(() => {
-                    document.dispatchEvent(new CustomEvent('open-chat'));
-                }, 2000); // 2-second delay
-            }
             if (basePageId === 'eligibility-form') renderEligibilityFormPage(params.get('product'));
 
             if (['join-dsa', 'join-connector', 'our-services'].includes(pageId)) {
@@ -173,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         element.scrollIntoView({ behavior: 'smooth' });
                     }
                 }, 100);
-            } else if (!isProductPage) {
+            } else {
                 window.scrollTo(0, 0);
             }
         }
@@ -203,8 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!loanTemplatePage) return;
         
         const loanPageContentContainer = loanTemplatePage.querySelector('#loan-page-content');
-
-        const images = mainCategory.images || [];
+        const images = (subtype && subtype.images && subtype.images.length > 0) ? subtype.images : mainCategory.images || [];
 
         let breadcrumbHtml = `<a href="#home" class="page-link hover:text-orange-600">Home</a> <span class="mx-2">/</span> <a href="#${mainCategoryKey}" class="page-link hover:text-orange-600">${mainCategory.name}</a>`;
         if (subtype) {
@@ -286,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const imageCarouselHtml = `
             <div class="swiper-container loan-image-carousel rounded-lg overflow-hidden">
                 <div class="swiper-wrapper">
-                    ${images.map(img => `<div class="swiper-slide"><img src="${img}" alt="${mainCategory.name}"></div>`).join('')}
+                    ${images.map(img => `<div class="swiper-slide" style="background-color: #e9ecef; background-image: url('https://res.cloudinary.com/diqo7qmnw/image/upload/e_grayscale,o_10/v1754217266/logo1_lt1w3w.png'); background-repeat: no-repeat; background-position: center; background-size: 50%;"><img src="${img}" alt="${mainCategory.name}" class="w-full h-96 object-contain"></div>`).join('')}
                 </div>
                 <div class="swiper-button-next text-white"></div>
                 <div class="swiper-button-prev text-white"></div>
@@ -418,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <option value="8.50" data-loan-key="home-loan">Home Loan</option>
                                         <option value="10.25" data-loan-key="personal-loan">Personal Loan</option>
                                         <option value="10.50" data-loan-key="business-loan">Business Loan</option>
-                                        <option value="9.00" data-loan-key="car-loan">Car Loan</option>
+                                        <option value="9.00" data-loan-key="vehicle-loan">Vehicle Loan</option>
                                         <option value="9.50" data-loan-key="lap-loan">Loan Against Property</option>
                                     </select>
                                 </div>
@@ -666,7 +659,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const productLinks = `
             <li><a href="#business-loan" class="page-link">Business Loan</a></li>
             <li><a href="#home-loan" class="page-link">Home Loan</a></li>
-            <li><a href="#car-loan" class="page-link">Car Loan</a></li>
+            <li><a href="#vehicle-loan" class="page-link">Vehicle Loan</a></li>
             <li><a href="#personal-loan" class="page-link">Personal Loan</a></li>
             <li><a href="#health-insurance" class="page-link">Insurance</a></li>
         `;
@@ -808,7 +801,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div id="chat-window" class="flex">
                 <div id="chat-header">
                     <div id="chat-header-info">
-                        <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="AI Maaru">
+                        <img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758032910/163-br_lat6cu.svg" alt="AI Maaru">
                         <div><h3>AI MAARU MITRA</h3><p>Your SKF Assistant</p></div>
                     </div>
                     <button id="chat-close-btn" aria-label="Close chat">&times;</button>
@@ -822,7 +815,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </button>
                 </div>
             </div>
-            <button id="chat-toggle-button"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756922191/0ac343a99b4616c8613031e182fd2f48_pqplyp.png" alt="Chat with AI Maaru"></button>`;
+            <button id="chat-toggle-button"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758032910/163-br_lat6cu.svg" alt="Chat with AI Maaru"></button>`;
             
         const chatWindow = document.getElementById('chat-window');
         const chatToggleBtn = document.getElementById('chat-toggle-button');
@@ -870,7 +863,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'Loan Against Property': '918118838772',
             'Personal Loan': '918118822628',
             'Business Loan': '919352358494',
-            'Car Loan': '919358973156',
+            'Vehicle Loan': '919358973156',
             'Insurance': '919214104963',
             'fallback': '919214104963'
         };
@@ -966,7 +959,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 { label: '🏡 Home Loan', value: 'Home Loan' },
                 { label: '💼 Business Loan', value: 'Business Loan' },
                 { label: '👤 Personal Loan', value: 'Personal Loan' },
-                { label: '🚗 Car Loan', value: 'Car Loan' },
+                { label: '🚗 Vehicle Loan', value: 'Vehicle Loan' },
                 { label: '💰 LAP', value: 'Loan Against Property' },
                 { label: '🛡️ Insurance', value: 'Insurance' }
             ];
@@ -1124,14 +1117,14 @@ document.addEventListener('DOMContentLoaded', function() {
             if (p.includes('home') || p.includes('house') || p.includes('flat')) userData.product = 'Home Loan';
             else if (p.includes('personal')) userData.product = 'Personal Loan';
             else if (p.includes('business') || p.includes('shop')) userData.product = 'Business Loan';
-            else if (p.includes('car') || p.includes('bike') || p.includes('vehicle')) userData.product = 'Car Loan';
+            else if (p.includes('car') || p.includes('bike') || p.includes('vehicle')) userData.product = 'Vehicle Loan';
             else if (p.includes('property') || p.includes('lap')) userData.product = 'Loan Against Property';
             else if (p.includes('insurance')) {
                 userData.product = 'Insurance';
                 askInsuranceType();
                 return;
             } else {
-                handleUnclearInput("माफ़ कीजिए, मैं समझ नहीं पाया। क्या आप Home Loan, Personal Loan, Business Loan, Car Loan, LAP या Insurance में से कुछ ढूंढ रहे हैं?");
+                handleUnclearInput("माफ़ कीजिए, मैं समझ नहीं पाया। क्या आप Home Loan, Personal Loan, Business Loan, Vehicle Loan, LAP या Insurance में से कुछ ढूंढ रहे हैं?");
                 return;
             }
             userData.purpose = text;
@@ -1310,7 +1303,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 case 'Loan Against Property': rate = 11.0; break;
                 case 'Personal Loan': rate = 9.99; break;
                 case 'Business Loan': rate = 12.0; break;
-                case 'Car Loan': rate = 8.5; break;
+                case 'Vehicle Loan': rate = 9.0; break;
                 default: rate = 10.0;
             }
             const p = userData.loanAmount, r = rate / 1200, n = userData.tenure * 12;
@@ -1437,15 +1430,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h2 class="font-bold mb-12 text-center text-gray-800" style="font-size: clamp(1.875rem, 1.5rem + 1.88vw, 2.5rem);">Our Gallery & Motivation</h2>
                     <div class="swiper-container gallery-carousel relative">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-29_bglcgr.jpg" alt="Team celebrating" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
-                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-28_dlonup.jpg" alt="Team meeting" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
-                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-30_dl5ijn.jpg" alt="Office event" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
-                            <div class="swiper-slide"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387615/PHOTO-2025-09-09-08-37-31_1_px7slv.jpg" alt="Team discussion" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030488/linkconnect_1758029887796_nxonu1.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030487/linkconnect_1758029910745_nercgv.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030471/linkconnect_1758030023899_gmxd9t.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030471/linkconnect_1758030081550_y9hbzs.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030471/linkconnect_1758030067320_mjrghs.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030471/linkconnect_1758029972266_htzhcz.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030471/linkconnect_1758029992963_jif7fu.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030470/linkconnect_1758030043952_qpwesp.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030469/linkconnect_1758030145517_q1ehnh.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030469/linkconnect_1758030387720_lxdc3r.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030469/linkconnect_1758030169400_mapkbe.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030469/linkconnect_1758030268017_uoew8e.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030468/linkconnect_1758030218956_uzuv49.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030468/linkconnect_1758030246325_a7sfga.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030468/linkconnect_1758030406784_tusczt.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030468/linkconnect_1758030191922_zmny3v.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
                         </div>
-                        <!-- Add Pagination -->
-                        <!-- Add Navigation -->
-                        <div class="swiper-button-next text-primary-color"></div>
-                        <div class="swiper-button-prev text-primary-color"></div>
                     </div>
                 </div>
             </section>
@@ -1457,7 +1458,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <a href="#home-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757241971/WhatsApp_Image_2025-09-07_at_3.20.38_PM_lqp1dy.jpg" alt="Home Loan" class="w-full h-auto"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Home Loan</h3></div></a>
                         <a href="#business-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-36_b8guao.jpg" alt="Business Loan" class="w-full h-auto"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Business Loan</h3></div></a>
                         <a href="#personal-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-34_q09kn6.jpg" alt="Personal Loan" class="w-full h-auto"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Personal Loan</h3></div></a>
-                        <a href="#car-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757237853/WhatsApp_Image_2025-09-07_at_3.06.10_PM_d8n3iz.jpg" alt="Car Loan" class="w-full h-auto"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Car Loan</h3></div></a>
+                        <a href="#vehicle-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758037256/linkconnect_1758037092966_b4yejx.png" alt="Vehicle Loan" class="w-full h-auto"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Vehicle Loan</h3></div></a>
                         <a href="#lap-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757240471/WhatsApp_Image_2025-09-07_at_3.20.41_PM_yunya8.jpg" alt="Loan Against Property" class="w-full h-auto"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Loan Against Property</h3></div></a>
                         <a href="#health-insurance" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-27_csvkbm.jpg" alt="Health Insurance" class="w-full h-auto"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Health Insurance</h3></div></a>
                     </div>
@@ -1546,14 +1547,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                             <!-- Mission Card -->
-                            <div class="bg-blue-50 border-l-4 border-blue-500 p-8 rounded-r-lg shadow-sm">
+                            <div class="bg-blue-50 border-l-4 border-blue-500 p-8 rounded-r-lg shadow-xl transform hover:-translate-y-2 transition-all duration-300">
                                 <h3 class="text-2xl font-bold text-blue-800 mb-3">Our Mission</h3>
                                 <p class="text-gray-700">
                                     To provide our customers with the best, fastest, and most transparent solutions for their financial needs, and to guide them as a trusted partner throughout the entire process.
                                 </p>
                             </div>
                             <!-- Vision Card -->
-                            <div class="bg-orange-50 border-l-4 border-orange-500 p-8 rounded-r-lg shadow-sm">
+                            <div class="bg-orange-50 border-l-4 border-orange-500 p-8 rounded-r-lg shadow-xl transform hover:-translate-y-2 transition-all duration-300">
                                 <h3 class="text-2xl font-bold text-orange-800 mb-3">Our Vision</h3>
                                 <p class="text-gray-700">
                                     To become the most respected and trusted name in financial services in Rajasthan, known for our integrity and expertise.
@@ -1971,10 +1972,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 delay: 2000, // 2-second delay
                 disableOnInteraction: false,
             },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
             breakpoints: {
                 // when window width is >= 0px
                 0: { slidesPerView: 2, spaceBetween: 20 },
@@ -2003,8 +2000,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function populateTestimonials() {
         const reviews = [
-            { name: 'Priya M.', location: 'Ajmer', text: 'I was looking for <strong>sales executive jobs in Ajmer</strong> and found a great opportunity at SKF. The <strong>high incentive jobs</strong> structure is the best in Jaipur and the growth is amazing. A great place to <strong>work with SKF Ajmer</strong>.' },
-            { name: 'Amit G.', location: 'Kota', text: '<strong>SKF Associates careers</strong> offer real growth. I started as a connector and now I\'m a team leader. The company truly invests in its people. Best <strong>finance jobs in Rajasthan</strong>.' },
+            { name: 'Priya M.', location: 'Ajmer', text: 'I was looking for sales executive jobs in Ajmer and found a great opportunity at SKF. The high incentive jobs structure is the best in Jaipur and the growth is amazing. A great place to work with SKF Ajmer.' },
+            { name: 'Amit G.', location: 'Kota', text: 'SKF Associates careers offer real growth. I started as a connector and now I\'m a team leader. The company truly invests in its people. Best finance jobs in Rajasthan.' },
             
             // Customer Reviews
             { name: 'Sunil Sharma', location: 'Ajmer', text: 'SKF Ajmer se home loan lena bahut aasan tha. Rajendra sir aur unki team ne poora process smooth bana diya. Ajmer mein best home loan service!' },
@@ -2015,15 +2012,15 @@ document.addEventListener('DOMContentLoaded', function() {
             { name: 'Anjali Sharma', location: 'Ajmer', text: 'My experience with SKF Associates has been fantastic. They helped me get a loan against property with great ease. The entire process was smooth.' },
             { name: 'Rakesh Verma', location: 'Kota', text: 'Best service provider in Ajmer for home loans. Rajendra sir and his team are very professional and cooperative.' },
             { name: 'Pooja Agarwal', location: 'Bikaner', text: 'Excellent service and cooperative staff. They helped me get my business loan sanctioned quickly. Thank you, SKF team!' },
-            { name: 'Manoj Soni', location: 'Pushkar', text: 'I got my car loan through <strong>Shree Karni Kripa Associates</strong>. The team was very helpful. They guided me at every step and got the work done fast.' },
-            { name: 'Harish Kumar', location: 'Nasirabad', text: 'For anyone in Rajasthan needing a quick personal loan, I highly recommend <strong>Shree Karni Kripa Associates</strong>. Very professional and efficient.' },
+            { name: 'Manoj Soni', location: 'Pushkar', text: 'I got my car loan through Shree Karni Kripa Associates. The team was very helpful. They guided me at every step and got the work done fast.' },
+            { name: 'Harish Kumar', location: 'Nasirabad', text: 'For anyone in Rajasthan needing a quick personal loan, I highly recommend Shree Karni Kripa Associates. Very professional and efficient.' },
             { name: 'Deepika Rathore', location: 'Ajmer', text: 'We were looking for the best home loan provider in Ajmer and found SKF. They made our dream of owning a home come true.' },
             { name: 'Imran Khan', location: 'Jaipur', text: 'Starting a new venture was easy with the quick business loan from SKF. Their team understands the needs of a startup.' },
             { name: 'Santosh Devi', location: 'Kishangarh', text: 'Health insurance policy lene mein SKF team ne bahut help ki. Sab kuch aache se samjhaya. Best financial advisor in Rajasthan.' },
             { name: 'Rajesh Choudhary', location: 'Ajmer', text: 'Transparent process and no hidden charges. I am very satisfied with their loan against property service.' },
             { name: 'Sunita Gehlot', location: 'Jodhpur', text: 'My first car was possible because of the easy car loan process from SKF. The documentation was minimal and hassle-free.' },
             { name: 'Gaurav Singh', location: 'Ajmer', text: 'I was searching for a personal loan in Ajmer with a low CIBIL score. SKF team helped me find a solution. Great work!' },
-            { name: 'Neha Sharma', location: 'Jaipur', text: 'The team at <strong>Shree Karni Kripa Associates</strong> provides the best financial services in Jaipur. They are very knowledgeable about all loan products.' },
+            { name: 'Neha Sharma', location: 'Jaipur', text: 'The team at Shree Karni Kripa Associates provides the best financial services in Jaipur. They are very knowledgeable about all loan products.' },
             { name: 'Vikram Rathore', location: 'Beawar', text: 'Needed a top-up on my existing home loan. The process was much faster than going to the bank directly. Thank you SKF Ajmer.' },
             { name: 'Pankaj Kumar', location: 'Ajmer', text: 'If you need a business loan in Ajmer, look no further. They have tie-ups with all major banks and NBFCs.' },
             { name: 'Meena Devi', location: 'Kishangarh', text: 'I recommend SKF Associates for their professional service. They helped me secure a loan for my daughter\'s wedding.' }

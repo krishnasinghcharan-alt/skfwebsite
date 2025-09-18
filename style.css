@@ -619,6 +619,26 @@ body {
         max-height: 100vh;
         border-radius: 0;
     }
+
+    /* Adjust AI chat button size for mobile */
+    #chat-toggle-button {
+        width: 100px;
+        height: 100px;
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    #chat-toggle-button img {
+        width: 90px;
+        height: 90px;
+    }
+
+    /* Adjust back-to-top button position to not overlap */
+    #back-to-top-btn {
+        bottom: 1rem;
+        right: calc(1rem + 100px + 0.5rem); /* Position left of the smaller chat button */
+    }
+
 }
 
 /* Small mobile devices (<= 480px) */

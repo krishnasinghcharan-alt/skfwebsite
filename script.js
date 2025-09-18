@@ -1653,6 +1653,18 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <h3 class="mt-4 text-xl font-bold text-slate-800">Nandni Rajput</h3>
                                 <p class="text-blue-600 font-semibold">Process Executive</p>
                             </div>
+                            <!-- Team Member Card 10 -->
+                            <div class="text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
+                                <img class="w-22 h-28 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758173745/WhatsApp_Image_2025-08-28_at_12.06.29_PM_edwbtf.jpg" alt="Meetali verma">
+                                <h3 class="mt-4 text-xl font-bold text-slate-800">Meetali verma</h3>
+                                <p class="text-blue-600 font-semibold">Client Connector</p>
+                            </div>
+                            <!-- Team Member Card 11 -->
+                            <div class="text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
+                                <img class="w-22 h-28 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758173989/WhatsApp_Image_2025-09-11_at_3.44.21_PM_j8xhmh.jpg" alt="Pooja">
+                                <h3 class="mt-4 text-xl font-bold text-slate-800">Pooja</h3>
+                                <p class="text-blue-600 font-semibold">Client Connector</p>
+                            </div>
                         </div>
                     </div>
                 </section>

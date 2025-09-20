@@ -325,8 +325,7 @@ body {
     max-height: 75vh;
     background: var(--bg-surface);
     border-radius: 0.75rem; 
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    display: flex; /* Always flex, visibility is handled by opacity/transform */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); 
     flex-direction: column;
     overflow: hidden;
     z-index: 1001;

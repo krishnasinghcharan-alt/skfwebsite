@@ -126,7 +126,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const pageMappings = {
             'join-dsa': 'join-us-page',
             'join-connector': 'join-us-page',
-            'contact': 'contact-page'
+            'contact': 'contact-page',
+            'privacy-policy': 'privacy-policy-page'
         };
 
         const [basePageId, queryParams] = pageId.split('?');

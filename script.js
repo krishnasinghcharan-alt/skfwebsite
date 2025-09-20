@@ -797,6 +797,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function setupChatbot() {
         const chatContainer = document.getElementById('chat-container');
         chatContainer.innerHTML = `
+            <div id="chat-backdrop" class="hidden"></div>
             <div id="proactive-bubble-container"></div>
             <div id="chat-window" class="flex">
                 <div id="chat-header">
@@ -804,6 +805,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758032910/163-br_lat6cu.svg" alt="AI Maaru">
                         <div><h3>AI MAARU MITRA</h3><p>Your SKF Assistant</p></div>
                     </div>
+                    <div class="chat-handle"></div>
                     <button id="chat-close-btn" aria-label="Close chat">&times;</button>
                 </div>
                 <div id="chat-messages"></div>
@@ -814,7 +816,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
                     </button>
                 </div>
-            </div>
+            </div> 
+            <button id="chat-main-close-btn" class="hidden" aria-label="Close chat window">&times;</button>
             <button id="chat-toggle-button"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758032910/163-br_lat6cu.svg" alt="Chat with AI Maaru"></button>`;
             
         const chatWindow = document.getElementById('chat-window');
@@ -826,6 +829,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const chatQuickReplies = document.getElementById('chat-quick-replies');
         const chatInputContainer = document.getElementById('chat-input-container');
         const confettiContainer = document.getElementById('confetti-container');
+        const chatMainCloseBtn = document.getElementById('chat-main-close-btn');
+        const chatBackdrop = document.getElementById('chat-backdrop');
 
         let state = 'AWAITING_PRODUCT';
         let userData = { purpose: null, product: null };
@@ -869,10 +874,15 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         const toggleChatWindow = (forceOpen = false) => {
-            const isCurrentlyOpen = chatWindow.style.display === 'flex';
+            const isCurrentlyOpen = chatWindow.classList.contains('is-open');
             const shouldOpen = forceOpen ? true : !isCurrentlyOpen;
 
-            chatWindow.style.display = shouldOpen ? 'flex' : 'none';
+            chatWindow.classList.toggle('is-open', shouldOpen);
+            chatBackdrop.classList.toggle('is-open', shouldOpen);
+            // Toggle visibility of the main icon and the new close button
+            chatBackdrop.classList.toggle('hidden', !shouldOpen);
+            chatToggleBtn.classList.toggle('hidden', shouldOpen);
+            chatMainCloseBtn.classList.toggle('hidden', !shouldOpen);
 
             if (shouldOpen && !isCurrentlyOpen) { // Only run if opening for the first time
                 if (typeof hideProactiveBubble === 'function') {
@@ -886,6 +896,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         chatToggleBtn.addEventListener('click', () => toggleChatWindow());
         chatCloseBtn.addEventListener('click', () => toggleChatWindow());
+        chatBackdrop.addEventListener('click', () => toggleChatWindow()); // Close on backdrop click
+        chatMainCloseBtn.addEventListener('click', () => toggleChatWindow());
         document.addEventListener('open-chat', () => toggleChatWindow(true));
 
         function addBotMessage(message, delay = 500) {

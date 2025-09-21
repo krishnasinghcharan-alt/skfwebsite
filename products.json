@@ -195,7 +195,16 @@
             "https://res.cloudinary.com/dugvqluo2/image/upload/v1758031537/linkconnect_1758031455044_nwcfmt.png",
             "https://res.cloudinary.com/dugvqluo2/image/upload/v1758031536/linkconnect_1758031474915_dreu1x.png"
         ],
+        "roi": "9.50%",
+        "tenure": "15 Years",
         "subtypes": {
+            "overview": {
+                "name": "LAP Overview",
+                "eligibility": "Owner of the property (residential or commercial). The property must have a clear title and be free from any legal disputes. Your income and repayment capacity will also be assessed.",
+                "features": ["High loan amount based on property value", "Lower interest rates compared to unsecured loans", "Longer repayment tenure", "Can be used for any personal or business purpose"],
+                "documents": ["Original property documents (Title Deed)", "NOC from the society/builder", "Latest property tax receipts", "Standard KYC and income proofs"],
+                "faq": [ { "q": "Can I continue to use my property during the loan tenure?", "a": "Yes, you retain the ownership and can continue using your property as usual. Only the original documents are kept with the bank as security." }, { "q": "What percentage of my property value can I get as a loan?", "a": "You can typically get a loan amount of up to 60-70% of the market value of your property." } ]
+            },
             "msme-lap": {
                 "name": "LAP for MSME",
                 "roi": "9.75%",
@@ -212,11 +221,7 @@
                     { "q": "Can I get a LAP for my new MSME business?", "a": "Most lenders require a business to be operational for a few years. However, policies vary, and we can help you find a suitable lender based on your profile and property value." }
                 ]
             }
-        }, "roi":"9.50%", "tenure": "15 Years",
-        "eligibility": "Owner of the property (residential or commercial). The property must have a clear title and be free from any legal disputes. Your income and repayment capacity will also be assessed.",
-        "features": ["High loan amount based on property value", "Lower interest rates compared to unsecured loans", "Longer repayment tenure", "Can be used for any personal or business purpose"],
-        "documents": ["Original property documents (Title Deed)", "NOC from the society/builder", "Latest property tax receipts", "Standard KYC and income proofs"],
-        "faq": [ { "q": "Can I continue to use my property during the loan tenure?", "a": "Yes, you retain the ownership and can continue using your property as usual. Only the original documents are kept with the bank as security." }, { "q": "What percentage of my property value can I get as a loan?", "a": "You can typically get a loan amount of up to 60-70% of the market value of your property." } ]
+        }
     },
     "health-insurance": {
         "name": "Health Insurance",

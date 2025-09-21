@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setupThankYouModal();
         setupForms();
         initializeCarousels();
+        setupPrivacyBanner();
         setupBasicEventListeners();
     }
 
@@ -136,6 +137,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const isProductPage = productData && Object.keys(productData).length > 0 && Object.keys(productData).some(key => pageId.startsWith(key));
 
         const targetPageId = pageMappings[basePageId] || (isProductPage ? 'loan-page-template' : `${basePageId}-page`);
+
+        // Dynamically update navigation based on the current page
+        generateNavigation(); // Reverted to static navigation
         
         const targetPage = document.getElementById(targetPageId) || document.getElementById('home-page');
 
@@ -183,8 +187,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function renderLoanPage(pageId) {
         const parts = pageId.split('-');
-        const mainCategoryKey = parts.slice(0, 2).join('-');
-        const subTypeKey = parts.length > 2 ? parts.slice(2).join('-') : null;
+        let mainCategoryKey = '';
+        let subTypeKey = null;
+
+        // Find the correct main category key by checking against productData
+        for (const key in productData) {
+            if (pageId.startsWith(key)) {
+                mainCategoryKey = key;
+                subTypeKey = pageId.substring(key.length + 1) || null;
+                break;
+            }
+        }
         
         const mainCategory = productData[mainCategoryKey];
         if (!mainCategory) { console.error('Category not found for', pageId); return; }
@@ -210,38 +223,26 @@ document.addEventListener('DOMContentLoaded', function() {
         addLinkListeners(loanTemplatePage.querySelector('#breadcrumbs'));
 
         // --- DESKTOP SIDEBAR ---
-        const sidebarContainer = loanTemplatePage.querySelector('#loan-sidebar'); // This is a self-correcting comment. The original code had a bug here.
+        const sidebarContainer = loanTemplatePage.querySelector('#loan-sidebar');
         let sidebarHtml = `<h3 class="text-xl font-bold mb-4">${mainCategory.name}</h3><ul>`;
         const baseKey = mainCategoryKey;
-        sidebarHtml += `<li><a href="#${baseKey}" class="sidebar-link page-link block p-3 rounded-md transition-colors hover:bg-gray-100">${!Object.keys(mainCategory.subtypes).length ? mainCategory.name : 'Overview'}</a></li>`;
+        const overviewText = !mainCategory.subtypes || Object.keys(mainCategory.subtypes).length === 0 ? mainCategory.name : 'Overview';
+        sidebarHtml += `<li><a href="#${baseKey}" class="sidebar-link page-link block p-3 rounded-md transition-colors hover:bg-gray-100">${overviewText}</a></li>`;
         for (const key in mainCategory.subtypes) {
-            sidebarHtml += `<li><a href="#${baseKey}-${key}" class="sidebar-link page-link block">${mainCategory.subtypes[key].name}</a></li>`;
+            if (mainCategory.subtypes.hasOwnProperty(key)) {
+                // Skip the special 'overview' subtype if it exists, as it's already handled above.
+                if (key === 'overview') continue;
+
+                sidebarHtml += `<li><a href="#${baseKey}-${key}" class="sidebar-link page-link block p-3 rounded-md transition-colors hover:bg-gray-100">${mainCategory.subtypes[key].name}</a></li>`;
+            }
         }
         sidebarHtml += `</ul>`;
         if(sidebarContainer) sidebarContainer.innerHTML = sidebarHtml;
-        sidebarContainer.querySelector(`.sidebar-link[href="#${pageId}"]`)?.classList.add('active');
+        if (sidebarContainer) {
+            sidebarContainer.querySelector(`.sidebar-link[href="#${pageId}"]`)?.classList.add('active');
+        }
         addLinkListeners(sidebarContainer);
         
-        // --- MOBILE DROPDOWN ---
-        const mobileLoanNavContainer = loanTemplatePage.querySelector('#mobile-loan-nav-container');
-        let mobileNavHtml = `
-            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg shadow-sm">
-                <label for="loan-subtype-select" class="flex items-center font-bold text-blue-700 mb-2">
-                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
-                    Quick Navigation
-                </label>
-                <select id="loan-subtype-select" class="w-full p-3 border border-blue-200 rounded-lg bg-white shadow-sm focus:ring-blue-500 focus:border-blue-500">`;
-        mobileNavHtml += `<option value="#${baseKey}" ${!subtype ? 'selected' : ''}>${!Object.keys(mainCategory.subtypes).length ? mainCategory.name : 'Overview'}</option>`;
-        for (const key in mainCategory.subtypes) {
-            mobileNavHtml += `<option value="#${baseKey}-${key}" ${subTypeKey === key ? 'selected' : ''}>${mainCategory.subtypes[key].name}</option>`;
-        }
-        mobileNavHtml += `</select></div>`;
-        if(mobileLoanNavContainer) mobileLoanNavContainer.innerHTML = mobileNavHtml;
-        mobileLoanNavContainer.querySelector('#loan-subtype-select').addEventListener('change', function() {
-            window.location.hash = this.value;
-        });
-
-
         let infoGridHtml = '';
         if (isInsurance) {
              infoGridHtml = `<div class="bg-blue-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Policy Tenure</p><p class="text-xl font-bold text-blue-700">${contentData.tenure}</p></div>`;
@@ -287,12 +288,35 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>`;
 
 
+        // --- UNIFIED DROPDOWN FOR QUICK NAVIGATION (MOBILE & DESKTOP) ---
+        let quickNavDropdownHtml = '';
+        if (mainCategory.subtypes && Object.keys(mainCategory.subtypes).length > 0) {
+            quickNavDropdownHtml = `
+                <div class="mb-8 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg shadow-sm">
+                    <label for="loan-subtype-select" class="flex items-center font-bold text-blue-700 mb-2 cursor-pointer">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+                        Quick Navigation
+                    </label>
+                    <select id="loan-subtype-select" class="w-full p-3 border border-blue-200 rounded-lg bg-white shadow-sm focus:ring-blue-500 focus:border-blue-500">`;
+            quickNavDropdownHtml += `<option value="#${baseKey}" ${!subtype || subTypeKey === 'overview' ? 'selected' : ''}>${overviewText}</option>`;
+            for (const key in mainCategory.subtypes) {
+                if (mainCategory.subtypes.hasOwnProperty(key) && key !== 'overview') {
+                    quickNavDropdownHtml += `<option value="#${baseKey}-${key}" ${subTypeKey === key ? 'selected' : ''}>${mainCategory.subtypes[key].name}</option>`;
+                }
+            }
+            quickNavDropdownHtml += `</select></div>`;
+        }
+
+
         let mainContentHtml = `
             <div class="bg-white p-8 rounded-lg shadow-md space-y-8">
                 <div>
                     <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">${contentData.name}</h1>
                     <p class="text-lg text-gray-600">${subtype ? contentData.eligibility : contentData.overview}</p>
                 </div>
+
+                ${quickNavDropdownHtml}
+
                 ${imageCarouselHtml}
                 
                 <div class="grid md:grid-cols-3 gap-4 text-center">
@@ -346,6 +370,14 @@ document.addEventListener('DOMContentLoaded', function() {
         loanTemplatePage.querySelector('#loan-page-content').innerHTML = mainContentHtml;
         addLinkListeners(loanTemplatePage.querySelector('#loan-page-content'));
         
+        // Add event listener for the new dropdown
+        const subtypeSelect = loanTemplatePage.querySelector('#loan-subtype-select');
+        if (subtypeSelect) {
+            subtypeSelect.addEventListener('change', function() {
+                window.location.hash = this.value;
+            });
+        }
+
         new Swiper('.loan-image-carousel', {
             loop: true,
             autoplay: { delay: 3000, disableOnInteraction: false },
@@ -656,15 +688,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function generateNavigation() {
-        // Static dropdown content as requested by the user.
+        // Reverted to static navigation as requested
         const productLinks = `
-            <li><a href="#business-loan" class="page-link">Business Loan</a></li>
-            <li><a href="#home-loan" class="page-link">Home Loan</a></li>
-            <li><a href="#vehicle-loan" class="page-link">Vehicle Loan</a></li>
-            <li><a href="#personal-loan" class="page-link">Personal Loan</a></li>
-            <li><a href="#health-insurance" class="page-link">Insurance</a></li>
-        `;
-
+                <li><a href="#home-loan" class="page-link">Home Loan</a></li>
+                <li><a href="#business-loan" class="page-link">Business Loan</a></li>
+                <li><a href="#personal-loan" class="page-link">Personal Loan</a></li>
+                <li><a href="#vehicle-loan" class="page-link">Vehicle Loan</a></li>
+                <li><a href="#lap-loan" class="page-link">Loan Against Property</a></li>
+                <li><a href="#health-insurance" class="page-link">Insurance</a></li>
+            `;
+        
         const navItems = [
             // This button is for the mobile menu
             { href: '#eligibility-form', text: 'Apply Now', isApplyNow: true, visibility: 'lg:hidden' },
@@ -689,10 +722,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (desktopNavUl) {
             desktopNavUl.innerHTML = navItems.map(item => {
-                const liClasses = item.visibility || '';
+                let liClasses = item.visibility || '';
                 if (item.dropdown) {
+                    liClasses += ' nav-item-with-dropdown'; // Add the dropdown class
                     return `
-                        <li class="nav-item-with-dropdown ${liClasses}">
+                        <li class="${liClasses.trim()}">
                             <a href="${item.href}" class="nav-link page-link">${item.text}</a>
                             <ul class="nav-dropdown">${item.dropdown}</ul>
                         </li>`;
@@ -708,6 +742,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <li><a href="${item.href}" class="page-link">${item.text}</a></li>
             `).join('');
         }
+        addLinkListeners(footerAllLinksUl);
+        addLinkListeners(desktopNavUl);
     }
 
     function handleEligibilityFormSubmit(e) {
@@ -2067,6 +2103,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         `).join('');
+    }
+
+    function setupPrivacyBanner() {
+        const modalOverlay = document.getElementById('privacy-modal-overlay');
+        const acceptBtn = document.getElementById('privacy-accept-btn');
+
+        if (!modalOverlay || !acceptBtn) return;
+
+        // Check if the user has already accepted
+        if (localStorage.getItem('privacyAccepted') === 'true') {
+            modalOverlay.remove(); // Remove modal from DOM if already accepted
+            return;
+        }
+
+        // Show the modal if not accepted
+        modalOverlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Disable scrolling
+        setTimeout(() => modalOverlay.classList.add('is-visible'), 50); // Fade in for smooth transition
+        
+        // Handle accept button click
+        acceptBtn.addEventListener('click', () => {
+            modalOverlay.classList.remove('is-visible');
+            localStorage.setItem('privacyAccepted', 'true');
+            document.body.style.overflow = ''; // Re-enable scrolling
+            setTimeout(() => {
+                modalOverlay.remove();
+            }, 300); // Remove after fade out transition
+        });
     }
 
     // The addTiltEffectToNavLinks function has been removed to fix button visibility bugs.

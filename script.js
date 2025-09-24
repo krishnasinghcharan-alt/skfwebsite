@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setupThankYouModal();
         setupForms();
         initializeCarousels();
+        // renderRightSidebar(); // Removed as per request
         setupPrivacyBanner();
         setupBasicEventListeners();
     }
@@ -43,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             productData = await response.json(); // Correctly assign fetched data
-            setupChatbot(); // Moved here to ensure productData is available
+            setupChatbot(); // Re-enabled as per request.
             generateNavigation(); // Regenerate nav with product data for the dropdown
             
             let initialHash = window.location.hash.substring(1) || 'home';
@@ -78,9 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'POST',
                 mode: 'no-cors',
                 body: JSON.stringify(payload),
-                 headers: {
-                    "Content-Type": "text/plain;charset=utf-8",
-                },
+                 headers: { "Content-Type": "text/plain;charset=utf-8" }
             });
             console.log('Data submission to Google Sheet initiated.');
         } catch (error) {
@@ -307,6 +306,28 @@ document.addEventListener('DOMContentLoaded', function() {
             quickNavDropdownHtml += `</select></div>`;
         }
 
+        // --- SUBTYPE LISTING FOR OVERVIEW PAGE ---
+        let subtypeListingHtml = '';
+        if (!subtype && mainCategory.subtypes && Object.keys(mainCategory.subtypes).length > 0) {
+            subtypeListingHtml = `
+                <div class="border-t pt-8">
+                    <h2 class="text-2xl font-bold mb-6 text-slate-800">Explore ${mainCategory.name} Options</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            `;
+            for (const key in mainCategory.subtypes) {
+                if (mainCategory.subtypes.hasOwnProperty(key) && key !== 'overview') {
+                    const sub = mainCategory.subtypes[key];
+                    subtypeListingHtml += `
+                        <a href="#${baseKey}-${key}" class="page-link block bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-lg hover:bg-blue-50 border-l-4 border-slate-200 hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-1">
+                            <h3 class="text-xl font-bold text-primary-color">${sub.name}</h3>
+                            <p class="text-gray-600 mt-2 text-sm">${sub.description || ''}</p>
+                            <span class="text-blue-600 font-semibold mt-4 inline-block">Learn More &rarr;</span>
+                        </a>`;
+                }
+            }
+            subtypeListingHtml += `</div></div>`;
+        }
+
 
         let mainContentHtml = `
             <div class="bg-white p-8 rounded-lg shadow-md space-y-8">
@@ -318,6 +339,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 ${quickNavDropdownHtml}
 
                 ${imageCarouselHtml}
+
+                ${subtypeListingHtml}
                 
                 <div class="grid md:grid-cols-3 gap-4 text-center">
                     ${infoGridHtml}
@@ -827,6 +850,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('submit', function(e) {
             if (e.target.id === 'smart-eligibility-form') handleEligibilityFormSubmit(e);
             if (e.target.id === 'contact-us-form') handleContactFormSubmit(e);
+            // if (e.target.id === 'right-sidebar-form') handleContactFormSubmit(e); // Use same handler for sidebar form
             if (e.target.id === 'dsa-form') handleJoinFormSubmit(e);
         });
     }
@@ -875,6 +899,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // --- OpenAI GPT Integration ---
             async function getAIResponse(message) {
                 const apiKey = 'YOUR_OPENAI_API_KEY'; // Replace with your OpenAI API key
+                if (apiKey === 'YOUR_OPENAI_API_KEY') {
+                    console.error("OpenAI API Key is not set. Chatbot will not function.");
+                    return 'माफ़ कीजिए, मैं अभी आपकी मदद नहीं कर सकता क्योंकि मेरा सेटअप पूरा नहीं हुआ है।';
+                }
+
                 const endpoint = 'https://api.openai.com/v1/chat/completions';
                 const payload = {
                     model: 'gpt-3.5-turbo',
@@ -1518,30 +1547,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="font-bold text-slate-800 mb-4" style="font-size: clamp(1.875rem, 1.5rem + 1.88vw, 2.5rem);">Why Choose SKF Ajmer?</h2>
                     <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">Because trust, transparency, and results matter. We are committed to finding the best financial solutions for you.</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        <!-- Card 1: Loan Disbursed -->
-                        <div class="group bg-surface-color p-8 rounded-xl shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300">
-                            <div class="bg-blue-100 rounded-full p-4 mb-4 inline-block icon-bounce">
-                                <svg class="h-10 w-10 text-primary-color" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75" /></svg>
+                    <div class="swiper-container why-us-carousel max-w-6xl mx-auto">
+                        <div class="swiper-wrapper pb-12">
+                            <!-- Card 1: Loan Disbursed -->
+                            <div class="swiper-slide h-auto">
+                                <div class="group bg-surface-color p-8 rounded-xl shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 h-full">
+                                    <div class="bg-blue-100 rounded-full p-4 mb-4 inline-block icon-bounce">
+                                        <svg class="h-10 w-10 text-primary-color" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75" /></svg>
+                                    </div>
+                                    <div class="flex justify-center items-baseline"><h3 class="counter text-4xl font-extrabold text-slate-800" data-target="100">0</h3><span class="text-3xl font-extrabold text-slate-800">&nbsp;Cr+</span></div>
+                                    <p class="mt-2 text-gray-600 font-semibold">Loan Disbursed</p>
+                                </div>
                             </div>
-                            <div class="flex justify-center items-baseline"><h3 class="counter text-4xl font-extrabold text-slate-800" data-target="100">0</h3><span class="text-3xl font-extrabold text-slate-800">&nbsp;Cr+</span></div>
-                            <p class="mt-2 text-gray-600 font-semibold">Loan Disbursed</p>
-                        </div>
-                        <!-- Card 2: Happy Customers -->
-                        <div class="group bg-surface-color p-8 rounded-xl shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300">
-                            <div class="bg-blue-100 rounded-full p-4 mb-4 inline-block icon-bounce">
-                                <svg class="h-10 w-10 text-primary-color" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m-7.284-2.72a3 3 0 0 0-4.682 2.72 9.094 9.094 0 0 0 3.741.479m7.284-2.72a3 3 0 0 1 2.246 1.125 3 3 0 0 1-8.772 0 3 3 0 0 1 2.246-1.125M12 14.25a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 14.25a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-7.5 7.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm15 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" /></svg>
+                            <!-- Card 2: Happy Customers -->
+                            <div class="swiper-slide h-auto">
+                                <div class="group bg-surface-color p-8 rounded-xl shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 h-full">
+                                    <div class="bg-blue-100 rounded-full p-4 mb-4 inline-block icon-bounce">
+                                        <svg class="h-10 w-10 text-primary-color" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m-7.284-2.72a3 3 0 0 0-4.682 2.72 9.094 9.094 0 0 0 3.741.479m7.284-2.72a3 3 0 0 1 2.246 1.125 3 3 0 0 1-8.772 0 3 3 0 0 1 2.246-1.125M12 14.25a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 14.25a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-7.5 7.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm15 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" /></svg>
+                                    </div>
+                                    <div class="flex justify-center items-baseline"><h3 class="counter text-4xl font-extrabold text-slate-800" data-target="10000">0</h3><span class="text-3xl font-extrabold text-slate-800">+</span></div>
+                                    <p class="mt-2 text-gray-600 font-semibold">Happy Customers</p>
+                                </div>
                             </div>
-                            <div class="flex justify-center items-baseline"><h3 class="counter text-4xl font-extrabold text-slate-800" data-target="10000">0</h3><span class="text-3xl font-extrabold text-slate-800">+</span></div>
-                            <p class="mt-2 text-gray-600 font-semibold">Happy Customers</p>
-                        </div>
-                        <!-- Card 3: Bank & NBFC Tie-ups -->
-                        <div class="group bg-surface-color p-8 rounded-xl shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300">
-                             <div class="bg-blue-100 rounded-full p-4 mb-4 inline-block icon-bounce">
-                               <svg class="h-10 w-10 text-primary-color" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6M9 11.25h6m-6 4.5h6M6.75 21v-2.25a2.25 2.25 0 0 1 2.25-2.25h3a2.25 2.25 0 0 1 2.25 2.25V21M6.75 3v2.25A2.25 2.25 0 0 0 9 7.5h6a2.25 2.25 0 0 0 2.25-2.25V3" /></svg>
+                            <!-- Card 3: Bank & NBFC Tie-ups -->
+                            <div class="swiper-slide h-auto">
+                                <div class="group bg-surface-color p-8 rounded-xl shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 h-full">
+                                    <div class="bg-blue-100 rounded-full p-4 mb-4 inline-block icon-bounce">
+                                        <svg class="h-10 w-10 text-primary-color" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6M9 11.25h6m-6 4.5h6M6.75 21v-2.25a2.25 2.25 0 0 1 2.25-2.25h3a2.25 2.25 0 0 1 2.25 2.25V21M6.75 3v2.25A2.25 2.25 0 0 0 9 7.5h6a2.25 2.25 0 0 0 2.25-2.25V3" /></svg>
+                                    </div>
+                                    <div class="flex justify-center items-baseline"><h3 class="counter text-4xl font-extrabold text-slate-800" data-target="120">0</h3><span class="text-3xl font-extrabold text-slate-800">+</span></div>
+                                    <p class="mt-2 text-gray-600 font-semibold">Network with 120+ Banks & NBFC</p>
+                                </div>
                             </div>
-                            <div class="flex justify-center items-baseline"><h3 class="counter text-4xl font-extrabold text-slate-800" data-target="120">0</h3><span class="text-3xl font-extrabold text-slate-800">+</span></div>
-                            <p class="mt-2 text-gray-600 font-semibold">Network with 120+ Banks & NBFC</p>
                         </div>
                     </div>
                 </div>
@@ -2040,6 +2077,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 600: { slidesPerView: 2, spaceBetween: 20 },
                 // when window width is >= 992px
                 992: { slidesPerView: 3, spaceBetween: 30 },
+            }
+        });
+
+        new Swiper('.why-us-carousel', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
             }
         });
 

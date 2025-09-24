@@ -14,6 +14,7 @@
         "subtypes": {
             "purchase": {
                 "name": "New Home Purchase",
+                "description": "Finance for buying a new or resale residential property. Get competitive rates and flexible tenure.",
                 "roi": "8.50%",
                 "tenure": "30 Years",
                 "images": [
@@ -29,6 +30,7 @@
             },
             "construction": {
                 "name": "Home Construction",
+                "description": "Secure funds to build your own house on a plot of land you own. Disbursal in stages.",
                 "roi": "8.75%",
                 "tenure": "30 Years",
                 "images": [
@@ -43,6 +45,7 @@
             },
             "renovation": {
                 "name": "Home Renovation",
+                "description": "Upgrade your existing home with funds for repairs, extensions, painting, and more.",
                 "roi": "9.00%",
                 "tenure": "15 Years",
                 "images": [
@@ -69,6 +72,7 @@
         "subtypes": {
             "working-capital": {
                 "name": "Working Capital Loan",
+                "description": "Manage your day-to-day business expenses and maintain healthy cash flow with our working capital loans.",
                 "roi": "12.50%",
                 "tenure": "5 Years",
                 "images": [
@@ -82,6 +86,7 @@
             },
             "term": {
                 "name": "Term Loan",
+                "description": "Ideal for business expansion, purchasing machinery, or other long-term capital investments.",
                 "roi": "11.75%",
                 "tenure": "7 Years",
                 "images": [
@@ -95,6 +100,7 @@
             },
             "msme": {
                 "name": "MSME Loan",
+                "description": "Specialized loans for Micro, Small & Medium Enterprises, often with government scheme benefits.",
                 "roi": "10.50%",
                 "tenure": "10 Years",
                 "images": [
@@ -119,21 +125,21 @@
            "https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-35_kxclyr.jpg"
         ],
        "subtypes": {
-           "wedding": { "name": "Wedding Loan", "roi": "10.99%", "tenure": "5 Years",
+           "wedding": { "name": "Wedding Loan", "description": "Fund your dream wedding expenses, from venue booking to jewelry, with an easy personal loan.", "roi": "10.99%", "tenure": "5 Years",
                 "images": [
                     "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034622/linkconnect_1758034581315_cmn98r.png",
                     "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034621/linkconnect_1758034606490_sdtjpa.png",
                     "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034558/linkconnect_1758034549602_hqevla.png"
                 ],
                 "eligibility": "Available for both salaried and self-employed individuals with a strong credit history and a minimum monthly income of ₹25,000.", "features": ["Covers all wedding-related expenses", "Quick approval and disbursal", "No collateral required", "Flexible repayment tenure"], "documents": ["PAN & Aadhaar Card", "Last 3 months salary slips", "Last 6 months bank statement", "Employment ID card"], "faq": [ { "q": "How much loan can I get for a wedding?", "a": "The loan amount depends on your income, credit score, and repayment capacity. It can range from ₹50,000 to ₹40 Lakhs." } ] },
-           "travel": { "name": "Travel Loan", "roi": "11.49%", "tenure": "3 Years",
+           "travel": { "name": "Travel Loan", "description": "Don't wait to explore the world. Get instant funds for your domestic or international travel plans.", "roi": "11.49%", "tenure": "3 Years",
                 "images": [
                     "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034846/linkconnect_1758034772528_ptsnrr.png",
                     "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034844/linkconnect_1758034798378_mghvhx.png",
                     "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034832/linkconnect_1758034818629_ytrduj.png"
                 ],
                 "eligibility": "Indian residents with a stable job and a good credit score can apply. Some lenders might ask for travel bookings.", "features": ["Fund your dream vacation", "Easy EMIs make travel affordable", "No need to dip into your savings", "Instant online approval"], "documents": ["KYC Documents", "Income proof", "Bank statements", "Optionally, travel tickets or hotel bookings"], "faq": [ { "q": "Is a travel loan better than using a credit card?", "a": "Travel loans often come with lower interest rates than credit cards, making them a more cost-effective option for planned vacations." } ] },
-           "medical": { "name": "Medical Emergency Loan", "roi": "10.25%", "tenure": "5 Years",
+           "medical": { "name": "Medical Emergency Loan", "description": "Get immediate financial support for unexpected medical expenses with quick and hassle-free loans.", "roi": "10.25%", "tenure": "5 Years",
                 "images": [
                     "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034846/linkconnect_1758034772528_ptsnrr.png",
                     "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034844/linkconnect_1758034798378_mghvhx.png",
@@ -154,7 +160,7 @@
         ],
         "subtypes": {
             "new-car": { 
-                "name": "New Car Loan ", 
+                "name": "New Car Loan", "description": "Drive home your brand new car with up to 100% on-road funding and attractive interest rates.",
                 "roi": "9.00%", "tenure": "7 Years", 
                 "images": [
                     "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036373/linkconnect_1758036223153_x7sn8d.png",
@@ -165,7 +171,7 @@
                 "features": ["Funding up to 100% of the on-road price", "Flexible repayment tenure up to 7 years", "Quick processing with minimal paperwork", "Attractive schemes & exclusive offers available"], 
                 "documents": ["Pro-forma invoice from the car dealer", "Valid KYC documents (Aadhaar, PAN, Passport, etc.)", "Income proof (Salary Slip / ITR)", "Recent Bank Statements"], 
                 "faq": [ { "q": "What does \"on-road price\" include?", "a": "The on-road price includes the ex-showroom price, RTO registration charges, road tax, and insurance." } ] },
-            "used-car": { "name": "Used Car & Vehicle Loan", "roi": "11.00%", "tenure": "5 Years", 
+            "used-car": { "name": "Used Car & Vehicle Loan", "description": "Get financing for pre-owned cars and other vehicles at competitive rates and make your purchase affordable.", "roi": "11.00%", "tenure": "5 Years", 
                 "images": [
                     "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036809/linkconnect_1758036659787_ujz7bx.png",
                     "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036807/linkconnect_1758036674320_nx6w3y.png",
@@ -175,7 +181,7 @@
                     "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036443/linkconnect_1758036432977_je7t0w.png"
                 ],
                 "eligibility": "The car should not be more than 5-7 years old. A valuation report of the car from a certified professional is mandatory.", "features": ["Get up to 90% of the car's valuation as a loan", "Affordable EMIs", "Helps in buying a better car within your budget", "Thorough check on car documents by the bank"], "documents": ["RC copy of the vehicle", "Vehicle valuation report", "Seller-buyer agreement", "Standard KYC and income documents"], "faq": [ { "q": "Is the interest rate for used car loans higher?", "a": "Yes, interest rates for used car loans are generally slightly higher than new car loans due to the higher perceived risk." } ] },
-            "commercial-vehicle": { "name": "Commercial Vehicle Loan", "roi": "12.00%", "tenure": "5 Years", 
+            "commercial-vehicle": { "name": "Commercial Vehicle Loan", "description": "Finance your commercial vehicles like trucks, buses, and taxis to expand your business operations.", "roi": "12.00%", "tenure": "5 Years", 
                 "images": [
                     "https://res.cloudinary.com/dugvqluo2/image/upload/v1758030488/linkconnect_1758029887796_nxonu1.png",
                     "https://res.cloudinary.com/dugvqluo2/image/upload/v1758030468/linkconnect_1758030246325_a7sfga.png",
@@ -200,6 +206,7 @@
         "subtypes": {
             "overview": {
                 "name": "LAP Overview",
+                "description": "Leverage your existing property to get a high-value loan for any personal or business need.",
                 "eligibility": "Owner of the property (residential or commercial). The property must have a clear title and be free from any legal disputes. Your income and repayment capacity will also be assessed.",
                 "features": ["High loan amount based on property value", "Lower interest rates compared to unsecured loans", "Longer repayment tenure", "Can be used for any personal or business purpose"],
                 "documents": ["Original property documents (Title Deed)", "NOC from the society/builder", "Latest property tax receipts", "Standard KYC and income proofs"],
@@ -207,6 +214,7 @@
             },
             "msme-lap": {
                 "name": "LAP for MSME",
+                "description": "MSME-specific Loan Against Property to fund business expansion, purchase inventory, or manage cash flow.",
                 "roi": "9.75%",
                 "tenure": "15 Years",
                 "images": [
@@ -229,8 +237,8 @@
         "tenure": "1 Year",
         "images": ["https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-27_csvkbm.jpg"],
         "subtypes": {
-            "individual": { "name": "Individual Health Cover", "tenure": "1 Year", "eligibility": "Any individual between 18 to 65 years of age can purchase this policy.", "features": ["Comprehensive coverage for hospitalization expenses", "Cashless treatment at network hospitals", "Tax benefits under Section 80D", "No-claim bonus benefits"], "documents": ["Age proof (Aadhaar, Passport)", "Address proof", "Identity proof", "Medical check-up reports (if required)"], "faq": [{"q": "What is a waiting period in health insurance?", "a": "A waiting period is the duration you must wait before you can claim some or all benefits of your health insurance policy. This is common for pre-existing conditions."}] },
-            "family": { "name": "Family Floater Plan", "tenure": "1 Year", "eligibility": "Covers the entire family under a single policy, including self, spouse, children, and sometimes parents.", "features": ["Single premium for the whole family", "Sum insured floats among all family members", "Cost-effective compared to individual policies", "Comprehensive coverage"], "documents": ["KYC documents of the primary insured person", "Details of all family members to be covered"], "faq": [{"q": "Can I add my parents to my family floater plan?", "a": "Some policies allow adding parents, but it's often recommended to get a separate senior citizen policy for them due to their higher health risks."}] }
+            "individual": { "name": "Individual Health Cover", "description": "A dedicated health policy for an individual, covering hospitalization, treatments, and more.", "tenure": "1 Year", "eligibility": "Any individual between 18 to 65 years of age can purchase this policy.", "features": ["Comprehensive coverage for hospitalization expenses", "Cashless treatment at network hospitals", "Tax benefits under Section 80D", "No-claim bonus benefits"], "documents": ["Age proof (Aadhaar, Passport)", "Address proof", "Identity proof", "Medical check-up reports (if required)"], "faq": [{"q": "What is a waiting period in health insurance?", "a": "A waiting period is the duration you must wait before you can claim some or all benefits of your health insurance policy. This is common for pre-existing conditions."}] },
+            "family": { "name": "Family Floater Plan", "description": "A single policy that covers your entire family, offering a shared sum insured for all members.", "tenure": "1 Year", "eligibility": "Covers the entire family under a single policy, including self, spouse, children, and sometimes parents.", "features": ["Single premium for the whole family", "Sum insured floats among all family members", "Cost-effective compared to individual policies", "Comprehensive coverage"], "documents": ["KYC documents of the primary insured person", "Details of all family members to be covered"], "faq": [{"q": "Can I add my parents to my family floater plan?", "a": "Some policies allow adding parents, but it's often recommended to get a separate senior citizen policy for them due to their higher health risks."}] }
         }
     },
     "life-insurance": {
@@ -239,8 +247,8 @@
         "tenure": "Up to 85 years",
         "images": ["https://placehold.co/800x500/eef2ff/4f46e5?text=Life+Insurance"],
         "subtypes": {
-            "term": { "name": "Term Plan", "tenure": "Up to 85 years", "eligibility": "Available for individuals from 18 to 65 years. Provides high coverage at a low premium for a fixed term.", "features": ["Pure risk cover", "High sum assured at affordable premiums", "Rider options for critical illness & accidental death", "Tax benefits"], "documents": ["Age & Identity Proof", "Income Proof", "Address Proof", "Medical History"], "faq": [{"q": "What happens if I survive the policy term?", "a": "In a pure term plan, no maturity benefit is paid if you survive the policy term. However, some plans now offer a 'Return of Premium' option at a higher cost."}] },
-            "endowment": { "name": "Endowment Plan", "tenure": "10-30 Years", "eligibility": "Combines insurance with savings. Suitable for long-term goal planning.", "features": ["Dual benefit of insurance and savings", "Guaranteed maturity benefit", "Bonus additions", "Loan facility available"], "documents": ["KYC Documents", "Income Proof", "Age Proof"], "faq": [{"q": "Is an endowment plan a good investment?", "a": "Endowment plans offer safe, guaranteed returns but are generally lower than market-linked products. They are good for risk-averse individuals."}] }
+            "term": { "name": "Term Plan", "description": "The purest form of life insurance, offering a high cover at a very low premium for a specific term.", "tenure": "Up to 85 years", "eligibility": "Available for individuals from 18 to 65 years. Provides high coverage at a low premium for a fixed term.", "features": ["Pure risk cover", "High sum assured at affordable premiums", "Rider options for critical illness & accidental death", "Tax benefits"], "documents": ["Age & Identity Proof", "Income Proof", "Address Proof", "Medical History"], "faq": [{"q": "What happens if I survive the policy term?", "a": "In a pure term plan, no maturity benefit is paid if you survive the policy term. However, some plans now offer a 'Return of Premium' option at a higher cost."}] },
+            "endowment": { "name": "Endowment Plan", "description": "A combination of insurance and savings. It provides a lump sum on maturity or death.", "tenure": "10-30 Years", "eligibility": "Combines insurance with savings. Suitable for long-term goal planning.", "features": ["Dual benefit of insurance and savings", "Guaranteed maturity benefit", "Bonus additions", "Loan facility available"], "documents": ["KYC Documents", "Income Proof", "Age Proof"], "faq": [{"q": "Is an endowment plan a good investment?", "a": "Endowment plans offer safe, guaranteed returns but are generally lower than market-linked products. They are good for risk-averse individuals."}] }
         }
     },
     "vehicle-insurance": {
@@ -249,9 +257,9 @@
         "tenure": "1 Year",
         "images": ["https://placehold.co/800x500/fefce8/ca8a04?text=Vehicle+Insurance"],
         "subtypes": {
-            "car": { "name": "Car Insurance", "tenure": "1 Year", "eligibility": "Mandatory for all car owners in India.", "features": ["Covers damage to your own car (OD)", "Covers third-party liability", "No-Claim Bonus (NCB) for claim-free years", "Add-ons like zero depreciation & roadside assistance"], "documents": ["Vehicle Registration Certificate (RC)", "Driving License of the owner/driver", "Previous policy details (for renewal)"], "faq": [{"q": "What is the difference between third-party and comprehensive insurance?", "a": "Third-party insurance is mandatory and only covers damages to another person or property. Comprehensive insurance covers third-party liability plus damage or theft of your own vehicle."}] },
-            "bike": { "name": "Bike Insurance", "tenure": "1 Year", "eligibility": "Mandatory for all two-wheeler owners.", "features": ["Affordable premium", "Protection against accidents and theft", "Third-party liability coverage", "Personal accident cover for owner-driver"], "documents": ["Vehicle RC", "Driving License", "Old policy copy for renewals"], "faq": [{"q": "Is personal accident cover included by default?", "a": "Yes, a personal accident cover of ₹15 lakhs for the owner-driver is mandatory with bike insurance."}] },
-            "commercial": { "name": "Commercial Vehicle Insurance", "tenure": "1 Year", "eligibility": "Required for all vehicles used for commercial purposes, such as trucks, buses, and taxis.", "features": ["Covers goods-carrying and passenger-carrying vehicles", "Mandatory third-party liability cover", "Own Damage (OD) cover available", "Legal and financial protection"], "documents": ["Vehicle RC and Fitness Certificate", "Permit Details", "Driver's License"], "faq": [{"q": "Does it cover the goods being transported?", "a": "No, standard commercial vehicle insurance does not cover the goods. For that, you would need a separate Marine or Goods in Transit insurance policy."}] }
+            "car": { "name": "Car Insurance", "description": "Mandatory insurance to protect your car against accidents, theft, and third-party liabilities.", "tenure": "1 Year", "eligibility": "Mandatory for all car owners in India.", "features": ["Covers damage to your own car (OD)", "Covers third-party liability", "No-Claim Bonus (NCB) for claim-free years", "Add-ons like zero depreciation & roadside assistance"], "documents": ["Vehicle Registration Certificate (RC)", "Driving License of the owner/driver", "Previous policy details (for renewal)"], "faq": [{"q": "What is the difference between third-party and comprehensive insurance?", "a": "Third-party insurance is mandatory and only covers damages to another person or property. Comprehensive insurance covers third-party liability plus damage or theft of your own vehicle."}] },
+            "bike": { "name": "Bike Insurance", "description": "Protect your two-wheeler from unforeseen events with comprehensive or third-party insurance.", "tenure": "1 Year", "eligibility": "Mandatory for all two-wheeler owners.", "features": ["Affordable premium", "Protection against accidents and theft", "Third-party liability coverage", "Personal accident cover for owner-driver"], "documents": ["Vehicle RC", "Driving License", "Old policy copy for renewals"], "faq": [{"q": "Is personal accident cover included by default?", "a": "Yes, a personal accident cover of ₹15 lakhs for the owner-driver is mandatory with bike insurance."}] },
+            "commercial": { "name": "Commercial Vehicle Insurance", "description": "Insurance for vehicles used for business purposes, covering legal liabilities and damages.", "tenure": "1 Year", "eligibility": "Required for all vehicles used for commercial purposes, such as trucks, buses, and taxis.", "features": ["Covers goods-carrying and passenger-carrying vehicles", "Mandatory third-party liability cover", "Own Damage (OD) cover available", "Legal and financial protection"], "documents": ["Vehicle RC and Fitness Certificate", "Permit Details", "Driver's License"], "faq": [{"q": "Does it cover the goods being transported?", "a": "No, standard commercial vehicle insurance does not cover the goods. For that, you would need a separate Marine or Goods in Transit insurance policy."}] }
         }
     },
     "general-insurance": {
@@ -260,10 +268,10 @@
         "tenure": "1 Year",
         "images": ["https://placehold.co/800x500/f1f5f9/475569?text=General+Insurance"],
         "subtypes": {
-            "shop": { "name": "Shopkeeper Insurance", "tenure": "1 Year", "eligibility": "For owners of small to medium-sized shops.", "features": ["Protection against fire, theft, and natural calamities", "Covers building, stock, and contents", "Liability coverage options", "All-in-one package policy"], "documents": ["Shop registration documents", "Address proof of the shop", "List of contents to be insured"], "faq": [{"q": "Does it cover loss of money in the shop?", "a": "Yes, many shopkeeper policies offer an add-on or built-in cover for loss of money in transit or from a safe."}] },
-            "property": { "name": "Property Insurance", "tenure": "1 Year", "eligibility": "For owners of residential or commercial properties.", "features": ["Coverage against fire, floods, earthquakes", "Protection for building structure and contents", "Option to include rent loss cover", "Customizable plans"], "documents": ["Proof of ownership", "Valuation report of the property", "Address proof"], "faq": [{"q": "Is property insurance the same as home insurance?", "a": "Home insurance is a type of property insurance specifically for residential homes. Property insurance is a broader term that can also cover commercial buildings."}] },
-            "fire": { "name": "Fire Insurance", "tenure": "1 Year", "eligibility": "For any individual or business that wants to protect their property against fire damage.", "features": ["Covers damages due to fire, lightning, and explosions", "Can be extended to cover riots, storms, and floods", "Essential for businesses with high-value stock", "Peace of mind"], "documents": ["List of assets to be insured", "Property ownership documents", "Business registration (if applicable)"], "faq": [{"q": "What is not covered in a standard fire policy?", "a": "Standard policies usually exclude damages from war, nuclear perils, and willful destruction of property."}] },
-            "travel": { "name": "Travel Insurance", "tenure": "Per Trip", "eligibility": "For individuals and families travelling domestically or internationally.", "features": ["Covers medical emergencies abroad", "Protection against trip cancellation or delay", "Baggage loss or delay coverage", "Cashless hospitalization worldwide"], "documents": ["Passport copy (for international travel)", "Ticket details", "Basic KYC documents"], "faq": [{"q": "Do I need travel insurance for domestic trips?", "a": "While not mandatory, it is highly recommended as it can cover flight cancellations, baggage loss, and medical emergencies even within the country."}] }
+            "shop": { "name": "Shopkeeper Insurance", "description": "A comprehensive policy that protects your shop from risks like fire, theft, and other damages.", "tenure": "1 Year", "eligibility": "For owners of small to medium-sized shops.", "features": ["Protection against fire, theft, and natural calamities", "Covers building, stock, and contents", "Liability coverage options", "All-in-one package policy"], "documents": ["Shop registration documents", "Address proof of the shop", "List of contents to be insured"], "faq": [{"q": "Does it cover loss of money in the shop?", "a": "Yes, many shopkeeper policies offer an add-on or built-in cover for loss of money in transit or from a safe."}] },
+            "property": { "name": "Property Insurance", "description": "Safeguard your residential or commercial property from unforeseen events like fire and natural disasters.", "tenure": "1 Year", "eligibility": "For owners of residential or commercial properties.", "features": ["Coverage against fire, floods, earthquakes", "Protection for building structure and contents", "Option to include rent loss cover", "Customizable plans"], "documents": ["Proof of ownership", "Valuation report of the property", "Address proof"], "faq": [{"q": "Is property insurance the same as home insurance?", "a": "Home insurance is a type of property insurance specifically for residential homes. Property insurance is a broader term that can also cover commercial buildings."}] },
+            "fire": { "name": "Fire Insurance", "description": "Specific coverage for property and goods against damage caused by fire and related perils.", "tenure": "1 Year", "eligibility": "For any individual or business that wants to protect their property against fire damage.", "features": ["Covers damages due to fire, lightning, and explosions", "Can be extended to cover riots, storms, and floods", "Essential for businesses with high-value stock", "Peace of mind"], "documents": ["List of assets to be insured", "Property ownership documents", "Business registration (if applicable)"], "faq": [{"q": "What is not covered in a standard fire policy?", "a": "Standard policies usually exclude damages from war, nuclear perils, and willful destruction of property."}] },
+            "travel": { "name": "Travel Insurance", "description": "Secure your trips against medical emergencies, flight cancellations, baggage loss, and more.", "tenure": "Per Trip", "eligibility": "For individuals and families travelling domestically or internationally.", "features": ["Covers medical emergencies abroad", "Protection against trip cancellation or delay", "Baggage loss or delay coverage", "Cashless hospitalization worldwide"], "documents": ["Passport copy (for international travel)", "Ticket details", "Basic KYC documents"], "faq": [{"q": "Do I need travel insurance for domestic trips?", "a": "While not mandatory, it is highly recommended as it can cover flight cancellations, baggage loss, and medical emergencies even within the country."}] }
         }
     }
 }

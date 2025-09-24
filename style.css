@@ -701,10 +701,6 @@ body {
 
 /* Mobile devices (<= 768px) */
 @media (max-width: 768px) {
-    #why-choose-us .grid {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
     /* Professional mobile chat window styling */
     #chat-window {
         /* Center the modal on the mobile screen */

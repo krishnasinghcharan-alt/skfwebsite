@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+ document.addEventListener('DOMContentLoaded', function() {
     // This will hold the data from products.json
     let productData = {};
 
@@ -11,6 +11,16 @@ document.addEventListener('DOMContentLoaded', function() {
         'Vehicle Loan': { name: 'Manu Mam', number: '919358973156' },
         'Insurance': { name: 'Rajendra Singh', number: '919214104963' },
         'fallback': { name: 'Rajendra Singh', number: '919214104963' } // Default number
+    };
+
+    // Data for team member modals
+    const teamMemberDetails = {
+        'rajendra-singh': { name: 'राजेंद्र सिंह', title: 'Founder', img: 'https://res.cloudinary.com/dugvqluo2/image/upload/v1758028732/image_2025-09-16_184847409_n0ga13.png', bio: 'जब हमने श्री करणी कृपा एसोसिएट्स शुरू किया, तो हमारा एक ही सपना था - यह सुनिश्चित करना कि हमारे क्षेत्र में किसी को भी वित्तीय सहायता की आवश्यकता होने पर अकेला या गुमराह महसूस न हो। हम सिर्फ ऋण प्रदान नहीं करते; हम रिश्ते बनाते हैं और सपनों को साकार करने में मदद करते हैं। आपका विश्वास हमारी सबसे बड़ी संपत्ति है।', social: { whatsapp: '919214104963' } },
+        'krishna-singh': { name: 'Krishna Singh', title: 'Marketing Head', img: 'https://res.cloudinary.com/dhme90fr1/image/upload/v1756629459/PHOTO-2025-08-28-13-18-32_h8oozl.jpg', bio: 'Krishna leads our marketing efforts, connecting with clients across Rajasthan to provide them with the best financial solutions. His expertise lies in Home and LAP loans.', social: { whatsapp: '918118838772' } },
+        'sona-mulani': { name: 'Sona Mulani', title: 'Branch Manager', img: 'https://res.cloudinary.com/dhme90fr1/image/upload/v1756628063/PHOTO-2025-08-28-13-05-09_oqhbv6.jpg', bio: 'Sona manages our branch operations, ensuring a smooth process for every client. She specializes in handling Business Loan applications with precision.', social: { whatsapp: '919352358494' } },
+        'saroj-choudhary': { name: 'Saroj Choudhary', title: 'Team Leader', img: 'https://res.cloudinary.com/dhme90fr1/image/upload/v1756991306/WhatsApp_Image_2025-08-28_at_11.52.11_AM_mffbbw.jpg', bio: 'As a Team Leader, Saroj guides her team to achieve targets and provide excellent customer service, with a focus on Personal Loans.', social: { whatsapp: '918118822628' } },
+        'mannu-choudhary': { name: 'Mannu Choudhary', title: 'Team Leader', img: 'https://res.cloudinary.com/dhme90fr1/image/upload/v1756628064/PHOTO-2025-08-28-13-18-11_b5qpie.jpg', bio: 'Mannu is an expert in Vehicle Loans, leading her team to help clients purchase their dream cars and bikes with ease.', social: { whatsapp: '919358973156' } }
+        // You can add more members here following the same structure
     };
 
     // Select all necessary elements from the DOM
@@ -32,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setupForms();
         initializeCarousels();
         // renderRightSidebar(); // Removed as per request
+        setupTeamMemberModal();
         setupPrivacyBanner();
         setupBasicEventListeners();
     }
@@ -48,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
             generateNavigation(); // Regenerate nav with product data for the dropdown
             
             let initialHash = window.location.hash.substring(1) || 'home';
-            showPage(initialHash);
+            // showPage(initialHash); // Commented out to prevent any page from loading initially
 
         } catch (error) {
             console.error('Failed to load product data:', error);
@@ -280,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const imageCarouselHtml = `
             <div class="swiper-container loan-image-carousel rounded-lg overflow-hidden">
                 <div class="swiper-wrapper">
-                    ${images.map(img => `<div class="swiper-slide" style="background-color: #e9ecef; background-image: url('https://res.cloudinary.com/diqo7qmnw/image/upload/e_grayscale,o_10/v1754217266/logo1_lt1w3w.png'); background-repeat: no-repeat; background-position: center; background-size: 50%;"><img src="${img}" alt="${mainCategory.name}" class="w-full h-96 object-contain"></div>`).join('')}
+                    ${images.map(img => `<div class="swiper-slide" style="background-color: #e9ecef; background-image: url('https://res.cloudinary.com/diqo7qmnw/image/upload/e_grayscale,o_10/v1754217266/logo1_lt1w3w.png'); background-repeat: no-repeat; background-position: center; background-size: 50%;"><img src="${img.replace('/upload/', '/upload/w_800,h_384,c_fit,q_auto,f_auto/')}" alt="${mainCategory.name}" class="w-full h-96 object-contain" loading="lazy" decoding="async"></div>`).join('')}
                 </div>
                 <div class="swiper-button-next text-white"></div>
                 <div class="swiper-button-prev text-white"></div>
@@ -1492,7 +1503,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!homePage) return;
         homePage.innerHTML = `
             <section class="relative w-full h-full bg-cover bg-center text-white" style="background-image: url('https://res.cloudinary.com/dugvqluo2/image/upload/v1757947648/IMG_7817_pgkm5f.jpg');">
-                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
+                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
                  <div class="container mx-auto px-6 py-24 md:py-36 text-center relative z-10" style="padding-top: clamp(6rem, 12vw, 9rem); padding-bottom: clamp(6rem, 12vw, 9rem);">
                      <h1 class="font-extrabold leading-tight mb-4" style="font-size: clamp(2.25rem, 1.5rem + 3.75vw, 4.5rem);">Your Trusted Loan & Insurance Advisors</h1>
                      <p class="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto mb-8">"Sapne aap dekho, poore hum karenge." Get the Best Financial Solutions in Rajasthan.</p>
@@ -1508,22 +1519,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h2 class="font-bold mb-12 text-center text-gray-800" style="font-size: clamp(1.875rem, 1.5rem + 1.88vw, 2.5rem);">Our Gallery & Motivation</h2>
                     <div class="swiper-container gallery-carousel relative">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030488/linkconnect_1758029887796_nxonu1.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030487/linkconnect_1758029910745_nercgv.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030471/linkconnect_1758030023899_gmxd9t.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030471/linkconnect_1758030081550_y9hbzs.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030471/linkconnect_1758030067320_mjrghs.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030471/linkconnect_1758029972266_htzhcz.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030471/linkconnect_1758029992963_jif7fu.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030470/linkconnect_1758030043952_qpwesp.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030469/linkconnect_1758030145517_q1ehnh.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030469/linkconnect_1758030387720_lxdc3r.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030469/linkconnect_1758030169400_mapkbe.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030469/linkconnect_1758030268017_uoew8e.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030468/linkconnect_1758030218956_uzuv49.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030468/linkconnect_1758030246325_a7sfga.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030468/linkconnect_1758030406784_tusczt.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758030468/linkconnect_1758030191922_zmny3v.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030488/linkconnect_1758029887796_nxonu1.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030487/linkconnect_1758029910745_nercgv.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030471/linkconnect_1758030023899_gmxd9t.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030471/linkconnect_1758030081550_y9hbzs.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030471/linkconnect_1758030067320_mjrghs.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030471/linkconnect_1758029972266_htzhcz.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030471/linkconnect_1758029992963_jif7fu.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030470/linkconnect_1758030043952_qpwesp.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030469/linkconnect_1758030145517_q1ehnh.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030469/linkconnect_1758030387720_lxdc3r.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030469/linkconnect_1758030169400_mapkbe.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030469/linkconnect_1758030268017_uoew8e.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030468/linkconnect_1758030218956_uzuv49.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030468/linkconnect_1758030246325_a7sfga.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030468/linkconnect_1758030406784_tusczt.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030468/linkconnect_1758030191922_zmny3v.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
                         </div>
                     </div>
                 </div>
@@ -1533,12 +1544,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="font-bold mb-12 text-gray-800" style="font-size: clamp(1.875rem, 1.5rem + 1.88vw, 2.5rem);">Our Loan & Insurance Services</h2>
                     <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                        <a href="#home-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757241971/WhatsApp_Image_2025-09-07_at_3.20.38_PM_lqp1dy.jpg" alt="Home Loan" class="w-full h-auto"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Home Loan</h3></div></a>
-                        <a href="#business-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-36_b8guao.jpg" alt="Business Loan" class="w-full h-auto"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Business Loan</h3></div></a>
-                        <a href="#personal-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-34_q09kn6.jpg" alt="Personal Loan" class="w-full h-auto"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Personal Loan</h3></div></a>
-                        <a href="#vehicle-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758037256/linkconnect_1758037092966_b4yejx.png" alt="Vehicle Loan" class="w-full h-auto"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Vehicle Loan</h3></div></a>
-                        <a href="#lap-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757240471/WhatsApp_Image_2025-09-07_at_3.20.41_PM_yunya8.jpg" alt="Loan Against Property" class="w-full h-auto"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Loan Against Property</h3></div></a>
-                        <a href="#health-insurance" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-27_csvkbm.jpg" alt="Health Insurance" class="w-full h-auto"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Health Insurance</h3></div></a>
+                        <a href="#home-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_400,c_fill,q_auto,f_auto/v1757241971/WhatsApp_Image_2025-09-07_at_3.20.38_PM_lqp1dy.jpg" alt="Home Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Home Loan</h3></div></a>
+                        <a href="#business-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_400,c_fill,q_auto,f_auto/v1757239663/PHOTO-2025-09-07-15-20-36_b8guao.jpg" alt="Business Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Business Loan</h3></div></a>
+                        <a href="#personal-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_400,c_fill,q_auto,f_auto/v1757239663/PHOTO-2025-09-07-15-20-34_q09kn6.jpg" alt="Personal Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Personal Loan</h3></div></a>
+                        <a href="#vehicle-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,c_fill,q_auto,f_auto/v1758037256/linkconnect_1758037092966_b4yejx.png" alt="Vehicle Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Vehicle Loan</h3></div></a>
+                        <a href="#lap-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_400,c_fill,q_auto,f_auto/v1757240471/WhatsApp_Image_2025-09-07_at_3.20.41_PM_yunya8.jpg" alt="Loan Against Property" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Loan Against Property</h3></div></a>
+                        <a href="#health-insurance" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_400,c_fill,q_auto,f_auto/v1757387616/PHOTO-2025-09-09-08-37-27_csvkbm.jpg" alt="Health Insurance" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Health Insurance</h3></div></a>
                     </div>
                 </div>
             </section>
@@ -1590,8 +1601,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="marquee">
                         <div class="marquee-content">
                             <!-- Logos are duplicated for a seamless loop -->
-                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621450/imgi_85_hdfc-2_dzzdra.png" alt="HDFC Bank"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621416/imgi_76_YES-BANK_zgemo9.png" alt="YES Bank"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621188/imgi_41_SBI_psonew.png" alt="SBI Bank"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621186/imgi_28_IDFC-FIRST_wljvii.png" alt="IDFC First Bank"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621186/imgi_44_BHFL_Logo-min3723_m9hprx.png" alt="Bajaj Housing Finance"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756622692/imgi_118_AU-Logo-unit-2_prhzvg.png" alt="AU Small Finance Bank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/ICICI_Bank_Logo.svg/2560px-ICICI_Bank_Logo.svg.png" alt="ICICI Bank"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621451/imgi_30_tata-capital-housing-updated_t0xydb.png" alt="Tata Capital"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621451/imgi_88_aditya-upodated_ihx4kj.png" alt="Aditya Birla Capital"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621369/imgi_63_punawala3739_tljctp.png" alt="Poonawalla Fincorp"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621450/imgi_82_file_sua6c1.png" alt="Lendingkart">
-                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621450/imgi_85_hdfc-2_dzzdra.png" alt="HDFC Bank"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621416/imgi_76_YES-BANK_zgemo9.png" alt="YES Bank"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621188/imgi_41_SBI_psonew.png" alt="SBI Bank"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621186/imgi_28_IDFC-FIRST_wljvii.png" alt="IDFC First Bank"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621186/imgi_44_BHFL_Logo-min3723_m9hprx.png" alt="Bajaj Housing Finance"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756622692/imgi_118_AU-Logo-unit-2_prhzvg.png" alt="AU Small Finance Bank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/ICICI_Bank_Logo.svg/2560px-ICICI_Bank_Logo.svg.png" alt="ICICI Bank"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621451/imgi_30_tata-capital-housing-updated_t0xydb.png" alt="Tata Capital"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621451/imgi_88_aditya-upodated_ihx4kj.png" alt="Aditya Birla Capital"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621369/imgi_63_punawala3739_tljctp.png" alt="Poonawalla Fincorp"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756621450/imgi_82_file_sua6c1.png" alt="Lendingkart">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621450/imgi_85_hdfc-2_dzzdra.png" alt="HDFC Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621416/imgi_76_YES-BANK_zgemo9.png" alt="YES Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621188/imgi_41_SBI_psonew.png" alt="SBI Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621186/imgi_28_IDFC-FIRST_wljvii.png" alt="IDFC First Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621186/imgi_44_BHFL_Logo-min3723_m9hprx.png" alt="Bajaj Housing Finance" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756622692/imgi_118_AU-Logo-unit-2_prhzvg.png" alt="AU Small Finance Bank" loading="lazy" decoding="async"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/ICICI_Bank_Logo.svg/2560px-ICICI_Bank_Logo.svg.png" alt="ICICI Bank" loading="lazy" decoding="async" style="height:48px"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621451/imgi_30_tata-capital-housing-updated_t0xydb.png" alt="Tata Capital" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621451/imgi_88_aditya-upodated_ihx4kj.png" alt="Aditya Birla Capital" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621369/imgi_63_punawala3739_tljctp.png" alt="Poonawalla Fincorp" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621450/imgi_82_file_sua6c1.png" alt="Lendingkart" loading="lazy" decoding="async">
+                            <img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621450/imgi_85_hdfc-2_dzzdra.png" alt="HDFC Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621416/imgi_76_YES-BANK_zgemo9.png" alt="YES Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621188/imgi_41_SBI_psonew.png" alt="SBI Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621186/imgi_28_IDFC-FIRST_wljvii.png" alt="IDFC First Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621186/imgi_44_BHFL_Logo-min3723_m9hprx.png" alt="Bajaj Housing Finance" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756622692/imgi_118_AU-Logo-unit-2_prhzvg.png" alt="AU Small Finance Bank" loading="lazy" decoding="async"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/ICICI_Bank_Logo.svg/2560px-ICICI_Bank_Logo.svg.png" alt="ICICI Bank" loading="lazy" decoding="async" style="height:48px"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621451/imgi_30_tata-capital-housing-updated_t0xydb.png" alt="Tata Capital" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621451/imgi_88_aditya-upodated_ihx4kj.png" alt="Aditya Birla Capital" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621369/i_63_punawala3739_tljctp.png" alt="Poonawalla Fincorp" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621450/imgi_82_file_sua6c1.png" alt="Lendingkart" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -1616,6 +1627,67 @@ document.addEventListener('DOMContentLoaded', function() {
         populateTestimonials();
         initializeCarousels();
         setupCounters();
+        addLinkListeners(homePage); // Add listeners for any new links
+    }
+
+    function populateTestimonials() {
+        const reviews = [
+            { name: 'Priya M.', location: 'Ajmer', text: 'I was looking for sales executive jobs in Ajmer and found a great opportunity at SKF. The high incentive jobs structure is the best in Jaipur and the growth is amazing. A great place to work with SKF Ajmer.' },
+            { name: 'Amit G.', location: 'Kota', text: 'SKF Associates careers offer real growth. I started as a connector and now I\'m a team leader. The company truly invests in its people. Best finance jobs in Rajasthan.' },
+            { name: 'Sunil Sharma', location: 'Ajmer', text: 'SKF Ajmer se home loan lena bahut aasan tha. Rajendra sir aur unki team ne poora process smooth bana diya. Ajmer mein best home loan service!' },
+            { name: 'Priya Jain', location: 'Jaipur', text: 'Mujhe apne business ke liye turant fund chahiye the. <strong>Shree Karni Kripa Associates</strong> ne Rajasthan mein sabse fast business loan approve karwaya. Highly recommended.' },
+            { name: 'Amit Kumar', location: 'Kishangarh', text: 'Car loan ke liye sabse accha anubhav. Paperwork minimal tha aur Sona mam ne har step par guide kiya. Thank you for the easy car loan process!' },
+            { name: 'Kavita Singh', location: 'Beawar', text: 'Medical emergency ke liye personal loan ki zaroorat thi. Inki team ne samjha aur jaldi se loan dilwaya. Bahut hi supportive staff hai.' },
+            { name: 'Vikas Meena', location: 'Jaipur', text: 'Apni property ke against loan lena chahta tha. SKF Ajmer ne best interest rate dilwaya. Unka kaam bilkul transparent hai.' }
+        ];
+
+        const testimonialsWrapper = document.getElementById('testimonials-wrapper');
+        if (!testimonialsWrapper) return;
+
+        testimonialsWrapper.innerHTML = reviews.map(review => `
+            <div class="swiper-slide h-auto">
+                <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg text-left h-full flex flex-col justify-between testimonial-card">
+                    <div>
+                        <p class="text-gray-600 mb-6 italic" style="font-size: inherit;">"${review.text}"</p>
+                    </div>
+                    <p class="font-bold text-gray-800 mt-auto pt-4">- ${review.name}, ${review.location}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function setupTeamMemberModal() {
+        const modal = document.getElementById('team-member-modal');
+        const overlay = document.getElementById('team-member-modal-overlay');
+        const closeBtn = document.getElementById('team-member-modal-close');
+
+        if (!modal || !overlay || !closeBtn) return;
+
+        const closeModal = () => {
+            modal.classList.add('hidden');
+            overlay.classList.add('hidden');
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', closeModal);
+
+        // Use event delegation on the document to handle clicks on team cards
+        document.addEventListener('click', (e) => {
+            const card = e.target.closest('.team-member-card');
+            if (card && card.dataset.memberId) {
+                const memberId = card.dataset.memberId;
+                const member = teamMemberDetails[memberId];
+                if (member) {
+                    // Populate and show the modal
+                    document.getElementById('modal-member-img').src = member.img;
+                    document.getElementById('modal-member-name').textContent = member.name;
+                    document.getElementById('modal-member-title').textContent = member.title;
+                    document.getElementById('modal-member-bio').textContent = member.bio;
+                    modal.classList.remove('hidden');
+                    overlay.classList.remove('hidden');
+                }
+            }
+        });
     }
 
     function renderAboutPage() {
@@ -1686,71 +1758,60 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                             <!-- Team Member Card 1 -->
-                            <div class="text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
-                                <img class="w-22 h-28 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756629459/PHOTO-2025-08-28-13-18-32_h8oozl.jpg" alt="Krishna Singh">
-                                <h3 class="mt-4 text-xl font-bold text-slate-800">Krishna Singh</h3>
-                                <p class="text-blue-600 font-semibold">Marketing Head</p>
-                            </div>
+                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="krishna-singh">
+                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756629459/PHOTO-2025-08-28-13-18-32_h8oozl.jpg" alt="Krishna Singh" loading="lazy" decoding="async" width="96" height="128">
+                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Krishna Singh</h3><p class="text-blue-600 font-semibold">Marketing Head</p></figcaption>
+                            </figure>
                             <!-- Team Member Card 2 -->
-                            <div class="text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
-                                <img class="w-22 h-28 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756628063/PHOTO-2025-08-28-13-05-09_oqhbv6.jpg" alt="Sona Mulani">
-                                <h3 class="mt-4 text-xl font-bold text-slate-800">Sona Mulani</h3>
-                                <p class="text-blue-600 font-semibold">Branch Manager</p>
-                            </div>
+                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="sona-mulani">
+                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756628063/PHOTO-2025-08-28-13-05-09_oqhbv6.jpg" alt="Sona Mulani" loading="lazy" decoding="async" width="96" height="128">
+                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Sona Mulani</h3><p class="text-blue-600 font-semibold">Branch Manager</p></figcaption>
+                            </figure>
                             <!-- Team Member Card 3 -->
-                            <div class="text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
-                                <img class="w-22 h-28 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756628069/PHOTO-2025-08-28-13-00-15_gb2ei3.jpg" alt="Mohammad Sharif">
-                                <h3 class="mt-4 text-xl font-bold text-slate-800">Mohammad Sharif</h3>
-                                <p class="text-blue-600 font-semibold">Operations Head</p>
-                            </div>
+                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="mohammad-sharif">
+                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756628069/PHOTO-2025-08-28-13-00-15_gb2ei3.jpg" alt="Mohammad Sharif" loading="lazy" decoding="async" width="96" height="128">
+                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Mohammad Sharif</h3><p class="text-blue-600 font-semibold">Operations Head</p></figcaption>
+                            </figure>
                             <!-- Team Member Card 4 -->
-                            <div class="text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
-                                <img class="w-22 h-28 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756991306/WhatsApp_Image_2025-08-28_at_11.52.11_AM_mffbbw.jpg" alt="Saroj Choudhary">
-                                <h3 class="mt-4 text-xl font-bold text-slate-800">Saroj Choudhary</h3>
-                                <p class="text-blue-600 font-semibold">Team Leader</p>
-                            </div>
+                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="saroj-choudhary">
+                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756991306/WhatsApp_Image_2025-08-28_at_11.52.11_AM_mffbbw.jpg" alt="Saroj Choudhary" loading="lazy" decoding="async" width="96" height="128">
+                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Saroj Choudhary</h3><p class="text-blue-600 font-semibold">Team Leader</p></figcaption>
+                            </figure>
                             <!-- Team Member Card 5 -->
-                            <div class="text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
-                                <img class="w-22 h-28 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756628064/PHOTO-2025-08-28-13-18-11_b5qpie.jpg" alt="Mannu Choudhary">
-                                <h3 class="mt-4 text-xl font-bold text-slate-800">Mannu Choudhary</h3>
-                                <p class="text-blue-600 font-semibold">Team Leader</p>
-                            </div>
+                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="mannu-choudhary">
+                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756628064/PHOTO-2025-08-28-13-18-11_b5qpie.jpg" alt="Mannu Choudhary" loading="lazy" decoding="async" width="96" height="128">
+                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Mannu Choudhary</h3><p class="text-blue-600 font-semibold">Team Leader</p></figcaption>
+                            </figure>
                             <!-- Team Member Card 6 -->
-                            <div class="text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
-                                <img class="w-22 h-28 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756628065/PHOTO-2025-08-28-13-04-18_ihap7m.jpg" alt="Sunil K. Meena">
-                                <h3 class="mt-4 text-xl font-bold text-slate-800">Sunil K. Meena</h3>
-                                <p class="text-blue-600 font-semibold">Relationship Manager</p>
-                            </div>
+                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="sunil-meena">
+                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756628065/PHOTO-2025-08-28-13-04-18_ihap7m.jpg" alt="Sunil K. Meena" loading="lazy" decoding="async" width="96" height="128">
+                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Sunil K. Meena</h3><p class="text-blue-600 font-semibold">Relationship Manager</p></figcaption>
+                            </figure>
                             <!-- Team Member Card 7 -->
-                            <div class="text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
-                                <img class="w-22 h-28 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756628064/PHOTO-2025-08-28-13-15-13_d8qxkd.jpg" alt="Pratap Singh">
-                                <h3 class="mt-4 text-xl font-bold text-slate-800">Pratap Singh</h3>
-                                <p class="text-blue-600 font-semibold">Relationship Manager</p>
-                            </div>
+                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="pratap-singh">
+                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756628064/PHOTO-2025-08-28-13-15-13_d8qxkd.jpg" alt="Pratap Singh" loading="lazy" decoding="async" width="96" height="128">
+                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Pratap Singh</h3><p class="text-blue-600 font-semibold">Relationship Manager</p></figcaption>
+                            </figure>
                             <!-- Team Member Card 8 -->
-                            <div class="text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
-                                <img class="w-22 h-28 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/c_thumb,g_face,h_200,w_200/v1756628071/PHOTO-2025-08-28-13-10-27_wbfxlj.jpg" alt="Sunny">
-                                <h3 class="mt-4 text-xl font-bold text-slate-800">Sunny</h3>
-                                <p class="text-blue-600 font-semibold">Relationship Manager</p>
-                            </div>
+                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="sunny">
+                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756628071/PHOTO-2025-08-28-13-10-27_wbfxlj.jpg" alt="Sunny" loading="lazy" decoding="async" width="96" height="128">
+                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Sunny</h3><p class="text-blue-600 font-semibold">Relationship Manager</p></figcaption>
+                            </figure>
                             <!-- Team Member Card 9 -->
-                            <div class="text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
-                                <img class="w-22 h-28 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/v1756628074/PHOTO-2025-08-28-13-06-17_srew5k.jpg" alt="Nandni Rajput">
-                                <h3 class="mt-4 text-xl font-bold text-slate-800">Nandni Rajput</h3>
-                                <p class="text-blue-600 font-semibold">Process Executive</p>
-                            </div>
+                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="nandni-rajput">
+                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756628074/PHOTO-2025-08-28-13-06-17_srew5k.jpg" alt="Nandni Rajput" loading="lazy" decoding="async" width="96" height="128">
+                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Nandni Rajput</h3><p class="text-blue-600 font-semibold">Process Executive</p></figcaption>
+                            </figure>
                             <!-- Team Member Card 10 -->
-                            <div class="text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
-                                <img class="w-22 h-28 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758173745/WhatsApp_Image_2025-08-28_at_12.06.29_PM_edwbtf.jpg" alt="Meetali verma">
-                                <h3 class="mt-4 text-xl font-bold text-slate-800">Meetali verma</h3>
-                                <p class="text-blue-600 font-semibold">Client Connector</p>
-                            </div>
+                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="meetali-verma">
+                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dugvqluo2/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1758173745/WhatsApp_Image_2025-08-28_at_12.06.29_PM_edwbtf.jpg" alt="Meetali verma" loading="lazy" decoding="async" width="96" height="128">
+                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Meetali verma</h3><p class="text-blue-600 font-semibold">Client Connector</p></figcaption>
+                            </figure>
                             <!-- Team Member Card 11 -->
-                            <div class="text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300">
-                                <img class="w-22 h-28 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758173989/WhatsApp_Image_2025-09-11_at_3.44.21_PM_j8xhmh.jpg" alt="Pooja">
-                                <h3 class="mt-4 text-xl font-bold text-slate-800">Pooja</h3>
-                                <p class="text-blue-600 font-semibold">Client Connector</p>
-                            </div>
+                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="pooja">
+                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dugvqluo2/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1758173989/WhatsApp_Image_2025-09-11_at_3.44.21_PM_j8xhmh.jpg" alt="Pooja" loading="lazy" decoding="async" width="96" height="128">
+                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Pooja</h3><p class="text-blue-600 font-semibold">Client Connector</p></figcaption>
+                            </figure>
                         </div>
                     </div>
                 </section>
@@ -2110,52 +2171,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function populateTestimonials() {
-        const reviews = [
-            { name: 'Priya M.', location: 'Ajmer', text: 'I was looking for sales executive jobs in Ajmer and found a great opportunity at SKF. The high incentive jobs structure is the best in Jaipur and the growth is amazing. A great place to work with SKF Ajmer.' },
-            { name: 'Amit G.', location: 'Kota', text: 'SKF Associates careers offer real growth. I started as a connector and now I\'m a team leader. The company truly invests in its people. Best finance jobs in Rajasthan.' },
-            
-            // Customer Reviews
-            { name: 'Sunil Sharma', location: 'Ajmer', text: 'SKF Ajmer se home loan lena bahut aasan tha. Rajendra sir aur unki team ne poora process smooth bana diya. Ajmer mein best home loan service!' },
-            { name: 'Priya Jain', location: 'Jaipur', text: 'Mujhe apne business ke liye turant fund chahiye the. <strong>Shree Karni Kripa Associates</strong> ne Rajasthan mein sabse fast business loan approve karwaya. Highly recommended.' },
-            { name: 'Amit Kumar', location: 'Kishangarh', text: 'Car loan ke liye sabse accha anubhav. Paperwork minimal tha aur Sona mam ne har step par guide kiya. Thank you for the easy car loan process!' },
-            { name: 'Kavita Singh', location: 'Beawar', text: 'Medical emergency ke liye personal loan ki zaroorat thi. Inki team ne samjha aur jaldi se loan dilwaya. Bahut hi supportive staff hai.' },
-            { name: 'Vikas Meena', location: 'Jaipur', text: 'Apni property ke against loan lena chahta tha. SKF Ajmer ne best interest rate dilwaya. Unka kaam bilkul transparent hai.' },
-            { name: 'Anjali Sharma', location: 'Ajmer', text: 'My experience with SKF Associates has been fantastic. They helped me get a loan against property with great ease. The entire process was smooth.' },
-            { name: 'Rakesh Verma', location: 'Kota', text: 'Best service provider in Ajmer for home loans. Rajendra sir and his team are very professional and cooperative.' },
-            { name: 'Pooja Agarwal', location: 'Bikaner', text: 'Excellent service and cooperative staff. They helped me get my business loan sanctioned quickly. Thank you, SKF team!' },
-            { name: 'Manoj Soni', location: 'Pushkar', text: 'I got my car loan through Shree Karni Kripa Associates. The team was very helpful. They guided me at every step and got the work done fast.' },
-            { name: 'Harish Kumar', location: 'Nasirabad', text: 'For anyone in Rajasthan needing a quick personal loan, I highly recommend Shree Karni Kripa Associates. Very professional and efficient.' },
-            { name: 'Deepika Rathore', location: 'Ajmer', text: 'We were looking for the best home loan provider in Ajmer and found SKF. They made our dream of owning a home come true.' },
-            { name: 'Imran Khan', location: 'Jaipur', text: 'Starting a new venture was easy with the quick business loan from SKF. Their team understands the needs of a startup.' },
-            { name: 'Santosh Devi', location: 'Kishangarh', text: 'Health insurance policy lene mein SKF team ne bahut help ki. Sab kuch aache se samjhaya. Best financial advisor in Rajasthan.' },
-            { name: 'Rajesh Choudhary', location: 'Ajmer', text: 'Transparent process and no hidden charges. I am very satisfied with their loan against property service.' },
-            { name: 'Sunita Gehlot', location: 'Jodhpur', text: 'My first car was possible because of the easy car loan process from SKF. The documentation was minimal and hassle-free.' },
-            { name: 'Gaurav Singh', location: 'Ajmer', text: 'I was searching for a personal loan in Ajmer with a low CIBIL score. SKF team helped me find a solution. Great work!' },
-            { name: 'Neha Sharma', location: 'Jaipur', text: 'The team at Shree Karni Kripa Associates provides the best financial services in Jaipur. They are very knowledgeable about all loan products.' },
-            { name: 'Vikram Rathore', location: 'Beawar', text: 'Needed a top-up on my existing home loan. The process was much faster than going to the bank directly. Thank you SKF Ajmer.' },
-            { name: 'Pankaj Kumar', location: 'Ajmer', text: 'If you need a business loan in Ajmer, look no further. They have tie-ups with all major banks and NBFCs.' },
-            { name: 'Meena Devi', location: 'Kishangarh', text: 'I recommend SKF Associates for their professional service. They helped me secure a loan for my daughter\'s wedding.' }
-        ];
-
-        const testimonialsWrapper = document.getElementById('testimonials-wrapper');
-        if (!testimonialsWrapper) return;
-
-        testimonialsWrapper.innerHTML = reviews.map(review => `
-            <div class="swiper-slide h-auto">
-                <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg text-left h-full flex flex-col justify-between testimonial-card">
-                    <div>
-                        <div class="flex items-center text-yellow-400 mb-4">
-                            ${'<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>'.repeat(5)}
-                        </div>
-                        <p class="text-gray-600 mb-6 italic" style="font-size: inherit;">"${review.text}"</p>
-                    </div>
-                    <p class="font-bold text-gray-800 mt-auto pt-4">- ${review.name}, ${review.location}</p>
-                </div>
-            </div>
-        `).join('');
-    }
-
     function setupPrivacyBanner() {
         const modalOverlay = document.getElementById('privacy-modal-overlay');
         const acceptBtn = document.getElementById('privacy-accept-btn');
@@ -2190,3 +2205,774 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeStaticUI();
     initializeDynamicContent();
 })
+.product-subtype-list {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    list-style-type: disc;
+    color: #333;
+    font-size: 1rem;
+}
+/**
+ * ===================================
+ *      GLOBAL SETUP & VARIABLES
+ * ===================================
+ */
+:root {
+    --primary-color: #005A9C;    /* Royal Blue for branding, buttons, and links */
+    --primary-dark: #004a80;     /* Darker blue for hover states */
+    --accent-color: #28A745;     /* Green for success states, highlights */
+    --text-primary: #2d3748;     /* Dark gray for main text (more accessible) */
+    --text-secondary: #718096;   /* Lighter gray for subtitles and secondary info */
+    --bg-primary: #F7FAFC;       /* Very light gray for the main page background */
+    --bg-surface: #FFFFFF;       /* White for cards, headers, and modals */
+    --border-color: #E2E8F0;     /* Light gray for borders and dividers */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --header-height: 74px;       /* Centralized header height for layout calculations */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 100%; /* 1rem = 16px */
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden; /* Prevents horizontal scroll caused by minor layout shifts */
+}
+
+/**
+ * ===================================
+ *      LAYOUT & UTILITY CLASSES
+ * ===================================
+ */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.page {
+    display: none; /* Pages are hidden by default */
+}
+
+.page.active {
+    display: block;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Main content container needs padding to avoid being hidden by the sticky header */
+ #main-content-container {
+    padding-top: var(--header-height); 
+}
+
+/**
+ * ===================================
+ *      COMPONENT: HEADER & NAVIGATION
+ * ===================================
+ */
+.site-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 0.875rem; /* 14px */
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.site-slogan {
+    font-size: 0.75rem; /* 12px */
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.main-nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.9375rem; /* 15px */
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color);
+    background-color: #eef5ff;
+}
+
+.nav-link.apply-now {
+    background-color: var(--primary-color);
+    color: var(--bg-surface);
+    box-shadow: 0 4px 14px 0 rgba(0, 90, 156, 0.3);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.nav-link.apply-now:hover {
+    background-color: var(--primary-dark);
+    color: var(--bg-surface);
+    transform: translateY(-2px);
+}
+
+.nav-dropdown {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content; /* Auto-width based on content */
+    padding: 0.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    z-index: 1010;
+    /* Animation */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+/* --- Navigation Dropdown --- */
+.nav-item-with-dropdown {
+    position: relative;
+}
+
+.nav-item-with-dropdown:hover .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown a {
+    display: block;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* --- Mobile Navigation --- */
+.mobile-menu-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1051; /* Above nav content */
+}
+
+.mobile-menu-toggle .icon-bar {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animate hamburger to 'X' */
+.mobile-menu-toggle.is-active .icon-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.mobile-menu-toggle.is-active .icon-bar:nth-child(2) {
+    opacity: 0;
+}
+.mobile-menu-toggle.is-active .icon-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/**
+ * ===================================
+ *      COMPONENT: BUTTONS
+ * ===================================
+ */
+.btn-highlight {
+    animation: pulse 2.5s infinite;
+}
+
+/**
+ * ===================================
+ *      COMPONENT: FORMS & FAQ
+ * ===================================
+*/
+
+/* A reusable class for primary form submission buttons */
+.btn-form-submit {
+    background-color: var(--primary-color);
+    padding: 0.8rem 1.5rem;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: none !important; /* Override potential conflicts */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 14px 0 rgba(0, 90, 156, 0.35);
+}
+
+.btn-form-submit:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(0, 90, 156, 0.4);
+}
+
+.sidebar-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.sidebar-link.active,
+.sidebar-link:hover {
+    background-color: #eef5ff;
+    color: var(--primary-color);
+    font-weight: 600;
+    border-left-color: var(--primary-color);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease-in-out;
+}
+
+/**
+ * ===================================
+ *      COMPONENT: FOOTER
+ * ===================================
+ */
+.site-footer {
+    background-color: #1a202c; /* Darker than text-primary */
+    color: #a0aec0; /* Lighter gray for footer text */
+}
+
+.footer-link {
+    color: #a0aec0;
+    transition: color 0.2s;
+}
+
+.footer-link:hover {
+    color: var(--bg-surface);
+}
+
+/**
+ * ===================================
+ *      COMPONENT: CHATBOT
+ * ===================================
+ */
+#chat-toggle-button {
+    position: fixed;
+    bottom: 1.25rem; /* 20px */
+    right: 1.25rem; /* 20px */
+    width: 140px;
+    height: 140px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+#chat-toggle-button:hover {
+    transform: scale(1.1);
+}
+
+#chat-toggle-button img {
+    width: 124px;
+    height: 124px;
+}
+
+#chat-window {
+    position: fixed;
+    bottom: calc(1.25rem + 60px + 0.5rem); /* Position above toggle button */
+    right: 1.25rem;
+    width: 370px;
+    max-width: 90vw;
+    height: 600px;
+    max-height: 75vh;
+    background: var(--bg-surface);
+    border-radius: 0.75rem; 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); 
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1001;
+    /* Animation properties for desktop */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* Style for when the chat window is open */
+#chat-window.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+ #chat-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+#chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+#chat-header-info img {
+    width: 40px;
+    height: 40px;
+}
+
+#chat-header-info h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+#chat-header-info p {
+    font-size: 0.75rem;
+    opacity: 0.9;
+    line-height: 1;
+}
+
+#chat-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.75rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+#chat-close-btn:hover {
+    opacity: 1;
+}
+
+#chat-messages {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background-color: var(--bg-primary);
+}
+
+.chat-bubble {
+    max-width: 85%;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    margin-bottom: 0.5rem;
+    word-wrap: break-word;
+    line-height: 1.5;
+    animation: slide-in 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.user-bubble {
+    background-color: var(--primary-color);
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+    border-bottom-right-radius: 0.25rem;
+}
+
+.ai-bubble {
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    align-self: flex-start;
+    border-bottom-left-radius: 0.25rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+#chat-input-container {
+    border-top: 1px solid var(--border-color);
+    padding: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+    background-color: var(--bg-surface);
+    flex-shrink: 0;
+}
+
+#chat-input {
+    flex-grow: 1;
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+}
+
+#chat-send-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0 1.25rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+#chat-send-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Backdrop for chat on mobile to improve focus */
+#chat-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#chat-backdrop.is-open {
+    opacity: 1;
+}
+
+/* New close button that replaces the toggle icon */
+#chat-main-close-btn {
+    position: fixed;
+    bottom: calc(1.25rem + 60px + 0.5rem + 600px - 30px); /* Position above the chat window */
+    right: 1.25rem; /* Align with the right edge of the chat window */
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    justify-content: center; /* This was already correct, but the issue was the initial state */
+    align-items: center;    
+    z-index: 1002; /* Above the chat window */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: background-color 0.2s, transform 0.2s;
+}
+#chat-main-close-btn:hover {
+    background-color: var(--primary-dark);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    #chat-main-close-btn {
+        top: 1rem; /* On mobile, the chat is full screen, so just position from top */
+        right: 1rem; /* Align with the right edge of the chat window */
+        bottom: auto; /* Reset bottom positioning */
+    }
+}
+
+/* Ensure the close button is hidden by default using the 'hidden' utility class */
+.hidden {
+    display: none !important;
+}
+
+/* Add a handle at the top of the mobile chat window */
+.chat-handle {
+    display: none; /* Hidden by default, shown on mobile */
+}
+
+
+/**
+ * ===================================
+ *      COMPONENT: MISCELLANEOUS
+ * ===================================
+ */
+#back-to-top-btn {
+    position: fixed;
+    bottom: 1.25rem;
+    right: calc(1.25rem + 140px + 0.75rem); /* Position left of chat button */
+    background-color: var(--bg-surface);
+    color: var(--primary-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+#back-to-top-btn:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+#back-to-top-btn.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+/* --- CSS Marquee for Brand Logos --- */
+.marquee {
+    overflow: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.marquee-content {
+    display: inline-flex;
+    align-items: center;
+    animation: marquee 40s linear infinite;
+}
+
+.marquee-content img {
+    height: 3rem; /* 48px */
+    margin: 0 2.5rem; /* 40px */
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: filter 0.3s, opacity 0.3s;
+}
+
+.marquee:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+.marquee-content:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/**
+ * ===================================
+ *      ANIMATIONS & KEYFRAMES
+ * ===================================
+ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 14px 0 rgba(0, 90, 156, 0.3);
+    }
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 6px 20px 0 rgba(0, 90, 156, 0.35);
+    }
+}
+
+@keyframes marquee {
+    from { transform: translateX(0%); }
+    to { transform: translateX(-50%); }
+}
+
+/**
+ * ===================================
+ *      RESPONSIVE OVERRIDES
+ * ===================================
+ */
+
+/* Tablet and below (<= 1024px) */
+@media (max-width: 1024px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        position: absolute;
+        top: calc(var(--header-height) + 10px);
+        right: 1rem;
+        width: 280px;
+        background: var(--bg-surface);
+        border-radius: 0.75rem;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        padding: 1rem;
+        /* Animation */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px) scale(0.98);
+        transform-origin: top right;
+        transition: all 0.2s ease-out;
+    }
+
+    .main-nav.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.25rem;
+    }
+
+    .nav-item-with-dropdown .nav-dropdown {
+        display: none; /* Hide dropdowns on mobile; handled by main nav */
+    }
+}
+
+/* Mobile devices (<= 768px) */
+@media (max-width: 768px) {
+    /* Professional mobile chat window styling */
+    #chat-window {
+        /* Center the modal on the mobile screen */
+        top: 50%;
+        left: 50%;
+        width: 90vw; 
+        height: 80vh; 
+        max-height: 600px;
+        border-radius: 1rem; /* Rounded corners on all sides */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* A more prominent shadow */
+        
+        /* Inherit desktop animation properties but adjust transform for centering */
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0; /* Start hidden */
+        visibility: hidden; /* Start hidden */
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    }
+
+    #chat-window.is-open {
+        transform: translate(-50%, -50%) scale(1); /* Scale up to full size when open */
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .chat-handle {
+        display: block;
+        width: 40px;
+        height: 4px;
+        background-color: #d1d5db; /* gray-300 */
+        border-radius: 2px;
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Adjust AI chat button size for mobile */
+    #chat-toggle-button {
+        width: 100px;
+        height: 100px;
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    #chat-toggle-button img {
+        width: 90px;
+        height: 90px;
+    }
+
+    /* Adjust back-to-top button position to not overlap */
+    #back-to-top-btn {
+        bottom: 1rem;
+        right: calc(1rem + 100px + 0.5rem); /* Position left of the smaller chat button */
+    }
+
+}
+
+/* Small mobile devices (<= 480px) */
+@media (max-width: 480px) {
+    html {
+        font-size: 94%; /* Slightly scale down all rem-based units */
+    }
+
+    .site-title {
+        font-size: 0.8rem;
+    }
+
+    .container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+}
+
+/* Privacy Modal Visibility */
+.privacy-modal-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,7 +31,7 @@
     <header class="site-header">
         <div class="container header-content">
             <a href="#home" class="page-link flex items-center gap-3">
-                <img src="https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png" alt="Shree Karni Kripa Associates Logo" class="h-12 w-auto">
+                <img src="https://res.cloudinary.com/diqo7qmnw/image/upload/w_96,q_auto,f_auto/v1754217266/logo1_lt1w3w.png" alt="Shree Karni Kripa Associates Logo" class="h-12 w-auto" width="48" height="48">
                 <div>
                     <span class="site-title block">Shree Karni Kripa Associates</span>
                     <span class="site-slogan">your dream come true</span>
@@ -165,6 +165,16 @@
     <!-- AI Maaru Chatbot -->
     <div id="chat-container" class="fixed bottom-4 right-4 z-50"></div>
 
+    <!-- Team Member Modal -->
+    <div id="team-member-modal-overlay" class="hidden fixed inset-0 bg-black bg-opacity-60 z-[1001]"></div>
+    <div id="team-member-modal" class="hidden fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-6 md:p-8 rounded-lg shadow-2xl text-center max-w-lg w-11/12 z-[1002]">
+        <button id="team-member-modal-close" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
+        <img id="modal-member-img" src="" alt="Team Member" class="w-32 h-32 rounded-full mx-auto object-cover ring-4 ring-blue-500 mb-4" loading="lazy" decoding="async" width="128" height="128">
+        <h2 id="modal-member-name" class="text-2xl font-bold text-slate-800"></h2>
+        <p id="modal-member-title" class="text-blue-600 font-semibold mb-4"></p>
+        <p id="modal-member-bio" class="text-gray-600 mb-6 text-left"></p>
+    </div>
+
     <!-- Thank You Modal -->
     <div id="thank-you-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-[1003]">
         <div class="bg-white p-8 rounded-lg shadow-2xl text-center relative max-w-sm w-full">
@@ -255,7 +265,7 @@
     </button>
 
     <!-- Your Custom Javascript -->
-    <script src="script.js"></script>
+    <script src="script.js" async></script>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
- document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     // This will hold the data from products.json
     let productData = {};
 
@@ -8,7 +8,7 @@
         'LAP': { name: 'Krishna Singh', number: '918118838772' },
         'Personal Loan': { name: 'Saroj Choudhary', number: '918118822628' },
         'Business Loan': { name: 'Sona Mulani', number: '919352358494' },
-        'Vehicle Loan': { name: 'Manu Mam', number: '919358973156' },
+        'Vehicle Loan': { name: 'Mannu Choudhary', number: '919358973156' },
         'Insurance': { name: 'Rajendra Singh', number: '919214104963' },
         'fallback': { name: 'Rajendra Singh', number: '919214104963' } // Default number
     };
@@ -59,7 +59,7 @@
             generateNavigation(); // Regenerate nav with product data for the dropdown
             
             let initialHash = window.location.hash.substring(1) || 'home';
-            // showPage(initialHash); // Commented out to prevent any page from loading initially
+            showPage(initialHash); // This will now correctly show the initial page on load
 
         } catch (error) {
             console.error('Failed to load product data:', error);
@@ -137,7 +137,10 @@
         const pageMappings = {
             'join-dsa': 'join-us-page',
             'join-connector': 'join-us-page',
+            'careers': 'careers-page', // Added for the new careers page
             'contact': 'contact-page',
+            'loans-for-government-employees': 'govt-employees-loan-page',
+            'financial-advisory-services': 'financial-advisory-page',
             'privacy-policy': 'privacy-policy-page'
         };
 
@@ -164,6 +167,9 @@
             if (pageId === 'about') renderAboutPage();
             if (pageId === 'contact') renderContactPage();
             if (pageId === 'join-dsa' || pageId === 'join-connector') renderJoinUsPage();
+            if (pageId === 'careers') renderCareersPage(); // Render the new careers page
+            if (pageId === 'loans-for-government-employees') renderGovtEmployeeLoanPage();
+            if (pageId === 'financial-advisory-services') renderFinancialAdvisoryPage();
             if (basePageId === 'eligibility-form') renderEligibilityFormPage(params.get('product'));
 
             if (['join-dsa', 'join-connector', 'our-services'].includes(pageId)) {
@@ -195,6 +201,91 @@
         // addTiltEffectToNavLinks(); // Removed to prevent button visibility issues
     }
     
+    function updateMetaTags(pageId) {
+        const titleEl = document.getElementById('meta-title');
+        const descriptionEl = document.getElementById('meta-description');
+        
+        // ये डिफ़ॉल्ट टैग्स हैं (होमपेज के लिए)
+        let title = 'Loan & Insurance Services in Rajasthan | Shree Karni Kripa Associates, Ajmer';
+        let description = 'SKF Ajmer provides Home, Personal, & Business Loans across all of Rajasthan. Get expert financial advice and quick insurance solutions in Jaipur, Jodhpur, Udaipur & more.';
+    
+        // हर पेज के लिए विशेष (Specific) टैग्स
+        switch (pageId) {
+            // मुख्य लोन पेज
+            case 'home-loan':
+                title = 'Best Home Loan in Rajasthan - Low Interest Rates | SKF Ajmer';
+                description = 'Need a Home Loan in Rajasthan? SKF Associates offers expert guidance & compares 90+ banks for new homes, construction, or balance transfers in Ajmer, Jaipur & more.';
+                break;
+            case 'business-loan':
+                title = 'Business Loan in Rajasthan for MSME & Startups | SKF Ajmer';
+                description = 'Need a Business Loan in Rajasthan? SKF Associates offers fast approval on Working Capital, Term Loans & more for MSMEs in Ajmer, Jaipur & Jodhpur.';
+                break;
+            case 'personal-loan':
+                title = 'Instant Personal Loan in Rajasthan - Quick Approval | SKF Ajmer';
+                description = 'Need a fast Personal Loan in Rajasthan? SKF Associates offers quick approval for medical needs, weddings, or travel. Low interest rates. Apply now!';
+                break;
+            case 'vehicle-loan':
+                title = 'Car Loan in Rajasthan (New & Used) - Low EMI | SKF Ajmer';
+                description = 'Get the best Car Loan in Rajasthan with SKF Associates. We offer low interest rates & fast approval for New Cars, Used Cars, and Two-Wheeler Loans.';
+                break;
+            case 'lap-loan':
+                title = 'Loan Against Property (LAP) in Rajasthan @ Low Interest | SKF Ajmer';
+                description = 'Unlock the value of your property in Rajasthan. SKF Associates offers Loan Against Property (LAP) for business, personal needs, or debt consolidation.';
+                break;
+    
+            // मुख्य बीमा पेज
+            case 'health-insurance':
+                title = 'Best Health Insurance Plans in Rajasthan | Compare Policies | SKF Ajmer';
+                description = 'Compare & buy the best health insurance plans in Rajasthan. SKF Associates helps you choose the perfect family floater, personal, or top-up plan. Get quote!';
+                break;
+            case 'life-insurance':
+                title = 'Best Life Insurance & Term Plans in Rajasthan | SKF Associates';
+                description = 'Secure your family\'s future. Compare the best Life Insurance, Term Plans, and Guaranteed Income Plans in Rajasthan with expert advice from SKF Associates.';
+                break;
+            case 'vehicle-insurance':
+                title = 'Car & Bike Insurance in Rajasthan | (Renew Online) | SKF Ajmer';
+                description = 'Get the best Car & Bike insurance in Rajasthan. Compare policies, renew online, & get the right add-ons (Zero Dep, RTI). Free quotes from SKF Associates.';
+                break;
+    
+            // अन्य मुख्य पेज
+            case 'about':
+                title = 'About Shree Karni Kripa Associates | Trusted Loan & Insurance Advisor in Ajmer';
+                description = 'Learn the story of SKF Ajmer. Discover our mission to provide honest financial advice and meet the expert team serving Rajasthan for all your loan and insurance needs.';
+                break;
+            case 'contact':
+                title = 'Contact Us | Shree Karni Kripa Associates | Ajmer, Rajasthan';
+                description = 'Get in touch with SKF Associates for expert loan & insurance advice. Call us at 9214104963 or visit our office in Ajmer, Rajasthan.';
+                break;
+            case 'emi-calculator':
+                title = 'EMI Calculator for Home, Car, Personal Loan | SKF Associates';
+                description = 'Calculate your EMI for Home, Car, or Personal Loans with our easy-to-use EMI calculator. Plan your finances with SKF Associates, Rajasthan.';
+                break;
+            case 'join-us': // यह 'join-dsa' और 'join-connector' दोनों के लिए काम करेगा
+            case 'join-dsa':
+            case 'join-connector':
+                title = 'Financial Franchise & Partner Opportunity in Rajasthan | Join SKF Associates';
+                description = 'Start your finance business in Rajasthan! Partner with SKF Associates via our franchise model or join as a loan advisor. Earn unlimited income with best payouts & support.';
+                break;
+            case 'careers':
+                title = 'Job: Relationship Manager (Loan Sales) - Ajmer/Rajasthan | SKF Associates';
+                description = 'Hiring Relationship Manager at SKF Ajmer! Source loan files (Home, Business, Personal) in Ajmer (Salary) or Rajasthan (Incentives). Best payouts. Apply now!';
+                break;
+            case 'loans-for-government-employees':
+                title = 'Special Loan Offers for Government Employees in Rajasthan | SKF Ajmer';
+                description = 'Special low-interest Personal, Home, & Car Loans for Government Employees in Rajasthan. SKF Associates offers fast approval & minimal documents. Apply now!';
+                break;
+            case 'financial-advisory-services':
+                title = 'Holistic Financial Advisory in Rajasthan | SKF Associates';
+                description = 'We offer more than loans! SKF Associates provides expert guidance on Life Insurance (Term Plans), Property Verification, and connects you to trusted partners.';
+                break;
+        }
+    
+        // टाइटल और डिस्क्रिप्शन को सेट करें
+        document.title = title;
+        if (titleEl) titleEl.textContent = title;
+        if (descriptionEl) descriptionEl.setAttribute('content', description);
+    }
+
     function renderLoanPage(pageId) {
         const parts = pageId.split('-');
         let mainCategoryKey = '';
@@ -211,6 +302,8 @@
         
         const mainCategory = productData[mainCategoryKey];
         if (!mainCategory) { console.error('Category not found for', pageId); return; }
+
+        updateMetaTags(pageId); // Update meta tags for product pages if needed in future
         
         const subtype = subTypeKey ? mainCategory.subtypes[subTypeKey] : null;
         const contentData = subtype || mainCategory;
@@ -235,15 +328,15 @@
         // --- DESKTOP SIDEBAR ---
         const sidebarContainer = loanTemplatePage.querySelector('#loan-sidebar');
         let sidebarHtml = `<h3 class="text-xl font-bold mb-4">${mainCategory.name}</h3><ul>`;
-        const baseKey = mainCategoryKey;
+        const baseKey = mainCategoryKey; // e.g., "home-loan"
         const overviewText = !mainCategory.subtypes || Object.keys(mainCategory.subtypes).length === 0 ? mainCategory.name : 'Overview';
-        sidebarHtml += `<li><a href="#${baseKey}" class="sidebar-link page-link block p-3 rounded-md transition-colors hover:bg-gray-100">${overviewText}</a></li>`;
+        sidebarHtml += `<li><a href="#${baseKey}" class="sidebar-link page-link ${!subTypeKey ? 'active' : ''}">${overviewText}</a></li>`;
         for (const key in mainCategory.subtypes) {
             if (mainCategory.subtypes.hasOwnProperty(key)) {
-                // Skip the special 'overview' subtype if it exists, as it's already handled above.
+                // Skip the special 'overview' subtype if it exists
                 if (key === 'overview') continue;
 
-                sidebarHtml += `<li><a href="#${baseKey}-${key}" class="sidebar-link page-link block p-3 rounded-md transition-colors hover:bg-gray-100">${mainCategory.subtypes[key].name}</a></li>`;
+                sidebarHtml += `<li><a href="#${baseKey}-${key}" class="sidebar-link page-link ${subTypeKey === key ? 'active' : ''}">${mainCategory.subtypes[key].name}</a></li>`;
             }
         }
         sidebarHtml += `</ul>`;
@@ -251,8 +344,6 @@
         if (sidebarContainer) {
             sidebarContainer.querySelector(`.sidebar-link[href="#${pageId}"]`)?.classList.add('active');
         }
-        addLinkListeners(sidebarContainer);
-        
         let infoGridHtml = '';
         if (isInsurance) {
              infoGridHtml = `<div class="bg-blue-50 p-4 rounded-lg"><p class="text-sm text-gray-600">Policy Tenure</p><p class="text-xl font-bold text-blue-700">${contentData.tenure}</p></div>`;
@@ -291,31 +382,12 @@
         const imageCarouselHtml = `
             <div class="swiper-container loan-image-carousel rounded-lg overflow-hidden">
                 <div class="swiper-wrapper">
-                    ${images.map(img => `<div class="swiper-slide" style="background-color: #e9ecef; background-image: url('https://res.cloudinary.com/diqo7qmnw/image/upload/e_grayscale,o_10/v1754217266/logo1_lt1w3w.png'); background-repeat: no-repeat; background-position: center; background-size: 50%;"><img src="${img.replace('/upload/', '/upload/w_800,h_384,c_fit,q_auto,f_auto/')}" alt="${mainCategory.name}" class="w-full h-96 object-contain" loading="lazy" decoding="async"></div>`).join('')}
+                    ${images.map(img => `<div class="swiper-slide" style="background-color: #e9ecef; background-image: url('https://res.cloudinary.com/diqo7qmnw/image/upload/e_grayscale,o_10/v1754217266/logo1_lt1w3w.png'); background-repeat: no-repeat; background-position: center; background-size: 50%;"><img src="${img.replace('/upload/', '/upload/w_1200,q_auto:good,f_auto/')}" alt="${mainCategory.name}" class="w-full h-96 object-contain" loading="lazy" decoding="async"></div>`).join('')}
                 </div>
                 <div class="swiper-button-next text-white"></div>
                 <div class="swiper-button-prev text-white"></div>
             </div>`;
 
-
-        // --- UNIFIED DROPDOWN FOR QUICK NAVIGATION (MOBILE & DESKTOP) ---
-        let quickNavDropdownHtml = '';
-        if (mainCategory.subtypes && Object.keys(mainCategory.subtypes).length > 0) {
-            quickNavDropdownHtml = `
-                <div class="mb-8 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg shadow-sm">
-                    <label for="loan-subtype-select" class="flex items-center font-bold text-blue-700 mb-2 cursor-pointer">
-                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
-                        Quick Navigation
-                    </label>
-                    <select id="loan-subtype-select" class="w-full p-3 border border-blue-200 rounded-lg bg-white shadow-sm focus:ring-blue-500 focus:border-blue-500">`;
-            quickNavDropdownHtml += `<option value="#${baseKey}" ${!subtype || subTypeKey === 'overview' ? 'selected' : ''}>${overviewText}</option>`;
-            for (const key in mainCategory.subtypes) {
-                if (mainCategory.subtypes.hasOwnProperty(key) && key !== 'overview') {
-                    quickNavDropdownHtml += `<option value="#${baseKey}-${key}" ${subTypeKey === key ? 'selected' : ''}>${mainCategory.subtypes[key].name}</option>`;
-                }
-            }
-            quickNavDropdownHtml += `</select></div>`;
-        }
 
         // --- SUBTYPE LISTING FOR OVERVIEW PAGE ---
         let subtypeListingHtml = '';
@@ -346,8 +418,6 @@
                     <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">${contentData.name}</h1>
                     <p class="text-lg text-gray-600">${subtype ? contentData.eligibility : contentData.overview}</p>
                 </div>
-
-                ${quickNavDropdownHtml}
 
                 ${imageCarouselHtml}
 
@@ -403,14 +473,6 @@
         `;
         loanTemplatePage.querySelector('#loan-page-content').innerHTML = mainContentHtml;
         addLinkListeners(loanTemplatePage.querySelector('#loan-page-content'));
-        
-        // Add event listener for the new dropdown
-        const subtypeSelect = loanTemplatePage.querySelector('#loan-subtype-select');
-        if (subtypeSelect) {
-            subtypeSelect.addEventListener('change', function() {
-                window.location.hash = this.value;
-            });
-        }
 
         new Swiper('.loan-image-carousel', {
             loop: true,
@@ -433,6 +495,40 @@
                 icon.style.transform = 'rotate(180deg)';
             }
         }));
+    }
+
+    function handleCareerFormSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        
+        // Map form data to what Google Sheet function expects
+        // This part sends the data to your Google Sheet
+        const sheetData = {
+            fullName: data.fullName,
+            mobile: data.mobile,
+            city: data.city,
+            message: `Email: ${data.email}\nExperience: ${data.experience}`,
+            loanType: 'Career Application: Relationship Manager' // To identify in the sheet
+        };
+        sendDataToGoogleSheet(sheetData);
+        
+        // This part sends the data to your WhatsApp number
+        const whatsappNumber = '918118838772'; // Your WhatsApp number
+        const message = `*New Career Application*\n\n*Name:* ${data.fullName}\n*Mobile:* ${data.mobile}\n*Email:* ${data.email}\n*City:* ${data.city}\n*Experience:* ${data.experience || 'None'}`;
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+        // Show a thank you message and then redirect
+        form.innerHTML = `<div class="text-center py-10 bg-green-50 rounded-lg border border-green-200"><h3 class="text-2xl font-bold text-green-700">Thank You!</h3><p class="mt-2 text-gray-600">Your application has been received. We will get in touch with you shortly.</p><p class="text-sm text-gray-500 mt-4">Redirecting you to WhatsApp...</p></div>`;
+
+        setTimeout(() => {
+            window.open(whatsappUrl, '_blank');
+        }, 2000); // 2-second delay before opening WhatsApp
     }
 
     function handleEmiCalculation(e) {
@@ -863,6 +959,7 @@
             if (e.target.id === 'contact-us-form') handleContactFormSubmit(e);
             // if (e.target.id === 'right-sidebar-form') handleContactFormSubmit(e); // Use same handler for sidebar form
             if (e.target.id === 'dsa-form') handleJoinFormSubmit(e);
+            if (e.target.id === 'career-application-form') handleCareerFormSubmit(e);
         });
     }
     
@@ -1502,14 +1599,15 @@
         const homePage = document.getElementById('home-page');
         if (!homePage) return;
         homePage.innerHTML = `
-            <section class="relative w-full h-full bg-cover bg-center text-white" style="background-image: url('https://res.cloudinary.com/dugvqluo2/image/upload/v1757947648/IMG_7817_pgkm5f.jpg');">
+            <section class="relative w-full h-full text-white overflow-hidden">
+                 <div class="hero-section-background" style="background-image: url('https://res.cloudinary.com/dugvqluo2/image/upload/w_1920,q_auto:good,f_auto/v1757947648/IMG_7817_pgkm5f.jpg');"></div>
                  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
-                 <div class="container mx-auto px-6 py-24 md:py-36 text-center relative z-10" style="padding-top: clamp(6rem, 12vw, 9rem); padding-bottom: clamp(6rem, 12vw, 9rem);">
-                     <h1 class="font-extrabold leading-tight mb-4" style="font-size: clamp(2.25rem, 1.5rem + 3.75vw, 4.5rem);">Your Trusted Loan & Insurance Advisors</h1>
-                     <p class="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto mb-8">"Sapne aap dekho, poore hum karenge." Get the Best Financial Solutions in Rajasthan.</p>
-                     <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                 <div class="hero-content container mx-auto px-6 py-24 md:py-36 text-center relative z-10" style="padding-top: clamp(6rem, 12vw, 9rem); padding-bottom: clamp(6rem, 12vw, 9rem);">
+                     <h1 class="font-extrabold leading-tight mb-4" style="font-size: clamp(2.25rem, 1.5rem + 3.75vw, 4.5rem); animation: textFadeInUp 1s ease-out;">Your Trusted Loan & Insurance Advisors</h1>
+                     <p class="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto mb-8" style="animation: textFadeInUp 1s ease-out 0.3s; animation-fill-mode: backwards;">"Sapne aap dekho, poore hum karenge." Get the Best Financial Solutions in Rajasthan.</p>
+                     <div class="flex flex-col sm:flex-row justify-center items-center gap-4" style="animation: textFadeInUp 1s ease-out 0.6s; animation-fill-mode: backwards;">
                          <a href="#eligibility-form" class="page-link btn-highlight bg-[#0056b3] hover:bg-[#004a80] text-white py-3 px-8 rounded-lg transition-colors w-full sm:w-auto btn-text-style">Apply Now</a>
-                          <a href="#our-services" class="page-link bg-white hover:bg-[#0056b3] text-[#0056b3] hover:text-white border-2 border-[#0056b3] py-3 px-8 rounded-lg transition-colors w-full sm:w-auto btn-text-style">Explore Services</a>
+                         <a href="#home?scroll=our-services" class="page-link bg-white hover:bg-[#0056b3] text-[#0056b3] hover:text-white border-2 border-[#0056b3] py-3 px-8 rounded-lg transition-colors w-full sm:w-auto btn-text-style">Explore Services</a>
                      </div>
                  </div>
             </section>
@@ -1519,22 +1617,22 @@
                     <h2 class="font-bold mb-12 text-center text-gray-800" style="font-size: clamp(1.875rem, 1.5rem + 1.88vw, 2.5rem);">Our Gallery & Motivation</h2>
                     <div class="swiper-container gallery-carousel relative">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030488/linkconnect_1758029887796_nxonu1.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030487/linkconnect_1758029910745_nercgv.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030471/linkconnect_1758030023899_gmxd9t.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030471/linkconnect_1758030081550_y9hbzs.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030471/linkconnect_1758030067320_mjrghs.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030471/linkconnect_1758029972266_htzhcz.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030471/linkconnect_1758029992963_jif7fu.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030470/linkconnect_1758030043952_qpwesp.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030469/linkconnect_1758030145517_q1ehnh.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030469/linkconnect_1758030387720_lxdc3r.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030469/linkconnect_1758030169400_mapkbe.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030469/linkconnect_1758030268017_uoew8e.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030468/linkconnect_1758030218956_uzuv49.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030468/linkconnect_1758030246325_a7sfga.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030468/linkconnect_1758030406784_tusczt.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,h_256,c_fill,q_auto,f_auto/v1758030468/linkconnect_1758030191922_zmny3v.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030488/linkconnect_1758029887796_nxonu1.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030487/linkconnect_1758029910745_nercgv.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758030023899_gmxd9t.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758030081550_y9hbzs.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758030067320_mjrghs.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758029972266_htzhcz.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758029992963_jif7fu.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030470/linkconnect_1758030043952_qpwesp.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030469/linkconnect_1758030145517_q1ehnh.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030469/linkconnect_1758030387720_lxdc3r.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030469/linkconnect_1758030169400_mapkbe.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030469/linkconnect_1758030268017_uoew8e.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030468/linkconnect_1758030218956_uzuv49.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030468/linkconnect_1758030246325_a7sfga.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030468/linkconnect_1758030406784_tusczt.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030468/linkconnect_1758030191922_zmny3v.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
                         </div>
                     </div>
                 </div>
@@ -1544,12 +1642,12 @@
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="font-bold mb-12 text-gray-800" style="font-size: clamp(1.875rem, 1.5rem + 1.88vw, 2.5rem);">Our Loan & Insurance Services</h2>
                     <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                        <a href="#home-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_400,c_fill,q_auto,f_auto/v1757241971/WhatsApp_Image_2025-09-07_at_3.20.38_PM_lqp1dy.jpg" alt="Home Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Home Loan</h3></div></a>
-                        <a href="#business-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_400,c_fill,q_auto,f_auto/v1757239663/PHOTO-2025-09-07-15-20-36_b8guao.jpg" alt="Business Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Business Loan</h3></div></a>
-                        <a href="#personal-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_400,c_fill,q_auto,f_auto/v1757239663/PHOTO-2025-09-07-15-20-34_q09kn6.jpg" alt="Personal Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Personal Loan</h3></div></a>
-                        <a href="#vehicle-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_400,c_fill,q_auto,f_auto/v1758037256/linkconnect_1758037092966_b4yejx.png" alt="Vehicle Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Vehicle Loan</h3></div></a>
-                        <a href="#lap-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_400,c_fill,q_auto,f_auto/v1757240471/WhatsApp_Image_2025-09-07_at_3.20.41_PM_yunya8.jpg" alt="Loan Against Property" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Loan Against Property</h3></div></a>
-                        <a href="#health-insurance" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_400,c_fill,q_auto,f_auto/v1757387616/PHOTO-2025-09-09-08-37-27_csvkbm.jpg" alt="Health Insurance" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Health Insurance</h3></div></a>
+                        <a href="#home-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757241971/WhatsApp_Image_2025-09-07_at_3.20.38_PM_lqp1dy.jpg" alt="Home Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Home Loan</h3></div></a>
+                        <a href="#business-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757239663/PHOTO-2025-09-07-15-20-36_b8guao.jpg" alt="Business Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Business Loan</h3></div></a>
+                        <a href="#personal-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757239663/PHOTO-2025-09-07-15-20-34_q09kn6.jpg" alt="Personal Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Personal Loan</h3></div></a>
+                        <a href="#vehicle-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_600,q_auto:good,f_auto/v1758037256/linkconnect_1758037092966_b4yejx.png" alt="Vehicle Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Vehicle Loan</h3></div></a>
+                        <a href="#lap-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757240471/WhatsApp_Image_2025-09-07_at_3.20.41_PM_yunya8.jpg" alt="Loan Against Property" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Loan Against Property</h3></div></a>
+                        <a href="#health-insurance" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757387616/PHOTO-2025-09-09-08-37-27_csvkbm.jpg" alt="Health Insurance" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Health Insurance</h3></div></a>
                     </div>
                 </div>
             </section>
@@ -1598,7 +1696,7 @@
             <section class="py-16 md:py-24 bg-white overflow-hidden">
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="font-bold mb-12 text-gray-800" style="font-size: clamp(1.875rem, 1.5rem + 1.88vw, 2.5rem);">Brands We Trust</h2>
-                    <div class="marquee">
+                    <div class="marquee" x-data>
                         <div class="marquee-content">
                             <!-- Logos are duplicated for a seamless loop -->
                             <img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621450/imgi_85_hdfc-2_dzzdra.png" alt="HDFC Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621416/imgi_76_YES-BANK_zgemo9.png" alt="YES Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621188/imgi_41_SBI_psonew.png" alt="SBI Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621186/imgi_28_IDFC-FIRST_wljvii.png" alt="IDFC First Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621186/imgi_44_BHFL_Logo-min3723_m9hprx.png" alt="Bajaj Housing Finance" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756622692/imgi_118_AU-Logo-unit-2_prhzvg.png" alt="AU Small Finance Bank" loading="lazy" decoding="async"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/ICICI_Bank_Logo.svg/2560px-ICICI_Bank_Logo.svg.png" alt="ICICI Bank" loading="lazy" decoding="async" style="height:48px"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621451/imgi_30_tata-capital-housing-updated_t0xydb.png" alt="Tata Capital" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621451/imgi_88_aditya-upodated_ihx4kj.png" alt="Aditya Birla Capital" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621369/imgi_63_punawala3739_tljctp.png" alt="Poonawalla Fincorp" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621450/imgi_82_file_sua6c1.png" alt="Lendingkart" loading="lazy" decoding="async">
@@ -1694,188 +1792,280 @@
         const aboutPage = document.getElementById('about-page');
         if (!aboutPage) return;
         aboutPage.innerHTML = `
-                <!-- ============================================ -->
-                <!-- Mission & Vision Section -->
-                <!-- ============================================ -->
-                <section class="py-16 md:py-20 bg-white">
-                    <div class="container mx-auto px-6">
-                        <div class="text-center mb-12">
-                            <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Our Mission & Vision</h2>
-                            <p class="text-gray-500 mt-2">(Our Mission & Vision)</p>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                            <!-- Mission Card -->
-                            <div class="bg-blue-50 border-l-4 border-blue-500 p-8 rounded-r-lg shadow-xl transform hover:-translate-y-2 transition-all duration-300">
-                                <h3 class="text-2xl font-bold text-blue-800 mb-3">Our Mission</h3>
-                                <p class="text-gray-700">
-                                    To provide our customers with the best, fastest, and most transparent solutions for their financial needs, and to guide them as a trusted partner throughout the entire process.
-                                </p>
-                            </div>
-                            <!-- Vision Card -->
-                            <div class="bg-orange-50 border-l-4 border-orange-500 p-8 rounded-r-lg shadow-xl transform hover:-translate-y-2 transition-all duration-300">
-                                <h3 class="text-2xl font-bold text-orange-800 mb-3">Our Vision</h3>
-                                <p class="text-gray-700">
-                                    To become the most respected and trusted name in financial services in Rajasthan, known for our integrity and expertise.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- ============================================ -->
-                <!-- Founder's Message Section -->
-                <!-- ============================================ -->
-                <section class="py-16 md:py-20 bg-slate-800 text-white">
-                    <div class="container mx-auto px-6">
-                        <div class="text-center mb-12">
-                            <h2 class="text-3xl md:text-4xl font-bold">Founder's Message</h2>
-                            <p class="text-gray-400 mt-2">(Founder's Message)</p>
-                        </div>
-                        <div class="grid lg:grid-cols-3 gap-12 items-center max-w-5xl mx-auto">
-                            <div class="lg:col-span-1 flex justify-center">
-                                <img src="https://res.cloudinary.com/dugvqluo2/image/upload/v1758028732/image_2025-09-16_184847409_n0ga13.png" alt="राजेंद्र सिंह" class="w-48 h-60 rounded-xl object-cover border-4 border-orange-400 shadow-lg">
-                            </div>
-                            <div class="lg:col-span-2">
-                                <blockquote class="relative text-xl italic text-gray-200 p-8 border-l-4 border-orange-400 bg-slate-700 rounded-r-lg">
-                                    <p>"When we started Shree Karni Kripa Associates, we had one dream - to ensure that no one in our region feels alone or misguided when they need financial assistance. We don't just provide loans; we build relationships and help make dreams come true. Your trust is our greatest asset."</p>
-                                </blockquote>
-                                <p class="mt-4 text-right font-semibold text-lg">
-                                    राजेंद्र सिंह, <span class="text-orange-400">Founder</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- ============================================ -->
-                <!-- Team Section -->
-                <!-- ============================================ -->
-                <section class="py-16 md:py-20 bg-white">
-                    <div class="container mx-auto px-6">
-                        <div class="text-center mb-12">
-                            <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Meet Our Expert Team</h2>
-                            <p class="text-gray-500 mt-2">(Meet Our Expert Team)</p>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                            <!-- Team Member Card 1 -->
-                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="krishna-singh">
-                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756629459/PHOTO-2025-08-28-13-18-32_h8oozl.jpg" alt="Krishna Singh" loading="lazy" decoding="async" width="96" height="128">
-                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Krishna Singh</h3><p class="text-blue-600 font-semibold">Marketing Head</p></figcaption>
-                            </figure>
-                            <!-- Team Member Card 2 -->
-                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="sona-mulani">
-                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756628063/PHOTO-2025-08-28-13-05-09_oqhbv6.jpg" alt="Sona Mulani" loading="lazy" decoding="async" width="96" height="128">
-                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Sona Mulani</h3><p class="text-blue-600 font-semibold">Branch Manager</p></figcaption>
-                            </figure>
-                            <!-- Team Member Card 3 -->
-                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="mohammad-sharif">
-                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756628069/PHOTO-2025-08-28-13-00-15_gb2ei3.jpg" alt="Mohammad Sharif" loading="lazy" decoding="async" width="96" height="128">
-                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Mohammad Sharif</h3><p class="text-blue-600 font-semibold">Operations Head</p></figcaption>
-                            </figure>
-                            <!-- Team Member Card 4 -->
-                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="saroj-choudhary">
-                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756991306/WhatsApp_Image_2025-08-28_at_11.52.11_AM_mffbbw.jpg" alt="Saroj Choudhary" loading="lazy" decoding="async" width="96" height="128">
-                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Saroj Choudhary</h3><p class="text-blue-600 font-semibold">Team Leader</p></figcaption>
-                            </figure>
-                            <!-- Team Member Card 5 -->
-                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="mannu-choudhary">
-                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756628064/PHOTO-2025-08-28-13-18-11_b5qpie.jpg" alt="Mannu Choudhary" loading="lazy" decoding="async" width="96" height="128">
-                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Mannu Choudhary</h3><p class="text-blue-600 font-semibold">Team Leader</p></figcaption>
-                            </figure>
-                            <!-- Team Member Card 6 -->
-                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="sunil-meena">
-                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756628065/PHOTO-2025-08-28-13-04-18_ihap7m.jpg" alt="Sunil K. Meena" loading="lazy" decoding="async" width="96" height="128">
-                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Sunil K. Meena</h3><p class="text-blue-600 font-semibold">Relationship Manager</p></figcaption>
-                            </figure>
-                            <!-- Team Member Card 7 -->
-                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="pratap-singh">
-                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756628064/PHOTO-2025-08-28-13-15-13_d8qxkd.jpg" alt="Pratap Singh" loading="lazy" decoding="async" width="96" height="128">
-                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Pratap Singh</h3><p class="text-blue-600 font-semibold">Relationship Manager</p></figcaption>
-                            </figure>
-                            <!-- Team Member Card 8 -->
-                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="sunny">
-                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756628071/PHOTO-2025-08-28-13-10-27_wbfxlj.jpg" alt="Sunny" loading="lazy" decoding="async" width="96" height="128">
-                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Sunny</h3><p class="text-blue-600 font-semibold">Relationship Manager</p></figcaption>
-                            </figure>
-                            <!-- Team Member Card 9 -->
-                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="nandni-rajput">
-                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1756628074/PHOTO-2025-08-28-13-06-17_srew5k.jpg" alt="Nandni Rajput" loading="lazy" decoding="async" width="96" height="128">
-                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Nandni Rajput</h3><p class="text-blue-600 font-semibold">Process Executive</p></figcaption>
-                            </figure>
-                            <!-- Team Member Card 10 -->
-                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="meetali-verma">
-                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dugvqluo2/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1758173745/WhatsApp_Image_2025-08-28_at_12.06.29_PM_edwbtf.jpg" alt="Meetali verma" loading="lazy" decoding="async" width="96" height="128">
-                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Meetali verma</h3><p class="text-blue-600 font-semibold">Client Connector</p></figcaption>
-                            </figure>
-                            <!-- Team Member Card 11 -->
-                            <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="pooja">
-                                <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dugvqluo2/image/upload/w_96,h_128,c_fill,g_face,q_auto,f_auto/v1758173989/WhatsApp_Image_2025-09-11_at_3.44.21_PM_j8xhmh.jpg" alt="Pooja" loading="lazy" decoding="async" width="96" height="128">
-                                <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Pooja</h3><p class="text-blue-600 font-semibold">Client Connector</p></figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- ============================================ -->
-                <!-- Why Us Section -->
-                <!-- ============================================ -->
-                <section class="py-16 md:py-20 bg-slate-50">
-                    <div class="container mx-auto px-6">
-                        <div class="text-center mb-12">
-                            <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Why Are We Different?</h2>
-                            <p class="text-gray-500 mt-2">(Why Are We Different?)</p>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                            <!-- Feature 1 -->
-                            <div class="bg-white p-8 rounded-lg shadow-sm">
-                                <div class="bg-blue-100 text-blue-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
-                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <div class="container mx-auto px-6 py-12">
+                <div class="about-layout-container">
+                    <!-- Main Content Area (75%) -->
+                    <div class="main-content-area">
+                        <div class="space-y-16">
+                            <!-- Mission & Vision Section -->
+                            <section>
+                                <div class="text-center mb-12">
+                                    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800">About Shree Karni Kripa Associates</h1>
+                                    <p class="text-gray-500 mt-2 text-lg">Your Trusted Financial Partner in Rajasthan</p>
                                 </div>
-                                <h3 class="text-xl font-bold text-slate-800">Honest Advice</h3>
-                                <p class="text-gray-600 mt-2">Honest Advice</p>
-                            </div>
-                            <!-- Feature 2 -->
-                            <div class="bg-white p-8 rounded-lg shadow-sm">
-                                <div class="bg-orange-100 text-orange-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
-                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                                <div class="grid md:grid-cols-2 gap-8">
+                                    <div class="bg-blue-50 border-l-4 border-blue-500 p-8 rounded-lg shadow-lg transform hover:-translate-y-2 transition-all duration-300">
+                                        <h3 class="text-2xl font-bold text-blue-800 mb-3">Our Mission</h3>
+                                        <p class="text-gray-700 text-lg">To provide our customers with the best, fastest, and most transparent solutions for their financial needs, and to guide them as a trusted partner throughout the entire process.</p>
+                                    </div>
+                                    <div class="bg-green-50 border-l-4 border-green-500 p-8 rounded-lg shadow-lg transform hover:-translate-y-2 transition-all duration-300">
+                                        <h3 class="text-2xl font-bold text-green-800 mb-3">Our Vision</h3>
+                                        <p class="text-gray-700 text-lg">To become the most respected and trusted name in financial services in Rajasthan, known for our integrity and expertise.</p>
+                                    </div>
                                 </div>
-                                <h3 class="text-xl font-bold text-slate-800">Network with 120+ Banks & NBFC</h3>
-                                <p class="text-gray-600 mt-2">Network with 120+ Banks & NBFC</p>
-                            </div>
-                            <!-- Feature 3 -->
-                            <div class="bg-white p-8 rounded-lg shadow-sm">
-                                <div class="bg-red-100 text-red-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
-                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                </div>
-                                <h3 class="text-xl font-bold text-slate-800">Local Expertise</h3>
-                                <p class="text-gray-600 mt-2">Local Expertise</p>
-                            </div>
-                            <!-- Feature 4 -->
-                            <div class="bg-white p-8 rounded-lg shadow-sm">
-                                <div class="bg-green-100 text-green-600 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
-                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                                </div>
-                                <h3 class="text-xl font-bold text-slate-800">Transparent Process</h3>
-                                <p class="text-gray-600 mt-2">Transparent Process</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                            </section>
 
-                <!-- ============================================ -->
-                <!-- Final CTA Section -->
-                <!-- ============================================ -->
-                <section class="py-16 md:py-20 bg-blue-600 text-white">
-                    <div class="container mx-auto px-6 text-center">
-                        <h2 class="text-3xl font-bold">Now that you know us better, give us a chance to help you.</h2>
-                        <div class="mt-8">
-                            <a href="#home?scroll=our-services" class="page-link inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-10 rounded-lg transition-colors text-lg">
-                                Explore Our Services
-                            </a>
+                            <!-- Founder's Message Section -->
+                            <section class="bg-slate-800 text-white rounded-xl p-8 md:p-12">
+                                <div class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+                                    <div class="flex-shrink-0">
+                                        <img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_200,h_240,c_fill,g_face,q_auto:good,f_auto/v1758028732/image_2025-09-16_184847409_n0ga13.png" alt="राजेंद्र सिंह" class="w-48 h-60 rounded-xl object-cover border-4 border-orange-400 shadow-lg">
+                                    </div>
+                                    <div class="flex-grow">
+                                        <h2 class="text-3xl font-bold mb-4">Founder's Message</h2>
+                                        <blockquote class="relative text-lg md:text-xl italic text-gray-200 p-6 border-l-4 border-orange-400 bg-slate-700 rounded-r-lg">
+                                            <p>"When we started Shree Karni Kripa Associates, we had one dream - to ensure that no one in our region feels alone or misguided when they need financial assistance. We don't just provide loans; we build relationships and help make dreams come true. Your trust is our greatest asset."</p>
+                                        </blockquote>
+                                        <p class="mt-4 text-right font-semibold text-lg">राजेंद्र सिंह, <span class="text-orange-400">Founder</span></p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Team Section -->
+                            <section>
+                                <div class="text-center mb-12">
+                                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Meet Our Expert Team</h2>
+                                </div>
+                                <div id="team-members-grid" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
+                                    <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="krishna-singh">
+                                        <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_192,h_256,c_fill,g_face,q_auto:good,f_auto/v1756629459/PHOTO-2025-08-28-13-18-32_h8oozl.jpg" alt="Krishna Singh" loading="lazy" decoding="async" width="96" height="128">
+                                        <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Krishna Singh</h3><p class="text-blue-600 font-semibold">Marketing Head</p></figcaption>
+                                    </figure>
+                                    <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="sona-mulani">
+                                        <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_192,h_256,c_fill,g_face,q_auto:good,f_auto/v1756628063/PHOTO-2025-08-28-13-05-09_oqhbv6.jpg" alt="Sona Mulani" loading="lazy" decoding="async" width="96" height="128">
+                                        <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Sona Mulani</h3><p class="text-blue-600 font-semibold">Branch Manager</p></figcaption>
+                                    </figure>
+                                    <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="mohammad-sharif">
+                                        <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_192,h_256,c_fill,g_face,q_auto:good,f_auto/v1756628069/PHOTO-2025-08-28-13-00-15_gb2ei3.jpg" alt="Mohammad Sharif" loading="lazy" decoding="async" width="96" height="128">
+                                        <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Mohammad Sharif</h3><p class="text-blue-600 font-semibold">Operations Head</p></figcaption>
+                                    </figure>
+                                    <figure class="team-member-card text-center bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-member-id="saroj-choudhary">
+                                        <img class="w-24 h-32 rounded-lg mx-auto object-cover ring-4 ring-white" src="https://res.cloudinary.com/dhme90fr1/image/upload/w_192,h_256,c_fill,g_face,q_auto:good,f_auto/v1756991306/WhatsApp_Image_2025-08-28_at_11.52.11_AM_mffbbw.jpg" alt="Saroj Choudhary" loading="lazy" decoding="async" width="96" height="128">
+                                        <figcaption class="mt-4"><h3 class="text-xl font-bold text-slate-800">Saroj Choudhary</h3><p class="text-blue-600 font-semibold">Team Leader</p></figcaption>
+                                    </figure>
+                                </div>
+                                <div class="text-center mt-12">
+                                    <a href="#careers" class="page-link inline-block bg-white text-slate-800 border-2 border-slate-800 font-bold py-3 px-10 rounded-lg hover:bg-slate-800 hover:text-white transition-all text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">Join Our Team</a>
+                                </div>
+                            </section>
                         </div>
                     </div>
-                </section>
-            </main>
+
+                    <!-- Right Sidebar (25%) -->
+                    <aside class="right-sidebar">
+                        <div class="sidebar-loan-list">
+                            <h3>Our Products</h3>
+                            <ul>
+                                ${Object.keys(productData).map(key => `
+                                    <li>
+                                        <a href="#${key}" class="page-link sidebar-loan-link">
+                                            ${productData[key].name}
+                                        </a>
+                                    </li>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        `;
+
+        // The "Meet All Members" button logic is removed as it's no longer needed.
+    }
+
+    function renderGovtEmployeeLoanPage() {
+        const page = document.getElementById('govt-employees-loan-page');
+        if (!page) return;
+        updateMetaTags('loans-for-government-employees');
+        page.innerHTML = `
+            <div class="container mx-auto px-6 py-12">
+                <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-lg">
+                    <div class="text-center mb-12">
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800">राजस्थान के सरकारी कर्मचारियों के लिए विशेष लोन ऑफर्स</h1>
+                        <p class="text-gray-600 mt-4 text-lg">एक सरकारी कर्मचारी (Government Employee) होना गर्व की बात है, और यह आपकी वित्तीय स्थिरता (financial stability) को भी दर्शाता है। बैंक आपकी नौकरी की सुरक्षा और स्थिर आय के कारण आपको एक "प्रीमियम ग्राहक" मानते हैं।</p>
+                    </div>
+
+                    <p class="text-center text-lg text-gray-700 mb-12"><strong>श्री करणी कृपा एसोसिएट्स (SKF अजमेर)</strong> में, हम यह सुनिश्चित करते हैं कि आपको वह विशेष लाभ मिलें जिसके आप हक़दार हैं। हम 90+ बैंकों के साथ काम करते हैं और जानते हैं कि कौन सा बैंक सरकारी कर्मचारियों को सबसे अच्छी डील दे रहा है।</p>
+
+                    <div class="bg-blue-50 p-8 rounded-xl border-t-4 border-blue-500 mb-12">
+                        <h2 class="text-2xl font-bold text-slate-800 mb-4 text-center">सरकारी कर्मचारियों को मिलने वाले विशेष लाभ</h2>
+                        <div class="grid md:grid-cols-2 gap-6 text-gray-700">
+                            <div class="flex items-start"><span class="text-2xl mr-3">📉</span><div><h3 class="font-bold">सबसे कम ब्याज दरें (Lowest ROI)</h3><p class="text-sm">आपकी स्थिर आय के कारण बैंक आपको पर्सनल लोन और कार लोन पर दूसरों की तुलना में कम ब्याज दर ऑफर करते हैं।</p></div></div>
+                            <div class="flex items-start"><span class="text-2xl mr-3">💰</span><div><h3 class="font-bold">ज़्यादा लोन राशि (Higher Eligibility)</h3><p class="text-sm">आपकी नौकरी की सुरक्षा को देखते हुए, बैंक आपको ज़्यादा लोन राशि (higher loan amount) के लिए योग्य मानते हैं।</p></div></div>
+                            <div class="flex items-start"><span class="text-2xl mr-3">📄</span><div><h3 class="font-bold">न्यूनतम दस्तावेज़ (Minimal Documents)</h3><p class="text-sm">प्रक्रिया बहुत तेज़ होती है, अक्सर सिर्फ आपकी सैलरी स्लिप और ID प्रूफ पर लोन मिल जाता है।</p></div></div>
+                            <div class="flex items-start"><span class="text-2xl mr-3">✨</span><div><h3 class="font-bold">लचीली शर्तें (Flexible Terms)</h3><p class="text-sm">आपको अक्सर लंबी अवधि और ज़ीरो प्रोसेसिंग फीस जैसे ऑफर भी मिलते हैं।</p></div></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">हमारी विशेष सेवाएँ (Our Special Offers for You)</h2>
+                        <div class="space-y-6">
+                            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                                <h3 class="text-xl font-bold text-primary-color">1. इंस्टेंट पर्सनल लोन (Instant Personal Loan)</h3>
+                                <p class="text-gray-600 mt-2">अपनी किसी भी ज़रूरत (शादी, मेडिकल, शिक्षा) के लिए 48 घंटों में तुरंत लोन पाएं, वह भी सबसे कम ब्याज दरों पर।</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                                <h3 class="text-xl font-bold text-primary-color">2. होम लोन (Home Loan)</h3>
+                                <p class="text-gray-600 mt-2">हम आपको ज़्यादा लोन राशि और कम प्रोसेसिंग फीस पर होम लोन दिलाते हैं, ताकि आप अपनी पसंद का घर खरीद सकें।</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                                <h3 class="text-xl font-bold text-primary-color">3. कार लोन (Car Loan)</h3>
+                                <p class="text-gray-600 mt-2">नई या पुरानी कार के लिए 100% तक ऑन-रोड फाइनेंसिंग और विशेष ब्याज दरों का लाभ उठाएं।</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 text-center bg-gray-100 p-6 rounded-lg">
+                        <h2 class="text-2xl font-bold text-slate-800">SKF एसोसिएट्स ही क्यों चुनें?</h2>
+                        <p class="text-gray-700 mt-2 max-w-2xl mx-auto">आपको सरकारी बैंकों (जैसे SBI, BoB) से तो अच्छे ऑफर मिल ही सकते हैं, लेकिन प्राइवेट बैंक (जैसे HDFC, ICICI) भी सरकारी कर्मचारियों के लिए विशेष स्कीमें चलाते हैं। हम इन सभी की तुलना आपके लिए करते हैं और आपको वह डील दिलाते हैं जो सच में आपके लिए सबसे अच्छी हो।</p>
+                        <p class="font-bold mt-4">अपनी नौकरी के विशेष लाभों का फायदा उठाएँ!</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderCareersPage() {
+        const careersPage = document.getElementById('careers-page');
+        if (!careersPage) return;
+        careersPage.innerHTML = `
+            <div class="bg-gray-50 py-12 md:py-20">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-lg">
+                        <div class="text-center mb-8">
+                            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800">Job: Relationship Manager (Loan Sales)</h1>
+                            <p class="text-gray-500 mt-2">Ajmer (Salary-based) & Pan-Rajasthan (Incentive-based)</p>
+                        </div>
+                        <div class="text-gray-700 space-y-8">
+                            <p class="text-lg"><strong>Shree Karni Kripa Associates (SKF Ajmer)</strong> is a leading financial services advisory firm in Rajasthan. We provide our clients with the best loan and insurance solutions tailored to their needs. We are expanding our team and invite ambitious professionals to join us.</p>
+
+                            <div>
+                                <h2 class="text-2xl font-bold text-slate-800 border-b pb-2 mb-4">Role Overview</h2>
+                                <p>We are looking for dynamic and result-oriented <strong>Relationship Managers</strong> to help us grow our loan business. Your primary responsibility will be to connect with new clients, understand their loan requirements, and source loan files for login.</p>
+                            </div>
+
+                            <div>
+                                <h2 class="text-2xl font-bold text-slate-800 border-b pb-2 mb-4">Key Responsibilities</h2>
+                                <ul class="list-disc pl-6 space-y-2">
+                                    <li>Identify and establish contact with new clients (Individuals & Businesses).</li>
+                                    <li>Understand clients' financial needs and advise them on the right loan products (Home, Business, Personal, Vehicle, LAP).</li>
+                                    <li>Assist clients in collecting the necessary documents for the loan application (Loan File Sourcing).</li>
+                                    <li>Process loan applications with the right bank or NBFC (Loan File Login).</li>
+                                    <li>Build and maintain strong relationships with clients.</li>
+                                    <li>Meet sales targets.</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h2 class="text-2xl font-bold text-slate-800 border-b pb-2 mb-4">Location & Compensation</h2>
+                                <p>We have two types of opportunities:</p>
+                                <ol class="list-decimal pl-6 space-y-2 mt-2">
+                                    <li><strong>For Ajmer Office:</strong> This is a permanent, <strong>fixed salary-based</strong> role. You will be required to work from our Ajmer office.</li>
+                                    <li><strong>For Pan-Rajasthan (Outside Ajmer):</strong> This is a flexible, <strong>purely incentive-based</strong> role. You can work from anywhere in Rajasthan. Your earnings will be directly linked to the business you generate (unlimited earning potential).</li>
+                                </ol>
+                            </div>
+
+                            <div>
+                                <h2 class="text-2xl font-bold text-slate-800 border-b pb-2 mb-4">Who We Are Looking For</h2>
+                                <ul class="list-disc pl-6 space-y-2">
+                                    <li>Experience in sales or business development is preferred (especially in loans, insurance, finance, banking, NBFC, or DSA sectors).</li>
+                                    <li>Excellent communication, negotiation, and relationship-building skills.</li>
+                                    <li>A personal motorcycle is mandatory for fieldwork.</li>
+                                    <li>Freshers with a strong desire to learn and a passion for sales are also welcome to apply.</li>
+                                    <li>Candidates from any city/district in Rajasthan can apply.</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h2 class="text-2xl font-bold text-slate-800 border-b pb-2 mb-4">Why Join SKF Associates?</h2>
+                                <ul class="list-disc pl-6 space-y-2">
+                                    <li>Best-in-industry incentive and payout structure.</li>
+                                    <li>Unlimited earning opportunity (especially for the Pan-Rajasthan role).</li>
+                                    <li>Flexible working hours.</li>
+                                    <li>Complete training on products and processes with continuous support.</li>
+                                    <li>Career growth opportunities with a reputable and fast-growing company in Rajasthan.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Application Form Section -->
+                            <div id="apply-form-section" class="bg-blue-50 border-t-4 border-blue-500 p-6 md:p-8 rounded-b-lg mt-12">
+                                <h2 class="text-2xl font-bold text-slate-800 text-center mb-6">Apply for this Position</h2>
+                                <form id="career-application-form" class="max-w-xl mx-auto space-y-5">
+                                    <div><label for="career-name" class="block font-medium text-gray-700">Full Name</label><input type="text" id="career-name" name="fullName" class="w-full mt-1 p-3 border rounded-lg" required></div>
+                                    <div class="grid sm:grid-cols-2 gap-5">
+                                        <div><label for="career-mobile" class="block font-medium text-gray-700">Mobile Number</label><input type="tel" id="career-mobile" name="mobile" class="w-full mt-1 p-3 border rounded-lg" required></div>
+                                        <div><label for="career-email" class="block font-medium text-gray-700">Email Address</label><input type="email" id="career-email" name="email" class="w-full mt-1 p-3 border rounded-lg" required></div>
+                                    </div>
+                                    <div><label for="career-city" class="block font-medium text-gray-700">Current City</label><input type="text" id="career-city" name="city" class="w-full mt-1 p-3 border rounded-lg" required></div>
+                                    <div><label for="career-experience" class="block font-medium text-gray-700">Summarize your experience (if any)</label><textarea id="career-experience" name="experience" rows="3" class="w-full mt-1 p-3 border rounded-lg" placeholder="e.g., 2 years experience in personal loan sales at HDFC Bank..."></textarea></div>
+                                    <div class="pt-2">
+                                        <button type="submit" class="w-full bg-primary-color text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-lg">Submit Application</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="text-center text-gray-600 pt-6">
+                                <p>Alternatively, you can contact us directly at:</p>
+                                <p class="font-bold mt-2">📞 <a href="tel:9214104963" class="hover:underline">9214104963</a> | <a href="tel:9352358494" class="hover:underline">9352358494</a></p>
+                            </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderFinancialAdvisoryPage() {
+        const page = document.getElementById('financial-advisory-page');
+        if (!page) return;
+        updateMetaTags('financial-advisory-services');
+        page.innerHTML = `
+            <div class="container mx-auto px-6 py-12">
+                <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-lg">
+                    <div class="text-center mb-12">
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800">सिर्फ लोन नहीं, संपूर्ण वित्तीय सलाह</h1>
+                        <p class="text-gray-600 mt-4 text-lg"><strong>श्री करणी कृपा एसोसिएट्स</strong> में हमारा लक्ष्य सिर्फ आपको लोन दिलाना नहीं है, बल्कि आपके पूरे वित्तीय जीवन को सुरक्षित और समृद्ध बनाने में मदद करना है। हम मानते हैं कि सही सलाह ही सबसे बड़ी सेवा है।</p>
+                    </div>
+
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">हमारी विशेषज्ञ सलाहकार सेवाएँ</h2>
+                        <div class="space-y-8">
+                            <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+                                <h3 class="text-xl font-bold text-blue-800">1. जीवन बीमा (Life Insurance)</h3>
+                                <ul class="list-disc pl-5 mt-2 text-gray-700 space-y-1">
+                                    <li><strong>टर्म इंश्योरेंस:</strong> आपके परिवार की सुरक्षा के लिए सबसे ज़रूरी पॉलिसी।</li>
+                                    <li><strong>गारंटीड इनकम प्लान:</strong> आपके रिटायरमेंट या बच्चों की पढ़ाई के लिए।</li>
+                                    <li>हम आपको आपकी ज़रूरत के हिसाब से सही लाइफ इंश्योरेंस प्लान चुनने में मदद करते हैं।</li>
+                                </ul>
+                            </div>
+                            <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                                <h3 class="text-xl font-bold text-green-800">2. प्रॉपर्टी पेपर्स की जाँच (Property Document Verification)</h3>
+                                <p class="text-gray-700 mt-2">लोन लेने से पहले, यह ज़रूरी है कि आपकी प्रॉपर्टी के कागज़ात (Title Deeds) बिल्कुल साफ़ हों। हमारी टीम लोन फाइल लॉगिन करने से पहले ही आपके कागज़ातों की जाँच करती है ताकि बाद में कोई कानूनी अड़चन न आए।</p>
+                            </div>
+                            <div class="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-500">
+                                <h3 class="text-xl font-bold text-yellow-800">3. अन्य वित्तीय उत्पाद (Other Financial Products)</h3>
+                                <p class="text-gray-700 mt-2"><strong>हम क्या नहीं करते:</strong> हम सीधे तौर पर स्टॉक मार्केट या म्यूचुअल फंड (Mutual Funds) में निवेश नहीं करवाते, क्योंकि हम SEBI-रजिस्टर्ड नहीं हैं।<br><strong>हम कैसे मदद करते हैं:</strong> हम समझते हैं कि ये आपकी वित्तीय योजना का हिस्सा हैं। हम आपको राजस्थान के सबसे भरोसेमंद और रजिस्टर्ड इन्वेस्टमेंट एडवाइज़र्स और चार्टर्ड अकाउंटेंट्स (CAs) के साथ जोड़ सकते हैं।</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 text-center bg-gray-100 p-6 rounded-lg">
+                        <h2 class="text-2xl font-bold text-slate-800">आपका एक-स्टॉप फाइनेंसियल पार्टनर</h2>
+                        <p class="text-gray-700 mt-2 max-w-2xl mx-auto">पैसे से जुड़ा कोई भी सवाल हो, <strong>SKF एसोसिएट्स</strong> के पास उसका सही और ईमानदार जवाब है।</p>
+                    </div>
+                </div>
+            </div>
         `;
     }
 
@@ -1943,101 +2133,83 @@
     function renderJoinUsPage() {
         const joinUsPage = document.getElementById('join-us-page');
         if (!joinUsPage) return;
+        updateMetaTags('join-us');
+
         joinUsPage.innerHTML = `
-            <div class="bg-slate-800 text-white">
-                <div class="container mx-auto px-4 py-12 md:py-16 text-center">
-                    <h1 class="text-3xl md:text-4xl font-extrabold text-white">Career in Finance: Join Us as a Loan Advisor in Rajasthan | SKF Ajmer</h1>
-                    <p class="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">Start a rewarding career in finance! Shree Karni Kripa Associates is hiring Loan Advisors & Sales Executives across Rajasthan.</p>
+            <div class="bg-slate-800 text-white" style="background-image: url('https://res.cloudinary.com/dugvqluo2/image/upload/e_blur:300/v1758173989/WhatsApp_Image_2025-09-11_at_3.44.21_PM_j8xhmh.jpg'); background-size: cover; background-position: center;">
+                <div class="container mx-auto px-4 py-16 md:py-24 text-center bg-slate-800/60">
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-white">Start Your Financial Business in Rajasthan</h1>
+                    <p class="mt-4 text-lg text-gray-200 max-w-3xl mx-auto">Partner with SKF Associates and unlock unlimited earning potential through our proven franchise and partner models.</p>
                 </div>
             </div>
-            <div id="join-dsa" class="py-16 md:py-24 bg-gray-50">
+            <div class="py-16 md:py-24 bg-gray-50">
                 <div class="container mx-auto px-4 grid lg:grid-cols-3 gap-8 lg:gap-12">
-                    <div class="lg:col-span-2 space-y-10">
-                        <!-- How it works -->
+                    <!-- Left Column: Information -->
+                    <div class="lg:col-span-2 space-y-12">
                         <div>
-                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800">How Does a DSA Partner Work?</h2>
-                            <p class="mt-2 text-gray-600">A DSA acts as a mediator who understands client needs, helps with documentation, and connects them to the right lender. Key responsibilities include:</p>
-                            <ul class="mt-4 space-y-2 list-disc list-inside text-gray-700">
-                                <li>Forwarding leads & checking loan eligibility</li>
-                                <li>Helping with required documentation</li>
-                                <li>Following up with lenders to ensure smooth processing</li>
-                                <li>No professional qualification required</li>
-                                <li>Earns commission from the bank on disbursed loans</li>
-                            </ul>
-                        </div>
-
-                        <!-- Advantages -->
-                        <div>
-                            <h3 class="text-xl md:text-2xl font-bold text-slate-800">Advantages of Being Our Partner</h3>
-                            <div class="grid sm:grid-cols-2 gap-6 mt-4">
-                                <div class="flex items-start"><svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><p>Zero investment needed</p></div>
-                                <div class="flex items-start"><svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><p>Work from anywhere, anytime</p></div>
-                                <div class="flex items-start"><svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><p>Simple onboarding process</p></div>
-                                <div class="flex items-start"><svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><p>Performance-based income</p></div>
-                                <div class="flex items-start"><svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><p>No degree or certification needed</p></div>
-                                <div class="flex items-start"><svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><p>Be your own boss</p></div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Why Partner with Us?</h2>
+                            <p class="mt-2 text-gray-600">We're not just looking for employees; we're looking for partners to grow with. Here’s what you get when you join our network:</p>
+                            <div class="grid sm:grid-cols-2 gap-6 mt-6">
+                                <div class="flex items-start"><span class="text-2xl mr-3">💰</span><div><h3 class="font-bold">Unlimited Earning</h3><p class="text-sm text-gray-600">Our industry-best incentive structure means your income has no limits.</p></div></div>
+                                <div class="flex items-start"><span class="text-2xl mr-3">⏰</span><div><h3 class="font-bold">Total Flexibility</h3><p class="text-sm text-gray-600">Be your own boss. Work from anywhere in Rajasthan, on your own schedule.</p></div></div>
+                                <div class="flex items-start"><span class="text-2xl mr-3">📚</span><div><h3 class="font-bold">Expert Training</h3><p class="text-sm text-gray-600">We provide complete product training and continuous support to ensure your success.</p></div></div>
+                                <div class="flex items-start"><span class="text-2xl mr-3">🤝</span><div><h3 class="font-bold">Trusted Brand</h3><p class="text-sm text-gray-600">Leverage the SKF Associates brand, a symbol of trust and quality in Rajasthan.</p></div></div>
+                                <div class="flex items-start"><span class="text-2xl mr-3">📊</span><div><h3 class="font-bold">Wide Product Range</h3><p class="text-sm text-gray-600">Offer a diverse portfolio of loans and insurance from over 30+ financial institutions.</p></div></div>
+                                <div class="flex items-start"><span class="text-2xl mr-3">🚀</span><div><h3 class="font-bold">Growing Network</h3><p class="text-sm text-gray-600">Become part of a fast-growing network that is setting new benchmarks for success.</p></div></div>
                             </div>
                         </div>
 
-                        <!-- Documents Required -->
                         <div>
-                            <h3 class="text-xl md:text-2xl font-bold text-slate-800">Documents Required</h3>
-                            <ul class="mt-4 space-y-2 list-disc list-inside text-gray-700">
-                                <li>Proof of Identity (Aadhar card, Voter ID, etc.)</li>
-                                <li>Proof of Address (utility bills, passport, license, etc.)</li>
-                                <li>1 Year ITR (Income Tax Return)</li>
-                                <li>Two recent passport-size photographs</li>
-                                <li>Bank account details & cancelled cheque</li>
-                                <li>Signed DSA Agreement</li>
-                            </ul>
+                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Our Business Model Explained</h2>
+                            <p class="mt-2 text-gray-600">Our model is simple and effective. We act as a bridge between customers and financial institutions.</p>
+                            <ol class="list-decimal pl-5 space-y-2 mt-4 text-gray-700">
+                                <li><strong>Understand Client Needs:</strong> We meet with clients to understand their financial goals.</li>
+                                <li><strong>Find the Best Solution:</strong> We compare offers from 30+ banks to find the perfect product.</li>
+                                <li><strong>Assist in Process:</strong> We help clients from documentation (File Sourcing) to disbursal (File Login).</li>
+                                <li><strong>Your Role as a Partner:</strong> You bring in new clients, understand their needs, and work with our team to provide solutions. You earn an attractive commission on every successful deal.</li>
+                            </ol>
                         </div>
 
-                        <!-- FAQ -->
                         <div>
-                            <h3 class="text-xl md:text-2xl font-bold text-slate-800">Frequently Asked Questions</h3>
-                            <div class="space-y-4 mt-4">
-                                <div class="border border-gray-200 rounded-lg">
-                                    <div class="faq-question flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100">
-                                        <h4 class="font-semibold text-gray-800">Who can become a DSA partner?</h4>
-                                        <svg class="w-5 h-5 text-gray-500 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                    </div>
-                                    <div class="faq-answer px-4 pb-4 text-gray-600"><p>Anyone with a desire to earn, a smartphone, and basic communication skills.</p></div>
-                                </div>
-                                <div class="border border-gray-200 rounded-lg">
-                                    <div class="faq-question flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100">
-                                        <h4 class="font-semibold text-gray-800">How much can I earn as a DSA Partner?</h4>
-                                        <svg class="w-5 h-5 text-gray-500 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                    </div>
-                                    <div class="faq-answer px-4 pb-4 text-gray-600"><p>There’s no upper limit. Income depends on the number of loan leads and disbursements.</p></div>
-                                </div>
-                                <div class="border border-gray-200 rounded-lg">
-                                    <div class="faq-question flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100">
-                                        <h4 class="font-semibold text-gray-800">What is the lead process for loan applications?</h4>
-                                        <svg class="w-5 h-5 text-gray-500 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                    </div>
-                                    <div class="faq-answer px-4 pb-4 text-gray-600"><p>You share the lead with the bank RM who will then guide the customer through the process.</p></div>
-                                </div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800">The Partnership Opportunity</h2>
+                            <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500 mt-4">
+                                <h3 class="font-bold text-lg text-blue-800">Franchise / Business Partner Model (Pan-Rajasthan)</h3>
+                                <p class="mt-2 text-gray-600">This model is for entrepreneurs who want to establish their own business under the SKF brand. You will operate independently, with our full backing in training, branding, and support. Your earnings are 100% commission-based, offering unlimited potential.</p>
                             </div>
+                        </div>
+
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Who We Are Looking For</h2>
+                            <ul class="list-disc pl-5 space-y-2 mt-4 text-gray-700">
+                                <li><strong>Ambitious Individuals:</strong> A passion to grow and earn.</li>
+                                <li><strong>Excellent Communicators:</strong> Ability to build relationships with ease.</li>
+                                <li><strong>Honest & Hardworking:</strong> A commitment to providing genuine advice.</li>
+                                <li><strong>Local Network (A Plus):</strong> Good local contacts are beneficial but not mandatory.</li>
+                                <li><strong>Experience (Optional):</strong> Background in sales, finance, or insurance is a plus, but motivated freshers are welcome.</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <!-- Application Form Column -->
+                    <!-- Right Column: Application Form -->
                     <div class="lg:col-span-1">
                         <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl lg:sticky top-28">
-                           <h3 class="text-2xl font-bold mb-6 text-center text-gray-800">Join Our Team</h3>
-                           <form id="dsa-form" class="space-y-5" data-role="DSA">
+                           <h3 class="text-2xl font-bold mb-2 text-center text-gray-800">Take the Next Step</h3>
+                           <p class="text-center text-gray-600 mb-6">Ready to start your journey? Fill out the form below or contact us directly.</p>
+                           <form id="dsa-form" class="space-y-5" data-role="Partner/Franchise">
                                <div><label for="dsa-name" class="block text-sm font-medium text-gray-600">Full Name</label><input id="dsa-name" name="fullName" type="text" placeholder="Your Full Name" class="w-full mt-1 p-3 border rounded-lg" required></div>
                                <div><label for="dsa-mobile" class="block text-sm font-medium text-gray-600">Mobile Number</label><input id="dsa-mobile" name="mobile" type="tel" placeholder="Your Mobile Number" class="w-full mt-1 p-3 border rounded-lg" required></div>
                                <div><label for="dsa-city" class="block text-sm font-medium text-gray-600">City</label><input id="dsa-city" name="city" type="text" placeholder="Your City" class="w-full mt-1 p-3 border rounded-lg" required></div>
-                               <div><label for="dsa-pincode" class="block text-sm font-medium text-gray-600">Pincode</label><input id="dsa-pincode" name="pincode" type="number" placeholder="Area Pincode" class="w-full mt-1 p-3 border rounded-lg" required></div>
                                <div class="pt-2">
-                                   <button type="submit" class="w-full bg-primary-color text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-all duration-300 text-lg shadow-md hover:shadow-lg transform hover:-translate-y-1">
-                                       Apply Now
-                                       <svg class="w-5 h-5 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                                   <button type="submit" class="w-full bg-white text-slate-800 border-2 border-slate-800 font-bold py-3 px-6 rounded-lg hover:bg-slate-800 hover:text-white transition-all duration-300 text-lg shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                                       Become a Partner
                                    </button>
                                </div>
                            </form>
-                       </div>
+                           <div class="text-center mt-6">
+                                <p class="text-sm text-gray-500">Or contact us directly:</p>
+                                <p class="font-semibold text-primary-color mt-1">📞 <a href="tel:9214104963">9214104963</a> | <a href="tel:9352358494">9352358494</a></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2205,774 +2377,3 @@
     initializeStaticUI();
     initializeDynamicContent();
 })
-.product-subtype-list {
-    margin-top: 1rem;
-    padding-left: 1.5rem;
-    list-style-type: disc;
-    color: #333;
-    font-size: 1rem;
-}
-/**
- * ===================================
- *      GLOBAL SETUP & VARIABLES
- * ===================================
- */
-:root {
-    --primary-color: #005A9C;    /* Royal Blue for branding, buttons, and links */
-    --primary-dark: #004a80;     /* Darker blue for hover states */
-    --accent-color: #28A745;     /* Green for success states, highlights */
-    --text-primary: #2d3748;     /* Dark gray for main text (more accessible) */
-    --text-secondary: #718096;   /* Lighter gray for subtitles and secondary info */
-    --bg-primary: #F7FAFC;       /* Very light gray for the main page background */
-    --bg-surface: #FFFFFF;       /* White for cards, headers, and modals */
-    --border-color: #E2E8F0;     /* Light gray for borders and dividers */
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --header-height: 74px;       /* Centralized header height for layout calculations */
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-html {
-    scroll-behavior: smooth;
-    font-size: 100%; /* 1rem = 16px */
-}
-
-body {
-    font-family: var(--font-sans);
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    overflow-x: hidden; /* Prevents horizontal scroll caused by minor layout shifts */
-}
-
-/**
- * ===================================
- *      LAYOUT & UTILITY CLASSES
- * ===================================
- */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-.page {
-    display: none; /* Pages are hidden by default */
-}
-
-.page.active {
-    display: block;
-    animation: fadeIn 0.4s ease-in-out;
-}
-
-/* Main content container needs padding to avoid being hidden by the sticky header */
- #main-content-container {
-    padding-top: var(--header-height); 
-}
-
-/**
- * ===================================
- *      COMPONENT: HEADER & NAVIGATION
- * ===================================
- */
-.site-header {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: var(--bg-surface);
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: var(--header-height);
-}
-
-.site-title {
-    font-weight: 700;
-    font-size: 0.875rem; /* 14px */
-    color: var(--text-primary);
-    line-height: 1.2;
-}
-
-.site-slogan {
-    font-size: 0.75rem; /* 12px */
-    color: var(--primary-color);
-    font-weight: 500;
-}
-
-.main-nav ul {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 0.5rem;
-}
-
-.nav-link {
-    display: block;
-    padding: 0.5rem 1rem;
-    font-size: 0.9375rem; /* 15px */
-    font-weight: 600;
-    color: var(--text-primary);
-    text-decoration: none;
-    border-radius: 0.5rem;
-    transition: color 0.2s ease, background-color 0.2s ease;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--primary-color);
-    background-color: #eef5ff;
-}
-
-.nav-link.apply-now {
-    background-color: var(--primary-color);
-    color: var(--bg-surface);
-    box-shadow: 0 4px 14px 0 rgba(0, 90, 156, 0.3);
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-
-.nav-link.apply-now:hover {
-    background-color: var(--primary-dark);
-    color: var(--bg-surface);
-    transform: translateY(-2px);
-}
-
-.nav-dropdown {
-    position: absolute;
-    top: calc(100% + 5px);
-    left: 50%;
-    transform: translateX(-50%);
-    width: max-content; /* Auto-width based on content */
-    padding: 0.5rem;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: 0.75rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    list-style: none;
-    z-index: 1010;
-    /* Animation */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateX(-50%) translateY(10px);
-    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-}
-
-/* --- Navigation Dropdown --- */
-.nav-item-with-dropdown {
-    position: relative;
-}
-
-.nav-item-with-dropdown:hover .nav-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-}
-
-.nav-dropdown a {
-    display: block;
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-/* --- Mobile Navigation --- */
-.mobile-menu-toggle {
-    display: none; /* Hidden on desktop */
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    z-index: 1051; /* Above nav content */
-}
-
-.mobile-menu-toggle .icon-bar {
-    display: block;
-    width: 24px;
-    height: 3px;
-    background-color: var(--primary-color);
-    border-radius: 3px;
-    margin: 5px 0;
-    transition: all 0.3s ease-in-out;
-}
-
-/* Animate hamburger to 'X' */
-.mobile-menu-toggle.is-active .icon-bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-.mobile-menu-toggle.is-active .icon-bar:nth-child(2) {
-    opacity: 0;
-}
-.mobile-menu-toggle.is-active .icon-bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
-
-/**
- * ===================================
- *      COMPONENT: BUTTONS
- * ===================================
- */
-.btn-highlight {
-    animation: pulse 2.5s infinite;
-}
-
-/**
- * ===================================
- *      COMPONENT: FORMS & FAQ
- * ===================================
-*/
-
-/* A reusable class for primary form submission buttons */
-.btn-form-submit {
-    background-color: var(--primary-color);
-    padding: 0.8rem 1.5rem;
-    color: #fff;
-    font-weight: 700;
-    font-size: 1rem;
-    border-radius: 0.5rem;
-    border: none !important; /* Override potential conflicts */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 14px 0 rgba(0, 90, 156, 0.35);
-}
-
-.btn-form-submit:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px 0 rgba(0, 90, 156, 0.4);
-}
-
-.sidebar-link {
-    display: block;
-    padding: 0.75rem 1rem;
-    color: var(--text-secondary);
-    text-decoration: none;
-    border-left: 3px solid transparent;
-    transition: all 0.2s ease;
-}
-
-.sidebar-link.active,
-.sidebar-link:hover {
-    background-color: #eef5ff;
-    color: var(--primary-color);
-    font-weight: 600;
-    border-left-color: var(--primary-color);
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease-in-out;
-}
-
-/**
- * ===================================
- *      COMPONENT: FOOTER
- * ===================================
- */
-.site-footer {
-    background-color: #1a202c; /* Darker than text-primary */
-    color: #a0aec0; /* Lighter gray for footer text */
-}
-
-.footer-link {
-    color: #a0aec0;
-    transition: color 0.2s;
-}
-
-.footer-link:hover {
-    color: var(--bg-surface);
-}
-
-/**
- * ===================================
- *      COMPONENT: CHATBOT
- * ===================================
- */
-#chat-toggle-button {
-    position: fixed;
-    bottom: 1.25rem; /* 20px */
-    right: 1.25rem; /* 20px */
-    width: 140px;
-    height: 140px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1001;
-    transition: transform 0.3s ease;
-}
-
-#chat-toggle-button:hover {
-    transform: scale(1.1);
-}
-
-#chat-toggle-button img {
-    width: 124px;
-    height: 124px;
-}
-
-#chat-window {
-    position: fixed;
-    bottom: calc(1.25rem + 60px + 0.5rem); /* Position above toggle button */
-    right: 1.25rem;
-    width: 370px;
-    max-width: 90vw;
-    height: 600px;
-    max-height: 75vh;
-    background: var(--bg-surface);
-    border-radius: 0.75rem; 
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); 
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 1001;
-    /* Animation properties for desktop */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px) scale(0.95);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-}
-
-/* Style for when the chat window is open */
-#chat-window.is-open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-}
-
- #chat-header {
-    background: var(--primary-color);
-    color: white;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-shrink: 0;
-}
-
-#chat-header-info {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-#chat-header-info img {
-    width: 40px;
-    height: 40px;
-}
-
-#chat-header-info h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-#chat-header-info p {
-    font-size: 0.75rem;
-    opacity: 0.9;
-    line-height: 1;
-}
-
-#chat-close-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.75rem;
-    cursor: pointer;
-    opacity: 0.8;
-    transition: opacity 0.2s;
-}
-
-#chat-close-btn:hover {
-    opacity: 1;
-}
-
-#chat-messages {
-    flex-grow: 1;
-    padding: 1rem;
-    overflow-y: auto;
-    background-color: var(--bg-primary);
-}
-
-.chat-bubble {
-    max-width: 85%;
-    padding: 0.75rem 1rem;
-    border-radius: 1rem;
-    margin-bottom: 0.5rem;
-    word-wrap: break-word;
-    line-height: 1.5;
-    animation: slide-in 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.user-bubble {
-    background-color: var(--primary-color);
-    color: white;
-    align-self: flex-end;
-    margin-left: auto;
-    border-bottom-right-radius: 0.25rem;
-}
-
-.ai-bubble {
-    background-color: var(--bg-surface);
-    color: var(--text-primary);
-    align-self: flex-start;
-    border-bottom-left-radius: 0.25rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-#chat-input-container {
-    border-top: 1px solid var(--border-color);
-    padding: 0.75rem;
-    display: flex;
-    gap: 0.5rem;
-    background-color: var(--bg-surface);
-    flex-shrink: 0;
-}
-
-#chat-input {
-    flex-grow: 1;
-    border: 1px solid var(--border-color);
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    font-size: 0.9rem;
-}
-
-#chat-send-btn {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0 1.25rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.2s;
-}
-
-#chat-send-btn:hover {
-    background-color: var(--primary-dark);
-}
-
-/* Backdrop for chat on mobile to improve focus */
-#chat-backdrop {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-#chat-backdrop.is-open {
-    opacity: 1;
-}
-
-/* New close button that replaces the toggle icon */
-#chat-main-close-btn {
-    position: fixed;
-    bottom: calc(1.25rem + 60px + 0.5rem + 600px - 30px); /* Position above the chat window */
-    right: 1.25rem; /* Align with the right edge of the chat window */
-    width: 60px;
-    height: 60px;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 2rem;
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    justify-content: center; /* This was already correct, but the issue was the initial state */
-    align-items: center;    
-    z-index: 1002; /* Above the chat window */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: background-color 0.2s, transform 0.2s;
-}
-#chat-main-close-btn:hover {
-    background-color: var(--primary-dark);
-    transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-    #chat-main-close-btn {
-        top: 1rem; /* On mobile, the chat is full screen, so just position from top */
-        right: 1rem; /* Align with the right edge of the chat window */
-        bottom: auto; /* Reset bottom positioning */
-    }
-}
-
-/* Ensure the close button is hidden by default using the 'hidden' utility class */
-.hidden {
-    display: none !important;
-}
-
-/* Add a handle at the top of the mobile chat window */
-.chat-handle {
-    display: none; /* Hidden by default, shown on mobile */
-}
-
-
-/**
- * ===================================
- *      COMPONENT: MISCELLANEOUS
- * ===================================
- */
-#back-to-top-btn {
-    position: fixed;
-    bottom: 1.25rem;
-    right: calc(1.25rem + 140px + 0.75rem); /* Position left of chat button */
-    background-color: var(--bg-surface);
-    color: var(--primary-color);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid var(--border-color);
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-
-#back-to-top-btn:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
-}
-
-#back-to-top-btn.hidden {
-    opacity: 0;
-    transform: translateY(20px);
-    pointer-events: none;
-}
-
-/* --- CSS Marquee for Brand Logos --- */
-.marquee {
-    overflow: hidden;
-    position: relative;
-    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-}
-
-.marquee-content {
-    display: inline-flex;
-    align-items: center;
-    animation: marquee 40s linear infinite;
-}
-
-.marquee-content img {
-    height: 3rem; /* 48px */
-    margin: 0 2.5rem; /* 40px */
-    object-fit: contain;
-    filter: grayscale(100%);
-    opacity: 0.6;
-    transition: filter 0.3s, opacity 0.3s;
-}
-
-.marquee:hover .marquee-content {
-    animation-play-state: paused;
-}
-
-.marquee-content:hover img {
-    filter: grayscale(0%);
-    opacity: 1;
-}
-
-/**
- * ===================================
- *      ANIMATIONS & KEYFRAMES
- * ===================================
- */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slide-in {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 4px 14px 0 rgba(0, 90, 156, 0.3);
-    }
-    50% {
-        transform: scale(1.03);
-        box-shadow: 0 6px 20px 0 rgba(0, 90, 156, 0.35);
-    }
-}
-
-@keyframes marquee {
-    from { transform: translateX(0%); }
-    to { transform: translateX(-50%); }
-}
-
-/**
- * ===================================
- *      RESPONSIVE OVERRIDES
- * ===================================
- */
-
-/* Tablet and below (<= 1024px) */
-@media (max-width: 1024px) {
-    .mobile-menu-toggle {
-        display: block;
-    }
-
-    .main-nav {
-        position: absolute;
-        top: calc(var(--header-height) + 10px);
-        right: 1rem;
-        width: 280px;
-        background: var(--bg-surface);
-        border-radius: 0.75rem;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-        padding: 1rem;
-        /* Animation */
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(10px) scale(0.98);
-        transform-origin: top right;
-        transition: all 0.2s ease-out;
-    }
-
-    .main-nav.is-open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0) scale(1);
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.25rem;
-    }
-
-    .nav-item-with-dropdown .nav-dropdown {
-        display: none; /* Hide dropdowns on mobile; handled by main nav */
-    }
-}
-
-/* Mobile devices (<= 768px) */
-@media (max-width: 768px) {
-    /* Professional mobile chat window styling */
-    #chat-window {
-        /* Center the modal on the mobile screen */
-        top: 50%;
-        left: 50%;
-        width: 90vw; 
-        height: 80vh; 
-        max-height: 600px;
-        border-radius: 1rem; /* Rounded corners on all sides */
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* A more prominent shadow */
-        
-        /* Inherit desktop animation properties but adjust transform for centering */
-        transform: translate(-50%, -50%) scale(0.95);
-        opacity: 0; /* Start hidden */
-        visibility: hidden; /* Start hidden */
-        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-    }
-
-    #chat-window.is-open {
-        transform: translate(-50%, -50%) scale(1); /* Scale up to full size when open */
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .chat-handle {
-        display: block;
-        width: 40px;
-        height: 4px;
-        background-color: #d1d5db; /* gray-300 */
-        border-radius: 2px;
-        position: absolute;
-        top: 8px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    /* Adjust AI chat button size for mobile */
-    #chat-toggle-button {
-        width: 100px;
-        height: 100px;
-        bottom: 1rem;
-        right: 1rem;
-    }
-
-    #chat-toggle-button img {
-        width: 90px;
-        height: 90px;
-    }
-
-    /* Adjust back-to-top button position to not overlap */
-    #back-to-top-btn {
-        bottom: 1rem;
-        right: calc(1rem + 100px + 0.5rem); /* Position left of the smaller chat button */
-    }
-
-}
-
-/* Small mobile devices (<= 480px) */
-@media (max-width: 480px) {
-    html {
-        font-size: 94%; /* Slightly scale down all rem-based units */
-    }
-
-    .site-title {
-        font-size: 0.8rem;
-    }
-
-    .container {
-        padding-left: 0.75rem;
-        padding-right: 0.75rem;
-    }
-}
-
-/* Privacy Modal Visibility */
-.privacy-modal-overlay.is-visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Accessibility: Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}

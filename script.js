@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mainNav = document.getElementById('main-nav');
     const pages = document.querySelectorAll('.page');
-
-    const sidebarOverlay = document.getElementById('sidebar-overlay');
     const emiCalculatorPage = document.getElementById('emi-calculator-page');
 
     // --- 1. SETUP UI THAT DOESN'T NEED PRODUCT DATA ---
@@ -57,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
             productData = await response.json(); // Correctly assign fetched data
             setupChatbot(); // Re-enabled as per request.
             generateNavigation(); // Regenerate nav with product data for the dropdown
-            
-            let initialHash = window.location.hash.substring(1) || 'home';
+
+            let initialHash = window.location.pathname.slice(1) || 'home';
             showPage(initialHash); // This will now correctly show the initial page on load
 
         } catch (error) {
@@ -100,14 +98,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function setupBasicEventListeners() {
         addLinkListeners(document);
-        window.addEventListener('hashchange', () => {
-            let hash = window.location.hash.substring(1) || 'home';
-            showPage(hash);
+        window.addEventListener('popstate', () => {
+            let path = window.location.pathname.slice(1) || 'home';
+            showPage(path);
         });
 
         mobileMenuButton.addEventListener('click', () => {
             const isOpen = mainNav.classList.toggle('is-open');
             mobileMenuButton.classList.toggle('is-active', isOpen);
+            mobileMenuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
 
         // Back to Top Button Logic
@@ -146,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const [basePageId, queryParams] = pageId.split('?');
         const params = new URLSearchParams(queryParams);
-
+        
         const isProductPage = productData && Object.keys(productData).length > 0 && Object.keys(productData).some(key => pageId.startsWith(key));
 
         const targetPageId = pageMappings[basePageId] || (isProductPage ? 'loan-page-template' : `${basePageId}-page`);
@@ -170,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (pageId === 'careers') renderCareersPage(); // Render the new careers page
             if (pageId === 'loans-for-government-employees') renderGovtEmployeeLoanPage();
             if (pageId === 'financial-advisory-services') renderFinancialAdvisoryPage();
-            if (basePageId === 'eligibility-form') renderEligibilityFormPage(params.get('product'));
+            if (basePageId.startsWith('eligibility-form')) renderEligibilityFormPage(params.get('product'));
 
             if (['join-dsa', 'join-connector', 'our-services'].includes(pageId)) {
                 setTimeout(() => {
@@ -203,6 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function updateMetaTags(pageId) {
         const titleEl = document.getElementById('meta-title');
+        const brandSuffix = " | Shree Karni Kripa Associates";
         const descriptionEl = document.getElementById('meta-description');
         
         // ये डिफ़ॉल्ट टैग्स हैं (होमपेज के लिए)
@@ -213,75 +213,79 @@ document.addEventListener('DOMContentLoaded', function() {
         switch (pageId) {
             // मुख्य लोन पेज
             case 'home-loan':
-                title = 'Best Home Loan in Rajasthan - Low Interest Rates | SKF Ajmer';
+                title = 'Best Home Loan in Rajasthan - Low Interest Rates';
                 description = 'Need a Home Loan in Rajasthan? SKF Associates offers expert guidance & compares 90+ banks for new homes, construction, or balance transfers in Ajmer, Jaipur & more.';
                 break;
             case 'business-loan':
-                title = 'Business Loan in Rajasthan for MSME & Startups | SKF Ajmer';
+                title = 'Business Loan in Rajasthan for MSME & Startups';
                 description = 'Need a Business Loan in Rajasthan? SKF Associates offers fast approval on Working Capital, Term Loans & more for MSMEs in Ajmer, Jaipur & Jodhpur.';
                 break;
             case 'personal-loan':
-                title = 'Instant Personal Loan in Rajasthan - Quick Approval | SKF Ajmer';
+                title = 'Instant Personal Loan in Rajasthan - Quick Approval';
                 description = 'Need a fast Personal Loan in Rajasthan? SKF Associates offers quick approval for medical needs, weddings, or travel. Low interest rates. Apply now!';
                 break;
             case 'vehicle-loan':
-                title = 'Car Loan in Rajasthan (New & Used) - Low EMI | SKF Ajmer';
+                title = 'Car Loan in Rajasthan (New & Used) - Low EMI';
                 description = 'Get the best Car Loan in Rajasthan with SKF Associates. We offer low interest rates & fast approval for New Cars, Used Cars, and Two-Wheeler Loans.';
                 break;
             case 'lap-loan':
-                title = 'Loan Against Property (LAP) in Rajasthan @ Low Interest | SKF Ajmer';
+                title = 'Loan Against Property (LAP) in Rajasthan @ Low Interest';
                 description = 'Unlock the value of your property in Rajasthan. SKF Associates offers Loan Against Property (LAP) for business, personal needs, or debt consolidation.';
                 break;
     
             // मुख्य बीमा पेज
             case 'health-insurance':
-                title = 'Best Health Insurance Plans in Rajasthan | Compare Policies | SKF Ajmer';
+                title = 'Best Health Insurance Plans in Rajasthan | Compare Policies';
                 description = 'Compare & buy the best health insurance plans in Rajasthan. SKF Associates helps you choose the perfect family floater, personal, or top-up plan. Get quote!';
                 break;
             case 'life-insurance':
-                title = 'Best Life Insurance & Term Plans in Rajasthan | SKF Associates';
+                title = 'Best Life Insurance & Term Plans in Rajasthan';
                 description = 'Secure your family\'s future. Compare the best Life Insurance, Term Plans, and Guaranteed Income Plans in Rajasthan with expert advice from SKF Associates.';
                 break;
             case 'vehicle-insurance':
-                title = 'Car & Bike Insurance in Rajasthan | (Renew Online) | SKF Ajmer';
+                title = 'Car & Bike Insurance in Rajasthan | (Renew Online)';
                 description = 'Get the best Car & Bike insurance in Rajasthan. Compare policies, renew online, & get the right add-ons (Zero Dep, RTI). Free quotes from SKF Associates.';
                 break;
     
             // अन्य मुख्य पेज
             case 'about':
-                title = 'About Shree Karni Kripa Associates | Trusted Loan & Insurance Advisor in Ajmer';
+                title = 'About Us | Trusted Loan & Insurance Advisor in Ajmer';
                 description = 'Learn the story of SKF Ajmer. Discover our mission to provide honest financial advice and meet the expert team serving Rajasthan for all your loan and insurance needs.';
                 break;
             case 'contact':
-                title = 'Contact Us | Shree Karni Kripa Associates | Ajmer, Rajasthan';
+                title = 'Contact Us | Ajmer, Rajasthan';
                 description = 'Get in touch with SKF Associates for expert loan & insurance advice. Call us at 9214104963 or visit our office in Ajmer, Rajasthan.';
                 break;
             case 'emi-calculator':
-                title = 'EMI Calculator for Home, Car, Personal Loan | SKF Associates';
+                title = 'EMI Calculator for Home, Car, Personal Loan';
                 description = 'Calculate your EMI for Home, Car, or Personal Loans with our easy-to-use EMI calculator. Plan your finances with SKF Associates, Rajasthan.';
                 break;
             case 'join-us': // यह 'join-dsa' और 'join-connector' दोनों के लिए काम करेगा
             case 'join-dsa':
             case 'join-connector':
-                title = 'Financial Franchise & Partner Opportunity in Rajasthan | Join SKF Associates';
+                title = 'Financial Franchise & Partner Opportunity in Rajasthan';
                 description = 'Start your finance business in Rajasthan! Partner with SKF Associates via our franchise model or join as a loan advisor. Earn unlimited income with best payouts & support.';
                 break;
             case 'careers':
-                title = 'Job: Relationship Manager (Loan Sales) - Ajmer/Rajasthan | SKF Associates';
+                title = 'Job: Relationship Manager (Loan Sales) - Ajmer/Rajasthan';
                 description = 'Hiring Relationship Manager at SKF Ajmer! Source loan files (Home, Business, Personal) in Ajmer (Salary) or Rajasthan (Incentives). Best payouts. Apply now!';
                 break;
             case 'loans-for-government-employees':
-                title = 'Special Loan Offers for Government Employees in Rajasthan | SKF Ajmer';
+                title = 'Special Loan Offers for Government Employees in Rajasthan';
                 description = 'Special low-interest Personal, Home, & Car Loans for Government Employees in Rajasthan. SKF Associates offers fast approval & minimal documents. Apply now!';
                 break;
             case 'financial-advisory-services':
-                title = 'Holistic Financial Advisory in Rajasthan | SKF Associates';
+                title = 'Holistic Financial Advisory in Rajasthan';
                 description = 'We offer more than loans! SKF Associates provides expert guidance on Life Insurance (Term Plans), Property Verification, and connects you to trusted partners.';
+                break;
+            case 'business-limits':
+                title = 'CC/OD Limits for Business in Rajasthan';
+                description = 'Manage your working capital with Cash Credit (CC) and Overdraft (OD) limits. SKF Associates helps businesses in Rajasthan get the best revolving credit lines.';
                 break;
         }
     
         // टाइटल और डिस्क्रिप्शन को सेट करें
-        document.title = title;
+        document.title = title + brandSuffix;
         if (titleEl) titleEl.textContent = title;
         if (descriptionEl) descriptionEl.setAttribute('content', description);
     }
@@ -303,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const mainCategory = productData[mainCategoryKey];
         if (!mainCategory) { console.error('Category not found for', pageId); return; }
 
-        updateMetaTags(pageId); // Update meta tags for product pages if needed in future
+        updateMetaTags(pageId);
         
         const subtype = subTypeKey ? mainCategory.subtypes[subTypeKey] : null;
         const contentData = subtype || mainCategory;
@@ -357,7 +361,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isInsurance) {
             calculatorHtml = `
                 <div>
-                    <h2 class="text-2xl font-bold mt-8 mb-4">EMI Calculator</h2>
+                    <h2 class="text-2xl font-bold mt-8 mb-4">Quick EMI Calculator</h2>
                     <div class="bg-gray-50 p-6 rounded-lg border">
                         <form class="emi-calculator-form grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
                             <div><label class="block font-medium">Loan Amount (₹)</label><input type="number" class="loan-amount w-full mt-1 p-2 border rounded" value="1000000" required></div>
@@ -370,10 +374,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             <h3 class="font-bold text-md mb-3 text-center">Download Schedule & Set Reminders</h3>
                             <div class="flex flex-col sm:flex-row gap-2 mb-4">
                                 <button class="loan-page-download-btn w-full bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg hover:bg-black text-sm" disabled>Download PDF</button>
-                                <button class="loan-page-gcal-btn w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 text-sm" disabled>Google Calendar</button>
-                                <button class="loan-page-wa-btn w-full bg-green-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-600 text-sm" disabled>WhatsApp</button>
+                                <button class="loan-page-gcal-btn w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 text-sm" disabled>Calendar</button>
+                                <button class="loan-page-wa-btn w-full bg-green-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-600 text-sm" disabled>Share</button>
                             </div>
-                            <a href="#eligibility-form?product=${mainCategoryKey}" class="page-link btn-highlight block w-full bg-gray-200 text-black font-bold py-3 px-4 rounded-lg hover:bg-gray-300 text-center transition-all">Apply for this Loan Now</a>
+                            <a href="/eligibility-form?product=${mainCategory.name}" class="page-link btn-highlight block w-full bg-gray-200 text-black font-bold py-3 px-4 rounded-lg hover:bg-gray-300 text-center transition-all">Apply for this Loan Now</a>
                         </div>
                     </div>
                 </div>`;
@@ -382,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const imageCarouselHtml = `
             <div class="swiper-container loan-image-carousel rounded-lg overflow-hidden">
                 <div class="swiper-wrapper">
-                    ${images.map(img => `<div class="swiper-slide" style="background-color: #e9ecef; background-image: url('https://res.cloudinary.com/diqo7qmnw/image/upload/e_grayscale,o_10/v1754217266/logo1_lt1w3w.png'); background-repeat: no-repeat; background-position: center; background-size: 50%;"><img src="${img.replace('/upload/', '/upload/w_1200,q_auto:good,f_auto/')}" alt="${mainCategory.name}" class="w-full h-96 object-contain" loading="lazy" decoding="async"></div>`).join('')}
+                    ${images.map(img => `<div class="swiper-slide" style="background-color: #e9ecef; background-image: url('https://res.cloudinary.com/diqo7qmnw/image/upload/e_grayscale,o_10/v1754217266/logo1_lt1w3w.png'); background-repeat: no-repeat; background-position: center; background-size: 50%;"><img src="${img.replace('/upload/', '/upload/w_1200,q_auto:good,f_auto/')}" alt="${contentData.name} - SKF Ajmer" class="w-full h-80 object-contain" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.style.backgroundImage='url(https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png)'; this.parentElement.style.backgroundSize='contain';"></div>`).join('')}
                 </div>
                 <div class="swiper-button-next text-white"></div>
                 <div class="swiper-button-prev text-white"></div>
@@ -401,7 +405,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (mainCategory.subtypes.hasOwnProperty(key) && key !== 'overview') {
                     const sub = mainCategory.subtypes[key];
                     subtypeListingHtml += `
-                        <a href="#${baseKey}-${key}" class="page-link block bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-lg hover:bg-blue-50 border-l-4 border-slate-200 hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-1">
+                        <a href="/${baseKey}-${key}" class="page-link block bg-slate-50 p-6 rounded-lg shadow-sm hover:shadow-lg hover:bg-blue-50 border-l-4 border-slate-200 hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-1">
                             <h3 class="text-xl font-bold text-primary-color">${sub.name}</h3>
                             <p class="text-gray-600 mt-2 text-sm">${sub.description || ''}</p>
                             <span class="text-blue-600 font-semibold mt-4 inline-block">Learn More &rarr;</span>
@@ -468,11 +472,37 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 ${calculatorHtml}                
-                <div class="text-center border-t pt-8 mt-8"><a href="#eligibility-form?product=${mainCategoryKey}" class="page-link btn-highlight inline-block bg-primary-color text-white font-bold py-4 px-12 rounded-lg hover:bg-blue-700 transition-all text-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1">${isInsurance ? 'Get a Quote' : 'Apply Now'}</a></div>
+                <div class="text-center border-t pt-8 mt-8"><a href="/eligibility-form?product=${mainCategory.name}" class="page-link btn-highlight inline-block bg-primary-color text-white font-bold py-4 px-12 rounded-lg hover:bg-blue-700 transition-all text-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1">${isInsurance ? 'Get a Quote' : 'Apply Now'}</a></div>
             </div>
         `;
         loanTemplatePage.querySelector('#loan-page-content').innerHTML = mainContentHtml;
         addLinkListeners(loanTemplatePage.querySelector('#loan-page-content'));
+
+        // Add FAQ Schema if FAQs exist
+        if (contentData.faq && contentData.faq.length > 0) {
+            const faqSchema = {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": contentData.faq.map(f => ({
+                    "@type": "Question",
+                    "name": f.q,
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": f.a
+                    }
+                }))
+            };
+            
+            // Remove old FAQ schema if it exists
+            const oldSchema = document.getElementById('faq-schema');
+            if (oldSchema) oldSchema.remove();
+            
+            const schemaScript = document.createElement('script');
+            schemaScript.type = 'application/ld+json';
+            schemaScript.id = 'faq-schema';
+            schemaScript.text = JSON.stringify(faqSchema);
+            document.head.appendChild(schemaScript);
+        }
 
         new Swiper('.loan-image-carousel', {
             loop: true,
@@ -548,210 +578,459 @@ document.addEventListener('DOMContentLoaded', function() {
             const emi = (amount * monthlyRate * Math.pow(1 + monthlyRate, n)) / (Math.pow(1 + monthlyRate, n) - 1);
             resultContainer.textContent = `₹${Math.round(emi).toLocaleString('en-IN')}`;
             [downloadBtn, gcalBtn, waBtn].forEach(btn => btn.disabled = false);
+
+            const text = `EMI Estimate\nAmount: ₹${amount.toLocaleString('en-IN')}\nRate: ${rate}%\nTenure: ${tenure} yrs\nEMI: ${resultContainer.textContent}`;
+
+            // WhatsApp share
+            waBtn.onclick = () => {
+              window.open(`https://wa.me/918118838772?text=${encodeURIComponent(text)}`, '_blank');
+            };
+
+            gcalBtn.onclick = () => {
+              const start = new Date(); start.setMonth(start.getMonth()+1, 1); start.setHours(9,0,0);
+              const end = new Date(start.getTime() + 30*60*1000);
+              const fmt = d => d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+              const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Pay EMI')}&dates=${fmt(start)}/${fmt(end)}&details=${encodeURIComponent(text)}`;
+              window.open(url, '_blank');
+            };
+
+            downloadBtn.onclick = async () => {
+                // Temporarily override the main calculator's values to generate the PDF
+                const mainAmountInput = document.getElementById('emi-amount-text');
+                const mainRateInput = document.getElementById('emi-rate-text');
+                const mainTenureSlider = document.getElementById('emi-tenure-slider');
+                const mainTenureYearsBtn = document.getElementById('tenure-years-btn');
+                const mainTenureMonthsBtn = document.getElementById('tenure-months-btn');
+                const mainLoanTypeSelect = document.getElementById('loan-type');
+
+                // Save original values if they exist
+                const originalValues = mainAmountInput ? {
+                    amount: mainAmountInput.value,
+                    rate: mainRateInput.value,
+                    tenure: mainTenureSlider.value,
+                    isYears: mainTenureYearsBtn.classList.contains('shadow'),
+                    loanType: mainLoanTypeSelect.value
+                } : null;
+
+                // Set values from the small calculator
+                if (originalValues) {
+                    mainAmountInput.value = amount.toLocaleString('en-IN');
+                    mainRateInput.value = rate;
+                    mainTenureYearsBtn.click(); // Ensure tenure is in years
+                    mainTenureSlider.value = tenure;
+                    // Find and select the correct loan type
+                    const loanName = form.closest('#loan-page-content').querySelector('h1').textContent;
+                    const option = Array.from(mainLoanTypeSelect.options).find(opt => opt.text === loanName);
+                    if (option) mainLoanTypeSelect.value = option.value;
+                }
+
+                // Call the main PDF generation function
+                await generatePdf();
+
+                // Restore original values to the main calculator
+                if (originalValues) {
+                    mainAmountInput.value = originalValues.amount;
+                    mainRateInput.value = originalValues.rate;
+                    if (!originalValues.isYears) mainTenureMonthsBtn.click();
+                    mainTenureSlider.value = originalValues.tenure;
+                    mainLoanTypeSelect.value = originalValues.loanType;
+                }
+            };
         } else {
             resultContainer.textContent = '₹0';
         }
     }
 
     function renderEmiCalculator() {
-        if(emiCalculatorPage) emiCalculatorPage.innerHTML = `
-            <!-- This is the content for the EMI Calculator Page -->
-            <!-- It was missing from the script -->
-            <div class="bg-gray-100">
-                <div class="container mx-auto px-6 py-12">
+        if (!emiCalculatorPage) return;
+        emiCalculatorPage.innerHTML = `
+            <div class="bg-gray-100 py-12">
+                <div class="container mx-auto px-4">
                     <div class="text-center mb-12">
-                        <h1 class="text-4xl font-bold text-slate-800">Smart EMI Calculator</h1>
-                        <p class="text-gray-600 mt-2 max-w-2xl mx-auto">Plan your finances with our easy-to-use EMI calculator and get all the loan details you need in one place.</p>
+                        <h1 class="text-4xl font-bold text-slate-800">The Ultimate EMI Calculator</h1>
+                        <p class="text-gray-600 mt-2 max-w-2xl mx-auto">A complete financial picture to help you make the right decision.</p>
                     </div>
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
-                        <div class="lg:col-span-3 bg-white p-8 rounded-lg shadow-lg">
-                            <h2 class="text-2xl font-bold mb-6">Calculate Your EMI</h2>
-                            <form id="main-emi-form" class="space-y-4">
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        <!-- Left Column: Inputs -->
+                        <div class="lg:col-span-5 bg-white p-6 rounded-lg shadow-lg">
+                            <h2 class="text-2xl font-bold mb-6">Loan Details</h2>
+                            <form id="main-emi-form" class="space-y-6">
                                 <div>
-                                    <label for="loan-type" class="block font-medium">Loan Type</label>
-                                    <select id="loan-type" class="w-full mt-1 p-3 border rounded-lg bg-white">
-                                        <option value="8.50" data-loan-key="home-loan">Home Loan</option>
-                                        <option value="10.25" data-loan-key="personal-loan">Personal Loan</option>
-                                        <option value="10.50" data-loan-key="business-loan">Business Loan</option>
-                                        <option value="9.00" data-loan-key="vehicle-loan">Vehicle Loan</option>
-                                        <option value="9.50" data-loan-key="lap-loan">Loan Against Property</option>
-                                    </select>
+                                    <label for="loan-type" class="block font-medium text-sm mb-1">Loan Type</label>
+                                    <select id="loan-type" class="w-full p-2 border rounded-lg bg-white"></select>
                                 </div>
+
                                 <div>
-                                    <label for="emi-amount" class="block font-medium">Loan Amount (₹)</label>
-                                    <input type="number" id="emi-amount" class="w-full mt-1 p-3 border rounded-lg" value="2500000" required>
+                                    <div class="flex justify-between items-center">
+                                        <label for="emi-amount-text" class="block font-medium text-sm">Loan Amount (₹)</label>
+                                        <input type="text" id="emi-amount-text" class="w-2/5 p-2 border rounded-lg text-right font-bold">
+                                    </div>
+                                    <input type="range" id="emi-amount-slider" class="w-full mt-2 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
                                 </div>
+
                                 <div>
-                                    <label for="emi-rate" class="block font-medium">Interest Rate (% p.a.)</label>
-                                    <input type="number" step="0.01" id="emi-rate" class="w-full mt-1 p-3 border rounded-lg" value="8.50" required>
+                                    <div class="flex justify-between items-center">
+                                        <label for="emi-rate-text" class="block font-medium text-sm">Interest Rate (% p.a.)</label>
+                                        <input type="number" step="0.05" id="emi-rate-text" class="w-1/4 p-2 border rounded-lg text-right font-bold">
+                                    </div>
+                                    <input type="range" id="emi-rate-slider" class="w-full mt-2 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
                                 </div>
+
                                 <div>
-                                    <label for="emi-tenure" class="block font-medium">Loan Tenure (Years)</label>
-                                    <input type="number" id="emi-tenure" class="w-full mt-1 p-3 border rounded-lg" value="20" required>
+                                    <div class="flex justify-between items-center">
+                                        <label for="emi-tenure-text" class="block font-medium text-sm">Loan Tenure</label>
+                                        <div class="flex items-center gap-2">
+                                            <span id="tenure-display" class="font-bold text-gray-700 w-20 text-right">20 Years</span>
+                                            <div class="flex items-center bg-gray-200 rounded-full p-1">
+                                                <button type="button" id="tenure-years-btn" class="px-3 py-1 text-sm rounded-full bg-white shadow">Years</button>
+                                                <button type="button" id="tenure-months-btn" class="px-3 py-1 text-sm rounded-full">Months</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="range" id="emi-tenure-slider" class="w-full mt-2 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
                                 </div>
-                                 <div>
-                                    <label for="bank-preference" class="block font-medium">Bank Preference (Optional)</label>
-                                    <input type="text" id="bank-preference" class="w-full mt-1 p-3 border rounded-lg" placeholder="e.g., HDFC, SBI, ICICI">
-                                </div>
-                                <button type="submit" class="w-full bg-primary-color text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">Calculate</button>
                             </form>
-                            <div id="emi-main-result" class="mt-6 text-center bg-gray-50 p-6 rounded-lg">
-                                <!-- Result displayed here -->
-                            </div>
                         </div>
 
-                        <div class="lg:col-span-2 space-y-6">
-                            <div class="bg-white p-6 rounded-lg shadow-lg">
-                                <h3 class="font-bold text-lg mb-3">💡 Smart Suggestions</h3>
-                                <div id="ai-suggestions" class="text-sm text-gray-700 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                                    <p>Enter your loan details to get personalized suggestions for saving money.</p>
+                        <!-- Right Column: Results -->
+                        <div class="lg:col-span-7 bg-white p-6 rounded-lg shadow-lg">
+                            <h2 class="text-2xl font-bold mb-4">Your Loan Summary</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                                <!-- Pie Chart -->
+                                <div class="flex flex-col items-center">
+                                    <div id="emi-pie-chart" class="w-48 h-48 rounded-full flex items-center justify-center text-center">
+                                        <div id="emi-result-value" class="text-center">
+                                            <p class="text-sm text-gray-500">Monthly EMI</p>
+                                            <p class="text-3xl font-bold text-primary-color">₹0</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-center gap-4 mt-4 text-xs">
+                                        <div class="flex items-center"><span class="w-3 h-3 rounded-full bg-blue-500 mr-2"></span>Principal</div>
+                                        <div class="flex items-center"><span class="w-3 h-3 rounded-full bg-orange-400 mr-2"></span>Interest</div>
+                                    </div>
+                                </div>
+                                <!-- Key Figures -->
+                                <div class="space-y-4">
+                                    <div class="bg-blue-50 p-4 rounded-lg">
+                                        <p class="text-sm text-gray-600">Principal Amount</p>
+                                        <p id="principal-val" class="text-xl font-bold text-blue-800">₹0</p>
+                                    </div>
+                                    <div class="bg-orange-50 p-4 rounded-lg">
+                                        <p class="text-sm text-gray-600">Total Interest Payable</p>
+                                        <p id="interest-val" class="text-xl font-bold text-orange-600">₹0</p>
+                                    </div>
+                                    <div class="bg-gray-100 p-4 rounded-lg">
+                                        <p class="text-sm text-gray-600">Total Payment (Principal + Interest)</p>
+                                        <p id="total-payment-val" class="text-xl font-bold text-gray-800">₹0</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="bg-white p-6 rounded-lg shadow-lg">
-                                <h3 class="font-bold text-lg mb-3">📑 Download EMI Calendar</h3>
-                                <p class="text-sm text-gray-600 mb-4">Get a detailed amortization schedule for your loan.</p>
-                                <div class="flex gap-2">
-                                    <button id="download-schedule-btn" class="w-full bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg hover:bg-black" disabled>Download PDF</button>
-                                </div>
-                                 <h3 class="font-bold text-lg mt-4 mb-2">Set Reminders</h3>
-                                <div class="flex gap-2">
-                                     <button id="gcal-reminder-btn" class="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600" disabled>Google Calendar</button>
-                                     <button id="wa-reminder-btn" class="w-full bg-green-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-600" disabled>WhatsApp</button>
-                                </div>
+                             <!-- Call to Action Buttons -->
+                            <div class="mt-8 pt-6 border-t grid sm:grid-cols-2 gap-4">
+                                <a href="/eligibility-form" id="apply-loan-cta" class="page-link w-full text-center bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition-colors">Apply for this Loan</a>
+                                <a href="https://wa.me/919214104963" target="_blank" class="w-full text-center bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors">Talk to our Experts</a>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Amortization Schedule -->
+                    <div class="mt-8 bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-2xl font-bold">Amortization Schedule</h2>
+                            <button id="download-schedule-btn" class="bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg hover:bg-black disabled:bg-gray-400" disabled>Download Full Schedule as PDF</button>
+                        </div>
+                        <div id="amortization-table-container" class="max-h-96 overflow-y-auto border rounded-lg">
+                           <p class="p-4 text-center text-gray-500">Calculate an EMI to see the detailed monthly schedule.</p>
                         </div>
                     </div>
                 </div>
-            </div>`;
+            </div>
+        `;
 
-        const form = document.getElementById('main-emi-form');
+        // --- Setup Event Listeners for the new calculator ---
         const loanTypeSelect = document.getElementById('loan-type');
-        const rateInput = document.getElementById('emi-rate');
+        const amountSlider = document.getElementById('emi-amount-slider');
+        const amountText = document.getElementById('emi-amount-text');
+        const rateSlider = document.getElementById('emi-rate-slider');
+        const rateText = document.getElementById('emi-rate-text');
+        const tenureSlider = document.getElementById('emi-tenure-slider');
+        const tenureDisplay = document.getElementById('tenure-display');
+        const tenureYearsBtn = document.getElementById('tenure-years-btn');
+        const tenureMonthsBtn = document.getElementById('tenure-months-btn');
 
-        loanTypeSelect.addEventListener('change', (e) => {
-            const selectedOption = e.target.options[e.target.selectedIndex];
-            rateInput.value = selectedOption.value;
+        // Populate Loan Types
+        if (productData) {
+            Object.keys(productData).forEach(key => {
+                if (!key.includes('insurance')) {
+                    const option = document.createElement('option');
+                    option.value = productData[key].roi || '10';
+                    option.dataset.loanKey = key;
+                    option.textContent = productData[key].name;
+                    loanTypeSelect.appendChild(option);
+                }
+            });
+        }
+
+        // Sync Sliders and Text Inputs
+        const setupSlider = (sliderEl, textEl, isCurrency = false) => {
+            textEl.addEventListener('input', () => {
+                let value = isCurrency ? textEl.value.replace(/,/g, '') : textEl.value;
+                sliderEl.value = value;
+                if (isCurrency) textEl.value = parseFloat(value).toLocaleString('en-IN');
+                calculateAndDisplayMainEmi();
+            });
+            sliderEl.addEventListener('input', () => {
+                textEl.value = isCurrency ? parseFloat(sliderEl.value).toLocaleString('en-IN') : sliderEl.value;
+                calculateAndDisplayMainEmi();
+            });
+        };
+
+        // Configure Amount Slider
+        amountSlider.min = 50000; amountSlider.max = 20000000; amountSlider.step = 10000; amountSlider.value = 2500000;
+        amountText.value = (2500000).toLocaleString('en-IN');
+        setupSlider(amountSlider, amountText, true);
+
+        // Configure Rate Slider
+        rateSlider.min = 6; rateSlider.max = 20; rateSlider.step = 0.05; rateSlider.value = 8.5;
+        rateText.value = 8.5;
+        setupSlider(rateSlider, rateText);
+
+        // Configure Tenure Slider & Toggle
+        let isTenureInYears = true;
+        const updateTenureSlider = () => {
+            if (isTenureInYears) {
+                tenureSlider.min = 1; tenureSlider.max = 30; tenureSlider.step = 1; tenureSlider.value = 20;
+            } else {
+                tenureSlider.min = 12; tenureSlider.max = 360; tenureSlider.step = 1; tenureSlider.value = 240;
+            }
+            tenureDisplay.textContent = `${tenureSlider.value} ${isTenureInYears ? 'Years' : 'Months'}`;
+            calculateAndDisplayMainEmi();
+        };
+
+        tenureYearsBtn.addEventListener('click', () => {
+            isTenureInYears = true;
+            tenureYearsBtn.classList.add('bg-white', 'shadow');
+            tenureMonthsBtn.classList.remove('bg-white', 'shadow');
+            updateTenureSlider();
         });
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
+        tenureMonthsBtn.addEventListener('click', () => {
+            isTenureInYears = false;
+            tenureMonthsBtn.classList.add('bg-white', 'shadow');
+            tenureYearsBtn.classList.remove('bg-white', 'shadow');
+            updateTenureSlider();
+        });
+        
+        tenureSlider.addEventListener('input', () => {
+            tenureDisplay.textContent = `${tenureSlider.value} ${isTenureInYears ? 'Years' : 'Months'}`;
             calculateAndDisplayMainEmi();
         });
 
+        // Loan Type Change
+        loanTypeSelect.addEventListener('change', (e) => {
+            const selectedRate = e.target.value.replace('%', '');
+            rateSlider.value = selectedRate;
+            rateText.value = selectedRate;
+            calculateAndDisplayMainEmi();
+        });
+
+        // PDF Download Button
         document.getElementById('download-schedule-btn').addEventListener('click', generatePdf);
-        document.getElementById('gcal-reminder-btn').addEventListener('click', setGoogleCalendarReminder);
-        document.getElementById('wa-reminder-btn').addEventListener('click', setWhatsAppReminder);
 
         calculateAndDisplayMainEmi(); // Initial calculation
+        updateTenureSlider(); // Set initial tenure slider config
     }
 
     function calculateAndDisplayMainEmi() {
-        if (!document.getElementById('main-emi-form')) return; // Guard clause
-        const amount = parseFloat(document.getElementById('emi-amount').value);
-        const rate = parseFloat(document.getElementById('emi-rate').value);
-        const tenure = parseFloat(document.getElementById('emi-tenure').value);
-        const resultContainer = document.getElementById('emi-main-result');
-        const suggestionsContainer = document.getElementById('ai-suggestions');
-        const downloadBtn = document.getElementById('download-schedule-btn');
-        const gcalBtn = document.getElementById('gcal-reminder-btn');
-        const waBtn = document.getElementById('wa-reminder-btn');
+        if (!document.getElementById('main-emi-form')) return;
 
-        if (amount > 0 && rate > 0 && tenure > 0) {
+        const amount = parseFloat(document.getElementById('emi-amount-text').value.replace(/,/g, '')) || 0;
+        const rate = parseFloat(document.getElementById('emi-rate-text').value) || 0;
+        const tenureValue = parseInt(document.getElementById('emi-tenure-slider').value) || 0;
+        const isYears = document.getElementById('tenure-years-btn').classList.contains('shadow');
+        const tenureInMonths = isYears ? tenureValue * 12 : tenureValue;
+
+        const downloadBtn = document.getElementById('download-schedule-btn');
+
+        if (amount > 0 && rate > 0 && tenureInMonths > 0) {
             const monthlyRate = rate / (12 * 100);
-            const n = tenure * 12;
-            const emi = (amount * monthlyRate * Math.pow(1 + monthlyRate, n)) / (Math.pow(1 + monthlyRate, n) - 1);
-            const totalPayment = emi * n;
+            const emi = (amount * monthlyRate * Math.pow(1 + monthlyRate, tenureInMonths)) / (Math.pow(1 + monthlyRate, tenureInMonths) - 1);
+            const totalPayment = emi * tenureInMonths;
             const totalInterest = totalPayment - amount;
 
-            resultContainer.innerHTML = `
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div><p class="text-sm text-gray-500">Monthly EMI</p><p class="text-2xl font-bold text-primary-color">₹${Math.round(emi).toLocaleString('en-IN')}</p></div>
-                    <div><p class="text-sm text-gray-500">Total Interest</p><p class="text-2xl font-bold">₹${Math.round(totalInterest).toLocaleString('en-IN')}</p></div>
-                    <div><p class="text-sm text-gray-500">Total Payment</p><p class="text-2xl font-bold">₹${Math.round(totalPayment).toLocaleString('en-IN')}</p></div>
-                </div>`;
-            
-            let suggestion = "Consider a shorter tenure to save on interest. ";
-            if (tenure > 5) {
-                const shorterTenure = tenure > 10 ? tenure - 5 : Math.ceil(tenure/2);
-                const shorter_n = shorterTenure * 12;
-                const shorter_emi = (amount * monthlyRate * Math.pow(1 + monthlyRate, shorter_n)) / (Math.pow(1 + monthlyRate, shorter_n) - 1);
-                const shorter_totalPayment = shorter_emi * shorter_n;
-                const savedInterest = totalPayment - shorter_totalPayment;
-                if (savedInterest > 0) {
-                    suggestion += `By choosing a ${shorterTenure}-year tenure, you could save <strong class="text-green-600">₹${Math.round(savedInterest).toLocaleString('en-IN')}</strong> in interest! Your new EMI would be ₹${Math.round(shorter_emi).toLocaleString('en-IN')}.`;
-                }
-            } else {
-                 suggestion = "This looks like a good plan. A shorter tenure generally saves you more in interest payments over time."
-            }
-            suggestionsContainer.innerHTML = `<p>${suggestion}</p>`;
+            // Update main results
+            document.getElementById('emi-result-value').querySelector('p:last-child').textContent = `₹${Math.round(emi).toLocaleString('en-IN')}`;
+            document.getElementById('principal-val').textContent = `₹${amount.toLocaleString('en-IN')}`;
+            document.getElementById('interest-val').textContent = `₹${Math.round(totalInterest).toLocaleString('en-IN')}`;
+            document.getElementById('total-payment-val').textContent = `₹${Math.round(totalPayment).toLocaleString('en-IN')}`;
 
-            [downloadBtn, gcalBtn, waBtn].forEach(btn => btn.disabled = false);
+            // Update Pie Chart
+            const interestPercentage = (totalInterest / totalPayment) * 100;
+            document.getElementById('emi-pie-chart').style.background = `conic-gradient(#f97316 ${interestPercentage}%, #3b82f6 0)`;
+
+            // Generate and display amortization table
+            generateAmortizationTable(amount, emi, monthlyRate, tenureInMonths);
+
+            // Update the "Apply for this Loan" button link
+            const applyBtn = document.getElementById('apply-loan-cta');
+            const loanTypeSelect = document.getElementById('loan-type');
+            if (applyBtn && loanTypeSelect) {
+                const selectedLoanName = loanTypeSelect.options[loanTypeSelect.selectedIndex].text;
+                applyBtn.href = `/eligibility-form?product=${encodeURIComponent(selectedLoanName)}`;
+            }
+
+            downloadBtn.disabled = false;
         } else {
-             resultContainer.innerHTML = '<p>Please enter valid loan details.</p>';
-             suggestionsContainer.innerHTML = '<p>Enter loan details to get suggestions.</p>';
-             [downloadBtn, gcalBtn, waBtn].forEach(btn => btn.disabled = true);
+            // If calculation is not valid, disable the button and reset its link
+            const applyBtn = document.getElementById('apply-loan-cta');
+            if(applyBtn) {
+                applyBtn.href = '/eligibility-form';
+            }
+            downloadBtn.disabled = true;
         }
     }
 
-    function generatePdf() {
+    function generateAmortizationTable(amount, emi, monthlyRate, tenureInMonths) {
+        const tableContainer = document.getElementById('amortization-table-container');
+        let tableHtml = `
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 sticky top-0">
+                    <tr>
+                        <th scope="col" class="px-4 py-3">Month</th>
+                        <th scope="col" class="px-4 py-3">Principal</th>
+                        <th scope="col"="px-4 py-3">Interest</th>
+                        <th scope="col" class="px-4 py-3">Ending Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+        let balance = amount;
+        for (let i = 1; i <= tenureInMonths; i++) {
+            const interest = balance * monthlyRate;
+            const principal = emi - interest;
+            balance -= principal;
+            tableHtml += `
+                <tr class="bg-white border-b">
+                    <td class="px-4 py-2">${i}</td>
+                    <td class="px-4 py-2">₹${Math.round(principal).toLocaleString('en-IN')}</td>
+                    <td class="px-4 py-2">₹${Math.round(interest).toLocaleString('en-IN')}</td>
+                    <td class="px-4 py-2 font-semibold">₹${Math.round(balance > 0 ? balance : 0).toLocaleString('en-IN')}</td>
+                </tr>
+            `;
+        }
+        tableHtml += `</tbody></table>`;
+        tableContainer.innerHTML = tableHtml;
+    }
+
+    // --- Helpers for PDF-safe formatting ---
+    function asciiComma(n) {
+        // Use pure ASCII comma grouping instead of en-IN to avoid Unicode spaces
+        const s = Math.round(Number(n)).toString();
+        return s.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    function pdfSafe(str) {
+        // Replace ₹ with 'INR ', NBSP with space, and remove other non-ASCII characters
+        return String(str)
+            .replace(/\u20B9/g, 'INR ') // Rupee symbol
+            .replace(/\u00A0/g, ' ')    // Non-breaking space
+            .replace(/[^\x20-\x7E]/g, ''); // Keep only printable ASCII characters
+    }
+
+    async function generatePdf() {
         if (!document.getElementById('main-emi-form')) return; // Guard clause
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
-        const amount = parseFloat(document.getElementById('emi-amount').value);
-        const rate = parseFloat(document.getElementById('emi-rate').value);
-        const tenure = parseFloat(document.getElementById('emi-tenure').value);
+        
+        const amount = parseFloat(document.getElementById('emi-amount-text').value.replace(/,/g, '')) || 0;
+        const downloadDate = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
 
-        if (!(amount > 0 && rate > 0 && tenure > 0)) {
-            alert("Please calculate a valid EMI before downloading the schedule.");
+        const rate = parseFloat(document.getElementById('emi-rate-text').value) || 0;
+        const tenureValue = parseInt(document.getElementById('emi-tenure-slider').value) || 0;
+        const isYears = document.getElementById('tenure-years-btn').classList.contains('shadow');
+        const tenureInMonths = isYears ? tenureValue * 12 : tenureValue;
+
+        const loanTypeSelect = document.getElementById('loan-type');
+        const selectedLoanType = loanTypeSelect.options[loanTypeSelect.selectedIndex].text;
+
+        if (!(amount > 0 && rate > 0 && tenureInMonths > 0)) {
+            alert("Please calculate a valid EMI before downloading the schedule. / कृपया शेड्यूल डाउनलोड करने से पहले एक मान्य ईएमआई की गणना करें।");
             return;
         }
 
+        const monthlyRate = rate / 12 / 100;
+        const emi = (amount * monthlyRate * Math.pow(1 + monthlyRate, tenureInMonths)) / (Math.pow(1 + monthlyRate, tenureInMonths) - 1);
+        const totalPayment = emi * tenureInMonths;
+        const totalInterest = totalPayment - amount;
+
         // --- PDF Header ---
         const img = new Image();
-        img.src = 'https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png';
+        img.src = 'https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png'; // Use a CORS-enabled image
         
         const addContentToPdf = () => {
+            doc.setFont("helvetica", "normal");
+
             doc.addImage(img, 'PNG', 14, 10, 20, 20);
-            doc.setFontSize(16);
-            doc.text("Shree Karni Kripa Associates", 105, 18, { align: 'center'});
-            doc.setFontSize(10);
-            doc.text("EMI Amortization Schedule", 105, 24, { align: 'center'});
+            doc.setFontSize(16); doc.setFont('helvetica', 'bold'); doc.setTextColor(0);
+            doc.text("Shree Karni Kripa Associates (SKF Ajmer)", 105, 16, { align: 'center' });
+            doc.setFontSize(9); doc.setFont('helvetica', 'normal'); doc.setTextColor(100);
+            doc.text("2nd Floor, Bhansali Complex, Kayad Road, Ajmer – 305001", 105, 21, { align: 'center' });
+            doc.text("Contact: 9214104963 | 9352358494 | insurancesolution2018@gmail.com", 105, 26, { align: 'center' });
+            
             doc.setDrawColor(200);
-            doc.line(14, 32, 196, 32);
+            doc.line(14, 30, 196, 30);
 
+            doc.setFontSize(12); doc.setFont('helvetica', 'bold'); doc.setTextColor(0);
+            doc.text(pdfSafe(`${selectedLoanType} - Amortization Schedule`), 14, 38);
+            doc.setFontSize(10); doc.setFont('helvetica', 'normal'); doc.setTextColor(100);
+            doc.text(`Generated on: ${downloadDate}`, 196, 38, { align: 'right' });
+
+            // Loan and Payment Summary Tables
             doc.autoTable({
-                startY: 40,
-                head: [['Loan Details', 'Value']],
+                startY: 42,
+                head: [[pdfSafe('Loan Summary'), pdfSafe('Payment Summary')]],
                 body: [
-                    ['Loan Amount', `Rs. ${amount.toLocaleString('en-IN')}`],
-                    ['Interest Rate', `${rate}% p.a.`],
-                    ['Loan Tenure', `${tenure} Years`],
+                    [pdfSafe(`Loan Amount: INR ${asciiComma(amount)}`), pdfSafe(`Monthly EMI: INR ${asciiComma(emi)}`)],
+                    [pdfSafe(`Interest Rate: ${rate}% p.a.`), pdfSafe(`Total Interest Payable: INR ${asciiComma(totalInterest)}`)],
+                    [pdfSafe(`Loan Tenure: ${tenureInMonths} months (${isYears ? tenureValue + ' years' : (tenureValue/12).toFixed(1) + ' years'})`), pdfSafe(`Total Payment: INR ${asciiComma(totalPayment)}`)]
                 ],
-                theme: 'striped'
+                theme: 'grid',
+                headStyles: { fillColor: [0, 90, 156] },
+                didParseCell: function (data) {
+                    if (data.section === 'head') {
+                        data.cell.styles.halign = 'center';
+                    }
+                }
             });
-
-            const monthlyRate = rate / 12 / 100;
-            const numPayments = tenure * 12;
-            const emi = (amount * monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
 
             let balance = amount;
             const tableData = [];
-            for (let i = 1; i <= numPayments; i++) {
+            for (let i = 1; i <= tenureInMonths; i++) {
                 const interest = balance * monthlyRate;
                 const principal = emi - interest;
-                balance -= principal;
+                balance = balance - principal;
                 tableData.push([
                     i,
-                    `Rs. ${Math.round(principal).toLocaleString('en-IN')}`,
-                    `Rs. ${Math.round(interest).toLocaleString('en-IN')}`,
-                    `Rs. ${Math.round(balance > 0 ? balance : 0).toLocaleString('en-IN')}`,
-                ]);
+                    pdfSafe(`INR ${asciiComma(principal)}`),
+                    pdfSafe(`INR ${asciiComma(interest)}`),
+                    pdfSafe(`INR ${asciiComma(balance > 0 ? balance : 0)}`),
+                ].map(String));
             }
 
+            // Disclaimer Note
+            const finalY = doc.lastAutoTable.finalY || 10;
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'italic');
+            doc.setTextColor(100);
+            const disclaimerText = "Disclaimer: This is an estimated calculation. Actual interest rates and EMI may vary based on bank policies. For accurate information, please contact SKF Associates.";
+            const disclaimerLines = doc.splitTextToSize(disclaimerText, 180); // Wrap text
+            doc.text(disclaimerLines, 14, finalY + 10);
+
             doc.autoTable({
-                startY: doc.lastAutoTable.finalY + 10,
-                head: [['#', 'Principal', 'Interest', 'Balance']],
+                startY: finalY + 25,
+                head: [['#', 'Principal', 'Interest', 'Balance'].map(pdfSafe)],
+                headStyles: { fillColor: [22, 160, 133], repeatHeaders: true },
                 body: tableData,
                 theme: 'grid'
             });
@@ -759,47 +1038,33 @@ document.addEventListener('DOMContentLoaded', function() {
             doc.save('EMI_Schedule_SKF_Ajmer.pdf');
         };
 
-        // Ensure image is loaded before generating PDF
-        if (img.complete) {
-            addContentToPdf();
-        } else {
-            img.onload = addContentToPdf;
-        }
-    }
+        // Handle image loading for PDF generation
+        try {
+            // The image needs to be loaded before it can be added to the PDF.
+            // We create a new image element and set its src. The `onload` event ensures
+            // that the PDF generation code runs only after the image is fully loaded,
+            // preventing errors where the PDF is generated before the image is ready.
+            const pdfImage = new Image();
+            pdfImage.crossOrigin = "Anonymous"; // Important for loading images from other domains
+            pdfImage.onload = function() {
+                // The addContentToPdf function is called here, AFTER the image is loaded.
+                addContentToPdf(); 
+            };
+            // If the image fails to load, the `onerror` handler will generate the PDF without the image.
+            pdfImage.onerror = function() { console.error("PDF image failed to load."); addContentToPdf(); };
+            pdfImage.src = 'https://res.cloudinary.com/diqo7qmnw/image/upload/v1754217266/logo1_lt1w3w.png';
+        } catch (e) { console.error("Could not load image for PDF, continuing without it.", e); addContentToPdf(); }
 
-    function setGoogleCalendarReminder() {
-        if (!document.getElementById('main-emi-form')) return; // Guard clause
-        const emi = document.querySelector('#emi-main-result .text-primary-color')?.textContent || 'your EMI';
-        const eventTitle = `Pay Loan EMI of ${emi}`;
-        const eventDetails = `Don't forget to pay your loan EMI. For any queries, contact Shree Karni Kripa Associates.`;
-        const today = new Date();
-        const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, 5, 10, 0, 0);
-        const formatDate = (date) => date.toISOString().replace(/-|:|\.\d+/g, '');
-        const startDate = formatDate(nextMonth);
-        const endDate = formatDate(new Date(nextMonth.getTime() + 60 * 60 * 1000));
-        const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(eventDetails)}&recur=RRULE:FREQ=MONTHLY`;
-        window.open(url, '_blank');
-    }
-
-    function setWhatsAppReminder(){
-        if (!document.getElementById('main-emi-form')) return; // Guard clause
-        const emi = document.querySelector('#emi-main-result .text-primary-color')?.textContent || 'your EMI';
-        const phone = '919214104963'; 
-        const message = `Hello SKF Ajmer, please set a monthly reminder for my loan EMI of ${emi}.`;
-        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
     }
 
     function handleLinkClick(e) {
-        const sidebarContainer = document.getElementById('loan-sidebar');
-        const sidebarOverlay = document.getElementById('sidebar-overlay');
         const href = e.currentTarget.getAttribute('href');
-        if (href && href.startsWith('#')) {
+        const isExternal = href && href.startsWith('http');
+        
+        if (href && href.startsWith('/') && !isExternal) {
             e.preventDefault();
-            window.location.hash = href;
-        }
-        if (sidebarContainer && sidebarContainer.classList.contains('open')) {
-            sidebarContainer.classList.remove('open');
-            sidebarOverlay.classList.remove('open');
+            window.history.pushState({}, '', href);
+            showPage(href.slice(1));
         }
         // Close mobile menu on link click
         if (mainNav && mainNav.classList.contains('is-open')) {
@@ -820,30 +1085,30 @@ document.addEventListener('DOMContentLoaded', function() {
     function generateNavigation() {
         // Reverted to static navigation as requested
         const productLinks = `
-                <li><a href="#home-loan" class="page-link">Home Loan</a></li>
-                <li><a href="#business-loan" class="page-link">Business Loan</a></li>
-                <li><a href="#personal-loan" class="page-link">Personal Loan</a></li>
-                <li><a href="#vehicle-loan" class="page-link">Vehicle Loan</a></li>
-                <li><a href="#lap-loan" class="page-link">Loan Against Property</a></li>
-                <li><a href="#health-insurance" class="page-link">Insurance</a></li>
+                <li><a href="/home-loan" class="page-link">Home Loan</a></li>
+                <li><a href="/business-loan" class="page-link">Business Loan</a></li>
+                <li><a href="/personal-loan" class="page-link">Personal Loan</a></li>
+                <li><a href="/vehicle-loan" class="page-link">Vehicle Loan</a></li>
+                <li><a href="/lap-loan" class="page-link">Loan Against Property</a></li>
+                <li><a href="/health-insurance" class="page-link">Insurance</a></li>
             `;
         
         const navItems = [
             // This button is for the mobile menu
-            { href: '#eligibility-form', text: 'Apply Now', isApplyNow: true, visibility: 'lg:hidden' },
-            { href: '#home', text: 'Home' },
+            { href: '/eligibility-form', text: 'Apply Now', isApplyNow: true, visibility: 'lg:hidden' },
+            { href: '/', text: 'Home' },
             { 
-                href: '#our-services', 
+                href: '/#our-services', 
                 text: 'Products', 
                 dropdown: productLinks
             },
-            { href: '#about', text: 'About Us' },
+            { href: '/about', text: 'About Us' },
             { href: 'https://karni-kripa.blogspot.com', text: 'Blog', target: '_blank' },
-            { href: '#emi-calculator', text: 'EMI Calculator' },
-            { href: '#join-dsa', text: 'Join Us' },
-            { href: '#contact', text: 'Contact Us' },
+            { href: '/emi-calculator', text: 'EMI Calculator' },
+            { href: '/join-dsa', text: 'Join Us' },
+            { href: '/contact', text: 'Contact Us' },
             // This button is for the desktop menu
-            { href: '#eligibility-form', text: 'Apply Now', isApplyNow: true, visibility: 'hidden lg:block' },
+            { href: '/eligibility-form', text: 'Apply Now', isApplyNow: true, visibility: 'hidden lg:block' },
         ];
 
         const desktopNavUl = document.getElementById('desktop-nav-ul');
@@ -1606,8 +1871,8 @@ document.addEventListener('DOMContentLoaded', function() {
                      <h1 class="font-extrabold leading-tight mb-4" style="font-size: clamp(2.25rem, 1.5rem + 3.75vw, 4.5rem); animation: textFadeInUp 1s ease-out;">Your Trusted Loan & Insurance Advisors</h1>
                      <p class="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto mb-8" style="animation: textFadeInUp 1s ease-out 0.3s; animation-fill-mode: backwards;">"Sapne aap dekho, poore hum karenge." Get the Best Financial Solutions in Rajasthan.</p>
                      <div class="flex flex-col sm:flex-row justify-center items-center gap-4" style="animation: textFadeInUp 1s ease-out 0.6s; animation-fill-mode: backwards;">
-                         <a href="#eligibility-form" class="page-link btn-highlight bg-[#0056b3] hover:bg-[#004a80] text-white py-3 px-8 rounded-lg transition-colors w-full sm:w-auto btn-text-style">Apply Now</a>
-                         <a href="#home?scroll=our-services" class="page-link bg-white hover:bg-[#0056b3] text-[#0056b3] hover:text-white border-2 border-[#0056b3] py-3 px-8 rounded-lg transition-colors w-full sm:w-auto btn-text-style">Explore Services</a>
+                         <a href="/eligibility-form" class="page-link btn-highlight bg-[#0056b3] hover:bg-[#004a80] text-white py-3 px-8 rounded-lg transition-colors w-full sm:w-auto btn-text-style">Apply Now</a>
+                         <a href="/#our-services" class="page-link bg-white hover:bg-[#0056b3] text-[#0056b3] hover:text-white border-2 border-[#0056b3] py-3 px-8 rounded-lg transition-colors w-full sm:w-auto btn-text-style">Explore Services</a>
                      </div>
                  </div>
             </section>
@@ -1615,24 +1880,24 @@ document.addEventListener('DOMContentLoaded', function() {
             <section class="py-16 md:py-20 bg-gray-100 overflow-hidden">
                 <div class="container mx-auto px-6">
                     <h2 class="font-bold mb-12 text-center text-gray-800" style="font-size: clamp(1.875rem, 1.5rem + 1.88vw, 2.5rem);">Our Gallery & Motivation</h2>
-                    <div class="swiper-container gallery-carousel relative">
+                    <div class="swiper-container gallery-carousel relative" aria-label="Our Company Gallery">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030488/linkconnect_1758029887796_nxonu1.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030487/linkconnect_1758029910745_nercgv.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758030023899_gmxd9t.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758030081550_y9hbzs.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758030067320_mjrghs.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758029972266_htzhcz.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758029992963_jif7fu.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030470/linkconnect_1758030043952_qpwesp.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030469/linkconnect_1758030145517_q1ehnh.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030469/linkconnect_1758030387720_lxdc3r.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030469/linkconnect_1758030169400_mapkbe.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030469/linkconnect_1758030268017_uoew8e.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030468/linkconnect_1758030218956_uzuv49.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030468/linkconnect_1758030246325_a7sfga.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030468/linkconnect_1758030406784_tusczt.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
-                            <div class="swiper-slide"><a href="#home?scroll=our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030468/linkconnect_1758030191922_zmny3v.png" alt="Gallery Image" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030488/linkconnect_1758029887796_nxonu1.png" alt="Gallery Image 1" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030487/linkconnect_1758029910745_nercgv.png" alt="Gallery Image 2" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758030023899_gmxd9t.png" alt="Gallery Image 3" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758030081550_y9hbzs.png" alt="Gallery Image 4" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758030067320_mjrghs.png" alt="Gallery Image 5" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758029972266_htzhcz.png" alt="Gallery Image 6" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030471/linkconnect_1758029992963_jif7fu.png" alt="Gallery Image 7" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030470/linkconnect_1758030043952_qpwesp.png" alt="Gallery Image 8" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030469/linkconnect_1758030145517_q1ehnh.png" alt="Gallery Image 9" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030469/linkconnect_1758030387720_lxdc3r.png" alt="Gallery Image 10" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030469/linkconnect_1758030169400_mapkbe.png" alt="Gallery Image 11" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030469/linkconnect_1758030268017_uoew8e.png" alt="Gallery Image 12" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030468/linkconnect_1758030218956_uzuv49.png" alt="Gallery Image 13" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030468/linkconnect_1758030246325_a7sfga.png" alt="Gallery Image 14" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030468/linkconnect_1758030406784_tusczt.png" alt="Gallery Image 15" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
+                            <div class="swiper-slide"><a href="/#our-services" class="page-link block"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_800,q_auto:good,f_auto/v1758030468/linkconnect_1758030191922_zmny3v.png" alt="Gallery Image 16" class="rounded-lg shadow-lg object-contain h-64 w-full bg-white" loading="lazy" decoding="async"></a></div>
                         </div>
                     </div>
                 </div>
@@ -1641,13 +1906,13 @@ document.addEventListener('DOMContentLoaded', function() {
             <section id="our-services" class="py-16 md:py-24 bg-white">
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="font-bold mb-12 text-gray-800" style="font-size: clamp(1.875rem, 1.5rem + 1.88vw, 2.5rem);">Our Loan & Insurance Services</h2>
-                    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                        <a href="#home-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757241971/WhatsApp_Image_2025-09-07_at_3.20.38_PM_lqp1dy.jpg" alt="Home Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Home Loan</h3></div></a>
-                        <a href="#business-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757239663/PHOTO-2025-09-07-15-20-36_b8guao.jpg" alt="Business Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Business Loan</h3></div></a>
-                        <a href="#personal-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757239663/PHOTO-2025-09-07-15-20-34_q09kn6.jpg" alt="Personal Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Personal Loan</h3></div></a>
-                        <a href="#vehicle-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_600,q_auto:good,f_auto/v1758037256/linkconnect_1758037092966_b4yejx.png" alt="Vehicle Loan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Vehicle Loan</h3></div></a>
-                        <a href="#lap-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757240471/WhatsApp_Image_2025-09-07_at_3.20.41_PM_yunya8.jpg" alt="Loan Against Property" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Loan Against Property</h3></div></a>
-                        <a href="#health-insurance" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757387616/PHOTO-2025-09-09-08-37-27_csvkbm.jpg" alt="Health Insurance" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Health Insurance</h3></div></a>
+                    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8" aria-label="Our Services">
+                        <a href="/home-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757241971/WhatsApp_Image_2025-09-07_at_3.20.38_PM_lqp1dy.jpg" alt="Home Loan Service in Ajmer" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Home Loan</h3></div></a>
+                        <a href="/business-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757239663/PHOTO-2025-09-07-15-20-36_b8guao.jpg" alt="Business Loan Service in Rajasthan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Business Loan</h3></div></a>
+                        <a href="/personal-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757239663/PHOTO-2025-09-07-15-20-34_q09kn6.jpg" alt="Personal Loan Service in Ajmer" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Personal Loan</h3></div></a>
+                        <a href="/vehicle-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dugvqluo2/image/upload/w_600,q_auto:good,f_auto/v1758037256/linkconnect_1758037092966_b4yejx.png" alt="Vehicle Loan Service in Rajasthan" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Vehicle Loan</h3></div></a>
+                        <a href="/lap-loan" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757240471/WhatsApp_Image_2025-09-07_at_3.20.41_PM_yunya8.jpg" alt="Loan Against Property Service in Ajmer" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Loan Against Property</h3></div></a>
+                        <a href="/health-insurance" class="page-link group block rounded-lg overflow-hidden shadow-lg transform hover:-translate-y-2 transition-transform duration-300"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/w_600,q_auto:good,f_auto/v1757387616/PHOTO-2025-09-09-08-37-27_csvkbm.jpg" alt="Health Insurance Service in Ajmer" class="w-full h-auto" loading="lazy" decoding="async"><div class="p-4 md:p-6 bg-gray-50"><h3 class="text-lg md:text-xl font-bold text-gray-800">Health Insurance</h3></div></a>
                     </div>
                 </div>
             </section>
@@ -1655,7 +1920,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <section id="why-choose-us" class="py-16 md:py-24 bg-white overflow-hidden">
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="font-bold text-slate-800 mb-4" style="font-size: clamp(1.875rem, 1.5rem + 1.88vw, 2.5rem);">Why Choose SKF Ajmer?</h2>
-                    <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">Because trust, transparency, and results matter. We are committed to finding the best financial solutions for you.</p>
+                    <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">Because trust, transparency, and results matter. We are committed to finding the best financial solutions for you in Ajmer and across Rajasthan.</p>
                     <div class="swiper-container why-us-carousel max-w-6xl mx-auto">
                         <div class="swiper-wrapper pb-12">
                             <!-- Card 1: Loan Disbursed -->
@@ -1696,7 +1961,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <section class="py-16 md:py-24 bg-white overflow-hidden">
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="font-bold mb-12 text-gray-800" style="font-size: clamp(1.875rem, 1.5rem + 1.88vw, 2.5rem);">Brands We Trust</h2>
-                    <div class="marquee" x-data>
+                    <div class="marquee" x-data aria-label="Our trusted banking partners">
                         <div class="marquee-content">
                             <!-- Logos are duplicated for a seamless loop -->
                             <img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621450/imgi_85_hdfc-2_dzzdra.png" alt="HDFC Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621416/imgi_76_YES-BANK_zgemo9.png" alt="YES Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621188/imgi_41_SBI_psonew.png" alt="SBI Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621186/imgi_28_IDFC-FIRST_wljvii.png" alt="IDFC First Bank" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621186/imgi_44_BHFL_Logo-min3723_m9hprx.png" alt="Bajaj Housing Finance" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756622692/imgi_118_AU-Logo-unit-2_prhzvg.png" alt="AU Small Finance Bank" loading="lazy" decoding="async"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/ICICI_Bank_Logo.svg/2560px-ICICI_Bank_Logo.svg.png" alt="ICICI Bank" loading="lazy" decoding="async" style="height:48px"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621451/imgi_30_tata-capital-housing-updated_t0xydb.png" alt="Tata Capital" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621451/imgi_88_aditya-upodated_ihx4kj.png" alt="Aditya Birla Capital" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621369/imgi_63_punawala3739_tljctp.png" alt="Poonawalla Fincorp" loading="lazy" decoding="async"><img src="https://res.cloudinary.com/dhme90fr1/image/upload/h_48,c_limit,q_auto,f_auto/v1756621450/imgi_82_file_sua6c1.png" alt="Lendingkart" loading="lazy" decoding="async">
@@ -1855,7 +2120,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </figure>
                                 </div>
                                 <div class="text-center mt-12">
-                                    <a href="#careers" class="page-link inline-block bg-white text-slate-800 border-2 border-slate-800 font-bold py-3 px-10 rounded-lg hover:bg-slate-800 hover:text-white transition-all text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">Join Our Team</a>
+                                    <a href="/careers" class="page-link inline-block bg-white text-slate-800 border-2 border-slate-800 font-bold py-3 px-10 rounded-lg hover:bg-slate-800 hover:text-white transition-all text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">Join Our Team</a>
                                 </div>
                             </section>
                         </div>
@@ -1868,7 +2133,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <ul>
                                 ${Object.keys(productData).map(key => `
                                     <li>
-                                        <a href="#${key}" class="page-link sidebar-loan-link">
+                                        <a href="/${key}" class="page-link sidebar-loan-link">
                                             ${productData[key].name}
                                         </a>
                                     </li>
@@ -2285,9 +2550,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     runningLoanDetailsContainer.classList.toggle('hidden', e.target.value !== 'Yes');
                 });
             });
+
+            // Auto-select the loan type if passed in the URL
+            if (selectedProduct) {
+                const loanTypeSelect = form.querySelector('#eligibility-loan-type');
+                const optionValue = findOptionValueByText(loanTypeSelect, selectedProduct);
+                if (optionValue) {
+                    loanTypeSelect.value = optionValue;
+                }
+            }
         }
     }
-    
+
     // Helper to find the option value from the display text
     function findOptionValueByText(selectElement, text) {
         return Array.from(selectElement.options).find(opt => opt.text === text)?.value;

@@ -1,277 +1,367 @@
  {
     "home-loan": {
         "name": "Home Loan",
-        "overview": "Apne ghar ka sapna saakar karein. We offer a wide range of home loan products designed to meet your unique needs, whether you are buying, constructing, or renovating your home. With competitive interest rates and long tenure, we make home ownership affordable and easy.",
+        "overview": "Realize your dream of owning a home. We offer a wide range of home loan products designed to meet your unique needs, whether you are buying, constructing, or renovating your home. With competitive interest rates and long tenures, we make homeownership affordable and easy.",
         "roi": "8.50%",
         "tenure": "30 Years",
         "images": [
-            "https://res.cloudinary.com/dhme90fr1/image/upload/v1757241971/WhatsApp_Image_2025-09-07_at_3.20.38_PM_lqp1dy.jpg",
-            "https://res.cloudinary.com/dhme90fr1/image/upload/v1757240471/WhatsApp_Image_2025-09-07_at_3.20.41_PM_yunya8.jpg",
-            "https://res.cloudinary.com/dhme90fr1/image/upload/v1757239691/PHOTO-2025-09-07-15-20-33_aaexip.jpg",
-            "https://res.cloudinary.com/dhme90fr1/image/upload/v1756626261/PHOTO-2025-08-31-13-08-02_2_szo0ga.jpg",
-            "https://res.cloudinary.com/dhme90fr1/image/upload/v1757239662/PHOTO-2025-09-07-15-20-39_udei1z.jpg"
+            "https://res.cloudinary.com/dugvqluo2/image/upload/v1758033567/linkconnect_1758033470610_ek6z8d.png",
+            "https://res.cloudinary.com/dugvqluo2/image/upload/v1758033567/linkconnect_1758033488070_pglplj.png",
+            "https://res.cloudinary.com/dugvqluo2/image/upload/v1758033566/linkconnect_1758033502770_ymmhcf.png"
         ],
         "subtypes": {
             "purchase": {
-                "name": "New Home Purchase",
-                "description": "Finance for buying a new or resale residential property. Get competitive rates and flexible tenure.",
+                "name": "Purchase Loan (New Home/Flat)",
+                "description": "For buying a ready-to-move-in or under-construction property.",
                 "roi": "8.50%",
                 "tenure": "30 Years",
-                "images": [
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758033567/linkconnect_1758033470610_ek6z8d.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758033567/linkconnect_1758033488070_pglplj.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758033566/linkconnect_1758033502770_ymmhcf.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758033565/linkconnect_1758033535735_orqzts.png"
-                ],
-                "eligibility": "Applicant must be an Indian resident, aged between 21 to 65 years. Salaried individuals or self-employed professionals with a stable income source and a good credit score (700+) are eligible.",
-                "features": ["Attractive interest rates", "Flexible repayment tenure up to 30 years", "Loan amounts up to 90% of property value", "Quick and transparent processing"],
-                "documents": ["PAN Card & Aadhaar Card", "Latest 3 months salary slips", "Form 16 or ITR for last 2 years", "Last 6 months bank statements", "Allotment letter or Sale agreement of the property"],
-                "faq": [ { "q": "Can I get 100% financing for my home?", "a": "Most banks finance up to 80-90% of the property value. The rest needs to be contributed by the buyer as a down payment." }, { "q": "Can a co-applicant be added to the home loan?", "a": "Yes, you can add a co-applicant, like your spouse or immediate family member, which can also help in increasing your loan eligibility." } ]
+                "eligibility": "Indian resident, salaried or self-employed, with a good credit history.",
+                "features": ["Attractive interest rates", "Flexible repayment tenure up to 30 years", "Loan amount up to 90% of property value", "Quick and transparent processing"],
+                "documents": ["PAN & Aadhaar Card", "Latest 3 months salary slips", "ITR for the last 2 years", "Last 6 months bank statements", "Property papers"],
+                "faq": [{ "q": "Can I get 100% financing for my home?", "a": "Most banks finance up to 80-90% of the property value. The rest needs to be contributed by the buyer as a down payment." }]
             },
             "construction": {
-                "name": "Home Construction",
-                "description": "Secure funds to build your own house on a plot of land you own. Disbursal in stages.",
+                "name": "Construction Loan",
+                "description": "For constructing a house on a plot you already own.",
                 "roi": "8.75%",
                 "tenure": "30 Years",
-                "images": [
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758033783/linkconnect_1758033693332_s2sjqp.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758033780/linkconnect_1758033734704_fyovmy.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758033778/linkconnect_1758033757194_szvwxd.png"
-                ],
-                "eligibility": "You must own a plot of land with clear titles. A detailed construction estimate, approved by a certified architect, and necessary permissions from local authorities are required.",
-                "features": ["Finance for construction on a freehold or leasehold plot", "Loan disbursed in tranches based on construction stage", "Flexible tenure and repayment options", "Expert legal and technical counselling"],
-                "documents": ["Proof of land ownership (Title Deed)", "Approved building plans from local authorities", "Construction cost estimate from an architect", "Standard KYC and income documents"],
-                "faq": [ { "q": "How is the loan disbursed for construction?", "a": "The loan is typically disbursed in 4-5 installments based on the progress of construction, which is verified by the bank." } ]
+                "eligibility": "You must own a plot of land with clear titles. A detailed construction estimate approved by a certified architect is required.",
+                "features": ["Finance for construction on a freehold or leasehold plot", "Loan disbursed in tranches based on construction stage", "Flexible tenure and repayment options"],
+                "documents": ["Proof of land ownership (Title Deed)", "Approved building plans from local authorities", "Construction cost estimate from an architect"],
+                "faq": [{ "q": "How is the loan disbursed for construction?", "a": "The loan is typically disbursed in 4-5 installments based on the progress of construction, which is verified by the bank." }]
             },
-            "renovation": {
-                "name": "Home Renovation",
-                "description": "Upgrade your existing home with funds for repairs, extensions, painting, and more.",
+            "plot-construction": {
+                "name": "Plot + Construction Loan (Composite Loan)",
+                "description": "A single loan for purchasing a plot and constructing a house on it.",
+                "roi": "8.80%",
+                "tenure": "30 Years",
+                "eligibility": "For individuals planning to buy a plot and start construction immediately.",
+                "features": ["Single loan for both plot purchase and construction", "Streamlined approval process", "Saves time and paperwork"],
+                "documents": ["Sale agreement for the plot", "Estimated construction cost from an architect", "Standard KYC and income documents"],
+                "faq": [{ "q": "Can I get a loan for only buying a plot?", "a": "Some banks offer loans just for plot purchase, but a composite loan requires construction to begin soon after the plot is bought." }]
+            },
+            "balance-transfer": {
+                "name": "Balance Transfer (BT)",
+                "description": "Move your existing home loan to another bank to avail a lower interest rate.",
+                "roi": "8.50%",
+                "tenure": "30 Years",
+                "eligibility": "Individuals with an existing home loan and a good repayment track record.",
+                "features": ["Lower interest rates", "Reduced EMIs", "Significant savings on interest cost", "Option for a top-up loan"],
+                "documents": ["Existing loan statement", "Photocopy of property documents", "Latest 12-month loan account statement"],
+                "faq": [{ "q": "How long does the balance transfer process take?", "a": "The process usually takes 15-20 days, depending on document verification and the new bank's policies." }]
+            },
+            "bt-topup": {
+                "name": "Balance Transfer + Top-up",
+                "description": "Transfer your loan and get additional funds on the same property.",
+                "roi": "8.60%",
+                "tenure": "30 Years",
+                "eligibility": "Existing home loan customers who wish to transfer their loan and need extra funds.",
+                "features": ["Benefit of a lower interest rate", "Access to additional funds", "Lower rates than personal loans", "Can be used for various needs"],
+                "documents": ["Same as standard BT documents", "Income proof to justify the ability to service the additional loan"],
+                "faq": [{ "q": "How much top-up can I get?", "a": "The top-up amount depends on your eligibility, the market value of the property, and the bank's policies." }]
+            },
+            "improvement": {
+                "name": "Home Improvement Loan",
+                "description": "For home repairs, renovation, or furnishing.",
                 "roi": "9.00%",
                 "tenure": "15 Years",
-                "images": [
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758033783/linkconnect_1758033693332_s2sjqp.png"
-                ],
-                "eligibility": "Must be the owner of the property being renovated. A detailed estimate of the renovation work from a contractor or architect is needed.",
-                "features": ["Covers costs of tiling, flooring, painting, plumbing, etc.", "Quick approval process", "No collateral required for smaller amounts", "Improves your property value"],
+                "eligibility": "Must be the owner of the property being renovated. A detailed estimate of the renovation work from a contractor is needed.",
+                "features": ["Covers costs of tiling, flooring, painting, plumbing, etc.", "Quick approval process", "Improves your property's value"],
                 "documents": ["Proof of property ownership", "Detailed renovation estimate", "KYC and income proofs"],
-                "faq": [ { "q": "Is there a limit on the renovation loan amount?", "a": "Yes, the loan amount depends on your income eligibility and the renovation estimate, subject to the bank's policy." } ]
+                "faq": [{ "q": "Is there a limit on the renovation loan amount?", "a": "Yes, the loan amount depends on your income eligibility and the renovation estimate, subject to the bank's policy." }]
+            },
+            "extension": {
+                "name": "Home Extension Loan",
+                "description": "For adding a new room or floor to your house.",
+                "roi": "9.10%",
+                "tenure": "20 Years",
+                "eligibility": "Existing homeowners who want to expand their property.",
+                "features": ["Creates more space for a growing family", "More cost-effective than buying a new house", "Increases your property's value"],
+                "documents": ["Proof of property ownership", "Approved extension plan from local authorities", "Cost estimate from an architect"],
+                "faq": [{ "q": "What is the difference between a home extension and a home improvement loan?", "a": "An extension loan is for adding new space (like a room), while an improvement loan is for repairing or renovating existing space." }]
+            }
+        }
+    },
+    "business-limits": {
+        "name": "बिज़नेस लिमिट्स: Cash Credit (CC) और Overdraft (OD) Limit",
+        "overview": "बिज़नेस को चलाने के लिए सिर्फ टर्म लोन ही नहीं, बल्कि रोज़मर्रा के खर्चों के लिए भी फंड की ज़रूरत होती है। श्री करणी कृपा एसोसिएट्स (SKF अजमेर) राजस्थान के व्यापारियों को कैश क्रेडिट (CC) लिमिट और ओवरड्राफ्ट (OD) लिमिट दिलाने में मदद करता है। यह एक पारंपरिक लोन नहीं है; यह एक घूमने वाली क्रेडिट लाइन (revolving credit line) है। इसका मतलब है कि बैंक आपको एक लिमिट (जैसे ₹50 लाख) देता है, और आप अपनी ज़रूरत के हिसाब से उसमें से पैसा निकाल सकते हैं और वापस जमा कर सकते हैं। आप सिर्फ उतने ही पैसे पर ब्याज देते हैं, जितने का आपने इस्तेमाल किया है।",
+        "documents": [
+            "KYC: पैन कार्ड, आधार कार्ड, बिज़नेस का पता प्रमाण।",
+            "बिज़नेस प्रूफ: GST सर्टिफिकेट, बिज़नेस रजिस्ट्रेशन।",
+            "फाइनेंशियल: पिछले 2-3 वर्षों का ITR, P&L स्टेटमेंट और बैलेंस शीट।",
+            "बैंक स्टेटमेंट: पिछले 12 महीनों का बिज़नेस अकाउंट स्टेटमेंट।",
+            "सिक्योरिटी (अगर लागू हो): प्रॉपर्टी के कागज़ात या FD की डिटेल्स।"
+        ],
+        "subtypes": {
+            "cash-credit-cc-limit": {
+                "name": "कैश क्रेडिट (CC) लिमिट",
+                "description": "यह लिमिट मुख्य रूप से आपके स्टॉक, इन्वेंट्री और कच्चे माल (raw materials) को फाइनेंस करने के लिए दी जाती है। यह आपके बिज़नेस के कैश फ्लो को बनाए रखने में मदद करती है।",
+                "eligibility": "बिज़नेस कम से कम 3 साल पुराना होना चाहिए। बिज़नेस ने पिछले 2-3 साल का ITR और GST रिटर्न भरा हो। बैंक के नियमों के अनुसार एक न्यूनतम वार्षिक टर्नओवर होना चाहिए। आपके पास फाइनेंस करने के लिए पर्याप्त स्टॉक या इन्वेंट्री होनी चाहिए।",
+                "faq": [
+                    {
+                        "q": "CC लिमिट की गणना कैसे की जाती है?",
+                        "a": "बैंक आमतौर पर आपकी इन्वेंट्री और स्टॉक के मूल्य का एक निश्चित प्रतिशत (जैसे 70-80%) आपको लिमिट के तौर पर देते हैं।"
+                    },
+                    {
+                        "q": "CC लिमिट पर ब्याज कैसे लगता है?",
+                        "a": "ब्याज सिर्फ उतने ही पैसे पर लगता है जितना आपने लिमिट में से इस्तेमाल किया है, और सिर्फ उतने ही दिनों के लिए लगता है जितने दिन आपने इस्तेमाल किया।"
+                    },
+                    {
+                        "q": "क्या CC लिमिट हर साल रिन्यू होती है?",
+                        "a": "हाँ, CC लिमिट आमतौर पर साल में एक बार आपके बिज़नेस के नए फाइनेंसियल डाक्यूमेंट्स के आधार पर रिन्यू की जाती है।"
+                    }
+                ]
+            },
+            "overdraft-od-limit": {
+                "name": "ओवरड्राफ्ट (OD) लिमिट",
+                "description": "यह आपके बैंक अकाउंट में 'नेगेटिव' जाने की सुविधा है। यह लिमिट आपकी FD, प्रॉपर्टी, या आपके बिज़नेस की प्रोफाइल के आधार पर (अनसिक्योर्ड) भी मिल सकती है।"
             }
         }
     },
     "business-loan": {
         "name": "Business Loan",
-        "overview": "Apne business ko nayi unchaiyon tak pahunchayein. Our business loans are designed to provide the financial support you need for expansion, purchasing machinery, or managing working capital. We offer both secured and unsecured options to fit your business needs.",
+        "overview": "Take your business to new heights. Our business loans are designed to provide the financial support you need for expansion, purchasing machinery, or managing working capital.",
         "roi": "10.50%",
         "tenure": "10 Years",
         "images": [
-            "https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-36_b8guao.jpg",
-            "https://res.cloudinary.com/dhme90fr1/image/upload/v1757239662/PHOTO-2025-09-07-15-20-36_1_kwtbrl.jpg",
-            "https://res.cloudinary.com/dhme90fr1/image/upload/v1757239662/PHOTO-2025-09-07-15-20-40_1_khdviy.jpg",
-            "https://res.cloudinary.com/dhme90fr1/image/upload/v1757239662/PHOTO-2025-09-07-15-20-37_yylckg.jpg"
+            "https://res.cloudinary.com/dugvqluo2/image/upload/v1758032416/linkconnect_1758032398057_tjpunk.png",
+            "https://res.cloudinary.com/dugvqluo2/image/upload/v1758032417/linkconnect_1758032308266_w08djn.png"
         ],
         "subtypes": {
             "working-capital": {
                 "name": "Working Capital Loan",
-                "description": "Manage your day-to-day business expenses and maintain healthy cash flow with our working capital loans.",
+                "description": "To meet the day-to-day expenses of the business (like paying salaries, buying stock).",
                 "roi": "12.50%",
                 "tenure": "5 Years",
-                "images": [
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758030471/linkconnect_1758030067320_mjrghs.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034205/linkconnect_1758034186904_fowsfe.png"
-                ],
-                "eligibility": "For businesses operational for at least 3 years with stable sales and profit. Required documents include GST returns and audited financials.",
-                "features": ["Maintains liquidity for daily operations", "Flexible usage of funds", "Overdraft facility available", "Quick processing and disbursal"],
-                "documents": ["Business registration documents", "GST returns for the last year", "Audited financials for last 3 years", "Bank statements for the last 12 months"],
-                "faq": [ { "q": "What is the difference between a cash credit and an overdraft facility?", "a": "Both are working capital loans. A cash credit is a short-term loan against inventory and receivables, while an overdraft allows you to withdraw more than your account balance up to a sanctioned limit." } ]
+                "eligibility": "Businesses operational for at least 3 years with stable sales and profit.",
+                "features": ["Maintains liquidity for daily operations", "Flexible use of funds", "Overdraft facility available"],
+                "documents": ["Business registration documents", "GST returns for the last year", "Audited financials for the last 3 years"],
+                "faq": []
             },
             "term": {
                 "name": "Term Loan",
-                "description": "Ideal for business expansion, purchasing machinery, or other long-term capital investments.",
+                "description": "For large expenses like business expansion, purchasing machinery, or opening a new office.",
                 "roi": "11.75%",
                 "tenure": "7 Years",
-                "images": [
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034372/linkconnect_1758034362285_gtkwq2.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034318/linkconnect_1758034287372_gmpdpg.png"
-                ],
-                "eligibility": "For established businesses looking for funds for capital expenditure like machinery purchase or expansion. A strong business plan and profitability track record are essential.",
-                "features": ["Ideal for long-term capital needs", "Fixed repayment schedule (EMI)", "Attractive interest rates", "Can be secured against assets"],
-                "documents": ["Detailed project report for the proposed expenditure", "Quotations for machinery or equipment", "Company KYC and financials", "Promoter's KYC and financials"],
-                "faq": [ { "q": "Can a term loan be prepaid?", "a": "Yes, most banks allow prepayment of term loans, though some may charge a prepayment penalty. It is advisable to check the terms before applying." } ]
+                "eligibility": "Established businesses looking for funds for capital expenditure like machinery purchase or expansion.",
+                "features": ["Ideal for long-term capital needs", "Fixed repayment schedule (EMI)", "Attractive interest rates"],
+                "documents": ["Detailed project report for the proposed expenditure", "Quotations for machinery or equipment", "Company KYC and financials"],
+                "faq": []
             },
-            "msme": {
-                "name": "MSME Loan",
-                "description": "Specialized loans for Micro, Small & Medium Enterprises, often with government scheme benefits.",
-                "roi": "10.50%",
-                "tenure": "10 Years",
-                "images": [
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758032416/linkconnect_1758032398057_tjpunk.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758032417/linkconnect_1758032308266_w08djn.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758032415/linkconnect_1758032342649_blvssa.png"
-                ],
-                "eligibility": "The business must be registered as a Micro, Small, or Medium Enterprise (MSME) under the Udyam portal. Eligibility often aligns with various government schemes.",
-                "features": ["Lower interest rates under government schemes", "Collateral-free loans available (e.g., CGTMSE)", "Support for small businesses", "Simplified application process"],
-                "documents": ["Udyam Registration Certificate", "Business KYC documents", "Personal KYC of promoters", "Bank statements and ITR"],
-                "faq": [ { "q": "Is collateral always required for an MSME loan?", "a": "Not necessarily. Under the CGTMSE scheme, you can get collateral-free loans up to ₹5 crore from eligible banks." } ]
+            "blap": {
+                "name": "Business Loan Against Property (BLAP)",
+                "description": "A loan taken by mortgaging property for business purposes (similar to LAP, but for business use).",
+                "roi": "11.00%",
+                "tenure": "15 Years",
+                "eligibility": "Business owners who own a commercial or residential property.",
+                "features": ["High loan amount", "Longer repayment tenure", "Flexible end-use of funds"],
+                "documents": ["Original property documents", "Business registration documents", "Financial statements"],
+                "faq": []
+            },
+            "bill-discounting": {
+                "name": "Bill/Invoice Discounting",
+                "description": "Get instant cash based on future payments (bills) receivable from your customers.",
+                "roi": "Varies",
+                "tenure": "Short-term",
+                "eligibility": "Businesses with unpaid invoices from reputable companies.",
+                "features": ["Maintains healthy cash flow", "Quick access to funds", "No collateral required"],
+                "documents": ["Unpaid invoices", "Business registration documents", "Bank statements"],
+                "faq": []
             }
         }
     },
     "personal-loan": {
         "name": "Personal Loan",
-        "overview": "Har zaroorat ke liye, turant financial solution. Personal loans are the perfect solution for your immediate financial needs, be it a wedding, vacation, or medical emergency. With minimal documentation and quick disbursal, get the funds you need without any hassle.",
+        "overview": "An instant financial solution for every need. This is an unsecured loan, meaning no collateral is required. It can be used for a wedding, vacation, medical emergency, or any other personal requirement.",
         "roi": "10.25%",
         "tenure": "5 Years",
         "images": [
-           "https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-34_q09kn6.jpg",
-           "https://res.cloudinary.com/dhme90fr1/image/upload/v1757239663/PHOTO-2025-09-07-15-20-35_kxclyr.jpg"
+            "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034622/linkconnect_1758034581315_cmn98r.png",
+            "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034846/linkconnect_1758034772528_ptsnrr.png"
         ],
-       "subtypes": {
-           "wedding": { "name": "Wedding Loan", "description": "Fund your dream wedding expenses, from venue booking to jewelry, with an easy personal loan.", "roi": "10.99%", "tenure": "5 Years",
-                "images": [
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034622/linkconnect_1758034581315_cmn98r.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034621/linkconnect_1758034606490_sdtjpa.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034558/linkconnect_1758034549602_hqevla.png"
-                ],
-                "eligibility": "Available for both salaried and self-employed individuals with a strong credit history and a minimum monthly income of ₹25,000.", "features": ["Covers all wedding-related expenses", "Quick approval and disbursal", "No collateral required", "Flexible repayment tenure"], "documents": ["PAN & Aadhaar Card", "Last 3 months salary slips", "Last 6 months bank statement", "Employment ID card"], "faq": [ { "q": "How much loan can I get for a wedding?", "a": "The loan amount depends on your income, credit score, and repayment capacity. It can range from ₹50,000 to ₹40 Lakhs." } ] },
-           "travel": { "name": "Travel Loan", "description": "Don't wait to explore the world. Get instant funds for your domestic or international travel plans.", "roi": "11.49%", "tenure": "3 Years",
-                "images": [
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034846/linkconnect_1758034772528_ptsnrr.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034844/linkconnect_1758034798378_mghvhx.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034832/linkconnect_1758034818629_ytrduj.png"
-                ],
-                "eligibility": "Indian residents with a stable job and a good credit score can apply. Some lenders might ask for travel bookings.", "features": ["Fund your dream vacation", "Easy EMIs make travel affordable", "No need to dip into your savings", "Instant online approval"], "documents": ["KYC Documents", "Income proof", "Bank statements", "Optionally, travel tickets or hotel bookings"], "faq": [ { "q": "Is a travel loan better than using a credit card?", "a": "Travel loans often come with lower interest rates than credit cards, making them a more cost-effective option for planned vacations." } ] },
-           "medical": { "name": "Medical Emergency Loan", "description": "Get immediate financial support for unexpected medical expenses with quick and hassle-free loans.", "roi": "10.25%", "tenure": "5 Years",
-                "images": [
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034846/linkconnect_1758034772528_ptsnrr.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034844/linkconnect_1758034798378_mghvhx.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758034832/linkconnect_1758034818629_ytrduj.png"
-                ],
-                "eligibility": "Available to salaried and self-employed individuals. The process is expedited for emergencies, requiring basic KYC and income documents.", "features": ["Immediate funds for medical emergencies", "Hassle-free and minimal documentation", "Covers hospitalization, surgery, and other medical bills", "Disbursal within a few hours"], "documents": ["Identity and address proof", "Income proof", "Hospital admission papers or estimate (if available)"], "faq": [ { "q": "Can I get a loan if I don't have health insurance?", "a": "Absolutely. A medical loan is designed to help you cover expenses irrespective of whether you have health insurance or not." } ] }
-       }
-   },
+        "subtypes": {},
+        "features": ["No collateral required", "Minimal documentation", "Quick disbursal", "Flexible end-use"],
+        "documents": ["PAN & Aadhaar Card", "Last 3 months salary slips / ITR for self-employed", "Last 6 months bank statement"],
+        "faq": [{"q": "How much personal loan can I get?", "a": "The loan amount depends on your income, credit score, and repayment capacity. It can range from ₹50,000 to ₹40 Lakhs."}]
+    },
     "vehicle-loan": {
         "name": "Vehicle Loan",
-        "overview": "Apni pasand ki gaadi ghar laayein. Our vehicle loans make it easy to buy your dream vehicle with attractive interest rates, flexible tenures, and high loan-to-value ratios for new, pre-owned, and commercial vehicles.",
+        "overview": "Bring home the vehicle of your choice. Our vehicle loans make it easy to buy your dream vehicle with attractive interest rates, flexible tenures, and high loan-to-value ratios.",
         "roi": "9.00%",
         "tenure": "7 Years",
         "images": [
-            "https://res.cloudinary.com/dhme90fr1/image/upload/v1757237853/WhatsApp_Image_2025-09-07_at_3.06.10_PM_d8n3iz.jpg",
-            "https://res.cloudinary.com/dhme90fr1/image/upload/v1757237853/WhatsApp_Image_2025-09-07_at_3.06.11_PM_aolonf.jpg",
-            "https://res.cloudinary.com/dhme90fr1/image/upload/v1757237853/WhatsApp_Image_2025-09-07_at_3.06.10_PM_1_hsvkki.jpg"
+            "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036373/linkconnect_1758036223153_x7sn8d.png",
+            "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036809/linkconnect_1758036659787_ujz7bx.png"
         ],
         "subtypes": {
-            "new-car": { 
-                "name": "New Car Loan", "description": "Drive home your brand new car with up to 100% on-road funding and attractive interest rates.",
-                "roi": "9.00%", "tenure": "7 Years", 
-                "images": [
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036373/linkconnect_1758036223153_x7sn8d.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036373/linkconnect_1758036248349_wcnvmh.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036443/linkconnect_1758036432977_je7t0w.png"
-                ],
-                "eligibility": "Applicant must be at least 21 years old and have a stable income source. Loan approval depends on the car model and your credit profile.", 
-                "features": ["Funding up to 100% of the on-road price", "Flexible repayment tenure up to 7 years", "Quick processing with minimal paperwork", "Attractive schemes & exclusive offers available"], 
-                "documents": ["Pro-forma invoice from the car dealer", "Valid KYC documents (Aadhaar, PAN, Passport, etc.)", "Income proof (Salary Slip / ITR)", "Recent Bank Statements"], 
-                "faq": [ { "q": "What does \"on-road price\" include?", "a": "The on-road price includes the ex-showroom price, RTO registration charges, road tax, and insurance." } ] },
-            "used-car": { "name": "Used Car & Vehicle Loan", "description": "Get financing for pre-owned cars and other vehicles at competitive rates and make your purchase affordable.", "roi": "11.00%", "tenure": "5 Years", 
-                "images": [
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036809/linkconnect_1758036659787_ujz7bx.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036807/linkconnect_1758036674320_nx6w3y.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036801/linkconnect_1758036687743_wugmtx.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036800/linkconnect_1758036750723_dpx1yh.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036799/linkconnect_1758036769721_mbzdlk.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758036443/linkconnect_1758036432977_je7t0w.png"
-                ],
-                "eligibility": "The car should not be more than 5-7 years old. A valuation report of the car from a certified professional is mandatory.", "features": ["Get up to 90% of the car's valuation as a loan", "Affordable EMIs", "Helps in buying a better car within your budget", "Thorough check on car documents by the bank"], "documents": ["RC copy of the vehicle", "Vehicle valuation report", "Seller-buyer agreement", "Standard KYC and income documents"], "faq": [ { "q": "Is the interest rate for used car loans higher?", "a": "Yes, interest rates for used car loans are generally slightly higher than new car loans due to the higher perceived risk." } ] },
-            "commercial-vehicle": { "name": "Commercial Vehicle Loan", "description": "Finance your commercial vehicles like trucks, buses, and taxis to expand your business operations.", "roi": "12.00%", "tenure": "5 Years", 
-                "images": [
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758030488/linkconnect_1758029887796_nxonu1.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758030468/linkconnect_1758030246325_a7sfga.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758037179/linkconnect_1758037044134_wxfubz.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758037173/linkconnect_1758037058200_xyshny.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758037172/linkconnect_1758037132400_crm3iu.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758037171/linkconnect_1758037147943_jibmsg.png"
-                ],
-                "eligibility": "For individuals or businesses purchasing vehicles for commercial use like trucks, buses, or taxis. A valid commercial driving license and vehicle permit are required.", "features": ["Funding for a wide range of commercial vehicles", "Customized repayment options", "Quick turnaround time", "Helps in business expansion"], "documents": ["Vehicle Quotation", "Business registration documents", "Permit details", "KYC and income proofs"], "faq": [ { "q": "Can I get a loan for a second-hand truck?", "a": "Yes, we provide financing for both new and used commercial vehicles, subject to the vehicle's age and condition." } ] }
+            "new-car": {
+                "name": "New Car Loan",
+                "description": "Drive home your brand new car with up to 100% on-road funding and attractive interest rates.",
+                "roi": "9.00%",
+                "tenure": "7 Years"
+            },
+            "used-car": {
+                "name": "Used Car Loan",
+                "description": "Get financing for pre-owned cars at competitive rates and make your purchase affordable.",
+                "roi": "11.00%",
+                "tenure": "5 Years"
+            },
+            "two-wheeler": {
+                "name": "Two-Wheeler Loan",
+                "description": "Finance your purchase of a new bike or scooter with easy EMIs.",
+                "roi": "10.75%",
+                "tenure": "3 Years"
+            },
+            "commercial-vehicle": {
+                "name": "Commercial Vehicle Loan",
+                "description": "For business vehicles like trucks, taxis, or delivery vans.",
+                "roi": "12.00%",
+                "tenure": "5 Years"
+            }
         }
     },
     "lap-loan": {
         "name": "Loan Against Property",
-        "overview": "Unlock the value of your property. A Loan Against Property (LAP) is a secured loan that you can avail by mortgaging your residential or commercial property. This is a great way to get a large loan amount at a lower interest rate for various purposes like business expansion, education, or weddings.",
+        "overview": "Unlock the value of your property. A Loan Against Property (LAP) is a secured loan that you can avail by mortgaging your residential or commercial property. It's a great way to get a large loan amount at a lower interest rate.",
         "images": [
             "https://res.cloudinary.com/dugvqluo2/image/upload/v1758031537/linkconnect_1758031505572_mris8e.png",
-            "https://res.cloudinary.com/dugvqluo2/image/upload/v1758031537/linkconnect_1758031455044_nwcfmt.png",
             "https://res.cloudinary.com/dugvqluo2/image/upload/v1758031536/linkconnect_1758031474915_dreu1x.png"
         ],
         "roi": "9.50%",
         "tenure": "15 Years",
         "subtypes": {
-            "overview": {
-                "name": "LAP Overview",
-                "description": "Leverage your existing property to get a high-value loan for any personal or business need.",
-                "eligibility": "Owner of the property (residential or commercial). The property must have a clear title and be free from any legal disputes. Your income and repayment capacity will also be assessed.",
-                "features": ["High loan amount based on property value", "Lower interest rates compared to unsecured loans", "Longer repayment tenure", "Can be used for any personal or business purpose"],
-                "documents": ["Original property documents (Title Deed)", "NOC from the society/builder", "Latest property tax receipts", "Standard KYC and income proofs"],
-                "faq": [ { "q": "Can I continue to use my property during the loan tenure?", "a": "Yes, you retain the ownership and can continue using your property as usual. Only the original documents are kept with the bank as security." }, { "q": "What percentage of my property value can I get as a loan?", "a": "You can typically get a loan amount of up to 60-70% of the market value of your property." } ]
+            "residential": {
+                "name": "LAP on Residential Property",
+                "description": "Take a loan by mortgaging your self-occupied home or any other residential property you own.",
+                "roi": "9.50%",
+                "tenure": "15 Years"
             },
-            "msme-lap": {
-                "name": "LAP for MSME",
-                "description": "MSME-specific Loan Against Property to fund business expansion, purchase inventory, or manage cash flow.",
+            "commercial": {
+                "name": "LAP on Commercial Property",
+                "description": "Take a loan by mortgaging your shop, office, or other commercial space.",
+                "roi": "10.00%",
+                "tenure": "12 Years"
+            },
+            "lap-bt-topup": {
+                "name": "LAP Balance Transfer + Top-up",
+                "description": "Transfer your existing Loan Against Property and avail additional funds on top of it.",
                 "roi": "9.75%",
-                "tenure": "15 Years",
-                "images": [
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758032416/linkconnect_1758032398057_tjpunk.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758032417/linkconnect_1758032308266_w08djn.png",
-                    "https://res.cloudinary.com/dugvqluo2/image/upload/v1758032415/linkconnect_1758032342649_blvssa.png"
-                ],
-                "eligibility": "For businesses registered as MSME who own a commercial or residential property. This loan is ideal for business expansion, working capital, or other business-related expenses.",
-                "features": ["Higher loan amount for business needs", "Competitive interest rates", "Longer repayment tenure up to 15 years", "Funds can be used for any business purpose"],
-                "documents": ["Udyam Registration Certificate", "Original property documents", "Business KYC and financials", "Promoter's KYC and income proofs"],
-                "faq": [
-                    { "q": "Can I get a LAP for my new MSME business?", "a": "Most lenders require a business to be operational for a few years. However, policies vary, and we can help you find a suitable lender based on your profile and property value." }
-                ]
+                "tenure": "15 Years"
             }
         }
     },
     "health-insurance": {
         "name": "Health Insurance",
-        "overview": "Protect your health and finances. Health insurance provides a financial safety net against high medical expenses, ensuring you and your family receive the best possible care without financial worries.",
+        "overview": "आज के समय में, हेल्थ इंश्योरेंस एक विकल्प नहीं, बल्कि एक ज़रूरत है। अस्पताल के बढ़ते खर्चे आपकी ज़िंदगी भर की बचत को कुछ ही दिनों में खत्म कर सकते हैं। श्री करणी कृपा एसोसिएट्स (SKF अजमेर) आपको और आपके परिवार को इन वित्तीय जोखिमों से बचाता है। हम किसी एक कंपनी के एजेंट नहीं हैं; हम आपके इंश्योरेंस सलाहकार हैं। हम 30 से ज़्यादा बीमा कंपनियों के प्लान्स की तुलना करते हैं ताकि आपको वह पॉलिसी मिले जिसमें कोई छिपी हुई शर्तें न हों और जो आपको सबसे अच्छा कवर दे।",
         "tenure": "1 Year",
         "images": ["https://res.cloudinary.com/dhme90fr1/image/upload/v1757387616/PHOTO-2025-09-09-08-37-27_csvkbm.jpg"],
+        "features": [
+            "बढ़ती महँगाई: अस्पताल का खर्च हर साल 15% की दर से बढ़ रहा है।",
+            "लाइफस्टाइल रोग: आज की जीवनशैली में बीमारियाँ आम हो गई हैं।",
+            "बचत की सुरक्षा: यह आपकी बचत (FDs, Mutual Funds) को मेडिकल बिलों से बचाता है।",
+            "टैक्स लाभ: आप Section 80D के तहत टैक्स में छूट पा सकते हैं।"
+        ],
         "subtypes": {
-            "individual": { "name": "Individual Health Cover", "description": "A dedicated health policy for an individual, covering hospitalization, treatments, and more.", "tenure": "1 Year", "eligibility": "Any individual between 18 to 65 years of age can purchase this policy.", "features": ["Comprehensive coverage for hospitalization expenses", "Cashless treatment at network hospitals", "Tax benefits under Section 80D", "No-claim bonus benefits"], "documents": ["Age proof (Aadhaar, Passport)", "Address proof", "Identity proof", "Medical check-up reports (if required)"], "faq": [{"q": "What is a waiting period in health insurance?", "a": "A waiting period is the duration you must wait before you can claim some or all benefits of your health insurance policy. This is common for pre-existing conditions."}] },
-            "family": { "name": "Family Floater Plan", "description": "A single policy that covers your entire family, offering a shared sum insured for all members.", "tenure": "1 Year", "eligibility": "Covers the entire family under a single policy, including self, spouse, children, and sometimes parents.", "features": ["Single premium for the whole family", "Sum insured floats among all family members", "Cost-effective compared to individual policies", "Comprehensive coverage"], "documents": ["KYC documents of the primary insured person", "Details of all family members to be covered"], "faq": [{"q": "Can I add my parents to my family floater plan?", "a": "Some policies allow adding parents, but it's often recommended to get a separate senior citizen policy for them due to their higher health risks."}] }
+            "individual": {
+                "name": "Individual Health Plan",
+                "description": "A dedicated health policy that provides coverage for a single individual."
+            },
+            "family-floater": {
+                "name": "फैमिली फ्लोटर हेल्थ इंश्योरेंस प्लान",
+                "description": "पूरे परिवार (पति, पत्नी और बच्चे) के लिए एक ही पॉलिसी। एक ही प्रीमियम में सभी कवर होते हैं।",
+                "features": [
+                    "किफायती प्रीमियम: अलग-अलग पॉलिसी खरीदने की तुलना में एक फैमिली फ्लोटर प्लान काफी सस्ता पड़ता है।",
+                    "प्रबंधन में आसान: आपको कई पॉलिसियों की तारीखें याद रखने की ज़रूरत नहीं, सिर्फ एक ही पॉलिसी को मैनेज करना होता है।",
+                    "फ्लेक्सिबल कवर: यदि एक वर्ष में परिवार का एक सदस्य बीमार पड़ता है, तो वह पूरे कवर का उपयोग कर सकता है।"
+                ],
+                "faq": [
+                    {"q": "क्या मैं अपने माता-पिता को फैमिली फ्लोटर में जोड़ सकता हूँ?", "a": "हम इसकी सलाह नहीं देते। चूँकि माता-पिता की उम्र ज़्यादा होती है, इसलिए उनके कारण पूरे परिवार का प्रीमियम बहुत बढ़ जाता है। उनके लिए एक अलग 'सीनियर सिटीज़न प्लान' लेना बेहतर है।"},
+                    {"q": "क्या इसमें नए बच्चे (New-born Baby) का कवर शामिल है?", "a": "हाँ, ज़्यादातर अच्छी पॉलिसियाँ 90 दिनों के बाद नए जन्मे बच्चे को अपने आप कवर कर लेती हैं।"}
+                ]
+            },
+            "critical-illness": {
+                "name": "Critical Illness Cover",
+                "description": "Provides a lump-sum amount on the diagnosis of major critical illnesses like cancer, heart attack, etc."
+            },
+            "top-up": {
+                "name": "Top-up / Super Top-up Plan",
+                "description": "An additional coverage that activates after your base health insurance limit is exhausted."
+            }
         }
     },
     "life-insurance": {
         "name": "Life Insurance",
         "overview": "Secure your family's future. Life insurance provides a lump-sum amount to your family in your absence, ensuring they can maintain their lifestyle and achieve their financial goals without any burden.",
         "tenure": "Up to 85 years",
-        "images": ["https://placehold.co/800x500/eef2ff/4f46e5?text=Life+Insurance"],
+        "images": ["https://res.cloudinary.com/dugvqluo2/image/upload/v1758177260/linkconnect_1758177251097_gq1gda.png"],
         "subtypes": {
-            "term": { "name": "Term Plan", "description": "The purest form of life insurance, offering a high cover at a very low premium for a specific term.", "tenure": "Up to 85 years", "eligibility": "Available for individuals from 18 to 65 years. Provides high coverage at a low premium for a fixed term.", "features": ["Pure risk cover", "High sum assured at affordable premiums", "Rider options for critical illness & accidental death", "Tax benefits"], "documents": ["Age & Identity Proof", "Income Proof", "Address Proof", "Medical History"], "faq": [{"q": "What happens if I survive the policy term?", "a": "In a pure term plan, no maturity benefit is paid if you survive the policy term. However, some plans now offer a 'Return of Premium' option at a higher cost."}] },
-            "endowment": { "name": "Endowment Plan", "description": "A combination of insurance and savings. It provides a lump sum on maturity or death.", "tenure": "10-30 Years", "eligibility": "Combines insurance with savings. Suitable for long-term goal planning.", "features": ["Dual benefit of insurance and savings", "Guaranteed maturity benefit", "Bonus additions", "Loan facility available"], "documents": ["KYC Documents", "Income Proof", "Age Proof"], "faq": [{"q": "Is an endowment plan a good investment?", "a": "Endowment plans offer safe, guaranteed returns but are generally lower than market-linked products. They are good for risk-averse individuals."}] }
+            "term": {
+                "name": "Term Insurance",
+                "description": "The purest and most affordable form of life insurance. It provides a large sum assured to the nominee if the policyholder dies during the policy term. No maturity benefit is paid."
+            },
+            "endowment": {
+                "name": "Endowment Plan",
+                "description": "A combination of insurance and savings. It provides a maturity benefit upon survival of the policy term or a death benefit to the family."
+            },
+            "ulip": {
+                "name": "ULIP (Unit Linked Insurance Plan)",
+                "description": "A combination of insurance and investment (like mutual funds), where returns are linked to the market."
+            },
+            "whole-life": {
+                "name": "Whole Life Insurance",
+                "description": "This policy provides coverage for the entire life of the policyholder (or up to 100 years of age)."
+            }
         }
     },
     "vehicle-insurance": {
         "name": "Vehicle Insurance",
         "overview": "Drive with confidence. Vehicle insurance protects you against financial losses from accidents, theft, or damage to your vehicle, and also covers third-party liabilities as mandated by law.",
+        "overview": "भारत में गाड़ी चलाना बिना इंश्योरेंस के गैर-कानूनी है। लेकिन इंश्योरेंस सिर्फ चालान से बचने के लिए नहीं होता, यह आपकी महंगी गाड़ी को दुर्घटना, चोरी, या किसी भी नुकसान से बचाने के लिए होता है। श्री करणी कृपा एसोसिएट्स (SKF अजमेर) आपको सही व्हीकल इंश्योरेंस पॉलिसी चुनने में मदद करता है। हम सिर्फ 'सबसे सस्ता' प्लान नहीं, बल्कि 'सबसे अच्छा' प्लान चुनते हैं, जिसमें ज़रूरी ऐड-ऑन शामिल हों।",
         "tenure": "1 Year",
-        "images": ["https://placehold.co/800x500/fefce8/ca8a04?text=Vehicle+Insurance"],
+        "images": ["https://res.cloudinary.com/dugvqluo2/image/upload/v1758177378/linkconnect_1758177369165_wz8qyp.png"],
         "subtypes": {
-            "car": { "name": "Car Insurance", "description": "Mandatory insurance to protect your car against accidents, theft, and third-party liabilities.", "tenure": "1 Year", "eligibility": "Mandatory for all car owners in India.", "features": ["Covers damage to your own car (OD)", "Covers third-party liability", "No-Claim Bonus (NCB) for claim-free years", "Add-ons like zero depreciation & roadside assistance"], "documents": ["Vehicle Registration Certificate (RC)", "Driving License of the owner/driver", "Previous policy details (for renewal)"], "faq": [{"q": "What is the difference between third-party and comprehensive insurance?", "a": "Third-party insurance is mandatory and only covers damages to another person or property. Comprehensive insurance covers third-party liability plus damage or theft of your own vehicle."}] },
-            "bike": { "name": "Bike Insurance", "description": "Protect your two-wheeler from unforeseen events with comprehensive or third-party insurance.", "tenure": "1 Year", "eligibility": "Mandatory for all two-wheeler owners.", "features": ["Affordable premium", "Protection against accidents and theft", "Third-party liability coverage", "Personal accident cover for owner-driver"], "documents": ["Vehicle RC", "Driving License", "Old policy copy for renewals"], "faq": [{"q": "Is personal accident cover included by default?", "a": "Yes, a personal accident cover of ₹15 lakhs for the owner-driver is mandatory with bike insurance."}] },
-            "commercial": { "name": "Commercial Vehicle Insurance", "description": "Insurance for vehicles used for business purposes, covering legal liabilities and damages.", "tenure": "1 Year", "eligibility": "Required for all vehicles used for commercial purposes, such as trucks, buses, and taxis.", "features": ["Covers goods-carrying and passenger-carrying vehicles", "Mandatory third-party liability cover", "Own Damage (OD) cover available", "Legal and financial protection"], "documents": ["Vehicle RC and Fitness Certificate", "Permit Details", "Driver's License"], "faq": [{"q": "Does it cover the goods being transported?", "a": "No, standard commercial vehicle insurance does not cover the goods. For that, you would need a separate Marine or Goods in Transit insurance policy."}] }
+            "third-party": {
+                "name": "Third-Party Liability",
+                "description": "यह कानून द्वारा अनिवार्य है। यह आपकी गाड़ी से किसी दूसरे व्यक्ति या उसकी संपत्ति को हुए नुकसान को कवर करता है। यह आपकी खुद की गाड़ी के नुकसान को कवर नहीं करता।"
+            },
+            "comprehensive": {
+                "name": "Comprehensive (Full Insurance)",
+                "description": "यह सबसे अच्छी पॉलिसी है। यह थर्ड-पार्टी के साथ-साथ आपकी खुद की गाड़ी को चोरी, दुर्घटना, या प्राकृतिक आपदा से हुए नुकसान को भी कवर करती है।"
+            },
+            "zero-depreciation-cover": {
+                "name": "ज़ीरो डेप्रिसिएशन (Zero Depreciation) इंश्योरेंस",
+                "description": "ज़ीरो डेप्रिसिएशन कवर, जिसे 'बंपर टू बंपर' (Bumper to Bumper) के नाम से भी जाना जाता है, आपकी कार इंश्योरेंस पॉलिसी का सबसे महत्वपूर्ण ऐड-ऑन है।",
+                "features": [
+                    "100% क्लेम: आपको प्लास्टिक, फाइबर और मेटल पार्ट्स पर पूरा क्लेम मिलता है।",
+                    "बड़ी बचत: यह छोटे से लेकर बड़े एक्सीडेंट तक, आपके हज़ारों रुपये बचाता है।",
+                    "तनाव-मुक्त (Peace of Mind): आपको पता होता है कि एक्सीडेंट होने पर आपको कोई बड़ा खर्च नहीं उठाना पड़ेगा।"
+                ],
+                "faq": [
+                    {"q": "क्या यह ऐड-ऑन बहुत महँगा है?", "a": "यह आपकी नार्मल पॉलिसी से थोड़ा (15-20%) महँगा होता है, लेकिन एक छोटे से क्लेम में ही यह अपने पैसे वसूल करा देता है।"},
+                    {"q": "क्या यह पुरानी गाड़ियों के लिए उपलब्ध है?", "a": "ज़्यादातर कंपनियाँ यह ऐड-ऑन 5 साल तक पुरानी गाड़ियों के लिए ही देती हैं।"},
+                    {"q": "क्या मैं साल में कितनी भी बार ज़ीरो डेप क्लेम ले सकता हूँ?", "a": "आमतौर पर कंपनियाँ साल में 1 या 2 ज़ीरो डेप क्लेम की अनुमति देती हैं।"}
+                ]
+            }
         }
     },
     "general-insurance": {
         "name": "General Insurance",
         "overview": "Protect your valuable assets. General insurance provides coverage for a wide range of non-life assets, including your shop, property, and even your travels, safeguarding you from unexpected financial losses.",
         "tenure": "1 Year",
-        "images": ["https://placehold.co/800x500/f1f5f9/475569?text=General+Insurance"],
+        "images": ["https://res.cloudinary.com/dugvqluo2/image/upload/v1758177478/linkconnect_1758177469141_wz2jwv.png"],
         "subtypes": {
-            "shop": { "name": "Shopkeeper Insurance", "description": "A comprehensive policy that protects your shop from risks like fire, theft, and other damages.", "tenure": "1 Year", "eligibility": "For owners of small to medium-sized shops.", "features": ["Protection against fire, theft, and natural calamities", "Covers building, stock, and contents", "Liability coverage options", "All-in-one package policy"], "documents": ["Shop registration documents", "Address proof of the shop", "List of contents to be insured"], "faq": [{"q": "Does it cover loss of money in the shop?", "a": "Yes, many shopkeeper policies offer an add-on or built-in cover for loss of money in transit or from a safe."}] },
-            "property": { "name": "Property Insurance", "description": "Safeguard your residential or commercial property from unforeseen events like fire and natural disasters.", "tenure": "1 Year", "eligibility": "For owners of residential or commercial properties.", "features": ["Coverage against fire, floods, earthquakes", "Protection for building structure and contents", "Option to include rent loss cover", "Customizable plans"], "documents": ["Proof of ownership", "Valuation report of the property", "Address proof"], "faq": [{"q": "Is property insurance the same as home insurance?", "a": "Home insurance is a type of property insurance specifically for residential homes. Property insurance is a broader term that can also cover commercial buildings."}] },
-            "fire": { "name": "Fire Insurance", "description": "Specific coverage for property and goods against damage caused by fire and related perils.", "tenure": "1 Year", "eligibility": "For any individual or business that wants to protect their property against fire damage.", "features": ["Covers damages due to fire, lightning, and explosions", "Can be extended to cover riots, storms, and floods", "Essential for businesses with high-value stock", "Peace of mind"], "documents": ["List of assets to be insured", "Property ownership documents", "Business registration (if applicable)"], "faq": [{"q": "What is not covered in a standard fire policy?", "a": "Standard policies usually exclude damages from war, nuclear perils, and willful destruction of property."}] },
-            "travel": { "name": "Travel Insurance", "description": "Secure your trips against medical emergencies, flight cancellations, baggage loss, and more.", "tenure": "Per Trip", "eligibility": "For individuals and families travelling domestically or internationally.", "features": ["Covers medical emergencies abroad", "Protection against trip cancellation or delay", "Baggage loss or delay coverage", "Cashless hospitalization worldwide"], "documents": ["Passport copy (for international travel)", "Ticket details", "Basic KYC documents"], "faq": [{"q": "Do I need travel insurance for domestic trips?", "a": "While not mandatory, it is highly recommended as it can cover flight cancellations, baggage loss, and medical emergencies even within the country."}] }
+            "home": {
+                "name": "Home Insurance",
+                "description": "Protects your home's structure and/or contents from disasters like fire, theft, flood, and earthquake."
+            },
+            "travel": {
+                "name": "Travel Insurance",
+                "description": "Covers baggage loss, flight cancellations, or medical emergencies during your travels."
+            },
+            "business": {
+                "name": "Business/Commercial Insurance",
+                "description": "Protects your shop, office, stock, or factory from damages (e.g., Shopkeeper Policy, Fire Insurance)."
+            }
         }
     }
 }
